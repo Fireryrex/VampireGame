@@ -17,6 +17,7 @@ public class Vampire_Controller : MonoBehaviour
     public bool isGrounded = false;
     public bool isAttacking = false;
     public bool attackInProgress = false;
+    public bool additionalFrame = false;
     //public bool canJumporRoll = true;
     //weapon array
     public GameObject[] weapons;
@@ -49,6 +50,10 @@ public class Vampire_Controller : MonoBehaviour
             {
                 currentAttack.SetActive(false);
                 attackInProgress = false;
+                if (additionalFrame)
+                {
+                    Attack();
+                }
             }
             if(startTime > comboDelay)
             {
@@ -61,38 +66,52 @@ public class Vampire_Controller : MonoBehaviour
     //Moving logic
     public void Move(float move, bool jump)
     {
-        Vector3 targetVelocity = new Vector2(move * 10f, RigidBody2D.velocity.y);
-        RigidBody2D.velocity = Vector3.SmoothDamp(RigidBody2D.velocity, targetVelocity, ref m_Velocity, movementSmoothing);
+        if (!attackInProgress)
+        {
+            if (move < 0)
+            {
+                transform.rotation = Quaternion.Euler(0, -180, 0);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+            Vector3 targetVelocity = new Vector2(move * 10f, RigidBody2D.velocity.y);
+            RigidBody2D.velocity = Vector3.SmoothDamp(RigidBody2D.velocity, targetVelocity, ref m_Velocity, movementSmoothing);
 
-        if (jump && isGrounded)
-        {
-            print("jump");
-            RigidBody2D.velocity = new Vector2(RigidBody2D.velocity.x, 0);
-            RigidBody2D.AddForce(new Vector2(RigidBody2D.velocity.x, jumpSpeed));
-        }
-        else if (jump && airJumps > 0)
-        {
-            RigidBody2D.velocity = new Vector2(RigidBody2D.velocity.x, 0);
-            RigidBody2D.AddForce(new Vector2(RigidBody2D.velocity.x, jumpSpeed));
-            airJumps -= 1;
+            if (jump && isGrounded)
+            {
+                print("jump");
+                RigidBody2D.velocity = new Vector2(RigidBody2D.velocity.x, 0);
+                RigidBody2D.AddForce(new Vector2(RigidBody2D.velocity.x, jumpSpeed));
+            }
+            else if (jump && airJumps > 0)
+            {
+                RigidBody2D.velocity = new Vector2(RigidBody2D.velocity.x, 0);
+                RigidBody2D.AddForce(new Vector2(RigidBody2D.velocity.x, jumpSpeed));
+                airJumps -= 1;
+            }
         }
     }
 
     //Dashing logic
     public void Dash(float move, float dashSpeed, float direction)
     {
-        if (isGrounded)
+        if (!attackInProgress)
         {
-            Vector3 targetVelocity = new Vector2(move * 10f, dashSpeed * 10f * direction);
-            RigidBody2D.velocity = Vector3.SmoothDamp(RigidBody2D.velocity, targetVelocity, ref m_Velocity, movementSmoothing);
-        }
-        else if (airDashes > 0)
-        {
-            Vector3 targetVelocity = new Vector2(move * 10f, dashSpeed * 10f * direction);
-            RigidBody2D.velocity = Vector3.SmoothDamp(RigidBody2D.velocity, targetVelocity, ref m_Velocity, movementSmoothing);
-            if (direction > 0)
+            if (isGrounded)
             {
-                airDashes -= 1;
+                Vector3 targetVelocity = new Vector2(move * 10f, dashSpeed * 10f * direction);
+                RigidBody2D.velocity = Vector3.SmoothDamp(RigidBody2D.velocity, targetVelocity, ref m_Velocity, movementSmoothing);
+            }
+            else if (airDashes > 0)
+            {
+                Vector3 targetVelocity = new Vector2(move * 10f, dashSpeed * 10f * direction);
+                RigidBody2D.velocity = Vector3.SmoothDamp(RigidBody2D.velocity, targetVelocity, ref m_Velocity, movementSmoothing);
+                if (direction > 0)
+                {
+                    airDashes -= 1;
+                }
             }
         }
     }
@@ -140,6 +159,26 @@ public class Vampire_Controller : MonoBehaviour
                     isAttacking = true;
                     attackInProgress = true;
                     attackNum++;
+                    break;
+                case 2:
+                    currentAttack = weapons[2];
+                    currentAttack.SetActive(true);
+                    startTime = 0.0f;
+                    attackLength = .05f;
+                    isAttacking = true;
+                    attackInProgress = true;
+                    additionalFrame = true;
+                    attackNum++;
+                    break;
+                case 3:
+                    currentAttack = weapons[3];
+                    currentAttack.SetActive(true);
+                    startTime = 0.0f;
+                    attackLength = .8f;
+                    isAttacking = true;
+                    attackInProgress = true;
+                    additionalFrame = false;
+                    attackNum = 0;
                     break;
                 default:
                     break;
