@@ -135,7 +135,7 @@ public class Vampire_Controller : MonoBehaviour
         airDashes = numOfDashes;
     }
 
-    //Attack logic (chooses attack part of combo)
+    //Attack logic (chooses which attack part of combo)
     public void Attack()
     {
         if (!attackInProgress)
