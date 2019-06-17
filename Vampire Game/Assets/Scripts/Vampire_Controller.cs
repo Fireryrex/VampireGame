@@ -43,6 +43,7 @@ public class Vampire_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //attacking logic
         if (isAttacking)
         {
             startTime += Time.deltaTime;
@@ -134,7 +135,7 @@ public class Vampire_Controller : MonoBehaviour
         airDashes = numOfDashes;
     }
 
-    //Attack logic
+    //Attack logic (chooses attack part of combo)
     public void Attack()
     {
         if (!attackInProgress)
