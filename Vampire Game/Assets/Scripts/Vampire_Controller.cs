@@ -16,6 +16,7 @@ public class Vampire_Controller : MonoBehaviour
     //bools to check if some actions are allowed atm.
     public bool isGrounded = false;
     public bool isAttacking = false;
+    public bool attackInProgress = false;
     //public bool canJumporRoll = true;
     //weapon array
     public GameObject[] weapons;
@@ -24,6 +25,7 @@ public class Vampire_Controller : MonoBehaviour
     public GameObject currentAttack;
     private float startTime;
     private float attackLength;
+    public float comboDelay = 1.0f;
 
     private void Awake()
     {
@@ -46,6 +48,11 @@ public class Vampire_Controller : MonoBehaviour
             if(startTime > attackLength)
             {
                 currentAttack.SetActive(false);
+                attackInProgress = false;
+            }
+            if(startTime > comboDelay)
+            {
+                attackNum = 0;
                 isAttacking = false;
             }
         }
@@ -111,18 +118,32 @@ public class Vampire_Controller : MonoBehaviour
     //Attack logic
     public void Attack()
     {
-        switch(attackNum)
+        if (!attackInProgress)
         {
-            case 0:
-                Debug.Log("attaccing");
-                currentAttack = weapons[0];
-                currentAttack.SetActive(true);
-                startTime = 0.0f;
-                attackLength = 1.0f;
-                isAttacking = true;
-                break;
-            default:
-                break;
+            switch (attackNum)
+            {
+                case 0:
+                    //Debug.Log("attaccing");
+                    currentAttack = weapons[0];
+                    currentAttack.SetActive(true);
+                    startTime = 0.0f;
+                    attackLength = 0.3f;
+                    isAttacking = true;
+                    attackInProgress = true;
+                    attackNum++;
+                    break;
+                case 1:
+                    currentAttack = weapons[1];
+                    currentAttack.SetActive(true);
+                    startTime = 0.0f;
+                    attackLength = .2f;
+                    isAttacking = true;
+                    attackInProgress = true;
+                    attackNum++;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

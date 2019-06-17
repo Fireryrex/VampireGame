@@ -935,8 +935,10 @@ MonoBehaviour:
   isAttacking: 0
   weapons:
   - {fileID: 427051564}
+  - {fileID: 1418413133}
   attackNum: 0
   currentAttack: {fileID: 0}
+  comboDelay: 1
 --- !u!114 &1491127917
 MonoBehaviour:
   m_ObjectHideFlags: 0
