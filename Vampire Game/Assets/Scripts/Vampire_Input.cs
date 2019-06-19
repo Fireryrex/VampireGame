@@ -5,12 +5,12 @@ using UnityEngine;
 public class Vampire_Input : MonoBehaviour
 {
     public float moveSpeed;
-    public float horizontalMove = 0f;
-    public float dashDirection = 0f;
+    private float horizontalMove = 0f;
+    private float dashDirection = 0f;
     public int vertdashMulti = 5;
     public int horidashMulti = 10;
-    public bool jump = false;
-    public bool dash = false;
+    private bool jump = false;
+    private bool dash = false;
     public Vampire_Controller controller;
 
     // Start is called before the first frame update
