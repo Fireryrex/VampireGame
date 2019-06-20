@@ -10,20 +10,19 @@ public class Vampire_Controller : MonoBehaviour
     private int airDashes = 1;
     public int numOfDashes = 1;
     public Rigidbody2D RigidBody2D;
-    public BoxCollider2D groundCheck;
     private float movementSmoothing = .05f;
     private Vector3 m_Velocity = Vector3.zero;
     //bools to check if some actions are allowed atm.
-    public bool isGrounded = false;
-    public bool isAttacking = false;
-    public bool attackInProgress = false;
-    public bool additionalFrame = false;
+    private bool isGrounded = false;
+    private bool isAttacking = false;
+    private bool attackInProgress = false;
+    private bool additionalFrame = false;
     //public bool canJumporRoll = true;
     //weapon array
-    public GameObject[] weapons;
+    public GameObject[] swordAttacks;
     //combo counter
-    public int attackNum = 0;
-    public GameObject currentAttack;
+    private int attackNum = 0;
+    private GameObject currentAttack;
     private float startTime;
     private float attackLength;
     public float comboDelay = 1.0f;
@@ -31,7 +30,6 @@ public class Vampire_Controller : MonoBehaviour
     private void Awake()
     {
         RigidBody2D = GetComponent<Rigidbody2D>();
-        groundCheck = GetComponent<BoxCollider2D>();
     }
 
     // Start is called before the first frame update
@@ -73,7 +71,7 @@ public class Vampire_Controller : MonoBehaviour
             {
                 transform.rotation = Quaternion.Euler(0, -180, 0);
             }
-            else
+            else if(move > 0)
             {
                 transform.rotation = Quaternion.Euler(0, 0, 0);
             }
@@ -144,7 +142,7 @@ public class Vampire_Controller : MonoBehaviour
             {
                 case 0:
                     //Debug.Log("attaccing");
-                    currentAttack = weapons[0];
+                    currentAttack = swordAttacks[0];
                     currentAttack.SetActive(true);
                     startTime = 0.0f;
                     attackLength = 0.3f;
@@ -153,7 +151,7 @@ public class Vampire_Controller : MonoBehaviour
                     attackNum++;
                     break;
                 case 1:
-                    currentAttack = weapons[1];
+                    currentAttack = swordAttacks[1];
                     currentAttack.SetActive(true);
                     startTime = 0.0f;
                     attackLength = .2f;
@@ -162,7 +160,7 @@ public class Vampire_Controller : MonoBehaviour
                     attackNum++;
                     break;
                 case 2:
-                    currentAttack = weapons[2];
+                    currentAttack = swordAttacks[2];
                     currentAttack.SetActive(true);
                     startTime = 0.0f;
                     attackLength = .05f;
@@ -172,7 +170,7 @@ public class Vampire_Controller : MonoBehaviour
                     attackNum++;
                     break;
                 case 3:
-                    currentAttack = weapons[3];
+                    currentAttack = swordAttacks[3];
                     currentAttack.SetActive(true);
                     startTime = 0.0f;
                     attackLength = .8f;
