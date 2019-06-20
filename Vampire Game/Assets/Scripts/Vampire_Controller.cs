@@ -10,7 +10,6 @@ public class Vampire_Controller : MonoBehaviour
     private int airDashes = 1;
     public int numOfDashes = 1;
     public Rigidbody2D RigidBody2D;
-    public BoxCollider2D groundCheck;
     private float movementSmoothing = .05f;
     private Vector3 m_Velocity = Vector3.zero;
     //bools to check if some actions are allowed atm.
@@ -31,7 +30,6 @@ public class Vampire_Controller : MonoBehaviour
     private void Awake()
     {
         RigidBody2D = GetComponent<Rigidbody2D>();
-        groundCheck = GetComponent<BoxCollider2D>();
     }
 
     // Start is called before the first frame update
