@@ -118,12 +118,18 @@ public class Vampire_Controller : MonoBehaviour
     //Groundcheck logic
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        isGrounded = true;
-        resetAirMovements();
+        if (collision.gameObject.layer == 11)
+        {
+            isGrounded = true;
+            resetAirMovements();
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        isGrounded = false;
+        if (collision.gameObject.layer == 11)
+        {
+            isGrounded = false;
+        }
     }
     
     //resets jump and dash values

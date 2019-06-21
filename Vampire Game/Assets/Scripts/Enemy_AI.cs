@@ -17,6 +17,8 @@ public class Enemy_AI : MonoBehaviour
     private float startTime = 0f;
     private float attackLength = 0f;
 
+ 
+
     private Rigidbody2D rb;
 
     // Start is called before the first frame update
