@@ -30,12 +30,12 @@ public class Vampire_Input : MonoBehaviour
         }
         if (Input.GetButtonDown("Dash"))
         {
-            print("dash");
+            //print("dash");
             dash = true;
         }
         if (Input.GetButtonDown("Attack"))
         {
-            print("attacc");
+            //print("attacc");
             controller.Attack();
         }
     }

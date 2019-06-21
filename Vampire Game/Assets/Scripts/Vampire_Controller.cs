@@ -80,7 +80,7 @@ public class Vampire_Controller : MonoBehaviour
 
             if (jump && isGrounded)
             {
-                print("jump");
+                //print("jump");
                 RigidBody2D.velocity = new Vector2(RigidBody2D.velocity.x, 0);
                 RigidBody2D.AddForce(new Vector2(RigidBody2D.velocity.x, jumpSpeed));
             }
@@ -179,7 +179,7 @@ public class Vampire_Controller : MonoBehaviour
                     currentAttack = swordAttacks[3];
                     currentAttack.SetActive(true);
                     startTime = 0.0f;
-                    attackLength = .8f;
+                    attackLength = .7f;
                     isAttacking = true;
                     attackInProgress = true;
                     additionalFrame = false;

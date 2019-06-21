@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Sword : MonoBehaviour
+public class Enemy_Jump : MonoBehaviour
 {
     public Enemy_AI enemyScript;
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == 8)
         {
             //Debug.Log("adflhjlka");
-            enemyScript.startSwordAttacking();
+            enemyScript.jump();
         }
     }
 }

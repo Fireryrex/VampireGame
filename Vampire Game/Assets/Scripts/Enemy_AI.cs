@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy_AI : MonoBehaviour
 {
-    public Transform target;
+    private Transform target;
     public Transform left;
     public Transform right;
 
@@ -12,14 +12,18 @@ public class Enemy_AI : MonoBehaviour
     public float chaseSpeed = 6f;
     private bool isChasing = true;
     private bool isAttacking = false;
+    private bool isJumping = false;
     public GameObject[] swordAttacks;
     private int attackNum = 0;
     private float startTime = 0f;
     private float attackLength = 0f;
 
- 
-
+    //jump attack variables
+    public float jumpSpeed;
+    public float chargeSpeed;
     private Rigidbody2D rb;
+    private float targetX;
+    private float targetY;
 
     // Start is called before the first frame update
     void Start()
@@ -31,10 +35,22 @@ public class Enemy_AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(isAttacking);
-        if (isAttacking)
+        //Debug.Log(isAttacking);
+        if(isJumping)
         {
-            Debug.Log("isatac");
+            if(rb.velocity.y <= 0)
+            {
+                this.gameObject.transform.position = Vector3.MoveTowards
+                (
+                    new Vector3(transform.position.x, transform.position.y, 0),
+                    new Vector3(targetX, targetY, 0),
+                    chargeSpeed * Time.deltaTime
+                );
+            }
+        }
+        else if (isAttacking)
+        {
+            //Debug.Log("isatac");
             this.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
             startTime += Time.deltaTime;
             if (startTime > attackLength && attackNum == 0)
@@ -65,6 +81,7 @@ public class Enemy_AI : MonoBehaviour
         }
         if (!isAttacking)
         {
+            //Debug.Log(transform.position.x);
             if (transform.position.x - target.transform.position.x > 0)
             {
                 transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -84,6 +101,19 @@ public class Enemy_AI : MonoBehaviour
             }
         }
         
+    }
+
+    public void jump()
+    {
+        if (!isJumping)
+        {
+            isAttacking = true;
+            isJumping = true;
+            targetX = target.transform.position.x;
+            targetY = target.transform.position.y;
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+            rb.AddForce(new Vector2(rb.velocity.x, jumpSpeed));
+        }
     }
 
     public void startSwordAttacking()
