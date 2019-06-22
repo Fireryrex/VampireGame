@@ -16,6 +16,7 @@ public class Enemy_AI : MonoBehaviour
     public GameObject[] swordAttacks;
     private int attackNum = 0;
     private float startTime = 0f;
+    private float cooldownTime = 50f;
     private float attackLength = 0f;
 
     //jump attack variables
@@ -24,6 +25,9 @@ public class Enemy_AI : MonoBehaviour
     private Rigidbody2D rb;
     private float targetX;
     private float targetY;
+    public GameObject[] spearAttacks;
+    public float jumpAttackCD;
+    private bool isOnCD = false;
 
     // Start is called before the first frame update
     void Start()
@@ -36,16 +40,41 @@ public class Enemy_AI : MonoBehaviour
     void Update()
     {
         //Debug.Log(isAttacking);
+        if(isOnCD)
+        {
+            cooldownTime += Time.deltaTime;
+        }
+        if(cooldownTime > jumpAttackCD)
+        {
+            isOnCD = false;
+        }
+
         if(isJumping)
         {
+            startTime += Time.deltaTime;
             if(rb.velocity.y <= 0)
-            {
+            { 
                 this.gameObject.transform.position = Vector3.MoveTowards
                 (
                     new Vector3(transform.position.x, transform.position.y, 0),
                     new Vector3(targetX, targetY, 0),
                     chargeSpeed * Time.deltaTime
                 );
+            }
+            if (startTime > attackLength && attackNum == 0)
+            {
+                spearAttacks[0].SetActive(false);
+                attackNum = 1;
+                spearAttacks[1].SetActive(true);
+                startTime = 0;
+                attackLength = .5f;
+            }
+            if(startTime > attackLength && attackNum == 1)
+            {
+                spearAttacks[1].SetActive(false);
+                attackNum = 2;
+                isJumping = false;
+                startCooldown();
             }
         }
         else if (isAttacking)
@@ -56,13 +85,13 @@ public class Enemy_AI : MonoBehaviour
             if (startTime > attackLength && attackNum == 0)
             {
                 swordAttacks[0].SetActive(false);
-                attackNum++;
+                attackNum = 1;
                 continueSwordAttacking();
             }
             else if (startTime > attackLength && attackNum == 1)
             {
                 swordAttacks[1].SetActive(false);
-                attackNum++;
+                attackNum = 2;
                 startCooldown();
             }
             else if (startTime > attackLength && attackNum == 2)
@@ -105,7 +134,7 @@ public class Enemy_AI : MonoBehaviour
 
     public void jump()
     {
-        if (!isJumping)
+        if (!isJumping && !isOnCD)
         {
             isAttacking = true;
             isJumping = true;
@@ -113,6 +142,9 @@ public class Enemy_AI : MonoBehaviour
             targetY = target.transform.position.y;
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(rb.velocity.x, jumpSpeed));
+            cooldownTime = 0f;
+            isOnCD = true;
+            startJumpAttacking();
         }
     }
 
@@ -144,6 +176,13 @@ public class Enemy_AI : MonoBehaviour
     {
         startTime = 0f;
         attackLength = 1.5f;
+    }
+
+    public void startJumpAttacking()
+    {
+        startTime = 0f;
+        spearAttacks[0].SetActive(true);
+        attackLength = .5f;
     }
 
     void changeTarget(Transform newTarget)
