@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Sword : MonoBehaviour
+public class SpearSwordEnemy_Sword : MonoBehaviour
 {
-    public Enemy_AI enemyScript;
+    public SpearSwordEnemy_AI enemyScript;
 
     private void OnTriggerStay2D(Collider2D collision)
     {

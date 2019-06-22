@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Jump : MonoBehaviour
+public class SpearSwordEnemy_Jump : MonoBehaviour
 {
-    public Enemy_AI enemyScript;
+    public SpearSwordEnemy_AI enemyScript;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

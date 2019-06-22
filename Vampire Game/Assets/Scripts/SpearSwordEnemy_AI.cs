@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_AI : MonoBehaviour
+public class SpearSwordEnemy_AI : MonoBehaviour
 {
     private Transform target;
     public Transform left;
@@ -28,6 +28,10 @@ public class Enemy_AI : MonoBehaviour
     public GameObject[] spearAttacks;
     public float jumpAttackCD;
     private bool isOnCD = false;
+
+    //Debugging variables
+    public GameObject swordCollider;
+    public GameObject jumpCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -136,6 +140,7 @@ public class Enemy_AI : MonoBehaviour
     {
         if (!isJumping && !isOnCD)
         {
+            swordCollider.SetActive(false);
             isAttacking = true;
             isJumping = true;
             targetX = target.transform.position.x;
@@ -152,6 +157,7 @@ public class Enemy_AI : MonoBehaviour
     {
         if (!isAttacking)
         {
+            jumpCollider.SetActive(false);
             isAttacking = true;
             startTime = 0f;
             swordAttacks[0].SetActive(true);
@@ -170,6 +176,8 @@ public class Enemy_AI : MonoBehaviour
     {
         isAttacking = false;
         attackNum = 0;
+        swordCollider.SetActive(true);
+        jumpCollider.SetActive(true);
     }
 
     public void startCooldown()
