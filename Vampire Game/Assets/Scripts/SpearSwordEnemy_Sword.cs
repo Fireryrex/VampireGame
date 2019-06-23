@@ -10,11 +10,12 @@ public class SpearSwordEnemy_Sword : MonoBehaviour
     {
         if (collision.gameObject.layer == 8)
         {
+            //ends any jump attack going on (probably safe to remove)
             for (int i = 0; i < enemyScript.spearAttacks.Length; i++)
             {
                 enemyScript.spearAttacks[i].SetActive(false);
             }
-            //Debug.Log("adflhjlka");
+            //starts sword attack
             enemyScript.startSwordAttacking();
         }
     }

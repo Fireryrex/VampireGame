@@ -24,15 +24,21 @@ public class Vampire_Input : MonoBehaviour
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * moveSpeed;
         dashDirection = Input.GetAxisRaw("Vertical");
+
+        //sees if player presses jump
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
         }
+
+        //like jump but dash
         if (Input.GetButtonDown("Dash"))
         {
             //print("dash");
             dash = true;
         }
+
+        //like dash but attacc
         if (Input.GetButtonDown("Attack"))
         {
             //print("attacc");
@@ -42,11 +48,13 @@ public class Vampire_Input : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //lets controller know player is dashing
         if (dash)
         {
             controller.Dash(horidashMulti * horizontalMove * Time.fixedDeltaTime, vertdashMulti * moveSpeed * Time.fixedDeltaTime, dashDirection);
             dash = false;
         }
+        //lets controller know player is not dashing
         else if (!dash)
         {
             controller.Move(horizontalMove * Time.fixedDeltaTime, jump);

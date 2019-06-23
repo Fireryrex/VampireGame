@@ -80,6 +80,7 @@ public class Vampire_Controller : MonoBehaviour
     {
         if (!attackInProgress)
         {
+            //this is just flipping the player around
             if (move < 0)
             {
                 transform.rotation = Quaternion.Euler(0, -180, 0);
@@ -88,16 +89,19 @@ public class Vampire_Controller : MonoBehaviour
             {
                 transform.rotation = Quaternion.Euler(0, 0, 0);
             }
+
+            //this is making the player move with the inputs
             Vector3 targetVelocity = new Vector2(move * 10f, RigidBody2D.velocity.y);
             RigidBody2D.velocity = Vector3.SmoothDamp(RigidBody2D.velocity, targetVelocity, ref m_Velocity, movementSmoothing);
 
-            if (jump && isGrounded)
+            //jump bool is true meaning player is jumping and does jumping stuff
+            if (jump && isGrounded) //normal jump
             {
                 //print("jump");
                 RigidBody2D.velocity = new Vector2(RigidBody2D.velocity.x, 0);
                 RigidBody2D.AddForce(new Vector2(RigidBody2D.velocity.x, jumpSpeed));
             }
-            else if (jump && airJumps > 0)
+            else if (jump && airJumps > 0) //air jump
             {
                 RigidBody2D.velocity = new Vector2(RigidBody2D.velocity.x, 0);
                 RigidBody2D.AddForce(new Vector2(RigidBody2D.velocity.x, jumpSpeed));
@@ -111,14 +115,14 @@ public class Vampire_Controller : MonoBehaviour
     {
         if (!attackInProgress && !dashCooldownActive)
         {
-            if (isGrounded)
+            if (isGrounded) //normal dash
             {
                 Vector3 targetVelocity = new Vector2(move * 10f, dashSpeed * 10f * direction);
                 RigidBody2D.velocity = Vector3.SmoothDamp(RigidBody2D.velocity, targetVelocity, ref m_Velocity, movementSmoothing);
                 dashCooldownStart = 0;
                 dashCooldownActive = true;
             }
-            else if (airDashes > 0)
+            else if (airDashes > 0) //air dash
             {
                 Vector3 targetVelocity = new Vector2(move * 10f, dashSpeed * 10f * direction);
                 RigidBody2D.velocity = Vector3.SmoothDamp(RigidBody2D.velocity, targetVelocity, ref m_Velocity, movementSmoothing);
@@ -130,7 +134,7 @@ public class Vampire_Controller : MonoBehaviour
     }
 
     //Groundcheck logic
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) //when groundcheck collider collides with ground, isGrounded becomes True
     {
         if (collision.gameObject.layer == 11)
         {
@@ -138,7 +142,7 @@ public class Vampire_Controller : MonoBehaviour
             resetAirMovements();
         }
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision) //when groundcheck collider leaves ground, isGrounded becomes False
     {
         if (collision.gameObject.layer == 11)
         {
