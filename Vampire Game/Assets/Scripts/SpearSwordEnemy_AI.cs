@@ -7,9 +7,11 @@ public class SpearSwordEnemy_AI : MonoBehaviour
     private Transform target;
     public Transform left;
     public Transform right;
+    public Transform stepBack;
 
     public float moveSpeed = 3f;
     public float chaseSpeed = 6f;
+    public float stepBackSpeed = 1f;
     private bool isChasing = true;
     private bool isAttacking = false;
     private bool isJumping = false;
@@ -84,19 +86,29 @@ public class SpearSwordEnemy_AI : MonoBehaviour
         else if (isAttacking)
         {
             //Debug.Log("isatac");
-            this.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
             startTime += Time.deltaTime;
             if (startTime > attackLength && attackNum == 0)
             {
+                this.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
                 swordAttacks[0].SetActive(false);
                 attackNum = 1;
                 continueSwordAttacking();
             }
             else if (startTime > attackLength && attackNum == 1)
             {
+                this.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
                 swordAttacks[1].SetActive(false);
                 attackNum = 2;
                 startCooldown();
+            }
+            else if (attackNum == 2 && startTime < attackLength)
+            {
+                this.gameObject.transform.position = Vector3.MoveTowards
+                (
+                    new Vector3(transform.position.x, transform.position.y, 0),
+                    new Vector3(stepBack.transform.position.x, stepBack.transform.position.y, 0),
+                    stepBackSpeed * Time.deltaTime
+                );
             }
             else if (startTime > attackLength && attackNum == 2)
             {
