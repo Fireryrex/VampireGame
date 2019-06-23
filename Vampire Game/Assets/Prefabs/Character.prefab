@@ -236,7 +236,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1070098859181646568
 Transform:
   m_ObjectHideFlags: 0
@@ -365,7 +365,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1070098860002735044}
   - component: {fileID: 1070098860002735045}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Hitboxes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -707,13 +707,13 @@ MonoBehaviour:
   numOfJumps: 1
   numOfDashes: 1
   RigidBody2D: {fileID: 1070098860279735982}
-  groundCheck: {fileID: 1070098858972411510}
   swordAttacks:
   - {fileID: 1070098859181646569}
   - {fileID: 1070098860219411592}
   - {fileID: 1070098860562278110}
   - {fileID: 1070098859120100606}
   comboDelay: 1
+  dashCooldown: 0.5
 --- !u!114 &1070098860279735983
 MonoBehaviour:
   m_ObjectHideFlags: 0

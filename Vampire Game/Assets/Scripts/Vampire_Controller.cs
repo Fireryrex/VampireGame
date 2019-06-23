@@ -26,6 +26,10 @@ public class Vampire_Controller : MonoBehaviour
     private float startTime;
     private float attackLength;
     public float comboDelay = 1.0f;
+    //cooldowns
+    public float dashCooldown;
+    private float dashCooldownStart = 100f;
+    private bool dashCooldownActive = false;
 
     private void Awake()
     {
@@ -58,6 +62,15 @@ public class Vampire_Controller : MonoBehaviour
             {
                 attackNum = 0;
                 isAttacking = false;
+            }
+        }
+        //dash cooldown timer
+        if(dashCooldownActive)
+        {
+            dashCooldownStart += Time.deltaTime;
+            if(dashCooldownStart > dashCooldown)
+            {
+                dashCooldownActive = false;
             }
         }
     }
@@ -96,21 +109,22 @@ public class Vampire_Controller : MonoBehaviour
     //Dashing logic
     public void Dash(float move, float dashSpeed, float direction)
     {
-        if (!attackInProgress)
+        if (!attackInProgress && !dashCooldownActive)
         {
             if (isGrounded)
             {
                 Vector3 targetVelocity = new Vector2(move * 10f, dashSpeed * 10f * direction);
                 RigidBody2D.velocity = Vector3.SmoothDamp(RigidBody2D.velocity, targetVelocity, ref m_Velocity, movementSmoothing);
+                dashCooldownStart = 0;
+                dashCooldownActive = true;
             }
             else if (airDashes > 0)
             {
                 Vector3 targetVelocity = new Vector2(move * 10f, dashSpeed * 10f * direction);
                 RigidBody2D.velocity = Vector3.SmoothDamp(RigidBody2D.velocity, targetVelocity, ref m_Velocity, movementSmoothing);
-                if (direction > 0)
-                {
-                    airDashes -= 1;
-                }
+                airDashes -= 1;
+                dashCooldownStart = 0;
+                dashCooldownActive = true;
             }
         }
     }
