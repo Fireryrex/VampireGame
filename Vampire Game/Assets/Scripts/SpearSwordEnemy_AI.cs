@@ -9,7 +9,7 @@ public class SpearSwordEnemy_AI : MonoBehaviour
     public Transform right;
     public Transform stepBack;
 
-    public float moveSpeed = 3f;
+    private float moveSpeed;
     public float regSpeed = 3f;
     public float chaseSpeed = 6f;
     public float stepBackSpeed = 1f;
@@ -44,6 +44,7 @@ public class SpearSwordEnemy_AI : MonoBehaviour
     {
         target = left;
         rb = GetComponent<Rigidbody2D>();
+        moveSpeed = regSpeed;
     }
 
     // Update is called once per frame
@@ -261,6 +262,7 @@ public class SpearSwordEnemy_AI : MonoBehaviour
             changeTarget(collision.gameObject.transform);
             moveSpeed = chaseSpeed;
             isAggroed = true;
+            aggroTime = 0f;
             isChasing = true;
         }
     }
