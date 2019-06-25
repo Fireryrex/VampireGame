@@ -44,6 +44,12 @@ public class Vampire_Input : MonoBehaviour
             //print("attacc");
             controller.Attack();
         }
+
+        //switches from one weapon to another
+        if (Input.GetButtonDown("Switch Weapon"))
+        {
+            controller.switchWeapons();
+        }
     }
 
     private void FixedUpdate()
