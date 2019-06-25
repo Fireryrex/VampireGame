@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &855597354
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 855597355}
+  m_Layer: 9
+  m_Name: StepBack
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &855597355
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855597354}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.387, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 18075835329653647}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &18075833740422676
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,11 +176,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   left: {fileID: 18075835206448305}
   right: {fileID: 18075835526269908}
-  moveSpeed: 3
+  stepBack: {fileID: 855597355}
+  regSpeed: 3
   chaseSpeed: 5
+  stepBackSpeed: 1
   swordAttacks:
   - {fileID: 18075834021041813}
   - {fileID: 18075835233432847}
+  aggroDuration: 5
   jumpSpeed: 3500
   chargeSpeed: 25
   spearAttacks:
@@ -741,6 +774,7 @@ Transform:
   - {fileID: 18075835398492799}
   - {fileID: 18075835856480686}
   - {fileID: 18075834015660913}
+  - {fileID: 855597355}
   m_Father: {fileID: 18075833740422667}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -786,7 +820,7 @@ GameObject:
   m_Component:
   - component: {fileID: 18075835398492799}
   - component: {fileID: 18075835398492798}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Hitboxes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -847,7 +881,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18075835526269909}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.8, y: -0.49, z: 0}
+  m_LocalPosition: {x: -2.06, y: -0.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 18075834007777396}

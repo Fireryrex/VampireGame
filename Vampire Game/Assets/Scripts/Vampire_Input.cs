@@ -7,6 +7,7 @@ public class Vampire_Input : MonoBehaviour
     public float moveSpeed;
     private float horizontalMove = 0f;
     private float dashDirection = 0f;
+    private float facing = 0f;
     public int vertdashMulti = 5;
     public int horidashMulti = 10;
     private bool jump = false;
@@ -24,6 +25,10 @@ public class Vampire_Input : MonoBehaviour
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * moveSpeed;
         dashDirection = Input.GetAxisRaw("Vertical");
+        if (horizontalMove != 0)
+        {
+            facing = Input.GetAxisRaw("Horizontal");
+        }
 
         //sees if player presses jump
         if (Input.GetButtonDown("Jump"))
@@ -46,24 +51,26 @@ public class Vampire_Input : MonoBehaviour
         }
 
         //switches from one weapon to another
-        if (Input.GetButtonDown("Switch Weapon"))
+        if (Input.GetButtonDown("Switch Weapons"))
         {
+            Debug.Log("switch");
             controller.switchWeapons();
         }
     }
 
     private void FixedUpdate()
     {
+
         //lets controller know player is dashing
         if (dash)
         {
-            controller.Dash(horidashMulti * horizontalMove * Time.fixedDeltaTime, vertdashMulti * moveSpeed * Time.fixedDeltaTime, dashDirection);
+            controller.Dash(horidashMulti * facing * moveSpeed * Time.fixedDeltaTime, vertdashMulti * moveSpeed * Time.fixedDeltaTime, dashDirection);
             dash = false;
         }
         //lets controller know player is not dashing
         else if (!dash)
         {
-            controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
+            controller.Move(horizontalMove * Time.fixedDeltaTime, jump, facing);
             jump = false;
         }
     }

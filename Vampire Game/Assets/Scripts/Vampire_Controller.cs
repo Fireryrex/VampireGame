@@ -13,7 +13,7 @@ public class Vampire_Controller : MonoBehaviour
     private float movementSmoothing = .05f;
     private Vector3 m_Velocity = Vector3.zero;
     //bools to check if some actions are allowed atm.
-    private bool isGrounded = false;
+    public bool isGrounded = false;
     private bool isAttacking = false;
     private bool attackInProgress = false;
     private bool additionalFrame = false;
@@ -32,8 +32,11 @@ public class Vampire_Controller : MonoBehaviour
     private float dashCooldownStart = 100f;
     private bool dashCooldownActive = false;
 
-    private int weapon = 1;
+    public int weapon = 1;
     public bool spearUnlocked = false;
+    private float faceDirection = 0f;
+    private bool jumped = false;
+    public float chargeSpeed = 10f;
 
     private void Awake()
     {
@@ -80,9 +83,15 @@ public class Vampire_Controller : MonoBehaviour
     }
 
     //Moving logic
-    public void Move(float move, bool jump)
+    public void Move(float move, bool jump, float facing)
     {
-        if (!attackInProgress)
+        faceDirection = facing;
+        if (weapon == 2 && !isGrounded && isAttacking && jump && !attackInProgress)
+        {
+            jumped = true;
+            Attack();
+        }
+        else if (!attackInProgress)
         {
             //this is just flipping the player around
             if (move < 0)
@@ -117,28 +126,54 @@ public class Vampire_Controller : MonoBehaviour
     //Dashing logic
     public void Dash(float move, float dashSpeed, float direction)
     {
-        if (!attackInProgress && !dashCooldownActive)
+        //forward sword dash
+        if (weapon == 1)
         {
-            if (isGrounded) //normal dash
+            if (!attackInProgress && !dashCooldownActive)
             {
-                Vector3 targetVelocity = new Vector2(move * 10f, dashSpeed * 10f * direction);
-                RigidBody2D.velocity = Vector3.SmoothDamp(RigidBody2D.velocity, targetVelocity, ref m_Velocity, movementSmoothing);
-                dashCooldownStart = 0;
-                dashCooldownActive = true;
+                if (isGrounded) //normal dash
+                {
+                    Vector3 targetVelocity = new Vector2(move * 10f, dashSpeed * 10f * direction);
+                    RigidBody2D.velocity = Vector3.SmoothDamp(RigidBody2D.velocity, targetVelocity, ref m_Velocity, movementSmoothing);
+                    dashCooldownStart = 0;
+                    dashCooldownActive = true;
+                }
+                else if (airDashes > 0) //air dash
+                {
+                    Vector3 targetVelocity = new Vector2(move * 10f, dashSpeed * 10f * direction);
+                    RigidBody2D.velocity = Vector3.SmoothDamp(RigidBody2D.velocity, targetVelocity, ref m_Velocity, movementSmoothing);
+                    airDashes -= 1;
+                    dashCooldownStart = 0;
+                    dashCooldownActive = true;
+                }
             }
-            else if (airDashes > 0) //air dash
+        }
+        //backwards spear dash
+        else
+        {
+            if (!attackInProgress && !dashCooldownActive)
             {
-                Vector3 targetVelocity = new Vector2(move * 10f, dashSpeed * 10f * direction);
-                RigidBody2D.velocity = Vector3.SmoothDamp(RigidBody2D.velocity, targetVelocity, ref m_Velocity, movementSmoothing);
-                airDashes -= 1;
-                dashCooldownStart = 0;
-                dashCooldownActive = true;
+                if (isGrounded) //normal dash
+                {
+                    Vector3 targetVelocity = new Vector2(-move * 20f, dashSpeed * 10f * direction);
+                    RigidBody2D.velocity = Vector3.SmoothDamp(RigidBody2D.velocity, targetVelocity, ref m_Velocity, movementSmoothing);
+                    dashCooldownStart = 0;
+                    dashCooldownActive = true;
+                }
+                else if (airDashes > 0) //air dash
+                {
+                    Vector3 targetVelocity = new Vector2(-move * 20f, dashSpeed * 10f * direction);
+                    RigidBody2D.velocity = Vector3.SmoothDamp(RigidBody2D.velocity, targetVelocity, ref m_Velocity, movementSmoothing);
+                    airDashes -= 1;
+                    dashCooldownStart = 0;
+                    dashCooldownActive = true;
+                }
             }
         }
     }
 
     //Groundcheck logic
-    private void OnTriggerEnter2D(Collider2D collision) //when groundcheck collider collides with ground, isGrounded becomes True
+    private void OnTriggerStay2D(Collider2D collision) //when groundcheck collider collides with ground, isGrounded becomes True
     {
         if (collision.gameObject.layer == 11)
         {
@@ -208,20 +243,98 @@ public class Vampire_Controller : MonoBehaviour
                     attackNum = 0;
                     break;
                 default:
+                    attackNum = 0;
                     break;
             }
         }
         else if(!attackInProgress && weapon == 2)
         {
-            if(isGrounded)
+            if(!jumped)
             {
-
+                switch(attackNum)
+                {
+                    case 0:
+                        currentAttack = spearAttacks[0];
+                        currentAttack.SetActive(true);
+                        startTime = 0.0f;
+                        attackLength = .15f;
+                        isAttacking = true;
+                        attackInProgress = true;
+                        additionalFrame = true;
+                        attackNum = 1;
+                        break;
+                    case 1:
+                        currentAttack = spearAttacks[1];
+                        currentAttack.SetActive(true);
+                        startTime = 0.0f;
+                        attackLength = .1f;
+                        isAttacking = true;
+                        attackInProgress = true;
+                        additionalFrame = true;
+                        attackNum = 2;
+                        Vector3 targetVelocity = new Vector2(faceDirection * chargeSpeed, 0);
+                        RigidBody2D.velocity = Vector3.SmoothDamp(RigidBody2D.velocity, targetVelocity, ref m_Velocity, movementSmoothing);
+                        break;
+                    case 2:
+                        currentAttack = spearAttacks[2];
+                        currentAttack.SetActive(true);
+                        startTime = 0.0f;
+                        if (isGrounded)
+                        {
+                            attackLength = .1f;
+                        }
+                        else
+                        {
+                            attackLength = .05f;
+                        }
+                        isAttacking = true;
+                        attackInProgress = true;
+                        additionalFrame = false;
+                        attackNum = 0;
+                        RigidBody2D.velocity = Vector3.SmoothDamp(RigidBody2D.velocity, new Vector2(0, 0), ref m_Velocity, movementSmoothing);
+                        break;
+                    default:
+                        attackNum = 0;
+                        break;
+                }
+            }
+            else if(jumped)
+            {
+                //RigidBody2D.velocity = new Vector2(RigidBody2D.velocity.x, 0);
+                //RigidBody2D.AddForce(new Vector2(RigidBody2D.velocity.x, jumpSpeed));
+                switch (attackNum)
+                {
+                    case 0:
+                        currentAttack = spearAttacks[3];
+                        currentAttack.SetActive(true);
+                        startTime = 0.0f;
+                        attackLength = .05f;
+                        isAttacking = true;
+                        attackInProgress = true;
+                        additionalFrame = true;
+                        attackNum = 1;
+                        break;
+                    case 1:
+                        currentAttack = spearAttacks[4];
+                        currentAttack.SetActive(true);
+                        startTime = 0.0f;
+                        attackLength = .05f;
+                        additionalFrame = false;
+                        attackInProgress = true;
+                        attackNum = 0;
+                        jumped = false;
+                        break;
+                    default:
+                        attackNum = 0;
+                        break;
+                }
             }
         }
     }
 
     public void switchWeapons()
     {
+        attackNum = 0;
         if(weapon == 1 && spearUnlocked)
         {
             weapon = 2;
@@ -230,5 +343,10 @@ public class Vampire_Controller : MonoBehaviour
         {
             weapon = 1;
         }
+    }
+
+    public float getJumpSpeed()
+    {
+        return jumpSpeed;
     }
 }
