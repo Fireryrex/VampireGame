@@ -20,6 +20,7 @@ public class Vampire_Controller : MonoBehaviour
     //public bool canJumporRoll = true;
     //weapon array
     public GameObject[] swordAttacks;
+    public GameObject[] spearAttacks;
     //combo counter
     private int attackNum = 0;
     private GameObject currentAttack;
@@ -30,6 +31,9 @@ public class Vampire_Controller : MonoBehaviour
     public float dashCooldown;
     private float dashCooldownStart = 100f;
     private bool dashCooldownActive = false;
+
+    private int weapon = 1;
+    public bool spearUnlocked = false;
 
     private void Awake()
     {
@@ -160,7 +164,7 @@ public class Vampire_Controller : MonoBehaviour
     //Attack logic (chooses which attack part of combo)
     public void Attack()
     {
-        if (!attackInProgress)
+        if (!attackInProgress && weapon == 1)
         {
             switch (attackNum)
             {
@@ -206,6 +210,25 @@ public class Vampire_Controller : MonoBehaviour
                 default:
                     break;
             }
+        }
+        else if(!attackInProgress && weapon == 2)
+        {
+            if(isGrounded)
+            {
+
+            }
+        }
+    }
+
+    public void switchWeapons()
+    {
+        if(weapon == 1 && spearUnlocked)
+        {
+            weapon = 2;
+        }
+        else
+        {
+            weapon = 1;
         }
     }
 }
