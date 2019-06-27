@@ -211,6 +211,11 @@ public class SpearSwordEnemy_AI : MonoBehaviour
     //logic for activating specific attacks
     public void nextAttack(int weapon, float attackTime, int attackNumber)
     {
+        /*for the int weapon:
+            1 is the sword attack
+            2 is the upwards spear attack
+            3 is the jumping spear attack
+        */
         if (weapon == 1 && !isSpearing)
         {
             jumpCollider.SetActive(false);                  //deactivates jump trigger to avoid wierdness
