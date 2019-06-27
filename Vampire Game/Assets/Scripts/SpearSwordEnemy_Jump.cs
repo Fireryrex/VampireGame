@@ -16,7 +16,7 @@ public class SpearSwordEnemy_Jump : MonoBehaviour
                 enemyScript.swordAttacks[i].SetActive(false);
             }
             //starts jump attack
-            enemyScript.jump();
+            enemyScript.nextAttack(3, .5f ,0);
         }
     }
 }

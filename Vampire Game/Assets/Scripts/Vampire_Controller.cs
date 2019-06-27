@@ -155,14 +155,14 @@ public class Vampire_Controller : MonoBehaviour
             {
                 if (isGrounded) //normal dash
                 {
-                    Vector3 targetVelocity = new Vector2(-move * 20f, dashSpeed * 10f * direction);
+                    Vector3 targetVelocity = new Vector2(-move * 10f, dashSpeed * 10f * direction);
                     RigidBody2D.velocity = Vector3.SmoothDamp(RigidBody2D.velocity, targetVelocity, ref m_Velocity, movementSmoothing);
                     dashCooldownStart = 0;
                     dashCooldownActive = true;
                 }
                 else if (airDashes > 0) //air dash
                 {
-                    Vector3 targetVelocity = new Vector2(-move * 20f, dashSpeed * 10f * direction);
+                    Vector3 targetVelocity = new Vector2(-move * 10f, dashSpeed * 10f * direction);
                     RigidBody2D.velocity = Vector3.SmoothDamp(RigidBody2D.velocity, targetVelocity, ref m_Velocity, movementSmoothing);
                     airDashes -= 1;
                     dashCooldownStart = 0;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpearSwordEnemy_Sword : MonoBehaviour
+public class SpearSwordEnemy_Spear : MonoBehaviour
 {
     public SpearSwordEnemy_AI enemyScript;
 
@@ -11,12 +11,12 @@ public class SpearSwordEnemy_Sword : MonoBehaviour
         if (collision.gameObject.layer == 8)
         {
             //ends any jump attack going on (probably safe to remove)
-            /*for (int i = 0; i < enemyScript.spearAttacks.Length; i++)
+            for (int i = 0; i < enemyScript.spearAttacks.Length; i++)
             {
                 enemyScript.spearAttacks[i].SetActive(false);
-            }*/
+            }
             //starts sword attack
-            enemyScript.nextAttack(1, .5f, 0);
+            enemyScript.nextAttack(2, .2f, 2);
         }
     }
 }

@@ -16,6 +16,7 @@ public class SpearSwordEnemy_AI : MonoBehaviour
     private bool isChasing = true;
     private bool isAttacking = false;
     private bool isJumping = false;
+    private bool isSpearing = false;
     private bool isAggroed = false;
     public GameObject[] swordAttacks;
     private int attackNum = 0;
@@ -38,6 +39,7 @@ public class SpearSwordEnemy_AI : MonoBehaviour
     //Debugging variables
     public GameObject swordCollider;
     public GameObject jumpCollider;
+    public GameObject spearCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -87,7 +89,7 @@ public class SpearSwordEnemy_AI : MonoBehaviour
         }
         
         //jump logic
-        if (isJumping)
+        if (isJumping && !isSpearing)
         {
             startTime += Time.deltaTime; //timer
 
@@ -122,6 +124,28 @@ public class SpearSwordEnemy_AI : MonoBehaviour
             }
         }
 
+        //spear attack logic
+        else if (isSpearing)
+        {
+            startTime += Time.deltaTime;            //timer
+
+            if (startTime > attackLength && attackNum == 0)
+            {
+                this.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+                spearAttacks[2].SetActive(false);
+                attackNum = 1;
+                nextAttack(2, .5f, 3);
+            }
+
+            else if (startTime > attackLength && attackNum == 1)
+            {
+                spearAttacks[3].SetActive(false);
+                attackNum = 2;
+                isSpearing = false;
+                startCooldown();
+            }
+        }
+
         //attack logic
         else if (isAttacking)
         {
@@ -133,7 +157,8 @@ public class SpearSwordEnemy_AI : MonoBehaviour
                 this.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
                 swordAttacks[0].SetActive(false);
                 attackNum = 1;
-                continueSwordAttacking();
+                //continueSwordAttacking();
+                nextAttack(1, .5f, 1);
             }
 
             //2nd attack effect
@@ -164,7 +189,7 @@ public class SpearSwordEnemy_AI : MonoBehaviour
         }
 
         //chasing logic
-        else if (isChasing && !isAttacking)
+        else if (isChasing && !isAttacking && !isSpearing)
         {
             if(isAggroed && aggroTime > aggroDuration)
             {
@@ -182,54 +207,53 @@ public class SpearSwordEnemy_AI : MonoBehaviour
                 );
         }        
     }
-
-    //called by SpearSwordEnemy_Jump.cs to start jump logic
-    public void jump()
+    
+    //logic for activating specific attacks
+    public void nextAttack(int weapon, float attackTime, int attackNumber)
     {
-        if (!isJumping && !isOnCD)                              //makes sure the jump attack isnt in progress or on cd
+        if (weapon == 1 && !isSpearing)
         {
-            swordCollider.SetActive(false);                     //deactivates the sword trigger to avoid wierdness
+            jumpCollider.SetActive(false);                  //deactivates jump trigger to avoid wierdness
+            spearCollider.SetActive(false);                 //same with spear collider
+            swordCollider.SetActive(false);
             isAttacking = true;
-            isJumping = true;
-            targetX = target.transform.position.x;              //player initial x
-            targetY = target.transform.position.y;              //player initial y
-            rb.velocity = new Vector2(rb.velocity.x, 0);        //stops enemy from moving left and right    
-            rb.AddForce(new Vector2(rb.velocity.x, jumpSpeed)); //adds a y force to "jump"
-            cooldownTime = 0f;                                  //sets the jump attack cooldown to max
-            isOnCD = true;                                      //starts cooldown timer
-            startJumpAttacking();                               //calls jump attack logic
+            isSpearing = false;
+            isJumping = false;
+            swordAttacks[attackNumber].SetActive(true); //starts the sword attack
         }
-    }
-
-    //first sword attack
-    public void startSwordAttacking()
-    {
-        if (!isAttacking)                       //makes sure the sword attack isnt in progress
+        else if(weapon == 2)
         {
-            jumpCollider.SetActive(false);      //deactivates jump trigger to avoid wierdness
+            jumpCollider.SetActive(false);                  //deactivates jump trigger to avoid wierdness
+            spearCollider.SetActive(false);                 //same with spear collider
+            swordCollider.SetActive(false);
+            isSpearing = true;
             isAttacking = true;
-            startTime = 0f;                     //sets attack length
-            aggroTime = 0f;                     //resets aggro duration (may be unneeded)
-            swordAttacks[0].SetActive(true);    //starts the sword attack
-            attackLength = .5f;                 //sets attack length
+            isJumping = false;
+            spearAttacks[attackNumber].SetActive(true); //starts the spear attack
         }
-    }
-
-    //second sword attack
-    public void continueSwordAttacking()
-    {
-        startTime = 0f;                         //see startSwordAttacking
-        swordAttacks[1].SetActive(true);
-        attackLength = .5f;
-    }
-
-    //makes enemy start chasing again
-    public void stopAttacking()
-    {
-        isAttacking = false;
-        attackNum = 0;
-        swordCollider.SetActive(true);
-        jumpCollider.SetActive(true);
+        else if(weapon == 3)
+        {
+            if(!isOnCD)
+            {
+                jumpCollider.SetActive(false);                  //deactivates jump trigger to avoid wierdness
+                spearCollider.SetActive(false);                 //same with spear collider
+                swordCollider.SetActive(false);
+                isAttacking = true;
+                isJumping = true;
+                isSpearing = false;
+                targetX = target.transform.position.x;              //player initial x
+                targetY = target.transform.position.y;              //player initial y
+                rb.velocity = new Vector2(rb.velocity.x, 0);        //stops enemy from moving left and right    
+                rb.AddForce(new Vector2(rb.velocity.x, jumpSpeed)); //adds a y force to "jump"
+                cooldownTime = 0f;                                  //sets the jump attack cooldown to max
+                isOnCD = true;                                      //starts cooldown timer
+                //startJumpAttacking();                             //calls jump attack logic
+                spearAttacks[attackNumber].SetActive(true);
+            }
+        }
+        startTime = 0f;                                 //sets attack length
+        aggroTime = 0f;                                 //resets aggro duration (may be unneeded)
+        attackLength = attackTime;                      //sets attack length
     }
 
     //makes enemy start the step back phase
@@ -239,14 +263,19 @@ public class SpearSwordEnemy_AI : MonoBehaviour
         attackLength = 1.5f;
     }
 
-    //first jump attack
-    public void startJumpAttacking()
+    //makes enemy start chasing again and resets everything
+    public void stopAttacking()
     {
-        startTime = 0f;                         //similar to startSwordAttacking
-        spearAttacks[0].SetActive(true);
-        aggroTime = 0f;
-        attackLength = .5f;
+        isAttacking = false;
+        isJumping = false;
+        isSpearing = false;
+        attackNum = 0;
+        swordCollider.SetActive(true);
+        spearCollider.SetActive(true);
+        jumpCollider.SetActive(true);
     }
+
+    
 
     //changes the target to the parameter
     void changeTarget(Transform newTarget)
@@ -277,4 +306,73 @@ public class SpearSwordEnemy_AI : MonoBehaviour
         isJumping = false;
         isChasing = true;
     }
+
+
+    /*old code feel free to delete
+    //first jump attack
+    public void startJumpAttacking()
+    {
+        startTime = 0f;                         //similar to startSwordAttacking
+        spearAttacks[0].SetActive(true);
+        aggroTime = 0f;
+        attackLength = .5f;
+    }
+
+    //second sword attack
+    public void continueSwordAttacking()
+    {
+        startTime = 0f;                         //see startSwordAttacking
+        swordAttacks[1].SetActive(true);
+        attackLength = .5f;
+    }
+
+    //called by SpearSwordEnemy_Jump.cs to start jump logic
+    public void jump()
+    {
+        if (!isJumping && !isOnCD)                              //makes sure the jump attack isnt in progress or on cd
+        {
+            swordCollider.SetActive(false);                     //deactivates the sword trigger to avoid wierdness
+            spearCollider.SetActive(false);                     //same with spear collider
+            isAttacking = true;
+            isJumping = true;
+            targetX = target.transform.position.x;              //player initial x
+            targetY = target.transform.position.y;              //player initial y
+            rb.velocity = new Vector2(rb.velocity.x, 0);        //stops enemy from moving left and right    
+            rb.AddForce(new Vector2(rb.velocity.x, jumpSpeed)); //adds a y force to "jump"
+            cooldownTime = 0f;                                  //sets the jump attack cooldown to max
+            isOnCD = true;                                      //starts cooldown timer
+            startJumpAttacking();                               //calls jump attack logic
+        }
+    }
+
+    //first spear attack
+    public void startSpearAttacking()
+    {
+        if(!isAttacking)
+        {
+            jumpCollider.SetActive(false);              //deactivate other attack triggers to avoid weirdness
+            swordCollider.SetActive(false);
+            isAttacking = true;
+            isSpearing = true;
+            startTime = 0f;
+            aggroTime = 0f;
+            spearAttacks[2].SetActive(true);
+            attackLength = .5f;
+        }
+    }
+
+    //first sword attack
+    public void startSwordAttacking()
+    {
+        if (!isAttacking)                       //makes sure the sword attack isnt in progress
+        {
+            jumpCollider.SetActive(false);      //deactivates jump trigger to avoid wierdness
+            spearCollider.SetActive(false);     //same with spear collider
+            isAttacking = true;
+            startTime = 0f;                     //sets attack length
+            aggroTime = 0f;                     //resets aggro duration (may be unneeded)
+            swordAttacks[0].SetActive(true);    //starts the sword attack
+            attackLength = .5f;                 //sets attack length
+        }
+    }*/
 }
