@@ -10,7 +10,7 @@ public class Deal_Damage : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            collision.GetComponent<HealthScript>().dealDamage(damage);
+            collision.GetComponent<Health_Script>().dealDamage(damage);
         }
     }
 }
