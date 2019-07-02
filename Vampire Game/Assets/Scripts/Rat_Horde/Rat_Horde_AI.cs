@@ -21,6 +21,9 @@ public class Rat_Horde_AI : MonoBehaviour
     private bool movingLeft = false;
     private bool movingBack = false;
 
+    //rat spawning attack
+    public GameObject[] ratz;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,25 +41,35 @@ public class Rat_Horde_AI : MonoBehaviour
             {
                 time = 0f;
                 moveSelected = Random.Range(1, moves);
-                switch(moveSelected)
+                ResetSpikes();
+                int numSpikes = Random.Range(1, spikes.Length);
+                for (int i = 0; i < numSpikes; ++i)
                 {
-                    case 1:
-                        ResetSpikes();
-                        int numSpikes = Random.Range(1, spikes.Length);
-                        for(int i = 0; i < numSpikes; ++i)
-                        {
-                            int chosenSpike = spikeNumberList[Random.Range(0, spikeNumberList.Count)];
-                            spikeNumberList.Remove(chosenSpike);
-                            spikes[chosenSpike].SetActive(true);
-                            spikes[chosenSpike].GetComponentInChildren<Spike_Rat>().Appear();
-                        }
+                    int chosenSpike = spikeNumberList[Random.Range(0, spikeNumberList.Count)];
+                    spikeNumberList.Remove(chosenSpike);
+                    spikes[chosenSpike].SetActive(true);
+                    spikes[chosenSpike].GetComponentInChildren<Spike_Rat>().Appear();
+                }
+                switch (moveSelected)
+                {
+                    case 1:         //Spawn attack
+
                         break;
-                    case 2:
+                    case 2:         //Move attack
                         Debug.Log("attack2");
                         if(!movingLeft && !movingBack)
                         {
-                            movingLeft = true;
+                            if (transform.position.x <= leftLocation.transform.position.x)
+                            {
+                                movingBack = true;
+                            }
+                            else if (transform.position.x >= originalLocation.transform.position.x)
+                            {
+                                movingLeft = true;
+                            }
                         }
+                        break;
+                    case 3:
                         break;
                     default:
                         Debug.Log("Selected move #" + moveSelected);
@@ -78,7 +91,7 @@ public class Rat_Horde_AI : MonoBehaviour
             {
                 transform.rotation = Quaternion.Euler(0, -180, 0);
                 movingLeft = false;
-                movingBack = true;
+                //movingBack = true;
             }
         }
         else if(movingBack)
