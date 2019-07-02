@@ -82,6 +82,7 @@ GameObject:
   - component: {fileID: 348624985}
   - component: {fileID: 348624987}
   - component: {fileID: 348624986}
+  - component: {fileID: 733468810192478506}
   m_Layer: 9
   m_Name: Attack 2 1
   m_TagString: Untagged
@@ -182,6 +183,20 @@ PolygonCollider2D:
       - {x: -0.31077528, y: 0.10858478}
       - {x: -0.28691638, y: -0.23606546}
       - {x: 0.24896614, y: -0.24555957}
+--- !u!114 &733468810192478506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348624984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed3c8c7e90cad74e953801de4ad0658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 4
+  AttackName: Player
 --- !u!1 &855597354
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,6 +238,7 @@ GameObject:
   - component: {fileID: 1719193343}
   - component: {fileID: 1719193345}
   - component: {fileID: 1719193344}
+  - component: {fileID: 7933454592646681219}
   m_Layer: 9
   m_Name: Attack 2 2
   m_TagString: Untagged
@@ -329,6 +345,20 @@ PolygonCollider2D:
     - - {x: -0.5662964, y: -0.24794304}
       - {x: -0.63614506, y: -0.1780944}
       - {x: -0.5662964, y: -0.26191276}
+--- !u!114 &7933454592646681219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719193342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed3c8c7e90cad74e953801de4ad0658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 4
+  AttackName: Player
 --- !u!1 &18075833740422676
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,9 +372,11 @@ GameObject:
   - component: {fileID: 18075833740422678}
   - component: {fileID: 18075833740422665}
   - component: {fileID: 18075833740422679}
+  - component: {fileID: 179337784}
+  - component: {fileID: 179337785}
   m_Layer: 9
   m_Name: Bad Guy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -357,7 +389,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18075833740422676}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.91, y: 1.15, z: 0}
+  m_LocalPosition: {x: 0.03, y: 1.15, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 18075835329653647}
@@ -494,6 +526,38 @@ MonoBehaviour:
   swordCollider: {fileID: 18075835856480687}
   jumpCollider: {fileID: 18075834015660926}
   spearCollider: {fileID: 319097050}
+--- !u!58 &179337784
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18075833740422676}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.0022246838}
+  serializedVersion: 2
+  m_Radius: 0.08887658
+--- !u!114 &179337785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18075833740422676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 313bdf8921c53e14ca3317d0e1a14ee4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  knockback: 0
+  DeathAnimation: {fileID: 0}
+  timeToDeath: 0
 --- !u!1 &18075833793111071
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,7 +569,7 @@ GameObject:
   - component: {fileID: 18075833793111070}
   m_Layer: 0
   m_Name: Spear Sword Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -640,6 +704,7 @@ GameObject:
   - component: {fileID: 18075834021041812}
   - component: {fileID: 18075834021041814}
   - component: {fileID: 18075834021041815}
+  - component: {fileID: 9156955495542760249}
   m_Layer: 0
   m_Name: Attack 1 1
   m_TagString: Untagged
@@ -748,6 +813,20 @@ PolygonCollider2D:
       - {x: 0.24067616, y: -0.129596}
       - {x: 0.24067616, y: 0.30346555}
       - {x: 0.18479726, y: 0.40125364}
+--- !u!114 &9156955495542760249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18075834021041813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed3c8c7e90cad74e953801de4ad0658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 4
+  AttackName: Player
 --- !u!1 &18075834150892304
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,6 +838,7 @@ GameObject:
   - component: {fileID: 18075834150892307}
   - component: {fileID: 18075834150892306}
   - component: {fileID: 18075834150892309}
+  - component: {fileID: 3435566775834260312}
   m_Layer: 9
   m_Name: Attack 1 2
   m_TagString: Untagged
@@ -865,6 +945,20 @@ PolygonCollider2D:
     - - {x: -0.5662964, y: -0.24794304}
       - {x: -0.63614506, y: -0.1780944}
       - {x: -0.5662964, y: -0.26191276}
+--- !u!114 &3435566775834260312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18075834150892304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed3c8c7e90cad74e953801de4ad0658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 4
+  AttackName: Player
 --- !u!1 &18075835189093836
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,7 +1015,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18075835206448318}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.71, y: -0.52, z: 0}
+  m_LocalPosition: {x: 2.71, y: 1.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 18075834007777396}
@@ -938,6 +1032,7 @@ GameObject:
   - component: {fileID: 18075835233432846}
   - component: {fileID: 18075835233432832}
   - component: {fileID: 18075835233432833}
+  - component: {fileID: 2068985076975617612}
   m_Layer: 0
   m_Name: Attack 1 2
   m_TagString: Untagged
@@ -1046,6 +1141,20 @@ PolygonCollider2D:
       - {x: 0.37289938, y: -0.21358913}
       - {x: 0.38117465, y: 0.11963636}
       - {x: 0.27511135, y: 0.26502803}
+--- !u!114 &2068985076975617612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18075835233432847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed3c8c7e90cad74e953801de4ad0658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 4
+  AttackName: Player
 --- !u!1 &18075835329653644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1186,7 +1295,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18075835526269909}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.06, y: -0.52, z: 0}
+  m_LocalPosition: {x: -2.06, y: 1.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 18075834007777396}
@@ -1203,6 +1312,7 @@ GameObject:
   - component: {fileID: 18075835639831998}
   - component: {fileID: 18075835639831985}
   - component: {fileID: 18075835639831984}
+  - component: {fileID: 8153768332359896814}
   m_Layer: 9
   m_Name: Attack 1 1
   m_TagString: Untagged
@@ -1303,6 +1413,20 @@ PolygonCollider2D:
       - {x: -0.31077528, y: 0.10858478}
       - {x: -0.28691638, y: -0.23606546}
       - {x: 0.24896614, y: -0.24555957}
+--- !u!114 &8153768332359896814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18075835639831999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed3c8c7e90cad74e953801de4ad0658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 4
+  AttackName: Player
 --- !u!1 &18075835856480687
 GameObject:
   m_ObjectHideFlags: 0
