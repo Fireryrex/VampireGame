@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 247025397}
   - component: {fileID: 247025396}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: WallChecker
   m_TagString: Untagged
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -777,7 +777,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143348829}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.33, y: -2.9, z: -17.603516}
+  m_LocalPosition: {x: -0.33, y: -2.65, z: -17.603516}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

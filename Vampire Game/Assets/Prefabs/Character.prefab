@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1084312313}
   - component: {fileID: 1084312314}
+  - component: {fileID: 7905186155746866967}
   m_Layer: 10
   m_Name: Spear Attack 1
   m_TagString: Untagged
@@ -80,6 +81,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7905186155746866967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084312312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed3c8c7e90cad74e953801de4ad0658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 4
+  AttackName: Enemy
 --- !u!1 &1198042715
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,6 +106,7 @@ GameObject:
   - component: {fileID: 1198042716}
   - component: {fileID: 1198042718}
   - component: {fileID: 1198042717}
+  - component: {fileID: 2704107109573393887}
   m_Layer: 10
   m_Name: Spear Attack 2
   m_TagString: Untagged
@@ -194,6 +210,20 @@ PolygonCollider2D:
       - {x: -0.5881168, y: 0.4510622}
     - []
     - []
+--- !u!114 &2704107109573393887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198042715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed3c8c7e90cad74e953801de4ad0658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 4
+  AttackName: Enemy
 --- !u!1 &1378059796
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,6 +235,7 @@ GameObject:
   - component: {fileID: 1378059797}
   - component: {fileID: 1378059799}
   - component: {fileID: 1378059798}
+  - component: {fileID: 2279393261689179380}
   m_Layer: 10
   m_Name: Spear Attack 3
   m_TagString: Untagged
@@ -308,6 +339,20 @@ PolygonCollider2D:
       - {x: -0.5881168, y: 0.4510622}
     - []
     - []
+--- !u!114 &2279393261689179380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378059796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed3c8c7e90cad74e953801de4ad0658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 4
+  AttackName: Enemy
 --- !u!1 &1514557129
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,6 +365,7 @@ GameObject:
   - component: {fileID: 1514557131}
   - component: {fileID: 1514557132}
   - component: {fileID: 1514557133}
+  - component: {fileID: 2880988787867189046}
   m_Layer: 10
   m_Name: Jump Attack 1 2
   m_TagString: Untagged
@@ -446,6 +492,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1070098860279735982}
   vp: {fileID: 1070098860279735977}
+--- !u!114 &2880988787867189046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514557129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed3c8c7e90cad74e953801de4ad0658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 4
+  AttackName: Enemy
 --- !u!1 &1910182446
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,6 +553,7 @@ GameObject:
   - component: {fileID: 2005668906}
   - component: {fileID: 2005668905}
   - component: {fileID: 2005668907}
+  - component: {fileID: 6965786657292912410}
   m_Layer: 10
   m_Name: Jump Attack 1 1
   m_TagString: Untagged
@@ -618,6 +679,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1070098860279735982}
   vp: {fileID: 1070098860279735977}
+--- !u!114 &6965786657292912410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005668903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed3c8c7e90cad74e953801de4ad0658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 4
+  AttackName: Enemy
 --- !u!1 &1070098858972411508
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,6 +912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  AttackName: Enemy
 --- !u!1 &1070098859181646569
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,6 +1050,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 4
+  AttackName: Enemy
 --- !u!1 &1070098860002734651
 GameObject:
   m_ObjectHideFlags: 0
@@ -1155,6 +1232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 3
+  AttackName: Enemy
 --- !u!1 &1070098860224103432
 GameObject:
   m_ObjectHideFlags: 0
@@ -1356,6 +1434,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  knockback: 0
+  DeathAnimation: {fileID: 0}
+  timeToDeath: 0
 --- !u!1 &1070098860322483257
 GameObject:
   m_ObjectHideFlags: 0
@@ -1521,3 +1602,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  AttackName: Enemy
