@@ -1281,6 +1281,7 @@ GameObject:
   - component: {fileID: 1070098860279735976}
   - component: {fileID: 1070098860279735977}
   - component: {fileID: 1070098860279735983}
+  - component: {fileID: 1563978524}
   m_Layer: 8
   m_Name: Character
   m_TagString: Player
@@ -1437,6 +1438,22 @@ MonoBehaviour:
   knockback: 0
   DeathAnimation: {fileID: 0}
   timeToDeath: 0
+--- !u!58 &1563978524
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070098860279735981}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.1
 --- !u!1 &1070098860322483257
 GameObject:
   m_ObjectHideFlags: 0
