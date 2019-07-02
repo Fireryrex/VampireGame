@@ -1435,7 +1435,11 @@ MonoBehaviour:
   spikeNumberList: 
   leftLocation: {fileID: 617235505}
   originalLocation: {fileID: 1112966797}
-  ratz: []
+  numRatz: 3
+  ratz:
+  - {fileID: 592172813436708781, guid: cd99188f9efe16a408cf835161810d8c, type: 3}
+  forceMax: 1000
+  forceMin: 500
 --- !u!1 &1980032956
 GameObject:
   m_ObjectHideFlags: 0

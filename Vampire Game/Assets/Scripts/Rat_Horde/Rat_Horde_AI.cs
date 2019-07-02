@@ -22,7 +22,11 @@ public class Rat_Horde_AI : MonoBehaviour
     private bool movingBack = false;
 
     //rat spawning attack
+    public int numRatz;
     public GameObject[] ratz;
+    public float forceMax;
+    public float forceMin;
+    private Vector3 spawnOffset;
 
     // Start is called before the first frame update
     void Start()
@@ -53,10 +57,23 @@ public class Rat_Horde_AI : MonoBehaviour
                 switch (moveSelected)
                 {
                     case 1:         //Spawn attack
-
+                        spawnOffset = new Vector3(0, 0, 0);
+                        for (int i = 0; i < numRatz; ++i)
+                        {
+                            spawnOffset = new Vector3(0, 2*i, 0);
+                            GameObject spawnedRat = Instantiate(ratz[0], transform.position, transform.rotation);
+                            if (transform.position.x <= leftLocation.transform.position.x)
+                            {
+                                spawnedRat.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(forceMin, forceMax), Random.Range(forceMin, forceMax), 0f));
+                            }
+                            else if (transform.position.x >= originalLocation.transform.position.x)
+                            {
+                                spawnedRat.GetComponent<Rigidbody2D>().AddForce(new Vector3((Random.Range(-forceMin, -forceMax)), Random.Range(forceMin, forceMax), 0f));
+                            }
+                        }
                         break;
                     case 2:         //Move attack
-                        Debug.Log("attack2");
+                        //Debug.Log("attack2");
                         if(!movingLeft && !movingBack)
                         {
                             if (transform.position.x <= leftLocation.transform.position.x)
@@ -70,6 +87,7 @@ public class Rat_Horde_AI : MonoBehaviour
                         }
                         break;
                     case 3:
+                        
                         break;
                     default:
                         Debug.Log("Selected move #" + moveSelected);
