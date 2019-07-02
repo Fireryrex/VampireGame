@@ -36,7 +36,7 @@ public class Health_Script : MonoBehaviour
         }
         Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
         
-        rb.AddForce(new Vector3(knockback, knockback, 0));
+        //rb.AddForce(new Vector3(knockback, knockback, 0));
     }
 
     public void heal(int healAmt)
