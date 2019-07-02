@@ -11,7 +11,17 @@ public class Deal_Damage : MonoBehaviour
     {
         if (collision.tag == AttackName)
         {
+            float num = collision.GetComponent<Health_Script>().knockback;
             collision.GetComponent<Health_Script>().dealDamage(damage);
+            if(transform.position.x < collision.transform.position.x)
+            {
+                collision.GetComponent<Rigidbody2D>().AddForce(new Vector3(num, num, 0));
+            }
+            else
+            {
+                collision.GetComponent<Rigidbody2D>().AddForce(new Vector3(-num, num, 0));
+            }
+            
         }
     }
 }
