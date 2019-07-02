@@ -8,7 +8,7 @@ public class Spike_Rat : MonoBehaviour
     private float time = 0f;
     public float warningTime;
     public float timeOut;
-    public Transform moveLocation;
+    public GameObject moveLocation;
     public Transform returnTo;
     
     // Start is called before the first frame update
@@ -25,11 +25,11 @@ public class Spike_Rat : MonoBehaviour
             time += Time.deltaTime;
             if(time >= warningTime)
             {
-                this.gameObject.transform.position = Vector3.MoveTowards
+                transform.position = Vector3.MoveTowards
                     (
                         new Vector3(transform.position.x, transform.position.y, 0),
                         new Vector3(moveLocation.transform.position.x, moveLocation.transform.position.y, 0),
-                        20 * Time.deltaTime
+                        30 * Time.deltaTime
                     );
             }
             if(time >= warningTime + timeOut)
@@ -39,12 +39,8 @@ public class Spike_Rat : MonoBehaviour
         }
         else
         {
-            this.gameObject.transform.position = Vector3.MoveTowards
-                    (
-                        new Vector3(transform.position.x, transform.position.y, 0),
-                        new Vector3(returnTo.transform.position.x, returnTo.transform.position.y, 0),
-                        20 * Time.deltaTime
-                    );
+            transform.position = new Vector3(returnTo.transform.position.x, returnTo.transform.position.y, 0);
+            moveLocation.SetActive(false);
         }
     }
 

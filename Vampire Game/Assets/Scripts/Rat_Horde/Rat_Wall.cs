@@ -36,11 +36,13 @@ public class Rat_Wall : MonoBehaviour
     public void moveRatWall1()
     {
         movingWall1 = true;
+        movingWall2 = false;
     }
 
     //moves the rat wall to the second position when the boss is at X amount of health
     public void moveRatWall2()
     {
         movingWall2 = true;
+        movingWall1 = false;
     }
 }
