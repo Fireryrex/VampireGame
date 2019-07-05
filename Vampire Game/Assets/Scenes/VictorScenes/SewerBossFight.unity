@@ -1316,7 +1316,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1411,7 +1411,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 6
 --- !u!114 &1859255465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1435,7 +1435,11 @@ MonoBehaviour:
   spikeNumberList: 
   leftLocation: {fileID: 617235505}
   originalLocation: {fileID: 1112966797}
-  ratz: []
+  numRatz: 3
+  ratz:
+  - {fileID: 592172813436708781, guid: cd99188f9efe16a408cf835161810d8c, type: 3}
+  forceMax: 1000
+  forceMin: 500
 --- !u!1 &1980032956
 GameObject:
   m_ObjectHideFlags: 0
