@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 592172812455410335}
   - component: {fileID: 592172812455410329}
   - component: {fileID: 592172812455410328}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WallChecker
   m_TagString: Untagged
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 592172813436708777}
   - component: {fileID: 592172813436708778}
   - component: {fileID: 592172813436708779}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Rat
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -219,6 +219,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  knockback: 0
+  knockback: 200
   DeathAnimation: {fileID: 0}
   timeToDeath: 0
