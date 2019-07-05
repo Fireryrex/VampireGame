@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 319097051}
   - component: {fileID: 319097052}
   - component: {fileID: 319097053}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Spear Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 348624987}
   - component: {fileID: 348624986}
   - component: {fileID: 733468810192478506}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Attack 2 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 855597355}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: StepBack
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 1719193345}
   - component: {fileID: 1719193344}
   - component: {fileID: 7933454592646681219}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Attack 2 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -374,7 +374,7 @@ GameObject:
   - component: {fileID: 18075833740422679}
   - component: {fileID: 179337784}
   - component: {fileID: 179337785}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Bad Guy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -567,7 +567,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 18075833793111070}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Spear Sword Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -599,7 +599,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 18075834007777396}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Gizmos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -633,7 +633,7 @@ GameObject:
   - component: {fileID: 18075834015660913}
   - component: {fileID: 18075834015660915}
   - component: {fileID: 18075834015660912}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Jump Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -705,7 +705,7 @@ GameObject:
   - component: {fileID: 18075834021041814}
   - component: {fileID: 18075834021041815}
   - component: {fileID: 9156955495542760249}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Attack 1 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -839,7 +839,7 @@ GameObject:
   - component: {fileID: 18075834150892306}
   - component: {fileID: 18075834150892309}
   - component: {fileID: 3435566775834260312}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Attack 1 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -968,7 +968,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 18075835189093839}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1000,7 +1000,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 18075835206448305}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -1033,7 +1033,7 @@ GameObject:
   - component: {fileID: 18075835233432832}
   - component: {fileID: 18075835233432833}
   - component: {fileID: 2068985076975617612}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Attack 1 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1164,7 +1164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 18075835329653647}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1199,7 +1199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 18075835352197419}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Spear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1234,7 +1234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 18075835398492799}
   - component: {fileID: 18075835398492798}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Hitboxes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1280,7 +1280,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 18075835526269908}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -1313,7 +1313,7 @@ GameObject:
   - component: {fileID: 18075835639831985}
   - component: {fileID: 18075835639831984}
   - component: {fileID: 8153768332359896814}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Attack 1 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1438,7 +1438,7 @@ GameObject:
   - component: {fileID: 18075835856480686}
   - component: {fileID: 18075835856480672}
   - component: {fileID: 18075835856480675}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Sword Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
