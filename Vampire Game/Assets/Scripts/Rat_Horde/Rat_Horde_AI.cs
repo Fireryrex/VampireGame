@@ -23,10 +23,12 @@ public class Rat_Horde_AI : MonoBehaviour
 
     //rat spawning attack
     public int numRatz;
-    public GameObject[] ratz;
+    public List<GameObject> ratz;
+    public GameObject rat;
     public float forceMax;
     public float forceMin;
     private Vector3 spawnOffset;
+    public int damagePerTickToSpawnedRats;
 
     // Start is called before the first frame update
     void Start()
@@ -58,10 +60,12 @@ public class Rat_Horde_AI : MonoBehaviour
                 {
                     case 1:         //Spawn attack
                         spawnOffset = new Vector3(0, 0, 0);
-                        for (int i = 0; i < numRatz; ++i)
+                        int randRats = Random.Range(1, numRatz + 1);
+                        for (int i = 0; i < randRats; ++i)
                         {
                             spawnOffset = new Vector3(0, 2*i, 0);
-                            GameObject spawnedRat = Instantiate(ratz[0], transform.position, transform.rotation);
+                            GameObject spawnedRat = Instantiate(rat, transform.position, transform.rotation);
+                            ratz.Add(spawnedRat);
                             if (transform.position.x <= leftLocation.transform.position.x)
                             {
                                 spawnedRat.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(forceMin, forceMax), Random.Range(forceMin, forceMax), 0f));
@@ -92,6 +96,18 @@ public class Rat_Horde_AI : MonoBehaviour
                     default:
                         Debug.Log("Selected move #" + moveSelected);
                         break;
+                }
+
+                for (int i = 0; i < ratz.Count; ++i)
+                {
+                    if (ratz[i] != null)
+                    {
+                        ratz[i].GetComponent<Health_Script>().dealDamage(damagePerTickToSpawnedRats);
+                    }
+                    else
+                    {
+                        ratz.RemoveAt(i);
+                    }
                 }
 
             }
