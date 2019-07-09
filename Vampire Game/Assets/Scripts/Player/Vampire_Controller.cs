@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Vampire_Controller : MonoBehaviour
 {
-    private float jumpSpeed = 300f;
+    public float jumpSpeed = 300f;
     private int airJumps = 1;
     public int numOfJumps = 1;
     private int airDashes = 1;

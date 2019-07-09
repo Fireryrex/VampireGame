@@ -49,9 +49,4 @@ public class Spike_Rat : MonoBehaviour
         time = 0f;
         isAppearing = true;
     }
-
-    public void moveUp(Transform location2)
-    {
-        transform.position = new Vector3(transform.position.x, location2.transform.position.y, 0);
-    }
 }
