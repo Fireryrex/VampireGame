@@ -163,6 +163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 845197592140324323}
   - component: {fileID: 845197592140324322}
+  - component: {fileID: 3080760253513798277}
   m_Layer: 0
   m_Name: Spike (1)
   m_TagString: Untagged
@@ -234,3 +235,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3080760253513798277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845197592140324332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da662ad913e95174a9929e1f1d02dea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
