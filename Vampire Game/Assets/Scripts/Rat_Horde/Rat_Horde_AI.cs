@@ -11,6 +11,7 @@ public class Rat_Horde_AI : MonoBehaviour
     private float staggerTime = 0f;
     private bool belowHalfHealth = false;
     public float attackTimer;
+    private Health_Script healthScript;
     
     //spike attack variables
     public GameObject[] spikes;
@@ -40,8 +41,7 @@ public class Rat_Horde_AI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-
+        healthScript = GetComponent<Health_Script>();
     }
 
     // Update is called once per frame
@@ -52,6 +52,12 @@ public class Rat_Horde_AI : MonoBehaviour
         {
             atHalfHealth();
             halfHealthTest = false;
+        }
+
+        if(healthScript.getHealthPercent() <= .5)
+        {
+            Debug.Log(healthScript.getHealthPercent());
+            atHalfHealth();
         }
 
         time += Time.deltaTime;
@@ -83,11 +89,11 @@ public class Rat_Horde_AI : MonoBehaviour
                             ratz.Add(spawnedRat);
                             if (transform.position.x <= leftLocation.transform.position.x)
                             {
-                                spawnedRat.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(forceMin, forceMax), Random.Range(forceMin, forceMax), 0f));
+                                spawnedRat.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(forceMin, forceMax), Random.Range(forceMin, forceMax)/2, 0f));
                             }
                             else if (transform.position.x >= originalLocation.transform.position.x)
                             {
-                                spawnedRat.GetComponent<Rigidbody2D>().AddForce(new Vector3((Random.Range(-forceMin, -forceMax)), Random.Range(forceMin, forceMax), 0f));
+                                spawnedRat.GetComponent<Rigidbody2D>().AddForce(new Vector3((Random.Range(-forceMin, -forceMax)), Random.Range(forceMin, forceMax)/2, 0f));
                             }
                         }
                         break;

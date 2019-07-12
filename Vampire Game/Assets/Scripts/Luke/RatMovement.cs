@@ -17,6 +17,8 @@ public class RatMovement : MonoBehaviour
 
     private bool isGrounded = false;
 
+    public int damage = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,11 +60,16 @@ public class RatMovement : MonoBehaviour
         }
     }
 
+    public void hitGround()
+    {
+        isGrounded = true;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 11)
+        if (collision.gameObject.tag == "Player")
         {
-            isGrounded = true;
+            collision.GetComponent<Health_Script>().dealDamage(damage);
         }
-    }
+    }       
 }

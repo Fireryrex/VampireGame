@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Health_Script : MonoBehaviour
 {
-    public int health;
+    public float health;
     public float knockback;
     public GameObject DeathAnimation;
-    public float timeToDeath = 0; 
-
-
+    public float timeToDeath = 0;
+    private float maxHealth;
+    
     // Start is called before the first frame update
     void Start()
     {
+        maxHealth = health;
     }
 
     // Update is called once per frame
@@ -42,5 +43,10 @@ public class Health_Script : MonoBehaviour
     public void heal(int healAmt)
     {
         health += healAmt;
+    }
+
+    public float getHealthPercent()
+    {
+        return health / maxHealth;
     }
 }

@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 592172813436708777}
   - component: {fileID: 592172813436708778}
   - component: {fileID: 592172813436708779}
-  - component: {fileID: 3535283952701199132}
+  - component: {fileID: 4043825859993840572}
   m_Layer: 12
   m_Name: Rat
   m_TagString: Enemy
@@ -295,8 +295,8 @@ MonoBehaviour:
   knockback: 200
   DeathAnimation: {fileID: 0}
   timeToDeath: 0
---- !u!61 &3535283952701199132
-BoxCollider2D:
+--- !u!70 &4043825859993840572
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -308,16 +308,6 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00000029802322, y: -0.32159173}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6, y: 4}
-    newSize: {x: 0.2, y: 0.2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.45116472, y: 0.16669893}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.0000010689891, y: 0.032670025}
+  m_Size: {x: 1.3739251, y: 1.1381102}
+  m_Direction: 1

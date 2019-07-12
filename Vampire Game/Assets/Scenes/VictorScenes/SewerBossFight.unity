@@ -814,11 +814,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1070098860279735977, guid: 7f550643f5814bb4c88ba6ddec6e71e9,
-        type: 3}
-      propertyPath: jumpSpeed
-      value: 500
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f550643f5814bb4c88ba6ddec6e71e9, type: 3}
 --- !u!1001 &752843900
@@ -7888,10 +7883,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -1.7367296, y: -0.7546077}
-      - {x: -1.5914998, y: 0.05289662}
-      - {x: -1.7419491, y: -0.7545515}
-      - {x: -2.870304, y: -0.7022545}
+    - - {x: -3.5076332, y: -1.7253351}
       - {x: -3.1686382, y: 0.32153523}
       - {x: -4.1917725, y: 1.2919886}
       - {x: -4.4562416, y: 1.7588172}
@@ -7906,8 +7898,7 @@ PolygonCollider2D:
       - {x: 1.618784, y: 1.5794868}
       - {x: 2.1368923, y: 0.6650812}
       - {x: 2.5231724, y: -0.44617346}
-      - {x: 2.394678, y: -0.8031695}
-      - {x: 1.4522743, y: -0.7672488}
+      - {x: 2.4616299, y: -1.6902759}
     - []
 --- !u!212 &1859255463
 SpriteRenderer:
@@ -8027,7 +8018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 313bdf8921c53e14ca3317d0e1a14ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 100
   knockback: 0
   DeathAnimation: {fileID: 2100500655}
   timeToDeath: 0
