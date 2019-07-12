@@ -38,9 +38,6 @@ public class Vampire_Controller : MonoBehaviour
     private bool jumped = false;
     public float chargeSpeed = 10f;
 
-    public bool hasSpear;
-    public bool hasDash;
-
     private void Awake()
     {
         RigidBody2D = GetComponent<Rigidbody2D>();

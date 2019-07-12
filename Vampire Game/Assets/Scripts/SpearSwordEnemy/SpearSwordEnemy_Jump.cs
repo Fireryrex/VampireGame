@@ -8,10 +8,10 @@ public class SpearSwordEnemy_Jump : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 8)
+        if (collision.gameObject.tag == "Player")
         {
             //ends any sword attack going on (probably safe to remove)
-            for(int i = 0; i < enemyScript.swordAttacks.Length; i++)
+            for (int i = 0; i < enemyScript.swordAttacks.Length; i++)
             {
                 enemyScript.swordAttacks[i].SetActive(false);
             }

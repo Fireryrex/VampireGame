@@ -291,7 +291,7 @@ public class SpearSwordEnemy_AI : MonoBehaviour
     //starts chasing the player if the player enters the collision
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 8)
+        if (collision.gameObject.tag == "Player")
         {
             changeTarget(collision.gameObject.transform);
             moveSpeed = chaseSpeed;

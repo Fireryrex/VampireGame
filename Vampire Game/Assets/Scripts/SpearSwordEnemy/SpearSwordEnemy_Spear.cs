@@ -8,7 +8,7 @@ public class SpearSwordEnemy_Spear : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 8)
+        if (collision.gameObject.tag == "Player")
         {
             //ends any jump attack going on (probably safe to remove)
             for (int i = 0; i < enemyScript.spearAttacks.Length; i++)
