@@ -29,7 +29,7 @@ public class Health_Script : MonoBehaviour
         {
             Debug.Log("Am Dead");
             //Creates a game object that has an death animation
-            Object.Instantiate(DeathAnimation,transform);
+            //Object.Instantiate(DeathAnimation,transform);
             //destroy this game object
             Object.Destroy(gameObject,timeToDeath);
             

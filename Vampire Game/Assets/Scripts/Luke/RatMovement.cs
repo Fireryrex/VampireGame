@@ -28,14 +28,14 @@ public class RatMovement : MonoBehaviour
     void Update()
     {
 
-        RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance);
+        /*RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance);
         //RaycastHit2D wallInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance);
         Debug.DrawRay(groundDetection.position, Vector2.down * distance);
 
         if (groundInfo.collider != null && !groundInfo.collider.isTrigger)
         {
             turnAround();
-        }
+        }*/
 
         if (isGrounded)
         {

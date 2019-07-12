@@ -7,7 +7,8 @@ public class GroundCheck : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 11)
+        Debug.Log("No Ground");
+        if (collision.gameObject.layer == 11)
         {
             GetComponentInParent<RatMovement>().turnAround();
         }
