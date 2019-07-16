@@ -2534,7 +2534,7 @@ PrefabInstance:
     - target: {fileID: 1070098860279735978, guid: 7f550643f5814bb4c88ba6ddec6e71e9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 1070098860279735978, guid: 7f550643f5814bb4c88ba6ddec6e71e9,
         type: 3}
@@ -2586,6 +2586,11 @@ PrefabInstance:
       propertyPath: DeathAnimation
       value: 
       objectReference: {fileID: 641600265}
+    - target: {fileID: 1070098860279735983, guid: 7f550643f5814bb4c88ba6ddec6e71e9,
+        type: 3}
+      propertyPath: health
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f550643f5814bb4c88ba6ddec6e71e9, type: 3}
 --- !u!1 &1902890393
