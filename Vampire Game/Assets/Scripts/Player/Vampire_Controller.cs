@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Vampire_Controller : MonoBehaviour
 {
-    public float jumpSpeed = 300f;
+    public float jumpSpeed = 3f;
+    public float fallSpeedMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2f;
+    [Range(0, 10)]
+    public int minVelocityOfJump;
     private int airJumps = 1;
     public int numOfJumps = 1;
     private int airDashes = 1;
@@ -112,14 +116,27 @@ public class Vampire_Controller : MonoBehaviour
             {
                 //print("jump");
                 RigidBody2D.velocity = new Vector2(RigidBody2D.velocity.x, 0);
-                RigidBody2D.AddForce(new Vector2(RigidBody2D.velocity.x, jumpSpeed));
+                RigidBody2D.velocity = new Vector2(RigidBody2D.velocity.x, jumpSpeed);
             }
             else if (jump && airJumps > 0) //air jump
             {
                 RigidBody2D.velocity = new Vector2(RigidBody2D.velocity.x, 0);
-                RigidBody2D.AddForce(new Vector2(RigidBody2D.velocity.x, jumpSpeed));
+                RigidBody2D.velocity = new Vector2(RigidBody2D.velocity.x, jumpSpeed);
                 airJumps -= 1;
             }
+            //makes it so that the falling down part of a jump is faster
+            if (RigidBody2D.velocity.y < minVelocityOfJump)
+            {
+                RigidBody2D.velocity += Vector2.up * Physics2D.gravity.y * (fallSpeedMultiplier - 1) * Time.deltaTime;
+            }
+            else if(RigidBody2D.velocity.y > minVelocityOfJump && !jump)
+            {
+                RigidBody2D.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            }
+        }
+        else
+        {
+            RigidBody2D.velocity = new Vector2(0, RigidBody2D.velocity.y);
         }
     }
 
@@ -172,21 +189,16 @@ public class Vampire_Controller : MonoBehaviour
         }
     }
 
-    //Groundcheck logic
-    private void OnTriggerStay2D(Collider2D collision) //when groundcheck collider collides with ground, isGrounded becomes True
+    //Groundcheck Logic
+    public void groundFunction()
     {
-        if (collision.gameObject.layer == 11)
-        {
-            isGrounded = true;
-            resetAirMovements();
-        }
+        isGrounded = true;
+        resetAirMovements();
     }
-    private void OnTriggerExit2D(Collider2D collision) //when groundcheck collider leaves ground, isGrounded becomes False
+
+    public void airFunction()
     {
-        if (collision.gameObject.layer == 11)
-        {
-            isGrounded = false;
-        }
+        isGrounded = false;
     }
     
     //resets jump and dash values

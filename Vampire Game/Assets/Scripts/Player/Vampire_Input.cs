@@ -31,7 +31,7 @@ public class Vampire_Input : MonoBehaviour
         }
 
         //sees if player presses jump
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButton("Jump"))
         {
             jump = true;
         }

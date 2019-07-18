@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Deal_Damage : MonoBehaviour
 {
-    public int damage = 4;
+    public int damage = 1;
     public string AttackName = "Player";
 
     private void OnTriggerEnter2D(Collider2D collision)
