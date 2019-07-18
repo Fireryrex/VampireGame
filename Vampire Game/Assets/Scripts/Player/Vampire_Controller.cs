@@ -134,9 +134,9 @@ public class Vampire_Controller : MonoBehaviour
                 RigidBody2D.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
             }
         }
-        else
+        else if (weapon != 2)
         {
-            RigidBody2D.velocity = new Vector2(0, RigidBody2D.velocity.y);
+            RigidBody2D.velocity = new Vector2(0, 0);
         }
     }
 
