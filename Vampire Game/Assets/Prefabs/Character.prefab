@@ -1461,7 +1461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 50
   vertdashMulti: 2
-  horidashMulti: 10
+  horidashMulti: 20
   controller: {fileID: 1070098860279735977}
 --- !u!114 &1070098860279735977
 MonoBehaviour:
@@ -1475,7 +1475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f056686acfa8e439578f2d118594c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpSpeed: 12
+  jumpSpeed: 11
   fallSpeedMultiplier: 3
   lowJumpMultiplier: 2.5
   minVelocityOfJump: 5
