@@ -28,8 +28,8 @@ public class Rat_Horde_AI : MonoBehaviour
     public int numRatz;
     public List<GameObject> ratz;
     public GameObject rat;
-    public float forceMax;
-    public float forceMin;
+    public float velMax;
+    public float velMin;
     private Vector3 spawnOffset;
     public int damagePerTickToSpawnedRats;
     private bool spawning = false;
@@ -89,11 +89,11 @@ public class Rat_Horde_AI : MonoBehaviour
                             ratz.Add(spawnedRat);
                             if (transform.position.x <= leftLocation.transform.position.x)
                             {
-                                spawnedRat.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(forceMin, forceMax), Random.Range(forceMin, forceMax)/2, 0f));
+                                spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3(Random.Range(velMin, velMax), Random.Range(velMin, velMax)/2, 0f));
                             }
                             else if (transform.position.x >= originalLocation.transform.position.x)
                             {
-                                spawnedRat.GetComponent<Rigidbody2D>().AddForce(new Vector3((Random.Range(-forceMin, -forceMax)), Random.Range(forceMin, forceMax)/2, 0f));
+                                spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3((Random.Range(-velMin, -velMax)), Random.Range(velMin, velMax)/2, 0f));
                             }
                         }
                         break;
@@ -142,11 +142,11 @@ public class Rat_Horde_AI : MonoBehaviour
                 ratz.Add(spawnedRat);
                 if (transform.position.x <= leftLocation.transform.position.x)
                 {
-                    spawnedRat.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(forceMin, forceMax), Random.Range(forceMin, forceMax), 0f));
+                    spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3(Random.Range(velMin, velMax), Random.Range(velMin, velMax), 0f));
                 }
                 else if (transform.position.x >= originalLocation.transform.position.x)
                 {
-                    spawnedRat.GetComponent<Rigidbody2D>().AddForce(new Vector3((Random.Range(-forceMin, -forceMax)), Random.Range(forceMin, forceMax), 0f));
+                    spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3((Random.Range(-velMin, -velMax)), Random.Range(velMin, velMax), 0f));
                 }
                 randStaggeredRatz -= 1;
             }
@@ -186,11 +186,11 @@ public class Rat_Horde_AI : MonoBehaviour
                             ratz.Add(spawnedRat);
                             if (transform.position.x <= leftLocation.transform.position.x)
                             {
-                                spawnedRat.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(forceMin, forceMax), Random.Range(forceMin, forceMax), 0f));
+                                spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3(Random.Range(velMin, velMax), Random.Range(velMin, velMax), 0f));
                             }
                             else if (transform.position.x >= originalLocation.transform.position.x)
                             {
-                                spawnedRat.GetComponent<Rigidbody2D>().AddForce(new Vector3((Random.Range(-forceMin, -forceMax)), Random.Range(forceMin, forceMax), 0f));
+                                spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3((Random.Range(-velMin, -velMax)), Random.Range(velMin, velMax), 0f));
                             }
                         }
                         break;
@@ -237,11 +237,11 @@ public class Rat_Horde_AI : MonoBehaviour
                 ratz.Add(spawnedRat);
                 if (transform.position.x <= leftLocation.transform.position.x)
                 {
-                    spawnedRat.GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(forceMin, forceMax), Random.Range(forceMin, forceMax), 0f));
+                    spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3(Random.Range(velMin, velMax), Random.Range(velMin, velMax), 0f));
                 }
                 else if (transform.position.x >= originalLocation.transform.position.x)
                 {
-                    spawnedRat.GetComponent<Rigidbody2D>().AddForce(new Vector3((Random.Range(-forceMin, -forceMax)), Random.Range(forceMin, forceMax), 0f));
+                    spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3((Random.Range(-velMin, -velMax)), Random.Range(velMin, velMax), 0f));
                 }
                 randStaggeredRatz -= 1;
             }

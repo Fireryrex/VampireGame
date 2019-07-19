@@ -70,7 +70,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a404282fba2c67a4cb71dc3c6e8a4352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
 --- !u!1 &592172812455410334
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +215,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e9df4fe610a4a8944a512e26a5d88f1b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bef7914a2d86e8b49b73773bfc3c2a43, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -240,7 +239,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.02759552}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.51227593
 --- !u!50 &592172813436708777
@@ -279,6 +278,7 @@ MonoBehaviour:
   groundDetection: {fileID: 592172812455410335}
   forceMultiplyer: 10000
   distance: 0.1
+  damage: 1
 --- !u!114 &592172813436708779
 MonoBehaviour:
   m_ObjectHideFlags: 0
