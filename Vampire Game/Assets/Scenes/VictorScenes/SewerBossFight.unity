@@ -814,10 +814,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1070098860279735976, guid: 7f550643f5814bb4c88ba6ddec6e71e9,
+    - target: {fileID: 1070098860279735977, guid: 7f550643f5814bb4c88ba6ddec6e71e9,
         type: 3}
-      propertyPath: horidashMulti
-      value: 20
+      propertyPath: fallSpeedMultiplier
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f550643f5814bb4c88ba6ddec6e71e9, type: 3}
