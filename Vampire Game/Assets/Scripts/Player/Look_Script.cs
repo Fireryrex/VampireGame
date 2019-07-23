@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Look_Script : MonoBehaviour
 {
-    public float LookDirection;
-    public float lastLook;
+    public float LookDistance = 3;
+    private float LookDirection;
+    private float lastLook;
+    
 
     
     // Update is called once per frame
@@ -14,10 +16,10 @@ public class Look_Script : MonoBehaviour
         LookDirection = Input.GetAxisRaw("Vertical");
         if(LookDirection == lastLook - 1)
         {
-            transform.position = transform.position + new Vector3(0, -3, 0);
+            transform.position = transform.position + new Vector3(0, -LookDistance, 0);
         }else if (LookDirection == lastLook + 1)
         {
-            transform.position = transform.position + new Vector3(0, 3, 0);
+            transform.position = transform.position + new Vector3(0, LookDistance, 0);
         }
         lastLook = LookDirection;
     }
