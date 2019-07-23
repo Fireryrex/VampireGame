@@ -11,6 +11,7 @@ public class Vampire_Input : MonoBehaviour
     public int vertdashMulti = 5;
     public int horidashMulti = 10;
     private bool jump = false;
+    private bool holdJump = false;
     private bool dash = false;
     public Vampire_Controller controller;
 
@@ -31,9 +32,14 @@ public class Vampire_Input : MonoBehaviour
         }
 
         //sees if player presses jump
-        if (Input.GetButton("Jump"))
+        if (Input.GetButtonDown("Jump"))
         {
             jump = true;
+        }
+
+        if (Input.GetButton("Jump"))
+        {
+            holdJump = true;
         }
 
         //like jump but dash
@@ -70,8 +76,9 @@ public class Vampire_Input : MonoBehaviour
         //lets controller know player is not dashing
         else if (!dash)
         {
-            controller.Move(horizontalMove * Time.fixedDeltaTime, jump, facing);
+            controller.Move(horizontalMove * Time.fixedDeltaTime, jump, holdJump, facing);
             jump = false;
+            holdJump = false;
         }
     }
 }

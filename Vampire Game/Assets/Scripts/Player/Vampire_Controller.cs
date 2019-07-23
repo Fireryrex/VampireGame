@@ -87,7 +87,7 @@ public class Vampire_Controller : MonoBehaviour
     }
 
     //Moving logic
-    public void Move(float move, bool jump, float facing)
+    public void Move(float move, bool jump, bool holdJump, float facing)
     {
         faceDirection = facing;
         if (weapon == 2 && !isGrounded && isAttacking && jump && !attackInProgress)
@@ -129,7 +129,7 @@ public class Vampire_Controller : MonoBehaviour
             {
                 RigidBody2D.velocity += Vector2.up * Physics2D.gravity.y * (fallSpeedMultiplier - 1) * Time.deltaTime;
             }
-            else if(RigidBody2D.velocity.y > minVelocityOfJump && !jump)
+            else if(RigidBody2D.velocity.y > minVelocityOfJump && !holdJump)
             {
                 RigidBody2D.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
             }
