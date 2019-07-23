@@ -560,6 +560,36 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &58538653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 58538654}
+  m_Layer: 12
+  m_Name: CameraNormalPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &58538654
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58538653}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.92, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 605863478}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &397579406
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,6 +758,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f550643f5814bb4c88ba6ddec6e71e9, type: 3}
+--- !u!4 &605863478 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1070098860279735978, guid: 7f550643f5814bb4c88ba6ddec6e71e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 417530177}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &668992174
 PrefabInstance:
   m_ObjectHideFlags: 0
