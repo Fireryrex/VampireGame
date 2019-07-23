@@ -74,7 +74,7 @@ public class Rat_Horde_AI : MonoBehaviour
                 {
                     int chosenSpike = spikeNumberList[Random.Range(0, spikeNumberList.Count)];
                     spikeNumberList.Remove(chosenSpike);
-                    spikes[chosenSpike].SetActive(true);
+ 
                     spikes[chosenSpike].GetComponentInChildren<Spike_Rat>().Appear();
                 }
                 switch (moveSelected)
@@ -290,11 +290,6 @@ public class Rat_Horde_AI : MonoBehaviour
         spikeNumberList.Add(1);
         spikeNumberList.Add(2);
         spikeNumberList.Add(3);
-        spikeNumberList.Add(4);
-        spikeNumberList.Add(5);
-        spikeNumberList.Add(6);
-        spikeNumberList.Add(7);
-
     }
 
     public void atHalfHealth()
