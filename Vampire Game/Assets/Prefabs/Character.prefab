@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1084312313}
   - component: {fileID: 1084312314}
   - component: {fileID: 7905186155746866967}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: Spear Attack 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 1198042718}
   - component: {fileID: 1198042717}
   - component: {fileID: 2704107109573393887}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: Spear Attack 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 1378059799}
   - component: {fileID: 1378059798}
   - component: {fileID: 2279393261689179380}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: Spear Attack 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 1514557132}
   - component: {fileID: 1514557133}
   - component: {fileID: 2880988787867189046}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: Jump Attack 1 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -549,6 +549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbe36f577c402524eb43f7a31a39bcfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LookDistance: 3
 --- !u!1 &1910182446
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,7 +559,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1910182447}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: Spear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -597,7 +598,7 @@ GameObject:
   - component: {fileID: 2005668905}
   - component: {fileID: 2005668907}
   - component: {fileID: 6965786657292912410}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: Jump Attack 1 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -851,7 +852,7 @@ GameObject:
   - component: {fileID: 1070098859120100603}
   - component: {fileID: 1070098859120100600}
   - component: {fileID: 1070098859120100602}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: Attack 3 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -982,7 +983,7 @@ GameObject:
   - component: {fileID: 1070098859181646570}
   - component: {fileID: 1070098859181646571}
   - component: {fileID: 1070098859181646581}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: Attack 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1194,7 +1195,7 @@ GameObject:
   - component: {fileID: 1070098860219411605}
   - component: {fileID: 1070098860219411594}
   - component: {fileID: 1070098860219411604}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: Attack 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1326,7 +1327,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1070098860224103435}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1614,7 +1615,7 @@ GameObject:
   - component: {fileID: 1070098860562278107}
   - component: {fileID: 1070098860562278104}
   - component: {fileID: 1070098860562278106}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: Attack 3 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
