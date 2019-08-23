@@ -8,6 +8,7 @@ public class Health_Script : MonoBehaviour
     public float knockback;
     public GameObject DeathAnimation;
     public float timeToDeath = 0;
+    public Transform RespawnPoint;
     private float maxHealth;
     
     // Start is called before the first frame update
@@ -32,7 +33,19 @@ public class Health_Script : MonoBehaviour
             //Creates a game object that has an death animation
             //Object.Instantiate(DeathAnimation,transform);
             //destroy this game object
-            Object.Destroy(gameObject,timeToDeath);
+
+            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            //NEEDS WORK !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            if (this.tag == "Player")
+            {
+                respawn();
+            }
+            else
+            {
+                Object.Destroy(gameObject, timeToDeath);
+            }
+            
             
         }
         Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
@@ -48,5 +61,16 @@ public class Health_Script : MonoBehaviour
     public float getHealthPercent()
     {
         return health / maxHealth;
+    }
+
+    public void setRespawnPoint(Transform rp)
+    {
+        RespawnPoint = rp;
+    }
+
+    public void respawn()
+    {
+        transform.position = RespawnPoint.position;
+        health = maxHealth;
     }
 }
