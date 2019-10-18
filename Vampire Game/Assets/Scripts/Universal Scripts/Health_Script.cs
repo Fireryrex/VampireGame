@@ -70,6 +70,7 @@ public class Health_Script : MonoBehaviour
 
     public void respawn()
     {
+
         transform.position = RespawnPoint.position;
         health = maxHealth;
     }
