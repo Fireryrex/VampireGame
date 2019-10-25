@@ -216,7 +216,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bef7914a2d86e8b49b73773bfc3c2a43, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -295,6 +295,7 @@ MonoBehaviour:
   knockback: 200
   DeathAnimation: {fileID: 0}
   timeToDeath: 0
+  RespawnPoint: {fileID: 0}
 --- !u!70 &4043825859993840572
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
