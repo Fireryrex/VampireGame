@@ -20,7 +20,7 @@ TagManager:
   - Hurtboxes
   - Ground
   - Vampire
-  - 
+  - Particles
   - 
   - 
   - 
@@ -54,4 +54,7 @@ TagManager:
     locked: 0
   - name: Character
     uniqueID: 1040423861
+    locked: 0
+  - name: Particles
+    uniqueID: 208917081
     locked: 0
