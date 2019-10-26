@@ -1493,7 +1493,7 @@ MonoBehaviour:
   fallSpeedMultiplier: 4
   lowJumpMultiplier: 2.5
   minVelocityOfJump: 5
-  numOfJumps: 1
+  numOfJumps: 0
   numOfDashes: 1
   RigidBody2D: {fileID: 1070098860279735982}
   isGrounded: 0
