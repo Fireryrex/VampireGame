@@ -538,10 +538,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 313bdf8921c53e14ca3317d0e1a14ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 60
   knockback: 0
   DeathAnimation: {fileID: 0}
   timeToDeath: 0
+  RespawnPoint: {fileID: 0}
 --- !u!70 &2079649534
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
