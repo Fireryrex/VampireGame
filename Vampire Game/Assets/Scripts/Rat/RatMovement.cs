@@ -71,5 +71,10 @@ public class RatMovement : MonoBehaviour
         {
             collision.GetComponent<Health_Script>().dealDamage(damage);
         }
-    }       
+    }
+    
+    public void Attack()
+    {
+
+    }
 }
