@@ -8,7 +8,7 @@ public class Health_Script : MonoBehaviour
     public float knockback;
     public GameObject DeathAnimation;
     public float timeToDeath = 0;
-    public Transform RespawnPoint;
+    [SerializeField] Transform RespawnPoint;
     private float maxHealth;
     
     // Start is called before the first frame update
@@ -20,7 +20,7 @@ public class Health_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     //Decreases the characters health by damage
@@ -70,6 +70,7 @@ public class Health_Script : MonoBehaviour
 
     public void respawn()
     {
+        
         transform.position = RespawnPoint.position;
         health = maxHealth;
     }

@@ -6,6 +6,9 @@ public class RespawnPoint : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.GetComponent<Health_Script>().setRespawnPoint(transform);
+        if (collision.CompareTag("Player"))
+        {
+            collision.GetComponent<Health_Script>().setRespawnPoint(transform);
+        }
     }
 }
