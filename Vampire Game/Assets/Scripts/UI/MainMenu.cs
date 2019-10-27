@@ -26,6 +26,14 @@ public class MainMenu : MonoBehaviour
         Debug.Log("QUIT");
         Application.Quit();
     }
+    private void OnCollisionEnter2D(Collision2D other) {
+        Debug.Log("Entered the hollow");
+    }
+
+    private void OnParticleCollision(GameObject other) {
+        Debug.Log("Entered the sphere");
+        other.GetComponentInChildren<ParticleSystem>().Play();
+    }
 
 
 }
