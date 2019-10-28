@@ -1429,7 +1429,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 8c76b38037d02634b9a3f8ee3a270790, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 19a655c6f3621a540a81b9b53ccd2259, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1493,7 +1493,7 @@ MonoBehaviour:
   fallSpeedMultiplier: 4
   lowJumpMultiplier: 2.5
   minVelocityOfJump: 5
-  numOfJumps: 0
+  numOfJumps: 1
   numOfDashes: 1
   RigidBody2D: {fileID: 1070098860279735982}
   isGrounded: 0
