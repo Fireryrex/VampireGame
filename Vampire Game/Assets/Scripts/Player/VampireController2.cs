@@ -53,6 +53,8 @@ public class VampireController2 : MonoBehaviour
     bool airDash;
     float dashStartTime;
     Vector2 dashX;
+    GameObject attacks;
+
 
     public bool HasWeapon;
     public bool HasDoubleJump;
@@ -111,10 +113,18 @@ public class VampireController2 : MonoBehaviour
             EnterJumpState();
             return;
         }
-        else if(!grounded)
+        if(!grounded)
         {
             ExitDefaultState();
             EnterFallingState();
+            return;
+        }
+        if(Input.GetKeyDown(dashButton) &&
+             (Time.time-dashStartTime) > dashCooldown &&
+                 FloatComp( moveVec.x, 0 , .03f)!= 0)
+        {
+            ExitFallingState();
+            EnterDashingState();
             return;
         }
     }
@@ -196,13 +206,15 @@ public class VampireController2 : MonoBehaviour
             EnterDefaultState();
             return;
         }
-        if(currentJumps>0 && HasDoubleJump)
+        if(currentJumps>0 && HasDoubleJump && Input.GetKeyDown(KeyCode.Space))
         {
             ExitFallingState();
             EnterJumpState();
             return;
         }
-        if(airDash & Input.GetKeyDown(dashButton) & (Time.time - dashStartTime > dashCooldown))
+        if(airDash & Input.GetKey(dashButton) &&
+            (Time.time - dashStartTime > dashCooldown) &&
+            (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))    )
         {
             airDash = false;
             ExitFallingState();
@@ -258,19 +270,124 @@ public class VampireController2 : MonoBehaviour
 
     }
 
-    void EnterStandingAttackingState()
+    /*standing attack
+    //maybe i can have a child of the player
+    //called attacks, the state number corresponds to what gets activated.
+    each attack needs properties : damage,various times,a hitbox, what follows,a movement,interruptable...
+    */
+
+    //extra ideas : a window during which hitting the attack again skips the next attacks startup lag. 
+    int attacknum;
+    float attackStartTime;
+    Attack currentAttack;
+    KeyCode attackButton;
+    Transform attack;
+    //attack properties
+    //i can check the windows withiin Attack and implement cancellable as a method
+    float attackCancelStart;//this refers to the time before which it is cancellable by dashing or jumping
+    float attackDuration; //this refers to the overall duration of the attack,
+    float attackCancelEnd;//this refers to the time after which it is cancellable or next attack can be queued. 
+
+    float queueInputAfter;// tells the statemachine when it should start accepting inputs for the next attack. 
+
+    //these are mutually exclusive
+    bool canwalk; //can we still walk while attacking? 
+    bool airborne; //is this an aerial attack? If so it should cancel no matter what when you hit the ground. also determines which movement function we use.;
+    bool movesPlayer; //this attack moves the player on its own.
+
+    Vector2 attackDrag; //will reduce movement speed by dimension when used. 0 = completely cancel velocity in that dimension.
+
+    bool canceleable; // a method
+    AnimationCurve animationCurveX; //for velocity during attack.
+    AnimationCurve animationCurveY; //for velocity during attack.
+    AnimationCurve animationCurveT; //for velocity during attack.
+    Vector2 getVel; //reads animationCurves and outputs the moveVec.
+
+    int nextAttackInCombo; // -1 if final, is a function
+
+    //so take these properties from the attack game object,
+
+    void EnterAttackingState() 
     {
+        attack = attacks.transform.GetChild(attacknum);
+        attack.gameObject.SetActive(true);
+        state = "AttackingState";
+        currentAttack = attack.gameObject.GetComponent<Attack>();
+        attackStartTime = Time.time;
+        attacknum = -1;
+
+        moveVec *= currentAttack.attackDrag;
+        
+    }
+
+    void AttackingState()
+    {
+        if(currentAttack.movesPlayer) //this is my "in attack" movement 
+        {
+            moveVec = currentAttack.getVel();
+        }
+        else //player controller still has control
+        {
+            if(currentAttack.airborne)
+            {
+                ApplyGravity();
+                moveVec*=currentAttack.attackDrag;
+                CheckGrounded();
+                CheckRoofed();
+                if(roofed)//make sure we dont stick to the roof if we hit it. 
+                {
+                    while(moveVec.y > 0)
+                        ApplyGravity();
+                }
+                
+            }
+            else if(currentAttack.canwalk)
+            {
+
+            }
+        }
+
+        if(currentAttack.cancelable) // also force cancel for aerial attacks when you hit the ground.
+        {
+            if(Input.GetKeyDown(KeyCode.Space)) //try jumping and cancel
+            {
+                ExitAttackingState();
+                return;
+            }
+            if(Input.GetKeyDown(KeyCode.LeftShift)) // try dashing and cancel
+            {
+                ExitAttackingState();
+                return;
+            }
+        }
+
+        if(Time.time - attackStartTime > queueInputAfter && Input.GetKeyDown(attackButton)) //start queueing attacks at this point
+        {
+            attacknum = currentAttack.GetNextAttackInCombo();
+        }
+        if(Time.time- attackStartTime > attackDuration) // attack has ended, proceed to next state. 
+        {
+            if(attacknum == -1)
+            {
+                ExitAttackingState();
+                EnterFallingState();
+            }
+            else
+            {
+                attack.gameObject.SetActive(false);
+                EnterAttackingState();
+            }
+        }
+
+
 
     }
 
-    void StandingAttackingState()
+    void ExitAttackingState()
     {
-
-    }
-
-    void ExitStandingAttackingState()
-    {
-
+        Transform attack = attacks.transform.GetChild(attacknum);
+        attack.gameObject.SetActive(false);
+        attacknum = -1;
     }
 
     

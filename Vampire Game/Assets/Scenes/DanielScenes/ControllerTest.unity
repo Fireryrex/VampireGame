@@ -222,7 +222,7 @@ Transform:
   m_GameObject: {fileID: 531235137}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1.37, z: 0}
-  m_LocalScale: {x: 10, y: 1, z: 1}
+  m_LocalScale: {x: 15, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -274,9 +274,9 @@ MonoBehaviour:
   roof:
     serializedVersion: 2
     m_Bits: 2048
-  jumpFloatiness: 0.5
+  jumpFloatiness: 1
   airControl: 0.5
-  jumps: 1
+  jumps: 3
   jumpCooldown: 0.2
   fallSpeedCap: 50
   jumpHeight: 3
@@ -284,13 +284,13 @@ MonoBehaviour:
   roofed: 0
   dashButton: 304
   dashDistance: 5
-  dashTime: 0.5
+  dashTime: 0.3
   dashHurtboxBounds: {x: 0, y: 0}
   dashHurtboxOffset: {x: 0, y: 0}
-  dashCooldown: 1
+  dashCooldown: 0.4
   resetAirdashOnJump: 1
   HasWeapon: 0
-  HasDoubleJump: 0
+  HasDoubleJump: 1
   HasDash: 0
 --- !u!212 &1191848581
 SpriteRenderer:
