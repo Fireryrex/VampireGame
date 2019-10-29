@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 2769456252009186712}
   - component: {fileID: 818368652}
   - component: {fileID: 818368653}
+  - component: {fileID: 1850190592}
+  - component: {fileID: 1850190593}
   m_Layer: 0
   m_Name: Bat Body
   m_TagString: Untagged
@@ -72,8 +74,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 43cedfbac925ce942bc8dee963f77b1d, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: -4135570040411192366, guid: 7952b446a8af33016a659cba9c8c7304,
+    type: 3}
+  m_Color: {r: 0.6402739, g: 0, b: 0.6509434, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -139,6 +142,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2fe4eec10b195428ca92278cf1923e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1850190592
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2769456252009186704}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 48e33e500a2766f4684a3866c051aea9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1850190593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2769456252009186704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79cfd88a50677840a5d542c3b5b55bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ai_path: {fileID: 0}
 --- !u!1 &5313979685358344159
 GameObject:
   m_ObjectHideFlags: 0
