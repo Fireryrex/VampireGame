@@ -282,30 +282,12 @@ public class VampireController2 : MonoBehaviour
     Attack currentAttack;
     KeyCode attackButton;
     Transform attack;
+
+
+
     //attack properties
-    //i can check the windows withiin Attack and implement cancellable as a method
-    float attackCancelStart;//this refers to the time before which it is cancellable by dashing or jumping
-    float attackDuration; //this refers to the overall duration of the attack,
-    float attackCancelEnd;//this refers to the time after which it is cancellable or next attack can be queued. 
 
-    float queueInputAfter;// tells the statemachine when it should start accepting inputs for the next attack. 
 
-    //these are mutually exclusive
-    bool canwalk; //can we still walk while attacking? 
-    bool airborne; //is this an aerial attack? If so it should cancel no matter what when you hit the ground. also determines which movement function we use.;
-    bool movesPlayer; //this attack moves the player on its own.
-
-    Vector2 attackDrag; //will reduce movement speed by dimension when used. 0 = completely cancel velocity in that dimension.
-
-    bool canceleable; // a method
-    AnimationCurve animationCurveX; //for velocity during attack.
-    AnimationCurve animationCurveY; //for velocity during attack.
-    AnimationCurve animationCurveT; //for velocity during attack.
-    Vector2 getVel; //reads animationCurves and outputs the moveVec.
-
-    int nextAttackInCombo; // -1 if final, is a function
-
-    //so take these properties from the attack game object,
 
     void EnterAttackingState() 
     {
@@ -320,7 +302,7 @@ public class VampireController2 : MonoBehaviour
         
     }
 
-    void AttackingState()
+    void AttackingState() // attacking state is pretty messy cuz it has to be able to accomodate so many different types of attacks.
     {
         if(currentAttack.movesPlayer) //this is my "in attack" movement 
         {
@@ -328,7 +310,7 @@ public class VampireController2 : MonoBehaviour
         }
         else //player controller still has control
         {
-            if(currentAttack.airborne)
+            if(currentAttack.airborne) //if the attack is an aerial
             {
                 ApplyGravity();
                 moveVec*=currentAttack.attackDrag;
@@ -339,48 +321,65 @@ public class VampireController2 : MonoBehaviour
                     while(moveVec.y > 0)
                         ApplyGravity();
                 }
+                if(grounded) //quit the attack if we hit the ground
+                {
+                    ExitAttackingState();
+                    EnterDefaultState();
+                    return;
+                }
                 
             }
-            else if(currentAttack.canwalk)
+            else if(currentAttack.canwalk) //if the attacks not an aerial and it lets us walk, walk. 
             {
-
+                SetMoveDir();
+                CheckGrounded();
+                CheckRoofed();
+                ApplyGravity();
+                moveVec *= currentAttack.attackDrag;
             }
         }
 
-        if(currentAttack.cancelable) // also force cancel for aerial attacks when you hit the ground.
+        if(currentAttack.cancelable()) //is the attack cancellable this frame
         {
-            if(Input.GetKeyDown(KeyCode.Space)) //try jumping and cancel
+            if(Input.GetKeyDown(KeyCode.Space) )//try jumping to cancel
             {
-                ExitAttackingState();
-                return;
+                if (  jumpCooldown < (Time.time - lastJumpTime) && !roofed && grounded  )//groundjump
+                {
+                    ExitAttackingState();
+                    EnterJumpState();
+                    return;
+                }
+                else if( currentJumps>0 && HasDoubleJump&& !roofed )//airjump
+                {
+                    ExitAttackingState();
+                    EnterJumpState();
+                    return;
+                }
             }
-            if(Input.GetKeyDown(KeyCode.LeftShift)) // try dashing and cancel
+            if(Input.GetKeyDown(KeyCode.LeftShift)) // try dashing to cancel
             {
                 ExitAttackingState();
                 return;
             }
         }
 
-        if(Time.time - attackStartTime > queueInputAfter && Input.GetKeyDown(attackButton)) //start queueing attacks at this point
+        if(Time.time - attackStartTime > currentAttack.queueInputAfter && Input.GetKeyDown(attackButton)) //start queueing attacks at this point
         {
             attacknum = currentAttack.GetNextAttackInCombo();
         }
-        if(Time.time- attackStartTime > attackDuration) // attack has ended, proceed to next state. 
+        if(Time.time- attackStartTime > currentAttack.attackDuration) // attack has ended, proceed to next state. 
         {
-            if(attacknum == -1)
+            if(attacknum == -1) //done attacking (attacknum set to -1 in enter attacking state)
             {
                 ExitAttackingState();
                 EnterFallingState();
             }
-            else
+            else // attacknum was set to something, proceed to do that.
             {
                 attack.gameObject.SetActive(false);
                 EnterAttackingState();
             }
         }
-
-
-
     }
 
     void ExitAttackingState()
