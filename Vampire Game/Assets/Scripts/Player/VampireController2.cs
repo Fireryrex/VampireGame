@@ -41,12 +41,18 @@ public class VampireController2 : MonoBehaviour
 
     public bool roofed;
 
+    public KeyCode dashButton;
     [Range(.1f,100f)]
     public float dashDistance;
     [Range(.01f,60f)]
     public float dashTime;
-    public Vector2 dashHurtboxBounds;
-    public Vector2 dashHurtboxOffset;
+    public Vector2 dashHurtboxBounds; // if you want the player to have a different hitbox while dashing
+    public Vector2 dashHurtboxOffset; // not implemented rn
+    public float dashCooldown;
+    public bool resetAirdashOnJump;
+    bool airDash;
+    float dashStartTime;
+    Vector2 dashX;
 
     public bool HasWeapon;
     public bool HasDoubleJump;
@@ -60,6 +66,7 @@ public class VampireController2 : MonoBehaviour
         States["DefaultState"] = DefaultState;
         States["JumpState"]  = JumpState;
         States["FallingState"] = FallingState;
+        States["DashingState"] = DashingState;
         currentGravity = gravityScale;
         colliders = new Collider2D[8];
         currentJumps = jumps;
@@ -85,6 +92,7 @@ public class VampireController2 : MonoBehaviour
     {
         state= "DefaultState";
         currentJumps  = jumps;
+        airDash = true;
         DefaultState();
     }
 
@@ -101,11 +109,13 @@ public class VampireController2 : MonoBehaviour
         {
             ExitDefaultState();
             EnterJumpState();
+            return;
         }
         else if(!grounded)
         {
             ExitDefaultState();
             EnterFallingState();
+            return;
         }
     }
 
@@ -122,6 +132,9 @@ public class VampireController2 : MonoBehaviour
         state = "JumpState";
         lastJumpTime = Time.time;
         moveVec.y = Mathf.Sqrt(2f * gravityScale * jumpHeight * Time.fixedDeltaTime);
+        currentJumps --;
+        if(resetAirdashOnJump)
+            airDash = true;
         JumpState();
     }
 
@@ -130,20 +143,32 @@ public class VampireController2 : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.Space))
             stillHoldingSpace = false;
         SetGravity(stillHoldingSpace ? gravityScale*jumpFloatiness : gravityScale);
+
         if(Time.time - lastJumpTime>jumpCooldown)
             CheckGrounded();
+
         SetMoveDirAir();
         ApplyGravity();
         CheckRoofed();
+
         if(moveVec.y <= 0 || roofed)
         {
             ExitJumpState();
             EnterFallingState();
+            return;
         }
         if(grounded)
         {
             ExitJumpState();
             EnterDefaultState();
+            return;
+        }
+        if(airDash & Input.GetKeyDown(dashButton))
+        {
+            airDash = false;
+            ExitJumpState();
+            EnterDashingState();
+            return;
         }
         
     }
@@ -169,9 +194,21 @@ public class VampireController2 : MonoBehaviour
         {
             ExitFallingState();
             EnterDefaultState();
+            return;
         }
         if(currentJumps>0 && HasDoubleJump)
-
+        {
+            ExitFallingState();
+            EnterJumpState();
+            return;
+        }
+        if(airDash & Input.GetKeyDown(dashButton) & (Time.time - dashStartTime > dashCooldown))
+        {
+            airDash = false;
+            ExitFallingState();
+            EnterDashingState();
+            return;
+        }
 
     }
 
@@ -182,12 +219,23 @@ public class VampireController2 : MonoBehaviour
 
     void EnterDashingState()
     {
-
+        dashStartTime = Time.time;
+        state = "DashingState";
+        SetMoveDir();
+        dashX = moveVec.normalized; //get left or right
+        //change colliders
+        DashingState();
     }
 
     void DashingState()
     {
-
+        //dashing state can exit to an attack.
+        moveVec = dashX * dashDistance/dashTime*Time.fixedDeltaTime;
+        if(Time.time- dashStartTime > dashTime)
+        {
+            ExitDashingState();
+            EnterFallingState();
+        } 
     }
 
     void ExitDashingState()
