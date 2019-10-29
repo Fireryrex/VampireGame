@@ -29,7 +29,7 @@ public class Health_Script : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            Debug.Log("Am Dead");
+
             //Creates a game object that has an death animation
             //Object.Instantiate(DeathAnimation,transform);
             //destroy this game object
