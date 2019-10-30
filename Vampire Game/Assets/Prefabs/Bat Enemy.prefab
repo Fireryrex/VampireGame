@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -4135570040411192366, guid: 7952b446a8af33016a659cba9c8c7304,
     type: 3}
-  m_Color: {r: 0.6402739, g: 0, b: 0.6509434, a: 1}
+  m_Color: {r: 0.41543126, g: 0, b: 0.4245283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -100,7 +100,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 2, y: 1}
+  m_Size: {x: 2.0000005, y: 1.2870034}
   m_Direction: 1
 --- !u!114 &2769456252009186712
 MonoBehaviour:
@@ -173,7 +173,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79cfd88a50677840a5d542c3b5b55bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ai_path: {fileID: 0}
 --- !u!1 &5313979685358344159
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +303,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.3
 --- !u!114 &2103049757
 MonoBehaviour:
   m_ObjectHideFlags: 0
