@@ -53,7 +53,7 @@ public class VampireController2 : MonoBehaviour
     bool airDash;
     float dashStartTime;
     Vector2 dashX;
-    GameObject attacks;
+    public GameObject attacks;
 
 
     public bool HasWeapon;
@@ -69,6 +69,7 @@ public class VampireController2 : MonoBehaviour
         States["JumpState"]  = JumpState;
         States["FallingState"] = FallingState;
         States["DashingState"] = DashingState;
+        States["AttackingState"] = AttackingState;
         currentGravity = gravityScale;
         colliders = new Collider2D[8];
         currentJumps = jumps;
@@ -126,6 +127,12 @@ public class VampireController2 : MonoBehaviour
             ExitFallingState();
             EnterDashingState();
             return;
+        }
+        if(Input.GetKeyDown(attackButton))
+        {
+            ExitDefaultState();
+            attacknum = 0;
+            EnterAttackingState();
         }
     }
 
@@ -280,7 +287,7 @@ public class VampireController2 : MonoBehaviour
     int attacknum;
     float attackStartTime;
     Attack currentAttack;
-    KeyCode attackButton;
+    public KeyCode attackButton;
     Transform attack;
 
 
@@ -297,7 +304,6 @@ public class VampireController2 : MonoBehaviour
         currentAttack = attack.gameObject.GetComponent<Attack>();
         attackStartTime = Time.time;
         attacknum = -1;
-
         moveVec *= currentAttack.attackDrag;
         
     }
@@ -383,9 +389,9 @@ public class VampireController2 : MonoBehaviour
     }
 
     void ExitAttackingState()
-    {
-        Transform attack = attacks.transform.GetChild(attacknum);
-        attack.gameObject.SetActive(false);
+    {    
+        currentAttack.gameObject.SetActive(false);
+        
         attacknum = -1;
     }
 
