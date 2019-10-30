@@ -1,16 +1,19 @@
 fileFormatVersion: 2
-guid: 7952b446a8af33016a659cba9c8c7304
+guid: ea547282538813684a0c8758d2a9fe46
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4135570040411192366
-    second: Bat0000_0
+      213: -393502646745274103
+    second: Bat_Attack0001_0
   - first:
-      213: 2020358073048750084
-    second: Bat0000_1
+      213: 6424685174725431769
+    second: Bat_Attack0001_1
   - first:
-      213: 7164729667209353717
-    second: Bat0000_2
+      213: 6416119427388077175
+    second: Bat_Attack0001_2
+  - first:
+      213: -2846618956874777795
+    second: Bat_Attack0001_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -89,22 +92,11 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bat0000_0
+      name: Bat_Attack0001_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +110,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 048c855425ef06241b5b00523d115128
-      internalID: -4135570040411192366
+      spriteID: 9595c52914168ede59ffde4a277d4883
+      internalID: -393502646745274103
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bat0000_1
+      name: Bat_Attack0001_1
       rect:
         serializedVersion: 2
         x: 100
@@ -139,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39b043fb4aa4f5745a4f58f972c33c75
-      internalID: 2020358073048750084
+      spriteID: aa7d2684e855e26e98f04fd220275d33
+      internalID: 6424685174725431769
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bat0000_2
+      name: Bat_Attack0001_2
       rect:
         serializedVersion: 2
         x: 200
@@ -160,8 +152,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc14569d24749ae4ea564b8b5115302b
-      internalID: 7164729667209353717
+      spriteID: 55c245d64568249f2b657447a5f7a9ce
+      internalID: 6416119427388077175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bat_Attack0001_3
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 810d06026628dfdcdafa14380307e1cb
+      internalID: -2846618956874777795
       vertices: []
       indices: 
       edges: []
@@ -169,7 +182,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 0d42dac026645f2a3bcef6940a9cd2bd
+    spriteID: 4f3e6ecef7b37cff9b549fb6255d691d
     internalID: 0
     vertices: []
     indices: 
