@@ -307,7 +307,7 @@ public class VampireController2 : MonoBehaviour
         moveVec *= currentAttack.attackDrag;
         
     }
-
+    //maybe i should implement a "cooldown" instead of immediately setting attacknum to -1 or whatever when it exits - like let it go a little longer.
     void AttackingState() // attacking state is pretty messy cuz it has to be able to accomodate so many different types of attacks.
     {
         if(currentAttack.movesPlayer) //this is my "in attack" movement 

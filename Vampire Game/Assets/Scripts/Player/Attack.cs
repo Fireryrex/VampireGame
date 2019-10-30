@@ -27,9 +27,13 @@ public class Attack : MonoBehaviour
 
     public int[] nextAttackInCombo; // -1 if final, is a function
 
-    float startTime;
+    protected float startTime;
+    [SerializeField] protected float knockback;
+    [SerializeField] protected int damage;
+    [SerializeField] protected LayerMask damages;
 
-    public int GetNextAttackInCombo()
+
+    virtual public int GetNextAttackInCombo()
     {
         //default will just get the first.
         if(nextAttackInCombo.Length>0)
@@ -38,13 +42,13 @@ public class Attack : MonoBehaviour
     }
 
     
-    public Vector2 getVel()//reads animationCurves and outputs the moveVec. normalized to 1
+    virtual public Vector2 getVel()//reads animationCurves and outputs the moveVec. normalized to 1
     {
         return new Vector2(animationCurveX.Evaluate(animationCurveT.Evaluate( (Time.time-startTime) / attackDuration )) ,
          animationCurveY.Evaluate(animationCurveT.Evaluate( (Time.time-startTime) / attackDuration )   ));
     }
 
-    public bool cancelable() // a method
+    virtual public bool cancelable() // a method
     {
         float elapsedTime = Time.time - startTime;
         if( elapsedTime < attackCancelStart || elapsedTime > attackCancelEnd)
@@ -53,12 +57,19 @@ public class Attack : MonoBehaviour
             return false;
     }
 
-    public void OnEnable()
+    virtual public void OnEnable()
     {
         startTime= Time.time;
         //if theres an animation play it.
         //other than enabling the game object the controller doesnt do anything. it all has to be done here.
     }
 
+    public virtual void OnTriggerEnter2D (Collider2D collider)
+    {
+        if( (collider.gameObject.layer & damages) != 0)
+        {
+            collider.gameObject.GetComponent<Health_Script>().dealDamage(damage); // would like to be able to pass it knockback as well.
+        }
+    }
 
 }
