@@ -11,7 +11,7 @@ public class PauseMenu : MonoBehaviour
     public static bool inInventory = false;
 
     public GameObject pauseMenuUI;
-    public GameObject inventoruUI;
+    public GameObject inventoryUI;
 
 
     // Update is called once per frame
@@ -33,7 +33,14 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void Resume(){
+        Debug.Log("Resuming");
         pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        gameIsPaused = false;
+    }
+    public void Resumen(){
+        Debug.Log("Resuming");
+        GameObject.Find("PauseMenuHolder").SetActive(false);
         Time.timeScale = 1f;
         gameIsPaused = false;
     }
@@ -58,10 +65,19 @@ public class PauseMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void setInactive(){
-        Debug.Log("Found the Function");
-        pauseMenuUI.SetActive(false);
-        inInventory = true;
-        inventoruUI.SetActive(true);
+    public void setActivity(){
+        if(inInventory == false){
+            Debug.Log("Entered the if");
+            inInventory = true;
+            inventoryUI.SetActive(true);
+            pauseMenuUI.SetActive(false);
+        }
+        else{
+            inInventory = false;
+            Debug.Log("Entered the else");
+            inventoryUI.SetActive(false);
+            Pause();
+        }
+
     }
 }
