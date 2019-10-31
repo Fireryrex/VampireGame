@@ -53,8 +53,11 @@ public class VampireController2 : MonoBehaviour
     bool airDash;
     float dashStartTime;
     Vector2 dashX;
-    public GameObject attacks;
 
+    public GameObject attacks;
+    public float comboTimeout;
+    float lastAttackEndTime;
+    
 
     public bool HasWeapon;
     public bool HasDoubleJump;
@@ -131,7 +134,8 @@ public class VampireController2 : MonoBehaviour
         if(Input.GetKeyDown(attackButton))
         {
             ExitDefaultState();
-            attacknum = 0;
+           
+            attacknum =   (Time.time- Mathf.Max(lastAttackEndTime,attackStartTime) > comboTimeout || reserveAttackNum<0) ? 0 : reserveAttackNum ; //this is what attacks
             EnterAttackingState();
         }
     }
@@ -289,7 +293,8 @@ public class VampireController2 : MonoBehaviour
     Attack currentAttack;
     public KeyCode attackButton;
     Transform attack;
-
+    int reserveAttackNum; //used to allow late presses by a bit.
+    bool attackQueued = false;
 
 
     //attack properties
@@ -304,8 +309,8 @@ public class VampireController2 : MonoBehaviour
         currentAttack = attack.gameObject.GetComponent<Attack>();
         attackStartTime = Time.time;
         attacknum = -1;
-        moveVec *= currentAttack.attackDrag;
-        
+        attackQueued = false;
+        moveVec *= currentAttack.attackDrag;  
     }
     //maybe i should implement a "cooldown" instead of immediately setting attacknum to -1 or whatever when it exits - like let it go a little longer.
     void AttackingState() // attacking state is pretty messy cuz it has to be able to accomodate so many different types of attacks.
@@ -372,10 +377,11 @@ public class VampireController2 : MonoBehaviour
         if(Time.time - attackStartTime > currentAttack.queueInputAfter && Input.GetKeyDown(attackButton)) //start queueing attacks at this point
         {
             attacknum = currentAttack.GetNextAttackInCombo();
+            attackQueued = true;
         }
         if(Time.time- attackStartTime > currentAttack.attackDuration) // attack has ended, proceed to next state. 
         {
-            if(attacknum == -1) //done attacking (attacknum set to -1 in enter attacking state)
+            if(!attackQueued || attacknum ==-1) //done attacking (attacknum set to -1 in enter attacking state)
             {
                 ExitAttackingState();
                 EnterFallingState();
@@ -390,8 +396,9 @@ public class VampireController2 : MonoBehaviour
 
     void ExitAttackingState()
     {    
+        reserveAttackNum = currentAttack.GetNextAttackInCombo();
         currentAttack.gameObject.SetActive(false);
-        
+        lastAttackEndTime = Time.time;
         attacknum = -1;
     }
 

@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCancelStart: 0
-  attackDuration: 1
+  attackDuration: 0.1
   attackCancelEnd: 0
   queueInputAfter: 0
   canwalk: 0
@@ -430,7 +430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCancelStart: 0
-  attackDuration: 1
+  attackDuration: 0.2
   attackCancelEnd: 0
   queueInputAfter: 0
   canwalk: 0
@@ -572,6 +572,7 @@ MonoBehaviour:
   dashCooldown: 0.4
   resetAirdashOnJump: 1
   attacks: {fileID: 538203027}
+  comboTimeout: 1
   HasWeapon: 0
   HasDoubleJump: 1
   HasDash: 0
@@ -780,7 +781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCancelStart: 0
-  attackDuration: 1
+  attackDuration: 0.2
   attackCancelEnd: 0
   queueInputAfter: 0
   canwalk: 0
@@ -904,7 +905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCancelStart: 0
-  attackDuration: 1
+  attackDuration: 0.4
   attackCancelEnd: 0
   queueInputAfter: 0
   canwalk: 0
