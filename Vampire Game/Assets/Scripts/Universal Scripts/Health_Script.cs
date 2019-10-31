@@ -10,6 +10,7 @@ public class Health_Script : MonoBehaviour
     public float timeToDeath = 0;
     [SerializeField] Transform RespawnPoint;
     private float maxHealth;
+    public string type;
     
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,7 @@ public class Health_Script : MonoBehaviour
     //Decreases the characters health by damage
     public void dealDamage(int damage)
     {
+        particleDamageTrigger();
         health -= damage;
         if (health <= 0)
         {
@@ -73,5 +75,14 @@ public class Health_Script : MonoBehaviour
         
         transform.position = RespawnPoint.position;
         health = maxHealth;
+    }
+
+    private void particleDamageTrigger() {
+        if (gameObject.GetComponent<Health_Script>().type == "BreakableObject"){
+            gameObject.GetComponentInChildren<ParticleSystem>().Play();
+        }
+        else if (gameObject.GetComponent<Health_Script>().type == "Enemy"){
+            gameObject.GetComponentInChildren<ParticleSystem>().Play();
+        }
     }
 }
