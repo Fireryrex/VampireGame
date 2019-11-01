@@ -8,7 +8,7 @@ public class Bat_Target_Aquired : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AI_Setter = GetComponentInParent<Pathfinding.AIDestinationSetter>();
+        AI_Setter = GetComponentInChildren<Pathfinding.AIDestinationSetter>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -19,11 +19,8 @@ public class Bat_Target_Aquired : MonoBehaviour
         }
     }
 
-/*    private void OnTriggerExit2D(Collider2D collision)
+    public void Reset_Movement()
     {
-        if(collision.CompareTag("Player"))
-        {
-            AI_Setter.target = null;
-        }
-    }*/
+        AI_Setter.target = transform;
+    }
 }
