@@ -30,7 +30,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 30, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 3651175621661188960}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -126,10 +127,7 @@ MonoBehaviour:
     type: 3}
   timeToDeath: 0
   RespawnPoint: {fileID: 0}
-<<<<<<< HEAD
   type: BreakableObject
-=======
->>>>>>> 507641529af61ed635156925d46a74e4a382ecf3
 --- !u!50 &2436773818857574109
 Rigidbody2D:
   serializedVersion: 4
@@ -151,7 +149,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
-<<<<<<< HEAD
 --- !u!1 &4250068716238097582
 GameObject:
   m_ObjectHideFlags: 0
@@ -4962,5 +4959,3 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
-=======
->>>>>>> 507641529af61ed635156925d46a74e4a382ecf3
