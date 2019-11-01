@@ -18,7 +18,7 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
         //use whatever key to pause --> currently Escape
-        if (Input.GetKey(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             if (gameIsPaused)
             {
@@ -30,7 +30,7 @@ public class PauseMenu : MonoBehaviour
             }
 
         }
-        else if (Input.GetKey(KeyCode.I)){
+        else if (Input.GetKeyDown(KeyCode.I)){
             if(inInventory == false){
                 openInventory();
             }
