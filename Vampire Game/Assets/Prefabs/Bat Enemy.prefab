@@ -256,6 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79cfd88a50677840a5d542c3b5b55bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bat_Blood: {fileID: 7286589297371571378}
 --- !u!70 &5468480892084629173
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1333,14 +1334,32 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.22825623
-          value: 0.97297287
-          inSlope: 1
-          outSlope: 1
+          time: 0.27944016
+          value: 0.76250076
+          inSlope: -0.07555491
+          outSlope: -0.07555491
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
-          outWeight: 0.33333334
+          outWeight: 0.89368397
+        - serializedVersion: 3
+          time: 0.48031133
+          value: 0.7749996
+          inSlope: -0
+          outSlope: -0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 1
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 0.55
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
