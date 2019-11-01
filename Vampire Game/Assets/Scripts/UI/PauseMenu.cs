@@ -28,6 +28,10 @@ public class PauseMenu : MonoBehaviour
             {
                 Pause();
             }
+        }
+        else if (Input.GetKey(KeyCode.I)){
+            Debug.Log("We pressed I.");
+            Inventory();
 
         }
     }
@@ -35,12 +39,14 @@ public class PauseMenu : MonoBehaviour
     public void Resume(){
         Debug.Log("Resuming");
         pauseMenuUI.SetActive(false);
+        inventoryUI.SetActive(false);
         Time.timeScale = 1f;
         gameIsPaused = false;
     }
     public void Resumen(){
         Debug.Log("Resuming");
-        GameObject.Find("PauseMenuHolder").SetActive(false);
+        pauseMenuUI.SetActive(false);
+        inventoryUI.SetActive(false);
         Time.timeScale = 1f;
         gameIsPaused = false;
     }
@@ -64,20 +70,7 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("Quitting game...");
         Application.Quit();
     }
-
-    public void setActivity(){
-        if(inInventory == false){
-            Debug.Log("Entered the if");
-            inInventory = true;
-            inventoryUI.SetActive(true);
-            pauseMenuUI.SetActive(false);
-        }
-        else{
-            inInventory = false;
-            Debug.Log("Entered the else");
-            inventoryUI.SetActive(false);
-            Pause();
-        }
-
+    public void Inventory(){
+        inventoryUI.SetActive(true);
     }
 }
