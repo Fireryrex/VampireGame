@@ -95,6 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 4
   AttackName: Enemy
+  Cooldown: 0.5
 --- !u!1 &1198042715
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,6 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 4
   AttackName: Enemy
+  Cooldown: 0.5
 --- !u!1 &1378059796
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,6 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 4
   AttackName: Enemy
+  Cooldown: 0.5
 --- !u!1 &1514557129
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,6 +509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 4
   AttackName: Enemy
+  Cooldown: 0.5
 --- !u!1 &1854863506
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,6 +741,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 4
   AttackName: Enemy
+  Cooldown: 0.5
 --- !u!1 &1070098858972411508
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,6 +976,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   AttackName: Enemy
+  Cooldown: 0.5
 --- !u!1 &1070098859181646569
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,6 +1115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 4
   AttackName: Enemy
+  Cooldown: 0.5
 --- !u!1 &1070098860002734651
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,6 +1325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 3
   AttackName: Enemy
+  Cooldown: 0.5
 --- !u!1 &1070098860224103432
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,6 +1538,7 @@ MonoBehaviour:
   DeathAnimation: {fileID: 0}
   timeToDeath: 0
   RespawnPoint: {fileID: 0}
+  type: 
 --- !u!70 &2100500656
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1537,7 +1546,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1070098860279735981}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -1738,3 +1747,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   AttackName: Enemy
+  Cooldown: 0.5
