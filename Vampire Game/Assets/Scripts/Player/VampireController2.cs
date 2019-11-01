@@ -134,9 +134,19 @@ public class VampireController2 : MonoBehaviour
         if(Input.GetKeyDown(attackButton))
         {
             ExitDefaultState();
-           
-            attacknum =   (Time.time- Mathf.Max(lastAttackEndTime,attackStartTime) > comboTimeout || reserveAttackNum<0) ? 0 : reserveAttackNum ; //this is what attacks
+            //maybe instead of having 1 previous reserve attack, i should handle stuff on a combo by combo basis. 
+            //like an array of reserve attacks by combo and times.
+            //well i guess 1 combo shouldnt be intermixable with another... so maybe just having 1 is fine... but maybe i definitely should store it as a 
+            //"combo" object instead of just an int. 
+            if(Input.GetKey(KeyCode.W))
+                {
+                attacknum = 6;
+                grounded = false;
+                }
+            else
+                attacknum =   (Time.time- Mathf.Max(lastAttackEndTime,attackStartTime) > comboTimeout || reserveAttackNum<0) ? 0 : reserveAttackNum ; //this is what attacks
             EnterAttackingState();
+            return;
         }
     }
 
@@ -184,11 +194,23 @@ public class VampireController2 : MonoBehaviour
             EnterDefaultState();
             return;
         }
-        if(airDash & Input.GetKeyDown(dashButton))
+        if(airDash & Input.GetKey(dashButton) &&
+            (Time.time - dashStartTime > dashCooldown) &&
+            (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))    )
         {
             airDash = false;
             ExitJumpState();
             EnterDashingState();
+            return;
+        }
+        if(Input.GetKeyDown(attackButton))
+        {
+            if(Input.GetKey(KeyCode.S))
+                attacknum = 4 ; //this is what attacks. combos dont carry over in air i guess. or its a single 
+            else
+                attacknum = 5;
+            EnterAttackingState();
+
             return;
         }
         
@@ -232,6 +254,15 @@ public class VampireController2 : MonoBehaviour
             EnterDashingState();
             return;
         }
+        if(Input.GetKeyDown(attackButton))
+        {
+            if(Input.GetKey(KeyCode.S))
+                attacknum = 4 ; //this is what attacks. combos dont carry over in air i guess. or its a single 
+            else
+                attacknum = 5;
+            EnterAttackingState();
+            return;
+        }
 
     }
 
@@ -259,6 +290,14 @@ public class VampireController2 : MonoBehaviour
             ExitDashingState();
             EnterFallingState();
         } 
+        if(Input.GetKeyDown(attackButton))
+        {
+            moveVec = dashX* dashDistance*(1-(Time.time-dashStartTime)/dashTime);
+            FixedUpdate();
+            ExitDashingState();
+            attacknum = 0;
+            EnterAttackingState();
+        }
     }
 
     void ExitDashingState()
@@ -319,36 +358,35 @@ public class VampireController2 : MonoBehaviour
         {
             moveVec = currentAttack.getVel();
         }
-        else //player controller still has control
+        //player controller still has control
+        if(currentAttack.airborne) //if the attack is an aerial
         {
-            if(currentAttack.airborne) //if the attack is an aerial
+            ApplyGravity();
+            moveVec*=currentAttack.attackDrag;
+            CheckGrounded();
+            CheckRoofed();
+            if(roofed)//make sure we dont stick to the roof if we hit it. 
             {
-                ApplyGravity();
-                moveVec*=currentAttack.attackDrag;
-                CheckGrounded();
-                CheckRoofed();
-                if(roofed)//make sure we dont stick to the roof if we hit it. 
-                {
-                    while(moveVec.y > 0)
-                        ApplyGravity();
-                }
-                if(grounded) //quit the attack if we hit the ground
-                {
-                    ExitAttackingState();
-                    EnterDefaultState();
-                    return;
-                }
-                
+                while(moveVec.y > 0)
+                    ApplyGravity();
             }
-            else if(currentAttack.canwalk) //if the attacks not an aerial and it lets us walk, walk. 
+            if(grounded) //quit the attack if we hit the ground
             {
-                SetMoveDir();
-                CheckGrounded();
-                CheckRoofed();
-                ApplyGravity();
-                moveVec *= currentAttack.attackDrag;
+                ExitAttackingState();
+                EnterDefaultState();
+                return;
             }
+            
         }
+        if(currentAttack.canwalk) //if the attacks not an aerial and it lets us walk, walk. 
+        {
+            SetMoveDir();
+            CheckGrounded();
+            CheckRoofed();
+            ApplyGravity();
+            moveVec *= currentAttack.attackDrag;
+        }
+        
 
         if(currentAttack.cancelable()) //is the attack cancellable this frame
         {
