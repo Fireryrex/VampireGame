@@ -2360,7 +2360,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 40
+  field of view: 90
   orthographic: 1
   orthographic size: 10
   m_Depth: -1
@@ -2386,7 +2386,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 397579406}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 19.55, y: -13.21, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2892,7 +2892,7 @@ PrefabInstance:
     - target: {fileID: 9211546547284372123, guid: 2727bf7005b9c7d42bfd67f490ab6591,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: setActivity
+      value: Resumen
       objectReference: {fileID: 0}
     - target: {fileID: 9211546547284372123, guid: 2727bf7005b9c7d42bfd67f490ab6591,
         type: 3}
@@ -41874,11 +41874,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8874433681815104526, guid: 236fd8a1167c43446b166ecee33d6076,
-        type: 3}
-      propertyPath: m_Name
-      value: GameManager
-      objectReference: {fileID: 0}
     - target: {fileID: 8874433681815104522, guid: 236fd8a1167c43446b166ecee33d6076,
         type: 3}
       propertyPath: pauseMenuUI
@@ -41889,6 +41884,11 @@ PrefabInstance:
       propertyPath: inventoryUI
       value: 
       objectReference: {fileID: 913963274}
+    - target: {fileID: 8874433681815104526, guid: 236fd8a1167c43446b166ecee33d6076,
+        type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
     - target: {fileID: 8874433681815104523, guid: 236fd8a1167c43446b166ecee33d6076,
         type: 3}
       propertyPath: m_LocalPosition.x
