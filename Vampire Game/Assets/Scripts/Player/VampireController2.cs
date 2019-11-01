@@ -57,6 +57,13 @@ public class VampireController2 : MonoBehaviour
     public GameObject attacks;
     public float comboTimeout;
     float lastAttackEndTime;
+
+
+    //public float invincibilityTime;
+    public float knockbackDistance;
+    public float damagedDuration;
+    bool damaged;//used to exit states when the player takes damage.
+    float damagedTime;
     
 
     public bool HasWeapon;
@@ -94,6 +101,32 @@ public class VampireController2 : MonoBehaviour
         States[state]();
     }
 
+    void TakeDamage()
+    {
+        damaged = true;
+        damagedTime = Time.deltaTime;
+    }
+
+    void EnterDamagedState()
+    {
+        state="DamagedState";
+    }
+
+    void DamagedState()
+    {
+        moveVec = knockbackDistance/damagedDuration*Time.fixedDeltaTime*Vector2.left * transform.localScale.x; //if facing right using transform, go left.
+        if(Time.time-damagedTime > damagedDuration)
+        {
+            ExitDamagedState();
+            EnterFallingState();//may happen in the air so go to falling state instead of default.
+        }
+    }
+
+    void ExitDamagedState()
+    {
+        damaged = false;
+    }
+
     void EnterDefaultState()
     {
         state= "DefaultState";
@@ -110,7 +143,12 @@ public class VampireController2 : MonoBehaviour
         CheckRoofed();
         ApplyGravity();
 
-
+        if(damaged)
+        {
+            ExitDefaultState();
+            EnterDamagedState();
+            return;
+        }
         if(Input.GetKeyDown(KeyCode.Space) & jumpCooldown < (Time.time - lastJumpTime) & !roofed & grounded)
         {
             ExitDefaultState();
@@ -182,6 +220,12 @@ public class VampireController2 : MonoBehaviour
         ApplyGravity();
         CheckRoofed();
 
+        if(damaged)
+        {
+            ExitJumpState();
+            EnterDamagedState();
+            return;
+        }
         if(moveVec.y <= 0 || roofed)
         {
             ExitJumpState();
@@ -239,6 +283,12 @@ public class VampireController2 : MonoBehaviour
             EnterDefaultState();
             return;
         }
+        if(damaged)
+        {
+            ExitFallingState();
+            EnterDamagedState();
+            return;
+        }
         if(currentJumps>0 && HasDoubleJump && Input.GetKeyDown(KeyCode.Space))
         {
             ExitFallingState();
@@ -290,6 +340,12 @@ public class VampireController2 : MonoBehaviour
             ExitDashingState();
             EnterFallingState();
         } 
+        if(damaged)
+        {
+            ExitDefaultState();
+            EnterDamagedState();
+            return;
+        }
         if(Input.GetKeyDown(attackButton))
         {
             moveVec = dashX* dashDistance*(1-(Time.time-dashStartTime)/dashTime);
@@ -305,20 +361,7 @@ public class VampireController2 : MonoBehaviour
         
     }
 
-    void EnterRecoilState()
-    {
 
-    }
-
-    void RecoilState()
-    {
-
-    }
-
-    void ExitRecoilState()
-    {
-
-    }
 
     /*standing attack
     //maybe i can have a child of the player
@@ -429,6 +472,13 @@ public class VampireController2 : MonoBehaviour
                 attack.gameObject.SetActive(false);
                 EnterAttackingState();
             }
+        }
+        if(damaged)
+        {
+            ExitAttackingState();
+            reserveAttackNum = -1;
+            EnterDamagedState();
+            return;
         }
     }
 
