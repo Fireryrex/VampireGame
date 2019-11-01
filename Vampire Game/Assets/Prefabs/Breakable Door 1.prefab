@@ -4824,7 +4824,7 @@ GameObject:
   - component: {fileID: 6107749527966297853}
   - component: {fileID: 6107749527966297852}
   m_Layer: 0
-  m_Name: Breakable Door
+  m_Name: Breakable Door 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

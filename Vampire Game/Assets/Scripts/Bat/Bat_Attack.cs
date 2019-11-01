@@ -23,7 +23,6 @@ public class Bat_Attack : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             bat_attack.SetTrigger("See_Player");
-            Debug.Log("Penis");
         }
     }
 }
