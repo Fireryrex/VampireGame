@@ -72,6 +72,10 @@ public class VampireController2 : MonoBehaviour
     public bool HasDoubleJump;
     public bool HasDash;
 
+    //Attack indexes
+    [SerializeField] int groundAttackIndex;
+    [SerializeField] int airAttackIndex;
+
     void Awake()
     {
         States = new Dictionary<string,Action>();
@@ -191,7 +195,7 @@ public class VampireController2 : MonoBehaviour
                 grounded = false;
                 }
             else
-                attacknum =   (Time.time- Mathf.Max(lastAttackEndTime,attackStartTime) > comboTimeout || reserveAttackNum<0) ? 0 : reserveAttackNum ; //this is what attacks
+                attacknum =   (Time.time- Mathf.Max(lastAttackEndTime,attackStartTime) > comboTimeout || reserveAttackNum<0) ? groundAttackIndex : reserveAttackNum ; //this is what attacks
             EnterAttackingState();
             return;
         }
@@ -261,7 +265,7 @@ public class VampireController2 : MonoBehaviour
             if(Input.GetKey(KeyCode.S))
                 attacknum = 4 ; //this is what attacks. combos dont carry over in air i guess. or its a single 
             else
-                attacknum = 5;
+                attacknum = airAttackIndex;
             EnterAttackingState();
 
             return;
@@ -618,3 +622,10 @@ public class VampireController2 : MonoBehaviour
         Gizmos.DrawWireCube(transform.position + Vector3.up*RoofCheckOffset , RoofCheckBounds);
     }
 }
+
+/*
+ * Make character not push things through walls
+ * match jump of other prefab
+ * create a shorthop and longhop based on jump button hold time
+ * essentially make this char match with other one
+ */
