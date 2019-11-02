@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Health_Script : MonoBehaviour
 {
-    public float health;
+    public int health;
     public float knockback;
     public GameObject DeathAnimation;
     public float timeToDeath = 0;
     [SerializeField] Transform RespawnPoint;
     private float maxHealth;
     public string type;
+
     
     // Start is called before the first frame update
     void Start()
@@ -50,7 +51,7 @@ public class Health_Script : MonoBehaviour
             
             
         }
-        Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
+        //Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
         
         //rb.AddForce(new Vector3(knockback, knockback, 0));
     }
@@ -62,7 +63,7 @@ public class Health_Script : MonoBehaviour
 
     public float getHealthPercent()
     {
-        return health / maxHealth;
+        return (float)(health) / maxHealth;
     }
 
     public void setRespawnPoint(Transform rp)
