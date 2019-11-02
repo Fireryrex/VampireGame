@@ -9,7 +9,7 @@ public class Health_Script : MonoBehaviour
     public GameObject DeathAnimation;
     public float timeToDeath = 0;
     [SerializeField] Transform RespawnPoint;
-    private float maxHealth;
+    private int maxHealth;
     public string type;
 
     
