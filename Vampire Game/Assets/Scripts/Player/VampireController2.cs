@@ -64,6 +64,8 @@ public class VampireController2 : MonoBehaviour
     public float damagedDuration;
     bool damaged;//used to exit states when the player takes damage.
     float damagedTime;
+
+    bool facingRight;
     
 
     public bool HasWeapon;
@@ -75,6 +77,7 @@ public class VampireController2 : MonoBehaviour
         States = new Dictionary<string,Action>();
         rb = GetComponent<Rigidbody2D>();
         state="DefaultState";
+
         States["DefaultState"] = DefaultState;
         States["JumpState"]  = JumpState;
         States["FallingState"] = FallingState;
@@ -83,6 +86,7 @@ public class VampireController2 : MonoBehaviour
         currentGravity = gravityScale;
         colliders = new Collider2D[8];
         currentJumps = jumps;
+        facingRight = transform.localScale.x>0;
     }
 
     void Start()
@@ -93,12 +97,17 @@ public class VampireController2 : MonoBehaviour
     void FixedUpdate()//set max allowable timestep to 1/60, same as normal fixed timestep.
     {
         if(moveVec!=Vector2.zero)
+        {
             rb.MovePosition(rb.position + moveVec);
+            if(FloatComp(moveVec.x,0,.001f) != 0f)
+                facingRight = moveVec.x>0;
+        }
     }
 
     void Update()
     {
         States[state]();
+        transform.localScale = new Vector3(facingRight? 1 : -1 , 1,1);
     }
 
     void TakeDamage()
@@ -400,6 +409,7 @@ public class VampireController2 : MonoBehaviour
         if(currentAttack.movesPlayer) //this is my "in attack" movement 
         {
             moveVec = currentAttack.getVel();
+            moveVec*=transform.localScale;
         }
         //player controller still has control
         if(currentAttack.airborne) //if the attack is an aerial
