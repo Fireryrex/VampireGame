@@ -121,8 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 313bdf8921c53e14ca3317d0e1a14ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 12
-  knockback: 0
+  health: 15
+  knockback: 15
   DeathAnimation: {fileID: 1569603400387437590, guid: 03d247714264ba6458eaecb50ecbaceb,
     type: 3}
   timeToDeath: 0
