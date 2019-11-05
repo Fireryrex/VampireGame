@@ -50,7 +50,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void Resumen(){
         Debug.Log("Resuming");
-        pauseMenuUI.SetActive(false);
+        GameObject.Find("PauseMenuHolder").SetActive(false);
         Time.timeScale = 1f;
         gameIsPaused = false;
         inInventory = false;
