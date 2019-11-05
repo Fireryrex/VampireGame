@@ -32,25 +32,25 @@ public class Deal_Damage : MonoBehaviour
             collision.GetComponent<Health_Script>().dealDamage(damage);
             if(transform.position.x < collision.transform.position.x)
             {
-                if(transform.position.y < collision.transform.position.y)
-                {
+                // if(transform.position.y < collision.transform.position.y)
+                // {
                     collision.GetComponent<Rigidbody2D>().AddForce(new Vector3(num, num, 0));
-                }
-                else
-                {
-                    collision.GetComponent<Rigidbody2D>().AddForce(new Vector3(num, num, 0));
-                }
+                // }
+                // else
+                // {
+                //     collision.GetComponent<Rigidbody2D>().AddForce(new Vector3(num, num, 0));
+                // }
             }
             else
             {
-                if (transform.position.y < collision.transform.position.y)
-                {
+                // if (transform.position.y < collision.transform.position.y)
+                // {
                     collision.GetComponent<Rigidbody2D>().AddForce(new Vector3(-num, num, 0));
-                }
-                else
-                {
-                    collision.GetComponent<Rigidbody2D>().AddForce(new Vector3(-num, num, 0));
-                }
+                // }
+                // else
+                // {
+                //     collision.GetComponent<Rigidbody2D>().AddForce(new Vector3(-num, num, 0));
+                // }
             }
             
         }
