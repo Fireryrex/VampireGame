@@ -504,7 +504,22 @@ public class VampireController2 : MonoBehaviour
         attacknum = -1;
     }
 
-    
+
+    public void access_Attack_Activation()
+    {
+        currentAttack.activate_Attack_Hitbox();
+    }
+
+    public void access_Attack_Deactivation()
+    {
+        currentAttack.deactivate_Attack_Hitbox();
+    }
+
+    public void access_End_Attack()
+    {
+        currentAttack.end_Attack();
+    }
+
 
     //need grounded attack, air attack, maybe a family of attacking states.
     //need double jump or N jump

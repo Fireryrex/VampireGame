@@ -115,7 +115,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 300
+        width: 500
         height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -124,7 +124,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 244ecb6becb475e4981f22ed08aae875
+      spriteID: 9a57b4170c4ad694cbe36bd0ec215038
       internalID: -7186429430430602472
       vertices: []
       indices: 
@@ -134,9 +134,9 @@ TextureImporter:
       name: PlayerAttack1_1
       rect:
         serializedVersion: 2
-        x: 300
+        x: 500
         y: 0
-        width: 300
+        width: 500
         height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -145,7 +145,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 605d0fce1e99d40418d6cc89779d3f79
+      spriteID: 1adcd4ff7d746494490fa25f82714719
       internalID: -4493925369385481833
       vertices: []
       indices: 
@@ -155,9 +155,9 @@ TextureImporter:
       name: PlayerAttack1_2
       rect:
         serializedVersion: 2
-        x: 600
+        x: 1000
         y: 0
-        width: 300
+        width: 500
         height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -166,7 +166,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc442730e5408f046a0a8fcb5d244cc2
+      spriteID: d689633533e52dd4bb88623ddd18ccd3
       internalID: 8689527044942736081
       vertices: []
       indices: 
@@ -176,9 +176,9 @@ TextureImporter:
       name: PlayerAttack1_3
       rect:
         serializedVersion: 2
-        x: 900
+        x: 1500
         y: 0
-        width: 300
+        width: 500
         height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -187,7 +187,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63cc16196e9acb146873f07a340daa21
+      spriteID: 7e033cc9793231d479c669842c3eabf2
       internalID: 644524872336181850
       vertices: []
       indices: 
@@ -197,9 +197,9 @@ TextureImporter:
       name: PlayerAttack1_4
       rect:
         serializedVersion: 2
-        x: 1200
+        x: 2000
         y: 0
-        width: 300
+        width: 500
         height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -208,7 +208,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4a52eb31f31b0d4c826e272f2111edc
+      spriteID: 0cc9f191d7d01934288e70d6f8e36300
       internalID: -1111402267490986416
       vertices: []
       indices: 

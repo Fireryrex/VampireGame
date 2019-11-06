@@ -30,7 +30,12 @@ public class Attack : MonoBehaviour
     protected float startTime;
     [SerializeField] protected float knockback;
     [SerializeField] protected int damage;
-    [SerializeField] protected LayerMask damages;
+    [SerializeField] protected string damages;
+
+    //Animation for attacks
+    [SerializeField] Animator player_Animation;
+    [SerializeField] string animation_Trigger_Name;
+    private PolygonCollider2D attack_Hitbox;
 
 
     virtual public int GetNextAttackInCombo()
@@ -62,14 +67,34 @@ public class Attack : MonoBehaviour
         startTime= Time.time;
         //if theres an animation play it.
         //other than enabling the game object the controller doesnt do anything. it all has to be done here.
+        player_Animation.SetTrigger(animation_Trigger_Name);
+        attack_Hitbox = GetComponent<PolygonCollider2D>();
+        attack_Hitbox.enabled = false;
     }
 
     public virtual void OnTriggerEnter2D (Collider2D collider)
     {
-        if( (collider.gameObject.layer & damages) != 0)
+        if( (collider.gameObject.layer != 0 && collider.CompareTag(damages)))
         {
             collider.gameObject.GetComponent<Health_Script>().dealDamage(damage); // would like to be able to pass it knockback as well.
         }
     }
+
+    virtual public void activate_Attack_Hitbox()
+    {
+        attack_Hitbox.enabled = true;
+    }
+
+    virtual public void deactivate_Attack_Hitbox()
+    {
+        attack_Hitbox.enabled = false;        
+    }
+
+    virtual public void end_Attack()
+    {
+        player_Animation.ResetTrigger(animation_Trigger_Name);
+    }
+
+
 
 }

@@ -1,14 +1,8 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Vampire Game/Assets/Animations/PlayerAnimationController.controller.meta
-guid: e0d4965eab8ec524cadbed9a24f37263
-NativeFormatImporter:
-=======
-guid: 9dff34d739c4f34459f2d1054e3f0c69
+guid: 821297c4b3b78554b9c67e4e13047237
 folderAsset: yes
 DefaultImporter:
->>>>>>> bc99fafb119410d9c308fa94a2aa0a2025e61807:Vampire Game/Assets/Prefabs/UIPrefabs.meta
   externalObjects: {}
-  mainObjectFileID: 9100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

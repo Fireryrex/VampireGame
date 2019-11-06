@@ -1,14 +1,8 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Vampire Game/Assets/Animations/PlayerAttack1.anim.meta
-guid: 4ea3ffc4b4954284fa3cc3bff8a9fbfa
-NativeFormatImporter:
-=======
-guid: 5eaf8110ae8fbbe43b95d22b9c9c6a82
+guid: b7be517f8da1cce448b27a2c30a456a3
 folderAsset: yes
 DefaultImporter:
->>>>>>> bc99fafb119410d9c308fa94a2aa0a2025e61807:Vampire Game/Assets/Sprites/2D Hearts by gpway.meta
   externalObjects: {}
-  mainObjectFileID: 7400000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
