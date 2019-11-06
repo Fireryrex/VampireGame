@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
-    public Dialogue[] conversation;
+    public bool hasBeenTriggered = false;
+    public Dialogue[] conversation; 
 
     public string songToStopOnStart; //name of song to stop on dialogue start
     public string songToTriggerOnStart; //name of song to trigger on dialogue start
@@ -19,7 +20,17 @@ public class DialogueTrigger : MonoBehaviour
 
     public void TriggerDialogue()
     {
-        dm.updateMusic(songToStopOnStart, songToTriggerOnStart, songToTriggerAfter);
+        dm.dialogueSystem.SetActive(true);
+        //dm.updateMusic(songToStopOnStart, songToTriggerOnStart, songToTriggerAfter);
         dm.StartDialogue(conversation);
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+
+        if (hasBeenTriggered == false){
+            Time.timeScale = 0f;
+            hasBeenTriggered = true;
+            TriggerDialogue();
+            
+        }
     }
 }

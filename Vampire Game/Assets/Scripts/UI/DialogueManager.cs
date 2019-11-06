@@ -8,6 +8,7 @@ public class DialogueManager : MonoBehaviour
 {
     public TMP_Text nameText;
     public TMP_Text dialogueText;
+    public GameObject dialogueSystem;
 
     private string songToStopOnStart; //name of song to stop on dialogue start
     private string songToTriggerOnStart; //name of song to trigger on dialogue start
@@ -47,14 +48,14 @@ public class DialogueManager : MonoBehaviour
         dialogueActive = true;
         //animator.SetBool("isOpen", true);
 
-        if (songToStopOnStart != "NONE")
+        /*if (songToStopOnStart != "NONE")
         {
             FindObjectOfType<AudioManager>().Stop(songToStopOnStart);
         }
         if (songToTriggerOnStart != "NONE")
         {
             FindObjectOfType<AudioManager>().Play(songToTriggerOnStart);
-        }
+        }*/
 
         dialogue_q.Clear();
 
@@ -94,6 +95,8 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueActive = false;
         //animator.SetBool("isOpen", false);
+        Time.timeScale = 1f;
+        dialogueSystem.SetActive(false);
 
         if (songToTriggerOnStart != "NONE")
         {

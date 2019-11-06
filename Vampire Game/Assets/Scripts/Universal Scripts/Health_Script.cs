@@ -6,28 +6,37 @@ public class Health_Script : MonoBehaviour
 {
     public int health;
     public float knockback;
+    public float coolDown;
     public GameObject DeathAnimation;
     public float timeToDeath = 0;
     [SerializeField] Transform RespawnPoint;
-    private int maxHealth;
+    public int maxHealth;
     public string type;
 
     
     // Start is called before the first frame update
     void Start()
     {
-        maxHealth = health;
+        health = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (coolDown > 0){
+            coolDown -= Time.deltaTime;
+            Debug.Log(coolDown);
+        }
+        else if (coolDown < 0){
+            coolDown = 0;
+        }
     }
 
     //Decreases the characters health by damage
     public void dealDamage(int damage)
     {
+        if(coolDown == 0){
+            coolDown = 3;
         particleDamageTrigger();
         health -= damage;
         if (health <= 0)
@@ -54,6 +63,7 @@ public class Health_Script : MonoBehaviour
         //Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
         
         //rb.AddForce(new Vector3(knockback, knockback, 0));
+        }
     }
 
     public void heal(int healAmt)
