@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Idle
+  m_Name: PlayerAttack1
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,13 +20,19 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 263499457514307589, guid: 7ef951c21621bec4bb50c2637c555a59,
+      value: {fileID: -4493925369385481833, guid: 6585e41b4be78224193544ce7124b7d8,
         type: 3}
-    - time: 0.16666667
-      value: {fileID: 3854500020057015579, guid: 7ef951c21621bec4bb50c2637c555a59,
+    - time: 0.1
+      value: {fileID: 8689527044942736081, guid: 6585e41b4be78224193544ce7124b7d8,
+        type: 3}
+    - time: 0.2
+      value: {fileID: 644524872336181850, guid: 6585e41b4be78224193544ce7124b7d8,
         type: 3}
     - time: 0.41666666
-      value: {fileID: 3854500020057015579, guid: 7ef951c21621bec4bb50c2637c555a59,
+      value: {fileID: -1111402267490986416, guid: 6585e41b4be78224193544ce7124b7d8,
+        type: 3}
+    - time: 0.5
+      value: {fileID: -1111402267490986416, guid: 6585e41b4be78224193544ce7124b7d8,
         type: 3}
     attribute: m_Sprite
     path: 
@@ -47,15 +53,17 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 263499457514307589, guid: 7ef951c21621bec4bb50c2637c555a59, type: 3}
-    - {fileID: 3854500020057015579, guid: 7ef951c21621bec4bb50c2637c555a59, type: 3}
-    - {fileID: 3854500020057015579, guid: 7ef951c21621bec4bb50c2637c555a59, type: 3}
+    - {fileID: -4493925369385481833, guid: 6585e41b4be78224193544ce7124b7d8, type: 3}
+    - {fileID: 8689527044942736081, guid: 6585e41b4be78224193544ce7124b7d8, type: 3}
+    - {fileID: 644524872336181850, guid: 6585e41b4be78224193544ce7124b7d8, type: 3}
+    - {fileID: -1111402267490986416, guid: 6585e41b4be78224193544ce7124b7d8, type: 3}
+    - {fileID: -1111402267490986416, guid: 6585e41b4be78224193544ce7124b7d8, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.43333334
+    m_StopTime: 0.51666665
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -75,8 +83,8 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0
-    functionName: TestFunction
+  - time: 0.2
+    functionName: 
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Idle
+  m_Name: PlayerIdle
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,13 +20,7 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 263499457514307589, guid: 7ef951c21621bec4bb50c2637c555a59,
-        type: 3}
-    - time: 0.16666667
-      value: {fileID: 3854500020057015579, guid: 7ef951c21621bec4bb50c2637c555a59,
-        type: 3}
-    - time: 0.41666666
-      value: {fileID: 3854500020057015579, guid: 7ef951c21621bec4bb50c2637c555a59,
+      value: {fileID: -7186429430430602472, guid: 6585e41b4be78224193544ce7124b7d8,
         type: 3}
     attribute: m_Sprite
     path: 
@@ -47,20 +41,18 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 263499457514307589, guid: 7ef951c21621bec4bb50c2637c555a59, type: 3}
-    - {fileID: 3854500020057015579, guid: 7ef951c21621bec4bb50c2637c555a59, type: 3}
-    - {fileID: 3854500020057015579, guid: 7ef951c21621bec4bb50c2637c555a59, type: 3}
+    - {fileID: -7186429430430602472, guid: 6585e41b4be78224193544ce7124b7d8, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.43333334
+    m_StopTime: 0.016666668
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 0
+    m_LoopTime: 1
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
@@ -74,11 +66,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0
-    functionName: TestFunction
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []
