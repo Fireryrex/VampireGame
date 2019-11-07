@@ -5260,10 +5260,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 15
   knockback: 200
+  coolDownTime: 0
   DeathAnimation: {fileID: 1569603400387437590, guid: 03d247714264ba6458eaecb50ecbaceb,
     type: 3}
   timeToDeath: 0
   RespawnPoint: {fileID: 0}
+  maxHealth: 15
   type: Enemy
 --- !u!50 &8979959447657649586
 Rigidbody2D:

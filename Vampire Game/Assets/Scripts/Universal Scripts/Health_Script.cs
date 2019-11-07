@@ -6,7 +6,8 @@ public class Health_Script : MonoBehaviour
 {
     public int health;
     public float knockback;
-    public float coolDown;
+    private float coolDown;
+    [SerializeField] float coolDownTime;
     public GameObject DeathAnimation;
     public float timeToDeath = 0;
     [SerializeField] Transform RespawnPoint;
@@ -36,7 +37,7 @@ public class Health_Script : MonoBehaviour
     public void dealDamage(int damage)
     {
         if(coolDown == 0){
-            coolDown = 3;
+            coolDown = coolDownTime;
         particleDamageTrigger();
         health -= damage;
         if (health <= 0)

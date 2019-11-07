@@ -294,9 +294,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   knockback: 200
+  coolDownTime: 0
   DeathAnimation: {fileID: 0}
   timeToDeath: 0
   RespawnPoint: {fileID: 0}
+  maxHealth: 10
   type: Enemy
 --- !u!70 &4043825859993840572
 CapsuleCollider2D:
