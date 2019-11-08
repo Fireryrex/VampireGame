@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Idle
+  m_Name: PlayerAttack1
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,13 +20,19 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 263499457514307589, guid: 7ef951c21621bec4bb50c2637c555a59,
+      value: {fileID: -4493925369385481833, guid: 6585e41b4be78224193544ce7124b7d8,
         type: 3}
-    - time: 0.16666667
-      value: {fileID: 3854500020057015579, guid: 7ef951c21621bec4bb50c2637c555a59,
+    - time: 0.033333335
+      value: {fileID: 8689527044942736081, guid: 6585e41b4be78224193544ce7124b7d8,
+        type: 3}
+    - time: 0.11666667
+      value: {fileID: 644524872336181850, guid: 6585e41b4be78224193544ce7124b7d8,
+        type: 3}
+    - time: 0.36666667
+      value: {fileID: -1111402267490986416, guid: 6585e41b4be78224193544ce7124b7d8,
         type: 3}
     - time: 0.41666666
-      value: {fileID: 3854500020057015579, guid: 7ef951c21621bec4bb50c2637c555a59,
+      value: {fileID: -1111402267490986416, guid: 6585e41b4be78224193544ce7124b7d8,
         type: 3}
     attribute: m_Sprite
     path: 
@@ -47,9 +53,11 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 263499457514307589, guid: 7ef951c21621bec4bb50c2637c555a59, type: 3}
-    - {fileID: 3854500020057015579, guid: 7ef951c21621bec4bb50c2637c555a59, type: 3}
-    - {fileID: 3854500020057015579, guid: 7ef951c21621bec4bb50c2637c555a59, type: 3}
+    - {fileID: -4493925369385481833, guid: 6585e41b4be78224193544ce7124b7d8, type: 3}
+    - {fileID: 8689527044942736081, guid: 6585e41b4be78224193544ce7124b7d8, type: 3}
+    - {fileID: 644524872336181850, guid: 6585e41b4be78224193544ce7124b7d8, type: 3}
+    - {fileID: -1111402267490986416, guid: 6585e41b4be78224193544ce7124b7d8, type: 3}
+    - {fileID: -1111402267490986416, guid: 6585e41b4be78224193544ce7124b7d8, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -76,7 +84,28 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: TestFunction
+    functionName: crowFlap
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.11666667
+    functionName: access_Attack_Activation
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.38333333
+    functionName: access_Attack_Deactivation
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.41666666
+    functionName: access_End_Attack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

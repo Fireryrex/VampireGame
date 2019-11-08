@@ -7,6 +7,7 @@ TagManager:
   - HitBox
   - Enemy
   - GameManager
+  - Crow
   layers:
   - Default
   - TransparentFX

@@ -75,6 +75,7 @@ public class VampireController2 : MonoBehaviour
     //Attack indexes
     [SerializeField] int groundAttackIndex;
     [SerializeField] int airAttackIndex;
+    [SerializeField] int fallAttackIndex;
 
     void Awake()
     {
@@ -263,7 +264,7 @@ public class VampireController2 : MonoBehaviour
         if(Input.GetKeyDown(attackButton))
         {
             if(Input.GetKey(KeyCode.S))
-                attacknum = 4 ; //this is what attacks. combos dont carry over in air i guess. or its a single 
+                attacknum = fallAttackIndex ; //this is what attacks. combos dont carry over in air i guess. or its a single 
             else
                 attacknum = airAttackIndex;
             EnterAttackingState();
@@ -320,9 +321,9 @@ public class VampireController2 : MonoBehaviour
         if(Input.GetKeyDown(attackButton))
         {
             if(Input.GetKey(KeyCode.S))
-                attacknum = 4 ; //this is what attacks. combos dont carry over in air i guess. or its a single 
+                attacknum = fallAttackIndex ; //this is what attacks. combos dont carry over in air i guess. or its a single 
             else
-                attacknum = 5;
+                attacknum = airAttackIndex;
             EnterAttackingState();
             return;
         }
@@ -371,7 +372,7 @@ public class VampireController2 : MonoBehaviour
 
     void ExitDashingState()
     {
-        
+        SetMoveDir();
     }
 
 
@@ -400,6 +401,7 @@ public class VampireController2 : MonoBehaviour
     {
         attack = attacks.transform.GetChild(attacknum);
         attack.gameObject.SetActive(true);
+        Debug.Log("Attack set to true");
         state = "AttackingState";
         currentAttack = attack.gameObject.GetComponent<Attack>();
         attackStartTime = Time.time;
@@ -427,13 +429,13 @@ public class VampireController2 : MonoBehaviour
                 while(moveVec.y > 0)
                     ApplyGravity();
             }
-            if(grounded) //quit the attack if we hit the ground
+/*            if(grounded) //quit the attack if we hit the ground                   Victor: Don't think we need to do this
             {
                 ExitAttackingState();
                 EnterDefaultState();
                 return;
             }
-            
+*/            
         }
         if(currentAttack.canwalk) //if the attacks not an aerial and it lets us walk, walk. 
         {
@@ -499,12 +501,28 @@ public class VampireController2 : MonoBehaviour
     void ExitAttackingState()
     {    
         reserveAttackNum = currentAttack.GetNextAttackInCombo();
+        currentAttack.end_Attack();
         currentAttack.gameObject.SetActive(false);
         lastAttackEndTime = Time.time;
         attacknum = -1;
     }
 
-    
+
+    public void access_Attack_Activation()
+    {
+        currentAttack.activate_Attack_Hitbox();
+    }
+
+    public void access_Attack_Deactivation()
+    {
+        currentAttack.deactivate_Attack_Hitbox();
+    }
+
+    public void access_End_Attack()
+    {
+        currentAttack.end_Attack();
+    }
+
 
     //need grounded attack, air attack, maybe a family of attacking states.
     //need double jump or N jump
