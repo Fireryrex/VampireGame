@@ -372,7 +372,7 @@ public class VampireController2 : MonoBehaviour
 
     void ExitDashingState()
     {
-        
+        SetMoveDir();
     }
 
 

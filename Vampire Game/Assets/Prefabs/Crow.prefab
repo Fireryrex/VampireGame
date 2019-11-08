@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 7508790289780666161}
   m_Layer: 0
   m_Name: Crow
-  m_TagString: Untagged
+  m_TagString: Crow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
