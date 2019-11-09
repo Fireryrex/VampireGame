@@ -878,7 +878,7 @@ MonoBehaviour:
   jumpFloatiness: 0.45
   airControl: 0.75
   jumps: 3
-  jumpCooldown: 0.2
+  jumpCooldown: 0.1
   fallSpeedCap: 50
   jumpHeight: 2.9
   maxAirSpeed: 0

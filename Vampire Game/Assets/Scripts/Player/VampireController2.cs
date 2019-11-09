@@ -271,6 +271,12 @@ public class VampireController2 : MonoBehaviour
 
             return;
         }
+        if(currentJumps>0 && HasDoubleJump && Input.GetKeyDown(KeyCode.Space)  && (Time.time - lastJumpTime>jumpCooldown) )
+        {
+            ExitFallingState();
+            EnterJumpState();
+            return;
+        }
         
     }
 
