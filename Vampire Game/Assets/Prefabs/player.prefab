@@ -73,9 +73,9 @@ MonoBehaviour:
   nextAttackInCombo: ffffffff
   knockback: 0
   damage: 0
-  damages:
-    serializedVersion: 2
-    m_Bits: 0
+  damages: 
+  player_Animation: {fileID: 0}
+  animation_Trigger_Name: 
 --- !u!212 &5297750700485868921
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -251,9 +251,9 @@ MonoBehaviour:
   nextAttackInCombo: 
   knockback: 0
   damage: 0
-  damages:
-    serializedVersion: 2
-    m_Bits: 0
+  damages: 
+  player_Animation: {fileID: 0}
+  animation_Trigger_Name: 
 --- !u!212 &5297750700545030584
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -412,9 +412,9 @@ MonoBehaviour:
   nextAttackInCombo: 01000000
   knockback: 0
   damage: 0
-  damages:
-    serializedVersion: 2
-    m_Bits: 0
+  damages: 
+  player_Animation: {fileID: 0}
+  animation_Trigger_Name: 
 --- !u!212 &5297750701437059378
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -590,9 +590,9 @@ MonoBehaviour:
   nextAttackInCombo: 
   knockback: 0
   damage: 0
-  damages:
-    serializedVersion: 2
-    m_Bits: 0
+  damages: 
+  player_Animation: {fileID: 0}
+  animation_Trigger_Name: 
 --- !u!212 &5297750701532165171
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -714,9 +714,9 @@ MonoBehaviour:
   nextAttackInCombo: 03000000
   knockback: 0
   damage: 0
-  damages:
-    serializedVersion: 2
-    m_Bits: 0
+  damages: 
+  player_Animation: {fileID: 0}
+  animation_Trigger_Name: 
 --- !u!212 &5297750701650643602
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -861,26 +861,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 
-  walkSpeed: 3
+  walkSpeed: 10
   gravityScale: 1
   gravityOn: 1
   grounded: 0
   GroundCheckOffset: -0.97
-  GroundCheckBounds: {x: 1, y: 0.1}
+  GroundCheckBounds: {x: 0.63, y: 0.1}
   ground:
     serializedVersion: 2
     m_Bits: 2048
-  RoofCheckOffset: 0.76
-  RoofCheckBounds: {x: 1, y: 0.1}
+  RoofCheckOffset: 0.78
+  RoofCheckBounds: {x: 0.45, y: 0.1}
   roof:
     serializedVersion: 2
     m_Bits: 2048
-  jumpFloatiness: 1
-  airControl: 0.5
+  jumpFloatiness: 0.5
+  airControl: 0.75
   jumps: 3
   jumpCooldown: 0.2
   fallSpeedCap: 50
-  jumpHeight: 3
+  jumpHeight: 2.9
   maxAirSpeed: 0
   roofed: 0
   dashButton: 304
@@ -897,6 +897,9 @@ MonoBehaviour:
   HasWeapon: 0
   HasDoubleJump: 1
   HasDash: 0
+  groundAttackIndex: 0
+  airAttackIndex: 0
+  fallAttackIndex: 0
   attackButton: 101
 --- !u!50 &5297750701787506293
 Rigidbody2D:
@@ -1072,9 +1075,9 @@ MonoBehaviour:
   nextAttackInCombo: 
   knockback: 0
   damage: 0
-  damages:
-    serializedVersion: 2
-    m_Bits: 0
+  damages: 
+  player_Animation: {fileID: 0}
+  animation_Trigger_Name: 
 --- !u!212 &5297750702249502288
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1196,9 +1199,9 @@ MonoBehaviour:
   nextAttackInCombo: 02000000
   knockback: 0
   damage: 0
-  damages:
-    serializedVersion: 2
-    m_Bits: 0
+  damages: 
+  player_Animation: {fileID: 0}
+  animation_Trigger_Name: 
 --- !u!212 &5297750702424385562
 SpriteRenderer:
   m_ObjectHideFlags: 0
