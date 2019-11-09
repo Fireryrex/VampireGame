@@ -875,7 +875,7 @@ MonoBehaviour:
   roof:
     serializedVersion: 2
     m_Bits: 2048
-  jumpFloatiness: 0.5
+  jumpFloatiness: 0.45
   airControl: 0.75
   jumps: 3
   jumpCooldown: 0.2
