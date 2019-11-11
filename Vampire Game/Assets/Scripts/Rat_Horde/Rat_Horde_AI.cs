@@ -4,44 +4,50 @@ using UnityEngine;
 
 public class Rat_Horde_AI : MonoBehaviour
 {
-    public int moves;
+    [SerializeField] int moves;
     private int moveSelected;
-    public Rat_Wall[] walls;
+    [SerializeField] Rat_Wall[] walls;
     private float time = 0f;
     private float staggerTime = 0f;
     private bool belowHalfHealth = false;
-    public float attackTimer;
+    [SerializeField] float attackTimer;
     private Health_Script healthScript;
     
     //spike attack variables
-    public GameObject[] spikes;
-    public List<int> spikeNumberList;
-    public Transform spikeLocationAtHalfHealth;
+    [SerializeField] GameObject[] spikes;
+    [SerializeField] List<int> spikeNumberList;
+    [SerializeField] Transform spikeLocationAtHalfHealth;
 
     //move attack variables
-    public Transform leftLocation;
-    public Transform originalLocation;
+    [SerializeField] Transform leftLocation;
+    [SerializeField] Transform originalLocation;
     private bool movingLeft = false;
     private bool movingBack = false;
 
     //rat spawning attack
-    public int numRatz;
-    public List<GameObject> ratz;
-    public GameObject rat;
-    public float velMax;
-    public float velMin;
+    [SerializeField] int numRatz;
+    [SerializeField] List<GameObject> ratz;
+    [SerializeField] GameObject rat;
+    [SerializeField] float velMax;
+    [SerializeField] float velMin;
     private Vector3 spawnOffset;
-    public int damagePerTickToSpawnedRats;
+    [SerializeField] int damagePerTickToSpawnedRats;
     private bool spawning = false;
     private int randStaggeredRatz;
 
     //debugging stuff
-    public bool halfHealthTest = false;
+    [SerializeField] bool halfHealthTest = false;
+
+
+    [SerializeField] Rigidbody2D ratRigidBody;
+    [SerializeField] int forceJumpValue;
+    [SerializeField] float attackTimeDecreaseInPhase2;
 
     // Start is called before the first frame update
     void Start()
     {
         healthScript = GetComponent<Health_Script>();
+        ratRigidBody= GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -74,7 +80,7 @@ public class Rat_Horde_AI : MonoBehaviour
                 {
                     int chosenSpike = spikeNumberList[Random.Range(0, spikeNumberList.Count)];
                     spikeNumberList.Remove(chosenSpike);
- 
+                    spikes[chosenSpike].SetActive(true);
                     spikes[chosenSpike].GetComponentInChildren<Spike_Rat>().Appear();
                 }
                 switch (moveSelected)
@@ -160,7 +166,7 @@ public class Rat_Horde_AI : MonoBehaviour
         else
         {
             //half health attack timer is shorter
-            if (time > attackTimer/2)
+            if (time > attackTimer/attackTimeDecreaseInPhase2)
             {
                 time = 0f;
                 moveSelected = Random.Range(1, moves - 1);
@@ -206,12 +212,14 @@ public class Rat_Horde_AI : MonoBehaviour
 
                 if (!movingLeft && !movingBack)
                 {
-                    if (transform.position.x <= leftLocation.transform.position.x)
+                    if (transform.position.x <= leftLocation.transform.position.x + 1)
                     {
+                        ratRigidBody.AddForce(transform.up * forceJumpValue);
                         movingBack = true;
                     }
-                    else if (transform.position.x >= originalLocation.transform.position.x)
+                    else if (transform.position.x >= originalLocation.transform.position.x - 1)
                     {
+                        ratRigidBody.AddForce(transform.up * forceJumpValue);
                         movingLeft = true;
                     }
                 }
@@ -220,7 +228,7 @@ public class Rat_Horde_AI : MonoBehaviour
                 {
                     if (ratz[i] != null)
                     {
-                        ratz[i].GetComponent<Health_Script>().dealDamage(damagePerTickToSpawnedRats);
+                        ratz[i].GetComponent<Health_Script>().dealDamage(damagePerTickToSpawnedRats);       //gotta change this into something that doesnt cause bleeding
                     }
                     else
                     {

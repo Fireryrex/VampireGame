@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 845197590538635977}
   - component: {fileID: 845197590538635976}
   - component: {fileID: 845197590538635983}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SpikeRat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 95f36203251cf4e469a87df522cd79ec, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -225,7 +225,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 43cedfbac925ce942bc8dee963f77b1d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.009137154, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

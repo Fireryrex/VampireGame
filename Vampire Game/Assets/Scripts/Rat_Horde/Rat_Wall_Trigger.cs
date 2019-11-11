@@ -8,11 +8,14 @@ public class Rat_Wall_Trigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("TrIgGeReD");
-        for(int i = 0; i < ratWall.Length; ++i)
+        if(collision.CompareTag("Player"))
         {
-            ratWall[i].moveRatWall1();
+            Debug.Log("TrIgGeReD");
+            for(int i = 0; i < ratWall.Length; ++i)
+            {
+                ratWall[i].moveRatWall1();
+            }
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
-        gameObject.GetComponent<BoxCollider2D>().enabled = false;
     }
 }

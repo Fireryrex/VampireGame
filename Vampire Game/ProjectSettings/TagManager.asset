@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - GameManager
   - Crow
+  - Dialogue Manager
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Ground
   - Vampire
   - Particles
-  - 
+  - Boss
   - 
   - 
   - 
