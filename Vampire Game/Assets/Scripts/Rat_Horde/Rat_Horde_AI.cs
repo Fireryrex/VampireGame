@@ -65,6 +65,7 @@ public class Rat_Horde_AI : MonoBehaviour
         ratRigidBody= GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player");
         playerHealthScript = player.GetComponent<Health_Script>();
+        moveSelected = -1;
     }
 
 /*
@@ -93,16 +94,18 @@ or maybe I should keep the warnings in, ill see. Either way I need to implement 
         staggerTime += Time.deltaTime;
         if(!belowHalfHealth)
         {
-            if(time > attackTimer - 1)
+            if(time > attackTimer - 1 && moveSelected == -1)
             {
                 moveSelected = Random.Range(1, moves);
                 if(moveSelected == 2)
                 {
                     moveWarning.SetActive(true);
+                    spawnWarning.SetActive(false);
                 }
                 else
                 {
                     spawnWarning.SetActive(true);
+                    moveWarning.SetActive(false);
                 }
             }
             if (time > attackTimer)
@@ -132,17 +135,17 @@ or maybe I should keep the warnings in, ill see. Either way I need to implement 
                             ratz.Add(spawnedRat);
                             if (transform.position.x <= leftLocation.transform.position.x)
                             {
-                                spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3(Random.Range(velMin, velMax), Random.Range(velMin, velMax)/2, 0f));
+                                spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3(Random.Range(velMin, velMax), Random.Range(velMin, velMax) / 2, 0f));
                             }
                             else if (transform.position.x >= originalLocation.transform.position.x)
                             {
-                                spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3((Random.Range(-velMin, -velMax)), Random.Range(velMin, velMax)/2, 0f));
+                                spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3((Random.Range(-velMin, -velMax)), Random.Range(velMin, velMax) / 2, 0f));
                             }
                         }
                         break;
                     case 2:         //Move attack
                         //Debug.Log("attack2");
-                        if(!movingLeft && !movingBack)
+                        if (!movingLeft && !movingBack)
                         {
                             if (transform.position.x <= leftLocation.transform.position.x)
                             {
@@ -162,8 +165,8 @@ or maybe I should keep the warnings in, ill see. Either way I need to implement 
                     default:
                         Debug.Log("Selected move #" + moveSelected);
                         break;
-                }                moveSelected = Random.Range(1, moves - 1);
-
+                }
+                moveSelected = -1;
 
                 for (int i = 0; i < ratz.Count; ++i)
                 {
@@ -220,7 +223,8 @@ I need to implement a case in the attack switch so that it can choose to activat
             //half health attack timer is shorter
             if (time > attackTimer/attackTimeDecreaseInPhase2)
             {
-                moveWarning.SetActive(false);               
+                moveWarning.SetActive(false);
+                spawnWarning.SetActive(false);
                 time = 0f;
                 moveSelected = Random.Range(1, moves);
                 ResetSpikes();
@@ -368,6 +372,17 @@ I need to implement a case in the attack switch so that it can choose to activat
         if(!belowHalfHealth)
         {
             playerHealthScript.teleportPlayer(transformPoint);
+            for (int i = 0; i < ratz.Count; ++i)
+            {
+                if (ratz[i] != null)
+                {
+                    ratz[i].GetComponent<Health_Script>().dealDamage(int.MaxValue);       //gotta change this into something that doesnt cause bleeding
+                }
+                else
+                {
+                    ratz.RemoveAt(i);
+                }
+            }
         } 
         belowHalfHealth = true;
         for(int i = 0; i < walls.Length; ++i)

@@ -10,7 +10,7 @@ public class DeathField : MonoBehaviour
         {
             collision.GetComponent<Health_Script>().respawn();
         }
-        else if(collision.GetComponent<Health_Script>() != null)
+        else if(collision.GetComponent<Health_Script>() != null && !collision.GetComponent<Health_Script>().getDeathFieldVariable())
         {
             collision.GetComponent<Health_Script>().dealDamage(int.MaxValue);
         }
