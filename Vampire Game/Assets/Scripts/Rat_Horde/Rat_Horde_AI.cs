@@ -37,6 +37,12 @@ public class Rat_Horde_AI : MonoBehaviour
 
     //dive attack variables
     private bool isDoingDivingAttack = false;
+    [SerializeField] Transform diveLocation;
+    [SerializeField] GameObject platform;
+    private bool hasDove = false;
+    private bool readyToJump = false;
+    private bool isFalling = false;
+    
 
     //debugging stuff
     [SerializeField] bool halfHealthTest = false;
@@ -94,7 +100,7 @@ or maybe I should keep the warnings in, ill see. Either way I need to implement 
         staggerTime += Time.deltaTime;
         if(!belowHalfHealth)
         {
-            if(time > attackTimer - 1 && moveSelected == -1)
+            if(time > attackTimer - 1.5 && moveSelected == -1)
             {
                 moveSelected = Random.Range(1, moves);
                 if(moveSelected == 2)
@@ -264,6 +270,7 @@ I need to implement a case in the attack switch so that it can choose to activat
                         break;
                     case 3:
                         //implement dive attack here
+                        isDoingDivingAttack = true;
                         break;
                     default:
                         Debug.Log("Selected move #" + moveSelected);
@@ -324,7 +331,60 @@ I need to implement a case in the attack switch so that it can choose to activat
         //then it should jump straight out of the water. After that, it should stay above the water and move to the other side of the arena after a moment of delay.
         else        
         {
-
+            if(!hasDove && !readyToJump && !isFalling)
+            {
+                platform.SetActive(false);
+                transform.position = Vector3.MoveTowards
+                        (
+                            new Vector3(transform.position.x, transform.position.y, 0),
+                            new Vector3(transform.position.x, diveLocation.position.y, 0),
+                            16 * Time.deltaTime
+                        );
+                if(time > attackTimer/(2*attackTimeDecreaseInPhase2))
+                {
+                    time = 0f;
+                    hasDove = true;
+                }
+            }
+            else if(hasDove && !readyToJump && !isFalling)
+            {
+                transform.position = Vector3.MoveTowards
+                (
+                    new Vector3(transform.position.x, transform.position.y, 0),
+                    new Vector3(player.transform.position.x, diveLocation.position.y, 0),
+                    16 * Time.deltaTime
+                );
+                if(time > attackTimer/(2*attackTimeDecreaseInPhase2) - 1)
+                {
+                    moveWarning.SetActive(true);
+                }
+                if(time > attackTimer/(2*attackTimeDecreaseInPhase2))
+                {
+                    moveWarning.SetActive(false);
+                    time = 0f;
+                    readyToJump = true;
+                }
+            }
+            else if(hasDove && readyToJump && !isFalling)
+            {
+                ratRigidBody.AddForce(transform.up * forceJumpValue);
+                if(time > .5f)
+                {
+                    time = 0f;
+                    isFalling = true;
+                }
+            }
+            else
+            {   
+                platform.SetActive(true);
+                if(time > 3f)
+                {
+                    hasDove = false;
+                    readyToJump = false;
+                    isFalling = false;
+                    isDoingDivingAttack = false;
+                }
+            }
         }
         if(!isDoingDivingAttack && movingLeft)
         {

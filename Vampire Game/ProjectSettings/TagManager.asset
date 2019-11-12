@@ -9,6 +9,7 @@ TagManager:
   - GameManager
   - Crow
   - Dialogue Manager
+  - Boss
   layers:
   - Default
   - TransparentFX
