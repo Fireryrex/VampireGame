@@ -75,10 +75,10 @@ public class Attack : MonoBehaviour
 
     public virtual void OnTriggerEnter2D (Collider2D collider)
     {
-        if( (collider.gameObject.layer != 0 && collider.CompareTag(damages)))
+        /*if( (collider.gameObject.layer != 0 && collider.CompareTag(damages)))
         {
             collider.gameObject.GetComponent<Health_Script>().dealDamage(damage); // would like to be able to pass it knockback as well.
-        }
+        }*/
     }
 
     virtual public void activate_Attack_Hitbox()

@@ -7,7 +7,7 @@ public class Player_to_Crow : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] GameObject crow;
     private Rigidbody2D crowBody;
-    private CrowFlyScript crowScript;
+    [SerializeField] CrowFlyScript crowScript;
 
     private Pathfinding.AIDestinationSetter targetingScript;
     [SerializeField] Transform crowTarget1;
@@ -16,15 +16,16 @@ public class Player_to_Crow : MonoBehaviour
     void Start()
     {
         crow = GameObject.FindWithTag("Crow");
-        crowScript = crow.GetComponent<CrowFlyScript>();
+        crowScript = crow.GetComponentInChildren<CrowFlyScript>();
         targetingScript = crow.GetComponentInParent<Pathfinding.AIDestinationSetter>();
         crowBody = crow.GetComponentInParent<Rigidbody2D>();
     }
 
     public void crowFlap()
     {
-        Debug.Log("lkajsdfkjasdhfaksjdhflkasjdhflkasdjjfhlksdjjfhksdjfhaslkjfjhaslkdjfhasdlkjfh");
+        //Debug.Log("lkajsdfkjasdhfaksjdhflkasjdhflkasdjjfhlksdjjfhksdjfhaslkjfjhaslkdjfhasdlkjfh");
         targetingScript.target = crowTarget2;
+        Debug.Log("crowScript.isTouchingPlayer() =" + crowScript.isTouchingPlayer());
         if (crowScript.isTouchingPlayer())
         {
             crowBody.AddForce(Vector2.up * 2000);

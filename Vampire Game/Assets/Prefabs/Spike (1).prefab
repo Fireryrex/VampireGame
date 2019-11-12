@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 845197590538635977}
   - component: {fileID: 845197590538635976}
   - component: {fileID: 845197590538635983}
+  - component: {fileID: 1340169845}
   m_Layer: 12
   m_Name: SpikeRat
   m_TagString: Untagged
@@ -91,7 +92,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -123,6 +124,21 @@ MonoBehaviour:
   timeOut: 0.2
   moveLocation: {fileID: 845197592140324332}
   returnTo: {fileID: 845197590916519727}
+--- !u!114 &1340169845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845197590538635979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed3c8c7e90cad74e953801de4ad0658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  AttackName: Player
+  Cooldown: 0.5
 --- !u!1 &845197590916519720
 GameObject:
   m_ObjectHideFlags: 0

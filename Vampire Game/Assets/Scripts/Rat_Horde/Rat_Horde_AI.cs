@@ -35,6 +35,9 @@ public class Rat_Horde_AI : MonoBehaviour
     private bool spawning = false;
     private int randStaggeredRatz;
 
+    //dive attack variables
+    private bool isDoingDivingAttack = false;
+
     //debugging stuff
     [SerializeField] bool halfHealthTest = false;
 
@@ -43,12 +46,32 @@ public class Rat_Horde_AI : MonoBehaviour
     [SerializeField] int forceJumpValue;
     [SerializeField] float attackTimeDecreaseInPhase2;
 
+
+    //level change
+    [SerializeField] GameObject[] phaseOneTiles;
+    [SerializeField] GameObject[] phaseTwoTiles;
+    [SerializeField] Transform transformPoint;
+    private GameObject player;
+    private Health_Script playerHealthScript;
+
+    //placeholder thing
+    [SerializeField] GameObject moveWarning;
+    [SerializeField] GameObject spawnWarning;
+
     // Start is called before the first frame update
     void Start()
     {
         healthScript = GetComponent<Health_Script>();
         ratRigidBody= GetComponent<Rigidbody2D>();
+        player = GameObject.FindWithTag("Player");
+        playerHealthScript = player.GetComponent<Health_Script>();
     }
+
+/*
+At some point (probably after animations come in for the rat boss) I need to hook up an animator to the boss and make the different placeholder warnings into animations?
+or maybe I should keep the warnings in, ill see. Either way I need to implement the bite attack when the player gets/stays too close to the rat for too long.
+ */
+
 
     // Update is called once per frame
     void Update()
@@ -70,10 +93,24 @@ public class Rat_Horde_AI : MonoBehaviour
         staggerTime += Time.deltaTime;
         if(!belowHalfHealth)
         {
+            if(time > attackTimer - 1)
+            {
+                moveSelected = Random.Range(1, moves);
+                if(moveSelected == 2)
+                {
+                    moveWarning.SetActive(true);
+                }
+                else
+                {
+                    spawnWarning.SetActive(true);
+                }
+            }
             if (time > attackTimer)
             {
+                moveWarning.SetActive(false);
+                spawnWarning.SetActive(false);
+                
                 time = 0f;
-                moveSelected = Random.Range(1, moves);
                 ResetSpikes();
                 int numSpikes = Random.Range(1, spikes.Length);
                 for (int i = 0; i < numSpikes; ++i)
@@ -125,7 +162,8 @@ public class Rat_Horde_AI : MonoBehaviour
                     default:
                         Debug.Log("Selected move #" + moveSelected);
                         break;
-                }
+                }                moveSelected = Random.Range(1, moves - 1);
+
 
                 for (int i = 0; i < ratz.Count; ++i)
                 {
@@ -163,13 +201,28 @@ public class Rat_Horde_AI : MonoBehaviour
 
         }
 
-        else
+/*
+I need to implement a case in the attack switch so that it can choose to activate its dive attack
+ */
+
+        else if (!isDoingDivingAttack)
         {
+            //placeholder warning
+            if(time > attackTimer/attackTimeDecreaseInPhase2 - 1)
+            {
+                moveWarning.SetActive(true);
+            }
+            if(time > attackTimer/attackTimeDecreaseInPhase2 - .5)
+            {
+                ratRigidBody.AddForce(transform.up * forceJumpValue);
+            }
+
             //half health attack timer is shorter
             if (time > attackTimer/attackTimeDecreaseInPhase2)
             {
+                moveWarning.SetActive(false);               
                 time = 0f;
-                moveSelected = Random.Range(1, moves - 1);
+                moveSelected = Random.Range(1, moves);
                 ResetSpikes();
                 int numSpikes = Random.Range(1, spikes.Length/2);
                 //spike attack
@@ -205,21 +258,22 @@ public class Rat_Horde_AI : MonoBehaviour
                         randStaggeredRatz = Random.Range(1, numRatz + 1);
                         spawning = true;
                         break;
+                    case 3:
+                        //implement dive attack here
+                        break;
                     default:
                         Debug.Log("Selected move #" + moveSelected);
                         break;
                 }
-
+                //Every time the boss makes a move it should jump up in the air and move to the opposite side of the arena, unless it is doing the dive attack
                 if (!movingLeft && !movingBack)
                 {
                     if (transform.position.x <= leftLocation.transform.position.x + 1)
                     {
-                        ratRigidBody.AddForce(transform.up * forceJumpValue);
                         movingBack = true;
                     }
                     else if (transform.position.x >= originalLocation.transform.position.x - 1)
                     {
-                        ratRigidBody.AddForce(transform.up * forceJumpValue);
                         movingLeft = true;
                     }
                 }
@@ -259,7 +313,16 @@ public class Rat_Horde_AI : MonoBehaviour
             }
         }
 
-        if(movingLeft)
+        //Do the dive attack logic here.
+        //the attack should first make the rat dive under the water.
+        //It should then save the current x location of the player and move under neath it.
+        //once it reaches there, it should give a warning to let the player know that it is there.
+        //then it should jump straight out of the water. After that, it should stay above the water and move to the other side of the arena after a moment of delay.
+        else        
+        {
+
+        }
+        if(!isDoingDivingAttack && movingLeft)
         {
             transform.position = Vector3.MoveTowards
                     (
@@ -274,7 +337,7 @@ public class Rat_Horde_AI : MonoBehaviour
                 //movingBack = true;
             }
         }
-        else if(movingBack)
+        else if(!isDoingDivingAttack && movingBack)
         {
             transform.position = Vector3.MoveTowards
                     (
@@ -302,6 +365,10 @@ public class Rat_Horde_AI : MonoBehaviour
 
     public void atHalfHealth()
     {
+        if(!belowHalfHealth)
+        {
+            playerHealthScript.teleportPlayer(transformPoint);
+        } 
         belowHalfHealth = true;
         for(int i = 0; i < walls.Length; ++i)
         {
@@ -311,5 +378,15 @@ public class Rat_Horde_AI : MonoBehaviour
         {
             spikes[i].GetComponent<Move_Whole_Spike>().moveUp(spikeLocationAtHalfHealth);
         }
+        for(int i = 0; i < phaseOneTiles.Length; ++i)
+        {
+            phaseOneTiles[i].SetActive(false);
+        }
+        for(int i = 0; i < phaseTwoTiles.Length; ++i)
+        {
+            phaseTwoTiles[i].SetActive(true);
+        }
+        
+
     }
 }

@@ -85,7 +85,7 @@ public class Health_Script : MonoBehaviour
     public void respawn()
     {
         
-        transform.position = RespawnPoint.position;
+        teleportPlayer(RespawnPoint);
         health = maxHealth;
     }
 
@@ -96,5 +96,10 @@ public class Health_Script : MonoBehaviour
         else if (gameObject.GetComponent<Health_Script>().type == "Enemy"){
             gameObject.GetComponentInChildren<ParticleSystem>().Play();
         }
+    }
+
+    public void teleportPlayer(Transform transformpoint)
+    {
+        transform.position = transformpoint.position;
     }
 }
