@@ -271,6 +271,12 @@ public class VampireController2 : MonoBehaviour
 
             return;
         }
+        if(currentJumps>0 && HasDoubleJump && Input.GetKeyDown(KeyCode.Space)  && (Time.time - lastJumpTime>jumpCooldown) )
+        {
+            ExitFallingState();
+            EnterJumpState();
+            return;
+        }
         
     }
 
@@ -548,6 +554,13 @@ public class VampireController2 : MonoBehaviour
     //applies input to moveVec without resetting Y. takes air control into account. 
     void SetMoveDirAir()
     {
+
+        //overrided air control
+        float y = moveVec.y;
+        SetMoveDir();
+        moveVec *= airControl;
+        moveVec.y = y;
+       /*
         float apply = ((Input.GetKey(KeyCode.A) ? -1 : 0) +
             (Input.GetKey(KeyCode.D) ? 1 : 0))*walkSpeed*Time.fixedDeltaTime*airControl;
         if(  FloatComp( Mathf.Abs(moveVec.x) , Mathf.Abs(maxAirSpeed * Time.fixedDeltaTime)  ) < 0)
@@ -555,7 +568,7 @@ public class VampireController2 : MonoBehaviour
         else if( FloatComp(  moveVec.x , maxAirSpeed*Time.fixedDeltaTime) >= 0  && apply < 0) //allow decelleration but not accelleration above max. 
             {moveVec.x += apply; }
         else if( FloatComp ( moveVec.x , -maxAirSpeed*Time.fixedDeltaTime) <= 0 && apply > 0)
-            {moveVec.x += apply;}
+            {moveVec.x += apply;}*/
     }
 
     //moveVec

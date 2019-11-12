@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7508790288810800146}
   m_Layer: 0
   m_Name: Crow GFX
-  m_TagString: Untagged
+  m_TagString: Crow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,10 +70,10 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -4285408029963660783, guid: 05f5ebcc14b647843b349df96a9438e2,
     type: 3}
-  m_Color: {r: 0, g: 0.15353227, b: 0.5, a: 1}
+  m_Color: {r: 0, g: 0.47447953, b: 0.745283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -142,9 +142,10 @@ GameObject:
   - component: {fileID: 7508790289780666163}
   - component: {fileID: 7508790289780666160}
   - component: {fileID: 7508790289780666161}
+  - component: {fileID: 1026164450}
   m_Layer: 0
   m_Name: Crow
-  m_TagString: Crow
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,7 +157,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7508790289780666171}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 18.2, y: -12.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -205,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 2
-  radius: 0.34
+  radius: 0.1
   height: 0.01
   repathRate: 0.5
   canSearch: 1
@@ -242,3 +243,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   target: {fileID: 0}
+--- !u!50 &1026164450
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7508790289780666171}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
