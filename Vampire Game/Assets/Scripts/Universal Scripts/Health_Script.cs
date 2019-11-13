@@ -13,7 +13,7 @@ public class Health_Script : MonoBehaviour
     [SerializeField] Transform RespawnPoint;
     public int maxHealth;
     public string type;
-
+    [SerializeField] bool ignoreDeathfield = false;
     
     // Start is called before the first frame update
     void Start()
@@ -101,5 +101,10 @@ public class Health_Script : MonoBehaviour
     public void teleportPlayer(Transform transformpoint)
     {
         transform.position = transformpoint.position;
+    }
+
+    public bool getDeathFieldVariable()
+    {
+        return ignoreDeathfield;
     }
 }

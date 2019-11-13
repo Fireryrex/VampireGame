@@ -37,6 +37,12 @@ public class Rat_Horde_AI : MonoBehaviour
 
     //dive attack variables
     private bool isDoingDivingAttack = false;
+    [SerializeField] Transform diveLocation;
+    [SerializeField] GameObject platform;
+    private bool hasDove = false;
+    private bool readyToJump = false;
+    private bool isFalling = false;
+    
 
     //debugging stuff
     [SerializeField] bool halfHealthTest = false;
@@ -65,6 +71,7 @@ public class Rat_Horde_AI : MonoBehaviour
         ratRigidBody= GetComponent<Rigidbody2D>();
         player = GameObject.FindWithTag("Player");
         playerHealthScript = player.GetComponent<Health_Script>();
+        moveSelected = -1;
     }
 
 /*
@@ -93,16 +100,18 @@ or maybe I should keep the warnings in, ill see. Either way I need to implement 
         staggerTime += Time.deltaTime;
         if(!belowHalfHealth)
         {
-            if(time > attackTimer - 1)
+            if(time > attackTimer - 1.5 && moveSelected == -1)
             {
                 moveSelected = Random.Range(1, moves);
                 if(moveSelected == 2)
                 {
                     moveWarning.SetActive(true);
+                    spawnWarning.SetActive(false);
                 }
                 else
                 {
                     spawnWarning.SetActive(true);
+                    moveWarning.SetActive(false);
                 }
             }
             if (time > attackTimer)
@@ -132,17 +141,17 @@ or maybe I should keep the warnings in, ill see. Either way I need to implement 
                             ratz.Add(spawnedRat);
                             if (transform.position.x <= leftLocation.transform.position.x)
                             {
-                                spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3(Random.Range(velMin, velMax), Random.Range(velMin, velMax)/2, 0f));
+                                spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3(Random.Range(velMin, velMax), Random.Range(velMin, velMax) / 2, 0f));
                             }
                             else if (transform.position.x >= originalLocation.transform.position.x)
                             {
-                                spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3((Random.Range(-velMin, -velMax)), Random.Range(velMin, velMax)/2, 0f));
+                                spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3((Random.Range(-velMin, -velMax)), Random.Range(velMin, velMax) / 2, 0f));
                             }
                         }
                         break;
                     case 2:         //Move attack
                         //Debug.Log("attack2");
-                        if(!movingLeft && !movingBack)
+                        if (!movingLeft && !movingBack)
                         {
                             if (transform.position.x <= leftLocation.transform.position.x)
                             {
@@ -162,8 +171,8 @@ or maybe I should keep the warnings in, ill see. Either way I need to implement 
                     default:
                         Debug.Log("Selected move #" + moveSelected);
                         break;
-                }                moveSelected = Random.Range(1, moves - 1);
-
+                }
+                moveSelected = -1;
 
                 for (int i = 0; i < ratz.Count; ++i)
                 {
@@ -220,7 +229,8 @@ I need to implement a case in the attack switch so that it can choose to activat
             //half health attack timer is shorter
             if (time > attackTimer/attackTimeDecreaseInPhase2)
             {
-                moveWarning.SetActive(false);               
+                moveWarning.SetActive(false);
+                spawnWarning.SetActive(false);
                 time = 0f;
                 moveSelected = Random.Range(1, moves);
                 ResetSpikes();
@@ -260,6 +270,7 @@ I need to implement a case in the attack switch so that it can choose to activat
                         break;
                     case 3:
                         //implement dive attack here
+                        isDoingDivingAttack = true;
                         break;
                     default:
                         Debug.Log("Selected move #" + moveSelected);
@@ -320,7 +331,60 @@ I need to implement a case in the attack switch so that it can choose to activat
         //then it should jump straight out of the water. After that, it should stay above the water and move to the other side of the arena after a moment of delay.
         else        
         {
-
+            if(!hasDove && !readyToJump && !isFalling)
+            {
+                platform.SetActive(false);
+                transform.position = Vector3.MoveTowards
+                        (
+                            new Vector3(transform.position.x, transform.position.y, 0),
+                            new Vector3(transform.position.x, diveLocation.position.y, 0),
+                            16 * Time.deltaTime
+                        );
+                if(time > attackTimer/(2*attackTimeDecreaseInPhase2))
+                {
+                    time = 0f;
+                    hasDove = true;
+                }
+            }
+            else if(hasDove && !readyToJump && !isFalling)
+            {
+                transform.position = Vector3.MoveTowards
+                (
+                    new Vector3(transform.position.x, transform.position.y, 0),
+                    new Vector3(player.transform.position.x, diveLocation.position.y, 0),
+                    16 * Time.deltaTime
+                );
+                if(time > attackTimer/(2*attackTimeDecreaseInPhase2) - 1)
+                {
+                    moveWarning.SetActive(true);
+                }
+                if(time > attackTimer/(2*attackTimeDecreaseInPhase2))
+                {
+                    moveWarning.SetActive(false);
+                    time = 0f;
+                    readyToJump = true;
+                }
+            }
+            else if(hasDove && readyToJump && !isFalling)
+            {
+                ratRigidBody.AddForce(transform.up * forceJumpValue);
+                if(time > .5f)
+                {
+                    time = 0f;
+                    isFalling = true;
+                }
+            }
+            else
+            {   
+                platform.SetActive(true);
+                if(time > 3f)
+                {
+                    hasDove = false;
+                    readyToJump = false;
+                    isFalling = false;
+                    isDoingDivingAttack = false;
+                }
+            }
         }
         if(!isDoingDivingAttack && movingLeft)
         {
@@ -368,6 +432,17 @@ I need to implement a case in the attack switch so that it can choose to activat
         if(!belowHalfHealth)
         {
             playerHealthScript.teleportPlayer(transformPoint);
+            for (int i = 0; i < ratz.Count; ++i)
+            {
+                if (ratz[i] != null)
+                {
+                    ratz[i].GetComponent<Health_Script>().dealDamage(int.MaxValue);       //gotta change this into something that doesnt cause bleeding
+                }
+                else
+                {
+                    ratz.RemoveAt(i);
+                }
+            }
         } 
         belowHalfHealth = true;
         for(int i = 0; i < walls.Length; ++i)

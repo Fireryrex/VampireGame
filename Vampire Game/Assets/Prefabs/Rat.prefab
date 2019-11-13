@@ -155,6 +155,7 @@ GameObject:
   - component: {fileID: 592172813436708778}
   - component: {fileID: 592172813436708779}
   - component: {fileID: 4043825859993840572}
+  - component: {fileID: 8945549435576287729}
   m_Layer: 12
   m_Name: Rat
   m_TagString: Enemy
@@ -300,6 +301,7 @@ MonoBehaviour:
   RespawnPoint: {fileID: 0}
   maxHealth: 10
   type: Enemy
+  ignoreDeathfield: 0
 --- !u!70 &4043825859993840572
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -316,6 +318,32 @@ CapsuleCollider2D:
   m_Offset: {x: -0.00078851066, y: -0.0059000854}
   m_Size: {x: 0.97932553, y: 0.9629967}
   m_Direction: 1
+--- !u!61 &8945549435576287729
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592172813436708781}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 94d815fdd2ee2354bb4b40f43b8c5e63, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.040474832, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 0.2, y: 0.2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8443929, y: 0.2}
+  m_EdgeRadius: 0
 --- !u!1 &6090456437983138091
 GameObject:
   m_ObjectHideFlags: 0
