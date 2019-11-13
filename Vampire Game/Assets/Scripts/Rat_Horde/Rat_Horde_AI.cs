@@ -391,7 +391,11 @@ I need to implement a case in the attack switch so that it can choose to activat
             else
             {   
                 platform.SetActive(true);
-                if(time > 3f)
+                if(time >= 2f)
+                {
+                    moveWarning.SetActive(true);
+                }
+                if (time >= 3f)
                 {
                     hasDove = false;
                     readyToJump = false;
