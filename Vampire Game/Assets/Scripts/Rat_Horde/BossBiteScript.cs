@@ -31,7 +31,7 @@ public class BossBiteScript : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(time <= 0)
+        if(bossAI.getBossFightState() && time <= 0)
         {
             time = cooldown;
             if(collision.CompareTag("Player"))

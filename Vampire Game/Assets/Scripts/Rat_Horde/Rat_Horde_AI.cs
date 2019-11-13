@@ -60,14 +60,18 @@ public class Rat_Horde_AI : MonoBehaviour
     //level change
     [SerializeField] GameObject[] phaseOneTiles;
     [SerializeField] GameObject[] phaseTwoTiles;
-    [SerializeField] Transform transformPoint;
     private GameObject player;
     private Health_Script playerHealthScript;
 
-    //placeholder thing
+    //warnings
     [SerializeField] GameObject moveWarning;
     [SerializeField] GameObject spawnWarning;
     [SerializeField] GameObject diveWarning;
+
+    private PolygonCollider2D hitBox;
+    [SerializeField] PolygonCollider2D hurtBox;
+
+    [SerializeField] GameObject fallingPipes;
 
     //animation shit
     private Animator bossAnimation;
@@ -81,6 +85,7 @@ public class Rat_Horde_AI : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerHealthScript = player.GetComponent<Health_Script>();
         moveSelected = -1;
+        hitBox = GetComponent<PolygonCollider2D>();
     }
 
 /*
@@ -92,14 +97,15 @@ or maybe I should keep the warnings in, ill see. Either way I need to implement 
     // Update is called once per frame
     void Update()
     {
+        //debug method to check if the abilities when he is at half hp works correctly
+        if(halfHealthTest)
+        {
+            atHalfHealth();
+            halfHealthTest = false;
+        }
         if(bossFightStarted)
         {
-            //debug method to check if the abilities when he is at half hp works correctly
-            if(halfHealthTest)
-            {
-                atHalfHealth();
-                halfHealthTest = false;
-            }
+
 
             if(healthScript.getHealthPercent() <= .5)
             {
@@ -223,9 +229,9 @@ or maybe I should keep the warnings in, ill see. Either way I need to implement 
 
             }
 
-    /*
-    I need to implement a case in the attack switch so that it can choose to activate its dive attack
-    */
+/*
+I need to implement a case in the attack switch so that it can choose to activate its dive attack
+*/
 
             else if (!isDoingDivingAttack)
             {
@@ -395,7 +401,11 @@ or maybe I should keep the warnings in, ill see. Either way I need to implement 
                 else
                 {   
                     platform.SetActive(true);
-                    if(time > 3f)
+                    if(time >= 2f)
+                    {
+                    moveWarning.SetActive(true);
+                    }
+                    if(time >= 3f)
                     {
                         hasDove = false;
                         readyToJump = false;
@@ -424,53 +434,12 @@ or maybe I should keep the warnings in, ill see. Either way I need to implement 
             else if(!isDoingDivingAttack && movingBack)
             {
                 transform.position = Vector3.MoveTowards
-<<<<<<< HEAD
-                (
-                    new Vector3(transform.position.x, transform.position.y, 0),
-                    new Vector3(player.transform.position.x, diveLocation.position.y, 0),
-                    16 * Time.deltaTime
-                );
-                if(time > attackTimer/(2*attackTimeDecreaseInPhase2) - 1)
-                {
-                    diveWarning.SetActive(true);
-                }
-                if(time > attackTimer/(2*attackTimeDecreaseInPhase2))
-                {
-                    diveWarning.SetActive(false);
-                    time = 0f;
-                    readyToJump = true;
-                }
-            }
-            else if(hasDove && readyToJump && !isFalling)
-            {
-                bossAnimation.SetInteger("StateInt", 2);
-                ratRigidBody.AddForce(transform.up * forceJumpValue);
-                if(time > .5f)
-                {
-                    time = 0f;
-                    isFalling = true;
-                }
-            }
-            else
-            {   
-                platform.SetActive(true);
-<<<<<<< HEAD
-                if(time > 3f)
-=======
-                if(time >= 2f)
-                {
-                    moveWarning.SetActive(true);
-                }
-                if (time >= 3f)
-=======
                         (
                             new Vector3(transform.position.x, transform.position.y, 0),
                             new Vector3(originalLocation.transform.position.x, transform.position.y, 0),
                             16 * Time.deltaTime
                         );
                 if (transform.position.x >= originalLocation.transform.position.x)
->>>>>>> e99b55bb2dede78bccc17fca3db9b41cc041a1e9
->>>>>>> parent of 7e54a4b... Revert "uh oh i may have caused a fire"
                 {
                     transform.rotation = Quaternion.Euler(0, 0, 0);
                     bossAnimation.SetInteger("StateInt", 0);
@@ -491,9 +460,11 @@ or maybe I should keep the warnings in, ill see. Either way I need to implement 
 
     public void atHalfHealth()
     {
+        Debug.Log(belowHalfHealth);
         if(!belowHalfHealth)
         {
-            playerHealthScript.teleportPlayer(transformPoint);
+            stopAI();
+            Cutscene();
             for (int i = 0; i < ratz.Count; ++i)
             {
                 if (ratz[i] != null)
@@ -506,11 +477,55 @@ or maybe I should keep the warnings in, ill see. Either way I need to implement 
                 }
             }
         } 
-        belowHalfHealth = true;
+    }
+
+    public float getBiteCooldown()
+    {
+        return biteAttackCooldown;
+    }
+
+    public void startFight()
+    {
+        bossFightStarted = true;
+        hitBox.enabled = true;
+        hurtBox.enabled = true;
+    }
+
+    public void stopAI()
+    {
+        bossFightStarted = false;
+        hitBox.enabled = false;
+        hurtBox.enabled = false;
+    }
+
+    public bool getBossFightState()
+    {
+        return bossFightStarted;
+    }
+
+    public void Cutscene()
+    {
+        StartCoroutine(cutsceneDelay());
+        
+    }
+
+    IEnumerator cutsceneDelay()
+    {
+        ratRigidBody.AddForce(transform.up * forceJumpValue * 40);
+        yield return new WaitForSeconds(.5f);
+        bossAnimation.SetInteger("StateInt", 3);
+        yield return new WaitForSeconds(.1f);
+        fallingPipes.GetComponent<Collider2D>().enabled = false;
+        fallingPipes.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+
+        yield return new WaitForSeconds(1f);
         for(int i = 0; i < walls.Length; ++i)
         {
             walls[i].moveRatWall2();
         }
+        yield return new WaitForSeconds(7f);
+        Destroy(fallingPipes);
+        startFight();
         for(int i = 0; i < spikes.Length; ++i)
         {
             spikes[i].GetComponent<Move_Whole_Spike>().moveUp(spikeLocationAtHalfHealth);
@@ -523,20 +538,10 @@ or maybe I should keep the warnings in, ill see. Either way I need to implement 
         {
             phaseTwoTiles[i].SetActive(true);
         }
+        
+        belowHalfHealth = true;
     }
 
-    public float getBiteCooldown()
-    {
-        return biteAttackCooldown;
-    }
 
-    public void startFight()
-    {
-        bossFightStarted = true;
-    }
 
-    public void stopAI()
-    {
-        bossFightStarted = false;
-    }
 }
