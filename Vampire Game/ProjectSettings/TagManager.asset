@@ -10,6 +10,7 @@ TagManager:
   - Crow
   - Dialogue Manager
   - Boss
+  - Falling Object
   layers:
   - Default
   - TransparentFX

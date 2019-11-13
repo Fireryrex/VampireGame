@@ -509,6 +509,19 @@ I need to implement a case in the attack switch so that it can choose to activat
         
     }
 
+    public void changeArena()
+    {
+        fallingPipes.GetComponentInChildren<BoxCollider2D>().enabled = false;
+        for(int i = 0; i < phaseOneTiles.Length; ++i)
+        {
+            phaseOneTiles[i].SetActive(false);
+        }
+        for(int i = 0; i < phaseTwoTiles.Length; ++i)
+        {
+            phaseTwoTiles[i].SetActive(true);
+        }
+    }
+
     IEnumerator cutsceneDelay()
     {
         ratRigidBody.AddForce(transform.up * forceJumpValue * 40);
@@ -530,15 +543,6 @@ I need to implement a case in the attack switch so that it can choose to activat
         {
             spikes[i].GetComponent<Move_Whole_Spike>().moveUp(spikeLocationAtHalfHealth);
         }
-        for(int i = 0; i < phaseOneTiles.Length; ++i)
-        {
-            phaseOneTiles[i].SetActive(false);
-        }
-        for(int i = 0; i < phaseTwoTiles.Length; ++i)
-        {
-            phaseTwoTiles[i].SetActive(true);
-        }
-        
         belowHalfHealth = true;
     }
 
