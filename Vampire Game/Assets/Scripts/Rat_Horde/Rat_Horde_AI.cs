@@ -43,6 +43,8 @@ public class Rat_Horde_AI : MonoBehaviour
     private bool readyToJump = false;
     private bool isFalling = false;
     
+    //bite attack cooldown
+    [SerializeField] float biteAttackCooldown;
 
     //debugging stuff
     [SerializeField] bool halfHealthTest = false;
@@ -63,12 +65,17 @@ public class Rat_Horde_AI : MonoBehaviour
     //placeholder thing
     [SerializeField] GameObject moveWarning;
     [SerializeField] GameObject spawnWarning;
+    [SerializeField] GameObject diveWarning;
+
+    //animation shit
+    private Animator bossAnimation;
 
     // Start is called before the first frame update
     void Start()
     {
         healthScript = GetComponent<Health_Script>();
         ratRigidBody= GetComponent<Rigidbody2D>();
+        bossAnimation = GetComponentInChildren<Animator>();
         player = GameObject.FindWithTag("Player");
         playerHealthScript = player.GetComponent<Health_Script>();
         moveSelected = -1;
@@ -155,10 +162,12 @@ or maybe I should keep the warnings in, ill see. Either way I need to implement 
                         {
                             if (transform.position.x <= leftLocation.transform.position.x)
                             {
+                                bossAnimation.SetInteger("StateInt", 1);
                                 movingBack = true;
                             }
                             else if (transform.position.x >= originalLocation.transform.position.x)
                             {
+                                bossAnimation.SetInteger("StateInt", 1);
                                 movingLeft = true;
                             }
                         }
@@ -223,6 +232,7 @@ I need to implement a case in the attack switch so that it can choose to activat
             }
             if(time > attackTimer/attackTimeDecreaseInPhase2 - .5)
             {
+                bossAnimation.SetInteger("StateInt", 2);
                 ratRigidBody.AddForce(transform.up * forceJumpValue);
             }
 
@@ -231,6 +241,7 @@ I need to implement a case in the attack switch so that it can choose to activat
             {
                 moveWarning.SetActive(false);
                 spawnWarning.SetActive(false);
+                diveWarning.SetActive(false);
                 time = 0f;
                 moveSelected = Random.Range(1, moves);
                 ResetSpikes();
@@ -325,12 +336,13 @@ I need to implement a case in the attack switch so that it can choose to activat
         }
 
         //Do the dive attack logic here.
-        //the attack should first make the rat dive under the water.
+        //the attack sCaution1hould first make the rat dive under the water.
         //It should then save the current x location of the player and move under neath it.
         //once it reaches there, it should give a warning to let the player know that it is there.
         //then it should jump straight out of the water. After that, it should stay above the water and move to the other side of the arena after a moment of delay.
         else        
         {
+
             if(!hasDove && !readyToJump && !isFalling)
             {
                 platform.SetActive(false);
@@ -348,6 +360,7 @@ I need to implement a case in the attack switch so that it can choose to activat
             }
             else if(hasDove && !readyToJump && !isFalling)
             {
+                bossAnimation.SetInteger("StateInt", 0);
                 transform.position = Vector3.MoveTowards
                 (
                     new Vector3(transform.position.x, transform.position.y, 0),
@@ -356,17 +369,18 @@ I need to implement a case in the attack switch so that it can choose to activat
                 );
                 if(time > attackTimer/(2*attackTimeDecreaseInPhase2) - 1)
                 {
-                    moveWarning.SetActive(true);
+                    diveWarning.SetActive(true);
                 }
                 if(time > attackTimer/(2*attackTimeDecreaseInPhase2))
                 {
-                    moveWarning.SetActive(false);
+                    diveWarning.SetActive(false);
                     time = 0f;
                     readyToJump = true;
                 }
             }
             else if(hasDove && readyToJump && !isFalling)
             {
+                bossAnimation.SetInteger("StateInt", 2);
                 ratRigidBody.AddForce(transform.up * forceJumpValue);
                 if(time > .5f)
                 {
@@ -386,6 +400,7 @@ I need to implement a case in the attack switch so that it can choose to activat
                 }
             }
         }
+
         if(!isDoingDivingAttack && movingLeft)
         {
             transform.position = Vector3.MoveTowards
@@ -397,6 +412,7 @@ I need to implement a case in the attack switch so that it can choose to activat
             if(transform.position.x <= leftLocation.transform.position.x)
             {
                 transform.rotation = Quaternion.Euler(0, -180, 0);
+                bossAnimation.SetInteger("StateInt", 0);
                 movingLeft = false;
                 //movingBack = true;
             }
@@ -412,6 +428,7 @@ I need to implement a case in the attack switch so that it can choose to activat
             if (transform.position.x >= originalLocation.transform.position.x)
             {
                 transform.rotation = Quaternion.Euler(0, 0, 0);
+                bossAnimation.SetInteger("StateInt", 0);
                 movingLeft = false;
                 movingBack = false;
             }
@@ -463,5 +480,10 @@ I need to implement a case in the attack switch so that it can choose to activat
         }
         
 
+    }
+
+    public float getBiteCooldown()
+    {
+        return biteAttackCooldown;
     }
 }
