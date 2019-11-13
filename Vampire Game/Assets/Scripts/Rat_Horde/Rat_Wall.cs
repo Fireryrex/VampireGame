@@ -7,6 +7,7 @@ public class Rat_Wall : MonoBehaviour
     public Transform wallMoveTo1;
     public Transform wallMoveTo2;
     public float wallSpeed;
+    [SerializeField] float wallSpeed2;
     private bool movingWall1 = false;
     private bool movingWall2 = false;
 
@@ -27,7 +28,7 @@ public class Rat_Wall : MonoBehaviour
                 (
                     new Vector3(transform.position.x, transform.position.y, 0),
                     new Vector3(wallMoveTo2.transform.position.x, wallMoveTo2.transform.position.y, 0),
-                    wallSpeed * Time.deltaTime
+                    wallSpeed2 * Time.deltaTime
                 );
         }
     }

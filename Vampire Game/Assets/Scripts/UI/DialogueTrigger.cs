@@ -26,6 +26,11 @@ public class DialogueTrigger : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) {
 
+        iDontCareWhatYouNameIt();
+    }
+
+    public void iDontCareWhatYouNameIt()
+    {
         if (hasBeenTriggered == false){
             Time.timeScale = 0f;
             hasBeenTriggered = true;
