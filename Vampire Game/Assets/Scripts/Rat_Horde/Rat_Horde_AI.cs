@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Rat_Horde_AI : MonoBehaviour
 {
-    private bool bossFightStarted = false;
-
     [SerializeField] int moves;
     private int moveSelected;
     [SerializeField] Rat_Wall[] walls;
@@ -92,339 +90,278 @@ or maybe I should keep the warnings in, ill see. Either way I need to implement 
     // Update is called once per frame
     void Update()
     {
-        if(bossFightStarted)
+        //debug method to check if the abilities when he is at half hp works correctly
+        if(halfHealthTest)
         {
-            //debug method to check if the abilities when he is at half hp works correctly
-            if(halfHealthTest)
-            {
-                atHalfHealth();
-                halfHealthTest = false;
-            }
+            atHalfHealth();
+            halfHealthTest = false;
+        }
 
-            if(healthScript.getHealthPercent() <= .5)
-            {
-                Debug.Log(healthScript.getHealthPercent());
-                atHalfHealth();
-            }
+        if(healthScript.getHealthPercent() <= .5)
+        {
+            Debug.Log(healthScript.getHealthPercent());
+            atHalfHealth();
+        }
 
-            time += Time.deltaTime;
-            staggerTime += Time.deltaTime;
-            if(!belowHalfHealth)
+        time += Time.deltaTime;
+        staggerTime += Time.deltaTime;
+        if(!belowHalfHealth)
+        {
+            if(time > attackTimer - 1.5 && moveSelected == -1)
             {
-                if(time > attackTimer - 1.5 && moveSelected == -1)
+                moveSelected = Random.Range(1, moves);
+                if(moveSelected == 2)
                 {
-                    moveSelected = Random.Range(1, moves);
-                    if(moveSelected == 2)
+                    moveWarning.SetActive(true);
+                    spawnWarning.SetActive(false);
+                }
+                else
+                {
+                    spawnWarning.SetActive(true);
+                    moveWarning.SetActive(false);
+                }
+            }
+            if (time > attackTimer)
+            {
+                moveWarning.SetActive(false);
+                spawnWarning.SetActive(false);
+                
+                time = 0f;
+                ResetSpikes();
+                int numSpikes = Random.Range(1, spikes.Length);
+                for (int i = 0; i < numSpikes; ++i)
+                {
+                    int chosenSpike = spikeNumberList[Random.Range(0, spikeNumberList.Count)];
+                    spikeNumberList.Remove(chosenSpike);
+                    spikes[chosenSpike].SetActive(true);
+                    spikes[chosenSpike].GetComponentInChildren<Spike_Rat>().Appear();
+                }
+                switch (moveSelected)
+                {
+                    case 1:         //Spawn attack
+                        //spawnOffset = new Vector3(0, 0, 0);
+                        int randRats = Random.Range(1, numRatz + 1);
+                        for (int i = 0; i < randRats; ++i)
+                        {
+                            //spawnOffset = new Vector3(0, 2*i, 0);
+                            GameObject spawnedRat = Instantiate(rat, transform.position, transform.rotation);
+                            ratz.Add(spawnedRat);
+                            if (transform.position.x <= leftLocation.transform.position.x)
+                            {
+                                spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3(Random.Range(velMin, velMax), Random.Range(velMin, velMax) / 2, 0f));
+                            }
+                            else if (transform.position.x >= originalLocation.transform.position.x)
+                            {
+                                spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3((Random.Range(-velMin, -velMax)), Random.Range(velMin, velMax) / 2, 0f));
+                            }
+                        }
+                        break;
+                    case 2:         //Move attack
+                        //Debug.Log("attack2");
+                        if (!movingLeft && !movingBack)
+                        {
+                            if (transform.position.x <= leftLocation.transform.position.x)
+                            {
+                                bossAnimation.SetInteger("StateInt", 1);
+                                movingBack = true;
+                            }
+                            else if (transform.position.x >= originalLocation.transform.position.x)
+                            {
+                                bossAnimation.SetInteger("StateInt", 1);
+                                movingLeft = true;
+                            }
+                        }
+                        break;
+                    case 3:         //Staggered Spawn Attack
+                        spawnOffset = new Vector3(0, 0, 0);
+                        randStaggeredRatz = Random.Range(1, numRatz + 1);
+                        spawning = true;
+                        break;
+                    default:
+                        Debug.Log("Selected move #" + moveSelected);
+                        break;
+                }
+                moveSelected = -1;
+
+                for (int i = 0; i < ratz.Count; ++i)
+                {
+                    if (ratz[i] != null)
                     {
-                        moveWarning.SetActive(true);
-                        spawnWarning.SetActive(false);
+                        ratz[i].GetComponent<Health_Script>().dealDamage(damagePerTickToSpawnedRats);
                     }
                     else
                     {
-                        spawnWarning.SetActive(true);
-                        moveWarning.SetActive(false);
+                        ratz.RemoveAt(i);
                     }
                 }
-                if (time > attackTimer)
-                {
-                    moveWarning.SetActive(false);
-                    spawnWarning.SetActive(false);
-                    
-                    time = 0f;
-                    ResetSpikes();
-                    int numSpikes = Random.Range(1, spikes.Length);
-                    for (int i = 0; i < numSpikes; ++i)
-                    {
-                        int chosenSpike = spikeNumberList[Random.Range(0, spikeNumberList.Count)];
-                        spikeNumberList.Remove(chosenSpike);
-                        spikes[chosenSpike].SetActive(true);
-                        spikes[chosenSpike].GetComponentInChildren<Spike_Rat>().Appear();
-                    }
-                    switch (moveSelected)
-                    {
-                        case 1:         //Spawn attack
-                            //spawnOffset = new Vector3(0, 0, 0);
-                            int randRats = Random.Range(1, numRatz + 1);
-                            for (int i = 0; i < randRats; ++i)
-                            {
-                                //spawnOffset = new Vector3(0, 2*i, 0);
-                                GameObject spawnedRat = Instantiate(rat, transform.position, transform.rotation);
-                                ratz.Add(spawnedRat);
-                                if (transform.position.x <= leftLocation.transform.position.x)
-                                {
-                                    spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3(Random.Range(velMin, velMax), Random.Range(velMin, velMax) / 2, 0f));
-                                }
-                                else if (transform.position.x >= originalLocation.transform.position.x)
-                                {
-                                    spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3((Random.Range(-velMin, -velMax)), Random.Range(velMin, velMax) / 2, 0f));
-                                }
-                            }
-                            break;
-                        case 2:         //Move attack
-                            //Debug.Log("attack2");
-                            if (!movingLeft && !movingBack)
-                            {
-                                if (transform.position.x <= leftLocation.transform.position.x)
-                                {
-                                    bossAnimation.SetInteger("StateInt", 1);
-                                    movingBack = true;
-                                }
-                                else if (transform.position.x >= originalLocation.transform.position.x)
-                                {
-                                    bossAnimation.SetInteger("StateInt", 1);
-                                    movingLeft = true;
-                                }
-                            }
-                            break;
-                        case 3:         //Staggered Spawn Attack
-                            spawnOffset = new Vector3(0, 0, 0);
-                            randStaggeredRatz = Random.Range(1, numRatz + 1);
-                            spawning = true;
-                            break;
-                        default:
-                            Debug.Log("Selected move #" + moveSelected);
-                            break;
-                    }
-                    moveSelected = -1;
+                
+            }
 
-                    for (int i = 0; i < ratz.Count; ++i)
+            if (spawning && staggerTime > attackTimer/2 && randStaggeredRatz != 0)
+            {
+                staggerTime = 0f;
+                GameObject spawnedRat = Instantiate(rat, transform.position, transform.rotation);
+                ratz.Add(spawnedRat);
+                if (transform.position.x <= leftLocation.transform.position.x)
+                {
+                    spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3(Random.Range(velMin, velMax), Random.Range(velMin, velMax), 0f));
+                }
+                else if (transform.position.x >= originalLocation.transform.position.x)
+                {
+                    spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3((Random.Range(-velMin, -velMax)), Random.Range(velMin, velMax), 0f));
+                }
+                randStaggeredRatz -= 1;
+            }
+            else if(randStaggeredRatz == 0)
+            {
+                spawning = false;
+            }
+
+        }
+
+/*
+I need to implement a case in the attack switch so that it can choose to activate its dive attack
+ */
+
+        else if (!isDoingDivingAttack)
+        {
+            //placeholder warning
+            if(time > attackTimer/attackTimeDecreaseInPhase2 - 1)
+            {
+                moveWarning.SetActive(true);
+            }
+            if(time > attackTimer/attackTimeDecreaseInPhase2 - .5)
+            {
+                bossAnimation.SetInteger("StateInt", 2);
+                ratRigidBody.AddForce(transform.up * forceJumpValue);
+            }
+
+            //half health attack timer is shorter
+            if (time > attackTimer/attackTimeDecreaseInPhase2)
+            {
+                moveWarning.SetActive(false);
+                spawnWarning.SetActive(false);
+                diveWarning.SetActive(false);
+                time = 0f;
+                moveSelected = Random.Range(1, moves);
+                ResetSpikes();
+                int numSpikes = Random.Range(1, spikes.Length/2);
+                //spike attack
+                for (int i = 0; i < numSpikes; ++i)
+                {
+                    int chosenSpike = spikeNumberList[Random.Range(0, spikeNumberList.Count)];
+                    spikeNumberList.Remove(chosenSpike);
+                    spikes[chosenSpike].SetActive(true);
+                    spikes[chosenSpike].GetComponentInChildren<Spike_Rat>().Appear();
+                }
+                switch (moveSelected)
+                {
+                    case 1:         //Spawn attack
+                        //spawnOffset = new Vector3(0, 0, 0);
+                        int randRats = Random.Range(1, numRatz + 1);
+                        for (int i = 0; i < randRats; ++i)
+                        {
+                            //spawnOffset = new Vector3(0, 2*i, 0);
+                            GameObject spawnedRat = Instantiate(rat, transform.position, transform.rotation);
+                            ratz.Add(spawnedRat);
+                            if (transform.position.x <= leftLocation.transform.position.x)
+                            {
+                                spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3(Random.Range(velMin, velMax), Random.Range(velMin, velMax), 0f));
+                            }
+                            else if (transform.position.x >= originalLocation.transform.position.x)
+                            {
+                                spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3((Random.Range(-velMin, -velMax)), Random.Range(velMin, velMax), 0f));
+                            }
+                        }
+                        break;
+                    case 2:         //Staggered Spawn Attack
+                        spawnOffset = new Vector3(0, 0, 0);
+                        randStaggeredRatz = Random.Range(1, numRatz + 1);
+                        spawning = true;
+                        break;
+                    case 3:
+                        //implement dive attack here
+                        isDoingDivingAttack = true;
+                        break;
+                    default:
+                        Debug.Log("Selected move #" + moveSelected);
+                        break;
+                }
+                //Every time the boss makes a move it should jump up in the air and move to the opposite side of the arena, unless it is doing the dive attack
+                if (!movingLeft && !movingBack)
+                {
+                    if (transform.position.x <= leftLocation.transform.position.x + 1)
                     {
-                        if (ratz[i] != null)
-                        {
-                            ratz[i].GetComponent<Health_Script>().dealDamage(damagePerTickToSpawnedRats);
-                        }
-                        else
-                        {
-                            ratz.RemoveAt(i);
-                        }
+                        movingBack = true;
                     }
-                    
+                    else if (transform.position.x >= originalLocation.transform.position.x - 1)
+                    {
+                        movingLeft = true;
+                    }
                 }
 
-                if (spawning && staggerTime > attackTimer/2 && randStaggeredRatz != 0)
+                for (int i = 0; i < ratz.Count; ++i)
                 {
-                    staggerTime = 0f;
-                    GameObject spawnedRat = Instantiate(rat, transform.position, transform.rotation);
-                    ratz.Add(spawnedRat);
-                    if (transform.position.x <= leftLocation.transform.position.x)
+                    if (ratz[i] != null)
                     {
-                        spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3(Random.Range(velMin, velMax), Random.Range(velMin, velMax), 0f));
+                        ratz[i].GetComponent<Health_Script>().dealDamage(damagePerTickToSpawnedRats);       //gotta change this into something that doesnt cause bleeding
                     }
-                    else if (transform.position.x >= originalLocation.transform.position.x)
+                    else
                     {
-                        spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3((Random.Range(-velMin, -velMax)), Random.Range(velMin, velMax), 0f));
+                        ratz.RemoveAt(i);
                     }
-                    randStaggeredRatz -= 1;
-                }
-                else if(randStaggeredRatz == 0)
-                {
-                    spawning = false;
                 }
 
             }
 
-    /*
-    I need to implement a case in the attack switch so that it can choose to activate its dive attack
-    */
-
-            else if (!isDoingDivingAttack)
+            if (spawning && staggerTime > attackTimer / 3 && randStaggeredRatz != 0)
             {
-                //placeholder warning
-                if(time > attackTimer/attackTimeDecreaseInPhase2 - 1)
+                staggerTime = 0f;
+                GameObject spawnedRat = Instantiate(rat, transform.position, transform.rotation);
+                ratz.Add(spawnedRat);
+                if (transform.position.x <= leftLocation.transform.position.x)
                 {
-                    moveWarning.SetActive(true);
+                    spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3(Random.Range(velMin, velMax), Random.Range(velMin, velMax), 0f));
                 }
-                if(time > attackTimer/attackTimeDecreaseInPhase2 - .5)
+                else if (transform.position.x >= originalLocation.transform.position.x)
                 {
-                    bossAnimation.SetInteger("StateInt", 2);
-                    ratRigidBody.AddForce(transform.up * forceJumpValue);
+                    spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3((Random.Range(-velMin, -velMax)), Random.Range(velMin, velMax), 0f));
                 }
-
-                //half health attack timer is shorter
-                if (time > attackTimer/attackTimeDecreaseInPhase2)
-                {
-                    moveWarning.SetActive(false);
-                    spawnWarning.SetActive(false);
-                    diveWarning.SetActive(false);
-                    time = 0f;
-                    moveSelected = Random.Range(1, moves);
-                    ResetSpikes();
-                    int numSpikes = Random.Range(1, spikes.Length/2);
-                    //spike attack
-                    for (int i = 0; i < numSpikes; ++i)
-                    {
-                        int chosenSpike = spikeNumberList[Random.Range(0, spikeNumberList.Count)];
-                        spikeNumberList.Remove(chosenSpike);
-                        spikes[chosenSpike].SetActive(true);
-                        spikes[chosenSpike].GetComponentInChildren<Spike_Rat>().Appear();
-                    }
-                    switch (moveSelected)
-                    {
-                        case 1:         //Spawn attack
-                            //spawnOffset = new Vector3(0, 0, 0);
-                            int randRats = Random.Range(1, numRatz + 1);
-                            for (int i = 0; i < randRats; ++i)
-                            {
-                                //spawnOffset = new Vector3(0, 2*i, 0);
-                                GameObject spawnedRat = Instantiate(rat, transform.position, transform.rotation);
-                                ratz.Add(spawnedRat);
-                                if (transform.position.x <= leftLocation.transform.position.x)
-                                {
-                                    spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3(Random.Range(velMin, velMax), Random.Range(velMin, velMax), 0f));
-                                }
-                                else if (transform.position.x >= originalLocation.transform.position.x)
-                                {
-                                    spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3((Random.Range(-velMin, -velMax)), Random.Range(velMin, velMax), 0f));
-                                }
-                            }
-                            break;
-                        case 2:         //Staggered Spawn Attack
-                            spawnOffset = new Vector3(0, 0, 0);
-                            randStaggeredRatz = Random.Range(1, numRatz + 1);
-                            spawning = true;
-                            break;
-                        case 3:
-                            //implement dive attack here
-                            isDoingDivingAttack = true;
-                            break;
-                        default:
-                            Debug.Log("Selected move #" + moveSelected);
-                            break;
-                    }
-                    //Every time the boss makes a move it should jump up in the air and move to the opposite side of the arena, unless it is doing the dive attack
-                    if (!movingLeft && !movingBack)
-                    {
-                        if (transform.position.x <= leftLocation.transform.position.x + 1)
-                        {
-                            movingBack = true;
-                        }
-                        else if (transform.position.x >= originalLocation.transform.position.x - 1)
-                        {
-                            movingLeft = true;
-                        }
-                    }
-
-                    for (int i = 0; i < ratz.Count; ++i)
-                    {
-                        if (ratz[i] != null)
-                        {
-                            ratz[i].GetComponent<Health_Script>().dealDamage(damagePerTickToSpawnedRats);       //gotta change this into something that doesnt cause bleeding
-                        }
-                        else
-                        {
-                            ratz.RemoveAt(i);
-                        }
-                    }
-
-                }
-
-                if (spawning && staggerTime > attackTimer / 3 && randStaggeredRatz != 0)
-                {
-                    staggerTime = 0f;
-                    GameObject spawnedRat = Instantiate(rat, transform.position, transform.rotation);
-                    ratz.Add(spawnedRat);
-                    if (transform.position.x <= leftLocation.transform.position.x)
-                    {
-                        spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3(Random.Range(velMin, velMax), Random.Range(velMin, velMax), 0f));
-                    }
-                    else if (transform.position.x >= originalLocation.transform.position.x)
-                    {
-                        spawnedRat.GetComponent<Rigidbody2D>().velocity = (new Vector3((Random.Range(-velMin, -velMax)), Random.Range(velMin, velMax), 0f));
-                    }
-                    randStaggeredRatz -= 1;
-                }
-                else if (randStaggeredRatz == 0)
-                {
-                    spawning = false;
-                }
+                randStaggeredRatz -= 1;
             }
-
-            //Do the dive attack logic here.
-            //the attack sCaution1hould first make the rat dive under the water.
-            //It should then save the current x location of the player and move under neath it.
-            //once it reaches there, it should give a warning to let the player know that it is there.
-            //then it should jump straight out of the water. After that, it should stay above the water and move to the other side of the arena after a moment of delay.
-            else        
+            else if (randStaggeredRatz == 0)
             {
-
-                if(!hasDove && !readyToJump && !isFalling)
-                {
-                    platform.SetActive(false);
-                    transform.position = Vector3.MoveTowards
-                            (
-                                new Vector3(transform.position.x, transform.position.y, 0),
-                                new Vector3(transform.position.x, diveLocation.position.y, 0),
-                                16 * Time.deltaTime
-                            );
-                    if(time > attackTimer/(2*attackTimeDecreaseInPhase2))
-                    {
-                        time = 0f;
-                        hasDove = true;
-                    }
-                }
-                else if(hasDove && !readyToJump && !isFalling)
-                {
-                    bossAnimation.SetInteger("StateInt", 0);
-                    transform.position = Vector3.MoveTowards
-                    (
-                        new Vector3(transform.position.x, transform.position.y, 0),
-                        new Vector3(player.transform.position.x, diveLocation.position.y, 0),
-                        16 * Time.deltaTime
-                    );
-                    if(time > attackTimer/(2*attackTimeDecreaseInPhase2) - 1)
-                    {
-                        diveWarning.SetActive(true);
-                    }
-                    if(time > attackTimer/(2*attackTimeDecreaseInPhase2))
-                    {
-                        diveWarning.SetActive(false);
-                        time = 0f;
-                        readyToJump = true;
-                    }
-                }
-                else if(hasDove && readyToJump && !isFalling)
-                {
-                    bossAnimation.SetInteger("StateInt", 2);
-                    ratRigidBody.AddForce(transform.up * forceJumpValue);
-                    if(time > .5f)
-                    {
-                        time = 0f;
-                        isFalling = true;
-                    }
-                }
-                else
-                {   
-                    platform.SetActive(true);
-                    if(time > 3f)
-                    {
-                        hasDove = false;
-                        readyToJump = false;
-                        isFalling = false;
-                        isDoingDivingAttack = false;
-                    }
-                }
+                spawning = false;
             }
+        }
 
-            if(!isDoingDivingAttack && movingLeft)
+        //Do the dive attack logic here.
+        //the attack sCaution1hould first make the rat dive under the water.
+        //It should then save the current x location of the player and move under neath it.
+        //once it reaches there, it should give a warning to let the player know that it is there.
+        //then it should jump straight out of the water. After that, it should stay above the water and move to the other side of the arena after a moment of delay.
+        else        
+        {
+
+            if(!hasDove && !readyToJump && !isFalling)
             {
+                platform.SetActive(false);
                 transform.position = Vector3.MoveTowards
                         (
                             new Vector3(transform.position.x, transform.position.y, 0),
-                            new Vector3(leftLocation.transform.position.x, transform.position.y, 0),
+                            new Vector3(transform.position.x, diveLocation.position.y, 0),
                             16 * Time.deltaTime
                         );
-                if(transform.position.x <= leftLocation.transform.position.x)
+                if(time > attackTimer/(2*attackTimeDecreaseInPhase2))
                 {
-                    transform.rotation = Quaternion.Euler(0, -180, 0);
-                    bossAnimation.SetInteger("StateInt", 0);
-                    movingLeft = false;
-                    //movingBack = true;
+                    time = 0f;
+                    hasDove = true;
                 }
             }
-            else if(!isDoingDivingAttack && movingBack)
+            else if(hasDove && !readyToJump && !isFalling)
             {
+                bossAnimation.SetInteger("StateInt", 0);
                 transform.position = Vector3.MoveTowards
-<<<<<<< HEAD
                 (
                     new Vector3(transform.position.x, transform.position.y, 0),
                     new Vector3(player.transform.position.x, diveLocation.position.y, 0),
@@ -459,23 +396,49 @@ or maybe I should keep the warnings in, ill see. Either way I need to implement 
                     moveWarning.SetActive(true);
                 }
                 if (time >= 3f)
-=======
-                        (
-                            new Vector3(transform.position.x, transform.position.y, 0),
-                            new Vector3(originalLocation.transform.position.x, transform.position.y, 0),
-                            16 * Time.deltaTime
-                        );
-                if (transform.position.x >= originalLocation.transform.position.x)
->>>>>>> e99b55bb2dede78bccc17fca3db9b41cc041a1e9
                 {
-                    transform.rotation = Quaternion.Euler(0, 0, 0);
-                    bossAnimation.SetInteger("StateInt", 0);
-                    movingLeft = false;
-                    movingBack = false;
+                    hasDove = false;
+                    readyToJump = false;
+                    isFalling = false;
+                    isDoingDivingAttack = false;
                 }
             }
         }
+
+        if(!isDoingDivingAttack && movingLeft)
+        {
+            transform.position = Vector3.MoveTowards
+                    (
+                        new Vector3(transform.position.x, transform.position.y, 0),
+                        new Vector3(leftLocation.transform.position.x, transform.position.y, 0),
+                        16 * Time.deltaTime
+                    );
+            if(transform.position.x <= leftLocation.transform.position.x)
+            {
+                transform.rotation = Quaternion.Euler(0, -180, 0);
+                bossAnimation.SetInteger("StateInt", 0);
+                movingLeft = false;
+                //movingBack = true;
+            }
+        }
+        else if(!isDoingDivingAttack && movingBack)
+        {
+            transform.position = Vector3.MoveTowards
+                    (
+                        new Vector3(transform.position.x, transform.position.y, 0),
+                        new Vector3(originalLocation.transform.position.x, transform.position.y, 0),
+                        16 * Time.deltaTime
+                    );
+            if (transform.position.x >= originalLocation.transform.position.x)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                bossAnimation.SetInteger("StateInt", 0);
+                movingLeft = false;
+                movingBack = false;
+            }
+        }
     }
+
     private void ResetSpikes()
     {
         spikeNumberList.Clear();
@@ -519,20 +482,12 @@ or maybe I should keep the warnings in, ill see. Either way I need to implement 
         {
             phaseTwoTiles[i].SetActive(true);
         }
+        
+
     }
 
     public float getBiteCooldown()
     {
         return biteAttackCooldown;
-    }
-
-    public void startFight()
-    {
-        bossFightStarted = true;
-    }
-
-    public void stopAI()
-    {
-        bossFightStarted = false;
     }
 }

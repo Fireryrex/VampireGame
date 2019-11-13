@@ -6,14 +6,14 @@ public class Health_Script : MonoBehaviour
 {
     public int health;
     public float knockback;
-    protected float coolDown;
-    [SerializeField] protected float coolDownTime;
+    private float coolDown;
+    [SerializeField] float coolDownTime;
     public GameObject DeathAnimation;
     public float timeToDeath = 0;
     [SerializeField] Transform RespawnPoint;
     public int maxHealth;
     public string type;
-    [SerializeField] protected bool ignoreDeathfield = false;
+    [SerializeField] bool ignoreDeathfield = false;
     
     // Start is called before the first frame update
     void Start()
@@ -34,7 +34,7 @@ public class Health_Script : MonoBehaviour
     }
 
     //Decreases the characters health by damage
-    public virtual void dealDamage(int damage)
+    public void dealDamage(int damage)
     {
         if(coolDown == 0){
             coolDown = coolDownTime;
@@ -89,7 +89,7 @@ public class Health_Script : MonoBehaviour
         health = maxHealth;
     }
 
-    protected void particleDamageTrigger() {
+    private void particleDamageTrigger() {
         if (gameObject.GetComponent<Health_Script>().type == "BreakableObject"){
             gameObject.GetComponentInChildren<ParticleSystem>().Play();
         }
