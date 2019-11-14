@@ -558,7 +558,7 @@ I need to implement a case in the attack switch so that it can choose to activat
 
     IEnumerator bossDeath()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         for(int i = 0; i < walls.Length; ++i)
         {
             walls[i].resetWalls();
