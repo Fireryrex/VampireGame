@@ -1,0 +1,3 @@
+[submodule "Vampire"]
+	path = Vampire
+	url = https://github.com/Unity-Technologies/2d-extras.git
