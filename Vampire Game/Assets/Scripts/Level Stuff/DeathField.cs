@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class DeathField : MonoBehaviour
 {
+    [SerializeField] private int damage = 1; 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<Health_Script>().respawn();
+            collision.GetComponent<Health_Script>().dealDamage(damage);
         }
         else if(collision.GetComponent<Health_Script>() != null && !collision.GetComponent<Health_Script>().getDeathFieldVariable())
         {

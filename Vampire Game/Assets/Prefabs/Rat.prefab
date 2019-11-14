@@ -301,6 +301,7 @@ MonoBehaviour:
   RespawnPoint: {fileID: 0}
   maxHealth: 10
   type: Enemy
+  currentBlood: 0
   ignoreDeathfield: 0
 --- !u!70 &4043825859993840572
 CapsuleCollider2D:
@@ -357,7 +358,7 @@ GameObject:
   - component: {fileID: 5080195178163857371}
   m_Layer: 12
   m_Name: BloodSplatter
-  m_TagString: Untagged
+  m_TagString: Blood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1147,7 +1148,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
     arc:
-      value: 45
+      value: 180
       mode: 0
       spread: 0
       speed:
@@ -3973,7 +3974,7 @@ ParticleSystem:
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4130,15 +4131,15 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     minKillSpeed: 0
-    maxKillSpeed: 1
+    maxKillSpeed: 1000
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 2048
+      m_Bits: 2304
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:

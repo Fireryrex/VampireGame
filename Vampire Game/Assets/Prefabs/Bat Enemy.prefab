@@ -297,9 +297,10 @@ GameObject:
   - component: {fileID: 2317342728041982684}
   - component: {fileID: 8293221151335698710}
   - component: {fileID: 5118218319208317511}
+  - component: {fileID: 7421568865971663302}
   m_Layer: 12
   m_Name: BloodSplatter
-  m_TagString: Untagged
+  m_TagString: Blood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -401,7 +402,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.15
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -454,7 +455,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 40.81
+      scalar: 30
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -892,7 +893,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10.11
+      scalar: 10
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1089,7 +1090,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
     arc:
-      value: 45
+      value: 180
       mode: 0
       spread: 0
       speed:
@@ -3933,7 +3934,7 @@ ParticleSystem:
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -3986,7 +3987,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4039,7 +4040,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4094,11 +4095,11 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 2048
+      m_Bits: 256
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -5114,6 +5115,18 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &7421568865971663302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7286589297371571378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93b1bcd217595b94aa88bc87020e06d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8169452097291207961
 GameObject:
   m_ObjectHideFlags: 0
@@ -5267,6 +5280,8 @@ MonoBehaviour:
   RespawnPoint: {fileID: 0}
   maxHealth: 15
   type: Enemy
+  currentBlood: 0
+  ignoreDeathfield: 0
 --- !u!50 &8979959447657649586
 Rigidbody2D:
   serializedVersion: 4
