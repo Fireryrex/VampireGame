@@ -30,12 +30,10 @@ public class BossHealthScript : Health_Script
             {
                 bossAI.stopAI();
                 Instantiate(bloodSpray, transform.position, Quaternion.identity, gameObject.transform);
+                bossAI.lowerWalls();
                 //play the death cinematic        
             }
 
         }
     }
-
-    
-
 }

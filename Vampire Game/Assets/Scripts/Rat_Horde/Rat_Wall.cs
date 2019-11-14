@@ -6,10 +6,14 @@ public class Rat_Wall : MonoBehaviour
 {
     public Transform wallMoveTo1;
     public Transform wallMoveTo2;
+    [SerializeField] Transform wallMoveTo3;
     public float wallSpeed;
     [SerializeField] float wallSpeed2;
     private bool movingWall1 = false;
     private bool movingWall2 = false;
+    private bool resetWall2 = false;
+    private bool resetAllWalls = false;
+    [SerializeField] bool isWall1 = false;
 
     private void Update()
     {
@@ -31,6 +35,28 @@ public class Rat_Wall : MonoBehaviour
                     wallSpeed2 * Time.deltaTime
                 );
         }
+        else if(resetWall2)
+        {
+            if (!isWall1)
+            {
+                this.gameObject.transform.position = Vector3.MoveTowards
+                (
+                    new Vector3(transform.position.x, transform.position.y, 0),
+                    new Vector3(wallMoveTo1.transform.position.x, wallMoveTo1.transform.position.y, 0),
+                    wallSpeed2 * Time.deltaTime
+                );
+            }
+            else
+            {
+                this.gameObject.transform.position = Vector3.MoveTowards
+                (
+                    new Vector3(transform.position.x, transform.position.y, 0),
+                    new Vector3(wallMoveTo3.transform.position.x, wallMoveTo3.transform.position.y, 0),
+                    wallSpeed2 * Time.deltaTime
+                );
+
+            }
+        }
     }
 
     //moves the rat wall to the starting position after the player enters the arena
@@ -45,5 +71,12 @@ public class Rat_Wall : MonoBehaviour
     {
         movingWall2 = true;
         movingWall1 = false;
+    }
+
+    public void resetWalls()
+    {
+        resetWall2 = true;
+        movingWall1 = false;
+        movingWall2 = false; 
     }
 }

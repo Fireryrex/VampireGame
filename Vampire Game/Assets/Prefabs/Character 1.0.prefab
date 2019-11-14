@@ -4886,7 +4886,7 @@ GameObject:
   - component: {fileID: 6882284773492678554}
   - component: {fileID: 6882284773492678555}
   - component: {fileID: 1158185538958693744}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Character 1.0
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -4973,7 +4973,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 
-  walkSpeed: 7
+  walkSpeed: 8.7
   gravityScale: 1
   gravityOn: 1
   grounded: 0
@@ -4989,14 +4989,14 @@ MonoBehaviour:
     m_Bits: 2048
   jumpFloatiness: 1
   airControl: 1
-  jumps: 3
-  jumpCooldown: 0.2
+  jumps: 1
+  jumpCooldown: 0
   fallSpeedCap: 50
   jumpHeight: 3
   maxAirSpeed: 0
   roofed: 0
-  dashButton: 111
-  dashDistance: 2
+  dashButton: 107
+  dashDistance: 3
   dashTime: 0.1
   dashHurtboxBounds: {x: 0, y: 0}
   dashHurtboxOffset: {x: 0, y: 0}
@@ -5012,7 +5012,7 @@ MonoBehaviour:
   groundAttackIndex: 0
   airAttackIndex: 0
   fallAttackIndex: 0
-  attackButton: 112
+  attackButton: 108
 --- !u!50 &6882284773492678557
 Rigidbody2D:
   serializedVersion: 4
@@ -5043,11 +5043,11 @@ BoxCollider2D:
   m_GameObject: {fileID: 6882284773492678553}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: dc7a06c82352df54691da9b96625aa7d, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.25459772}
+  m_Offset: {x: 0, y: -0.24126297}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5058,7 +5058,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.75, y: 1.506081}
+  m_Size: {x: 0.75, y: 1.4794115}
   m_EdgeRadius: 0
 --- !u!95 &6882284773492678554
 Animator:
@@ -5100,6 +5100,7 @@ MonoBehaviour:
   RespawnPoint: {fileID: 0}
   maxHealth: 5
   type: Enemy
+  ignoreDeathfield: 0
 --- !u!114 &1158185538958693744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5113,6 +5114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crow: {fileID: 0}
+  crowScript: {fileID: 0}
   crowTarget1: {fileID: 5733216558114344314}
   crowTarget2: {fileID: 859209325}
 --- !u!1 &6882284774920632487

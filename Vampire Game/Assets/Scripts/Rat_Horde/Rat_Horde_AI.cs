@@ -489,6 +489,10 @@ I need to implement a case in the attack switch so that it can choose to activat
         bossFightStarted = true;
         hitBox.enabled = true;
         hurtBox.enabled = true;
+        if(healthScript.getHealthPercent() > 0)
+        {
+            healthScript.ResetHealth();
+        }
     }
 
     public void stopAI()
@@ -546,6 +550,19 @@ I need to implement a case in the attack switch so that it can choose to activat
         belowHalfHealth = true;
     }
 
+    public void lowerWalls()
+    {
+        walls[1].resetWalls();
+        StartCoroutine(bossDeath());
+    }
 
+    IEnumerator bossDeath()
+    {
+        yield return new WaitForSeconds(1f);
+        for(int i = 0; i < walls.Length; ++i)
+        {
+            walls[i].resetWalls();
+        }
+    }
 
 }
