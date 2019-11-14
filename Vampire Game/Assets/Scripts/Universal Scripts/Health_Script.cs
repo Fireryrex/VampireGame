@@ -18,7 +18,7 @@ public class Health_Script : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = maxHealth;
+        ResetHealth();
     }
 
     // Update is called once per frame
@@ -106,5 +106,10 @@ public class Health_Script : MonoBehaviour
     public bool getDeathFieldVariable()
     {
         return ignoreDeathfield;
+    }
+
+    public virtual void ResetHealth()
+    {
+        health = maxHealth;
     }
 }
