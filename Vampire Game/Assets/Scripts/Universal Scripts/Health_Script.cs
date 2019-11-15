@@ -10,6 +10,7 @@ public class Health_Script : MonoBehaviour
     [SerializeField] protected float coolDownTime;
     public GameObject DeathAnimation;
     public float timeToDeath = 0;
+    public int currentBlood;
     [SerializeField] Transform RespawnPoint;
     public int maxHealth;
     public string type;
@@ -26,7 +27,6 @@ public class Health_Script : MonoBehaviour
     {
         if (coolDown > 0){
             coolDown -= Time.deltaTime;
-            Debug.Log(coolDown);
         }
         else if (coolDown < 0){
             coolDown = 0;
@@ -42,14 +42,6 @@ public class Health_Script : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-
-            //Creates a game object that has an death animation
-            //Object.Instantiate(DeathAnimation,transform);
-            //destroy this game object
-
-            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            //NEEDS WORK !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             if (this.tag == "Player")
             {
                 respawn();
@@ -61,9 +53,6 @@ public class Health_Script : MonoBehaviour
             
             
         }
-        //Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
-        
-        //rb.AddForce(new Vector3(knockback, knockback, 0));
         }
     }
 
@@ -91,6 +80,7 @@ public class Health_Script : MonoBehaviour
 
     protected void particleDamageTrigger() {
         if (gameObject.GetComponent<Health_Script>().type == "BreakableObject"){
+            
             gameObject.GetComponentInChildren<ParticleSystem>().Play();
         }
         else if (gameObject.GetComponent<Health_Script>().type == "Enemy"){
@@ -107,7 +97,6 @@ public class Health_Script : MonoBehaviour
     {
         return ignoreDeathfield;
     }
-
     public virtual void ResetHealth()
     {
         health = maxHealth;

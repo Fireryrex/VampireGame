@@ -4095,7 +4095,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 256
+      m_Bits: 2304
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -5277,10 +5277,10 @@ MonoBehaviour:
   DeathAnimation: {fileID: 1569603400387437590, guid: 03d247714264ba6458eaecb50ecbaceb,
     type: 3}
   timeToDeath: 0
+  currentBlood: 0
   RespawnPoint: {fileID: 0}
   maxHealth: 15
   type: Enemy
-  currentBlood: 0
   ignoreDeathfield: 0
 --- !u!50 &8979959447657649586
 Rigidbody2D:
