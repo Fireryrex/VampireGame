@@ -22,16 +22,16 @@ AnimationClip:
     - time: 0
       value: {fileID: 7388399842426930641, guid: 5b72d9e8b33630a0485e74f20ff15304,
         type: 3}
-    - time: 0.033333335
+    - time: 0.05
       value: {fileID: 6757282713640645180, guid: 5b72d9e8b33630a0485e74f20ff15304,
         type: 3}
-    - time: 0.11666667
+    - time: 0.1
       value: {fileID: -6781412095145881161, guid: 5b72d9e8b33630a0485e74f20ff15304,
         type: 3}
-    - time: 0.36666667
+    - time: 0.3
       value: {fileID: 1755772209161902963, guid: 5b72d9e8b33630a0485e74f20ff15304,
         type: 3}
-    - time: 0.41666666
+    - time: 0.35
       value: {fileID: 1755772209161902963, guid: 5b72d9e8b33630a0485e74f20ff15304,
         type: 3}
     attribute: m_Sprite
@@ -63,7 +63,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.43333334
+    m_StopTime: 0.36666667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -90,21 +90,21 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.11666667
+  - time: 0.1
     functionName: access_Attack_Activation
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.38333333
+  - time: 0.3
     functionName: access_Attack_Deactivation
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.41666666
+  - time: 0.33333334
     functionName: access_End_Attack
     data: 
     objectReferenceParameter: {fileID: 0}
