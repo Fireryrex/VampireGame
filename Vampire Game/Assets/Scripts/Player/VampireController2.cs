@@ -77,6 +77,8 @@ public class VampireController2 : MonoBehaviour
     [SerializeField] int airAttackIndex;
     [SerializeField] int fallAttackIndex;
 
+    public Vector2 lastPlayerPosition;
+
     void Awake()
     {
         States = new Dictionary<string,Action>();
@@ -210,6 +212,7 @@ public class VampireController2 : MonoBehaviour
     bool stillHoldingSpace;
     void EnterJumpState() //should I segregate between jumping and falling? I think so.
     {
+        lastPlayerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
         grounded = false;
         stillHoldingSpace = Input.GetKey(KeyCode.Space);
         state = "JumpState";
