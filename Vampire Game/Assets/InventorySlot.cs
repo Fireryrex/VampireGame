@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InventorySlot : MonoBehaviour
 {
-    public GameObject frame;
     private Item item;
     public void AddItem(Item newItem){
         item = newItem;
+
+    }
+    public void displayText(){
+        GameObject.Find("ItemDescriptions").GetComponent<TextMeshProUGUI>().text = item.itemDescription;
     }
 }

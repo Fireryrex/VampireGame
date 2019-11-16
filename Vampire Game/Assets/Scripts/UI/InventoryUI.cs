@@ -29,6 +29,8 @@ public class InventoryUI : MonoBehaviour
             inventory = GameObject.FindGameObjectsWithTag("inventoryItem");
             for (int i = 0; i < currentItem; i++){
                 inventory[i].transform.GetChild(0).transform.GetChild(0).GetComponent<Image>().sprite = items[i].icon;
+                inventory[i].GetComponent<InventorySlot>().AddItem(items[i]);
+                
             }
         }
     }
