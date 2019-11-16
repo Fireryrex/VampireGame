@@ -103,7 +103,11 @@ public class VampireController2 : MonoBehaviour
 
     void Start()
     {
-        
+        unlockedAttack = false;
+        unlockedAttack2 = false;
+        unlockedAttack3 = false;
+        unlockedDash = false;
+        unlockedDoubleJump = false;
     }
 
     void FixedUpdate()//set max allowable timestep to 1/60, same as normal fixed timestep.
