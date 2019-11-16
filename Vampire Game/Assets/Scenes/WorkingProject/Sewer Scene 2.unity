@@ -3297,6 +3297,44 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2436773819054112636}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &368461550 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8054466333223119755, guid: 2727bf7005b9c7d42bfd67f490ab6591,
+    type: 3}
+  m_PrefabInstance: {fileID: 777092240}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &368461552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368461550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00867a8704489ab4c811724d3737972c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
+--- !u!1 &375942497 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8054466334604460739, guid: 2727bf7005b9c7d42bfd67f490ab6591,
+    type: 3}
+  m_PrefabInstance: {fileID: 777092240}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &375942499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375942497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00867a8704489ab4c811724d3737972c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
 --- !u!1001 &377719002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3807,6 +3845,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 377719002}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &580177717 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8054466334557688135, guid: 2727bf7005b9c7d42bfd67f490ab6591,
+    type: 3}
+  m_PrefabInstance: {fileID: 777092240}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &580177719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580177717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00867a8704489ab4c811724d3737972c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
 --- !u!1 &601126994
 GameObject:
   m_ObjectHideFlags: 0
@@ -4638,6 +4695,56 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2586762008450916020, guid: 2727bf7005b9c7d42bfd67f490ab6591,
+        type: 3}
+      propertyPath: m_Name
+      value: InventoryItem1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2586762008450916020, guid: 2727bf7005b9c7d42bfd67f490ab6591,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventoryItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 8054466332769766183, guid: 2727bf7005b9c7d42bfd67f490ab6591,
+        type: 3}
+      propertyPath: m_Name
+      value: InventoryItem2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8054466332769766183, guid: 2727bf7005b9c7d42bfd67f490ab6591,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventoryItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 8054466333223119755, guid: 2727bf7005b9c7d42bfd67f490ab6591,
+        type: 3}
+      propertyPath: m_Name
+      value: InventoryItem3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8054466333223119755, guid: 2727bf7005b9c7d42bfd67f490ab6591,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventoryItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 8054466334557688135, guid: 2727bf7005b9c7d42bfd67f490ab6591,
+        type: 3}
+      propertyPath: m_Name
+      value: InventoryItem5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8054466334557688135, guid: 2727bf7005b9c7d42bfd67f490ab6591,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventoryItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 8054466334604460739, guid: 2727bf7005b9c7d42bfd67f490ab6591,
+        type: 3}
+      propertyPath: m_Name
+      value: InventoryItem4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8054466334604460739, guid: 2727bf7005b9c7d42bfd67f490ab6591,
+        type: 3}
+      propertyPath: m_TagString
+      value: inventoryItem
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2727bf7005b9c7d42bfd67f490ab6591, type: 3}
 --- !u!1 &777092241 stripped
@@ -5066,6 +5173,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2727bf7005b9c7d42bfd67f490ab6591, type: 3}
+--- !u!1 &795058767 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8054466332769766183, guid: 2727bf7005b9c7d42bfd67f490ab6591,
+    type: 3}
+  m_PrefabInstance: {fileID: 777092240}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &795058769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795058767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00867a8704489ab4c811724d3737972c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
 --- !u!1 &802523692
 GameObject:
   m_ObjectHideFlags: 0
@@ -5621,6 +5747,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd99188f9efe16a408cf835161810d8c, type: 3}
+--- !u!1 &1042974767 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2586762008450916020, guid: 2727bf7005b9c7d42bfd67f490ab6591,
+    type: 3}
+  m_PrefabInstance: {fileID: 777092240}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1042974769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042974767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00867a8704489ab4c811724d3737972c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
 --- !u!1 &1047561690
 GameObject:
   m_ObjectHideFlags: 0

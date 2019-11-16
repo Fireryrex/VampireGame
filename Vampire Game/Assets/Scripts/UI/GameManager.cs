@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 {
     enum states {Level1, Level2, Level3}; 
     public static GameManager instance;
-    public List<Item> items = new List<Item>();
     public int test = 100;
     public static GameObject player;
     public Vector2 RespawnPoint;

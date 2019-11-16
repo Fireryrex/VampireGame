@@ -82,5 +82,6 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         inventoryUI.SetActive(true);
         inInventory = true;
+        InventoryUI.instance.updateInventory();
     }
 }
