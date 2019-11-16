@@ -9,6 +9,11 @@ public class VampireController2 : MonoBehaviour
     
     [SerializeField]
     string state;//for debugging, dont set
+    bool unlockedAttack;
+    bool unlockedAttack2;
+    bool unlockedAttack3;
+    bool unlockedDash;
+    bool unlockedDoubleJump;
 
     public float walkSpeed;
     public float gravityScale;
@@ -177,15 +182,15 @@ public class VampireController2 : MonoBehaviour
             EnterFallingState();
             return;
         }
-        if(Input.GetKeyDown(dashButton) &&
-             (Time.time-dashStartTime) > dashCooldown &&
-                 FloatComp( moveVec.x, 0 , .03f)!= 0)
+        if (Input.GetKeyDown(dashButton) &&
+            (Time.time-dashStartTime) > dashCooldown &&
+                 FloatComp( moveVec.x, 0 , .03f)!= 0 && unlockedDash == true)
         {
             ExitFallingState();
             EnterDashingState();
             return;
         }
-        if(Input.GetKeyDown(attackButton))
+        if(Input.GetKeyDown(attackButton) && unlockedAttack)
         {
             ExitDefaultState();
             //maybe instead of having 1 previous reserve attack, i should handle stuff on a combo by combo basis. 
