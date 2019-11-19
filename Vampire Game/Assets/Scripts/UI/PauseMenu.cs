@@ -44,13 +44,13 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume(){
         Debug.Log("Resuming");
-        pauseMenuUI.SetActive(false);
+        GameObject.Find("PauseMenuHolder").SetActive(false);
         Time.timeScale = 1f;
         gameIsPaused = false;
     }
     public void Resumen(){
         Debug.Log("Resuming");
-        GameObject.Find("PauseMenuHolder").SetActive(false);
+        GameObject.Find("InventoryUI").SetActive(false);
         Time.timeScale = 1f;
         gameIsPaused = false;
         inInventory = false;
@@ -82,5 +82,6 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         inventoryUI.SetActive(true);
         inInventory = true;
+        InventoryUI.instance.updateInventory();
     }
 }

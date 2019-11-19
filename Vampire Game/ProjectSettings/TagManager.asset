@@ -11,6 +11,8 @@ TagManager:
   - Dialogue Manager
   - Boss
   - Falling Object
+  - Blood
+  - inventoryItem
   layers:
   - Default
   - TransparentFX

@@ -9,6 +9,11 @@ public class VampireController2 : MonoBehaviour
     
     [SerializeField]
     string state;//for debugging, dont set
+    bool unlockedAttack;
+    bool unlockedAttack2;
+    bool unlockedAttack3;
+    bool unlockedDash;
+    bool unlockedDoubleJump;
 
     public float walkSpeed;
     public float gravityScale;
@@ -77,6 +82,8 @@ public class VampireController2 : MonoBehaviour
     [SerializeField] int airAttackIndex;
     [SerializeField] int fallAttackIndex;
 
+    public Vector2 lastPlayerPosition;
+
     void Awake()
     {
         States = new Dictionary<string,Action>();
@@ -96,7 +103,11 @@ public class VampireController2 : MonoBehaviour
 
     void Start()
     {
-        
+        unlockedAttack = false;
+        unlockedAttack2 = false;
+        unlockedAttack3 = false;
+        unlockedDash = false;
+        unlockedDoubleJump = false;
     }
 
     void FixedUpdate()//set max allowable timestep to 1/60, same as normal fixed timestep.
@@ -175,15 +186,15 @@ public class VampireController2 : MonoBehaviour
             EnterFallingState();
             return;
         }
-        if(Input.GetKeyDown(dashButton) &&
-             (Time.time-dashStartTime) > dashCooldown &&
-                 FloatComp( moveVec.x, 0 , .03f)!= 0)
+        if (Input.GetKeyDown(dashButton) &&
+            (Time.time-dashStartTime) > dashCooldown &&
+                 FloatComp( moveVec.x, 0 , .03f)!= 0 && unlockedDash == true)
         {
             ExitFallingState();
             EnterDashingState();
             return;
         }
-        if(Input.GetKeyDown(attackButton))
+        if(Input.GetKeyDown(attackButton) && unlockedAttack)
         {
             ExitDefaultState();
             //maybe instead of having 1 previous reserve attack, i should handle stuff on a combo by combo basis. 
@@ -210,6 +221,7 @@ public class VampireController2 : MonoBehaviour
     bool stillHoldingSpace;
     void EnterJumpState() //should I segregate between jumping and falling? I think so.
     {
+        lastPlayerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
         grounded = false;
         stillHoldingSpace = Input.GetKey(KeyCode.Space);
         state = "JumpState";
