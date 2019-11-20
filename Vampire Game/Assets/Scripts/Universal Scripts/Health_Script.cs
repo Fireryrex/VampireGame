@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 
@@ -52,6 +50,9 @@ public class Health_Script : MonoBehaviour
             {
                 Object.Destroy(gameObject, timeToDeath);
             }
+        }
+        if (this.tag == "Player"){
+            GameManager.instance.emptyHeart();
         }
         }
     }

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,14 +14,14 @@ public class GameManager : MonoBehaviour
     public int currentBlood;
     public string respawnLevel;
     public GameObject healthUI;
-    private List<GameObject> hearts = new List<GameObject>();
+    private GameObject[] hearts = new GameObject[10];
     public int currentPlayerHealth;
      private void Awake() {
         instance = this;    
     }
     //Checks to see if a GameManager already exists and if so deletes any new copies. All the copies... Heh heh heh.
     private void Start() {
-        currentPlayerHealth = player.GetComponent<Health_Script>().health;
+        //currentPlayerHealth = player.GetComponent<Health_Script>().health;
         currentBlood = 0;
         if(player == null){
             player = GameObject.FindGameObjectWithTag("Player");
@@ -30,7 +29,9 @@ public class GameManager : MonoBehaviour
         if(GameObject.FindGameObjectsWithTag("GameManager").Length > 1 ){
             Debug.Log("Destroy");
             DestroyImmediate(this);
-        }   
+        }
+        hearts = GameObject.FindGameObjectsWithTag("Hearts");  
+        Debug.Log(hearts[0].tag);
     }
     private void Update() {
         checkForDead();
@@ -63,9 +64,10 @@ public class GameManager : MonoBehaviour
         }
     }
         public void emptyHeart(){
-        for (int i = player.GetComponent<Health_Script>().health; i < player.GetComponent<Health_Script>().maxHealth; i++){
-            hearts[i+1].GetComponent<Image>().fillAmount = 0;
-        }
+            Debug.Log("Good Morning");
+            for (int i = player.GetComponent<Health_Script>().health; i < player.GetComponent<Health_Script>().maxHealth; i++){
+                hearts[i].GetComponent<Image>().fillAmount = 0;
+            }
     }
         public void FIllHeart(){
             
