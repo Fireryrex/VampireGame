@@ -9,5 +9,5 @@ public class Item : ScriptableObject
     public string itemName = "New Item";
     public Sprite icon = null; //This icon will be displayed both in game and inventory
     public string itemDescription = "New description.";
-    public string type = "define Type";
+    public string ability = "define Ability";
 }

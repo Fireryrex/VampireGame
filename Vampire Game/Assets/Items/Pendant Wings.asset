@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: New Item
   icon: {fileID: 21300000, guid: fe8b5e5f384b9d846994f2bd43fa290d, type: 3}
   itemDescription: Dash
-  type: define Type
+  ability: dash

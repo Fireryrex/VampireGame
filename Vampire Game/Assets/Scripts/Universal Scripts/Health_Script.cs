@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Health_Script : MonoBehaviour
 {
@@ -15,7 +15,7 @@ public class Health_Script : MonoBehaviour
     public int maxHealth;
     public string type;
     [SerializeField] protected bool ignoreDeathfield = false;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,8 +50,9 @@ public class Health_Script : MonoBehaviour
             {
                 Object.Destroy(gameObject, timeToDeath);
             }
-            
-            
+        }
+        if (this.tag == "Player"){
+            GameManager.instance.emptyHeart();
         }
         }
     }

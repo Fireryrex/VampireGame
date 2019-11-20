@@ -9,11 +9,10 @@ public class VampireController2 : MonoBehaviour
     
     [SerializeField]
     string state;//for debugging, dont set
-    bool unlockedAttack;
-    bool unlockedAttack2;
-    bool unlockedAttack3;
-    bool unlockedDash;
-    bool unlockedDoubleJump;
+    [SerializeField] bool unlockedAttack = false;
+    [SerializeField] bool unlockedAttack2 = false;
+    [SerializeField] bool unlockedAttack3 = false;
+    [SerializeField] bool unlockedDash = false;
 
     public float walkSpeed;
     public float gravityScale;
@@ -103,11 +102,7 @@ public class VampireController2 : MonoBehaviour
 
     void Start()
     {
-        unlockedAttack = false;
-        unlockedAttack2 = false;
-        unlockedAttack3 = false;
-        unlockedDash = false;
-        unlockedDoubleJump = false;
+    
     }
 
     void FixedUpdate()//set max allowable timestep to 1/60, same as normal fixed timestep.
@@ -124,6 +119,21 @@ public class VampireController2 : MonoBehaviour
     {
         States[state]();
         transform.localScale = new Vector3(facingRight? 1 : -1 , 1,1);
+    }
+    public void unlockAttack(){
+        unlockedAttack = true;
+    }
+    public void unlockAttack2(){
+        unlockedAttack2 = true;
+    }
+    public void unlockAttack3(){
+        unlockedAttack3 = true;
+    }
+    public void unlockDash(){
+        unlockedDash = true;
+    }
+    public void unlockDoubleJump(){
+        HasDoubleJump = true;
     }
 
     void TakeDamage()
@@ -194,7 +204,7 @@ public class VampireController2 : MonoBehaviour
             EnterDashingState();
             return;
         }
-        if(Input.GetKeyDown(attackButton) && unlockedAttack)
+        if(Input.GetKeyDown(attackButton) && unlockedAttack )
         {
             ExitDefaultState();
             //maybe instead of having 1 previous reserve attack, i should handle stuff on a combo by combo basis. 
@@ -273,9 +283,9 @@ public class VampireController2 : MonoBehaviour
             EnterDashingState();
             return;
         }
-        if(Input.GetKeyDown(attackButton))
+        if(Input.GetKeyDown(attackButton) && unlockedAttack)
         {
-            if(Input.GetKey(KeyCode.S))
+            if(Input.GetKey(KeyCode.S) && unlockedAttack)
                 attacknum = fallAttackIndex ; //this is what attacks. combos dont carry over in air i guess. or its a single 
             else
                 attacknum = airAttackIndex;
@@ -336,9 +346,9 @@ public class VampireController2 : MonoBehaviour
             EnterDashingState();
             return;
         }
-        if(Input.GetKeyDown(attackButton))
+        if(Input.GetKeyDown(attackButton) && unlockedAttack)
         {
-            if(Input.GetKey(KeyCode.S))
+            if(Input.GetKey(KeyCode.S) && unlockedAttack)
                 attacknum = fallAttackIndex ; //this is what attacks. combos dont carry over in air i guess. or its a single 
             else
                 attacknum = airAttackIndex;
@@ -672,3 +682,5 @@ public class VampireController2 : MonoBehaviour
  * create a shorthop and longhop based on jump button hold time
  * essentially make this char match with other one
  */
+
+    

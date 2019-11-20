@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
         //can provide name of a scene (like "Level1") or a build index (like 1)
 
         Debug.Log("PLAY");
-        SceneManager.LoadScene("Sewer Scene 3");  //loads next level in the queue
+        SceneManager.LoadScene("Sewer Scene 2");  //loads next level in the queue
 
         //CURRENTLY only has Main Menu in the queue --> uncomment the line above once there is more than one thing in there
         //to add scenes to the queue, go to:
