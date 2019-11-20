@@ -53770,12 +53770,12 @@ PrefabInstance:
     - target: {fileID: 6882284773492678558, guid: 82c3d8fed886f3142a2dce660b97a385,
         type: 3}
       propertyPath: unlockedDash
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6882284773492678558, guid: 82c3d8fed886f3142a2dce660b97a385,
         type: 3}
       propertyPath: unlockedDoubleJump
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6882284773492678558, guid: 82c3d8fed886f3142a2dce660b97a385,
         type: 3}

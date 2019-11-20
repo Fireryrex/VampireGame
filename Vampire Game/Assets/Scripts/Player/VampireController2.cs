@@ -121,6 +121,21 @@ public class VampireController2 : MonoBehaviour
         States[state]();
         transform.localScale = new Vector3(facingRight? 1 : -1 , 1,1);
     }
+    public void unlockAttack(){
+        unlockedAttack = true;
+    }
+    public void unlockAttack2(){
+        unlockedAttack2 = true;
+    }
+    public void unlockAttack3(){
+        unlockedAttack3 = true;
+    }
+    public void unlockDash(){
+        unlockedDash = true;
+    }
+    public void unlockDoubleJump(){
+        unlockedDoubleJump = true;
+    }
 
     void TakeDamage()
     {
@@ -668,3 +683,5 @@ public class VampireController2 : MonoBehaviour
  * create a shorthop and longhop based on jump button hold time
  * essentially make this char match with other one
  */
+
+    

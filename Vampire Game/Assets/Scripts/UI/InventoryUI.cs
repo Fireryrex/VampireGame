@@ -10,6 +10,7 @@ public class InventoryUI : MonoBehaviour
     public GameObject[] inventory = new GameObject[6]; // The list of inventory slots that are in the UI.
     private int currentItem = 0;
     public static bool inventoryChanged = false;
+    GameObject player;
 
     private void Awake() {
         instance = this;    
@@ -17,11 +18,13 @@ public class InventoryUI : MonoBehaviour
     private void Start() {
         
         Debug.Log(inventory.Length);
+        player = GameObject.FindGameObjectWithTag("Player");
     }
     public void Add(Item item){
         items.Add(item);
         inventoryChanged = true;
         currentItem += 1;
+        unlock(item.ability);
     }
     public void updateInventory(){
         if (inventoryChanged == true){
@@ -36,5 +39,23 @@ public class InventoryUI : MonoBehaviour
     }
     public void Remove(Item item){
         items.Remove(item);
+    }
+
+    private void unlock(string ability){
+        if (ability == "attack"){
+            player.GetComponent<VampireController2>().unlockAttack();
+        }
+        else if(ability == "attack2"){
+            player.GetComponent<VampireController2>().unlockAttack2();
+        }
+        else if (ability == "attack3"){
+            player.GetComponent<VampireController2>().unlockAttack3();
+        }
+        else if (ability == "dash"){
+            player.GetComponent<VampireController2>().unlockDash();
+        }
+        else if (ability == "double jump"){
+            player.GetComponent<VampireController2>().unlockDoubleJump();
+        }
     }
 }

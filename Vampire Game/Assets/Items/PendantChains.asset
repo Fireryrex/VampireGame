@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: Pendant
   icon: {fileID: 0}
   itemDescription: Unlocks First Attack
-  type: define Type
+  ability: attack
