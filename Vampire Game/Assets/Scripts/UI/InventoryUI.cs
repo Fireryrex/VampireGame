@@ -43,19 +43,19 @@ public class InventoryUI : MonoBehaviour
 
     private void unlock(string ability){
         if (ability == "attack"){
-            player.GetComponent<VampireController2>().unlockAttack();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<VampireController2>().unlockAttack();
         }
         else if(ability == "attack2"){
-            player.GetComponent<VampireController2>().unlockAttack2();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<VampireController2>().unlockAttack2();
         }
         else if (ability == "attack3"){
-            player.GetComponent<VampireController2>().unlockAttack3();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<VampireController2>().unlockAttack3();
         }
         else if (ability == "dash"){
-            player.GetComponent<VampireController2>().unlockDash();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<VampireController2>().unlockDash();
         }
         else if (ability == "double jump"){
-            player.GetComponent<VampireController2>().unlockDoubleJump();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<VampireController2>().unlockDoubleJump();
         }
     }
 }

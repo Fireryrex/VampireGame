@@ -5583,7 +5583,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 40
+  field of view: 90
   orthographic: 1
   orthographic size: 10
   m_Depth: -1
@@ -5609,7 +5609,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1117649123}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 19.3, y: -12.7, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6808,7 +6808,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1692181637}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.46, y: -12.76, z: -100}
+  m_LocalPosition: {x: 19.3, y: -12.7, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2093813301}
@@ -53705,12 +53705,12 @@ PrefabInstance:
     - target: {fileID: 6882284773492678556, guid: 82c3d8fed886f3142a2dce660b97a385,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.46
+      value: 19.3
       objectReference: {fileID: 0}
     - target: {fileID: 6882284773492678556, guid: 82c3d8fed886f3142a2dce660b97a385,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -12.76
+      value: -12.7
       objectReference: {fileID: 0}
     - target: {fileID: 6882284773492678556, guid: 82c3d8fed886f3142a2dce660b97a385,
         type: 3}
@@ -53781,6 +53781,11 @@ PrefabInstance:
         type: 3}
       propertyPath: jumpHeight
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6882284773492678558, guid: 82c3d8fed886f3142a2dce660b97a385,
+        type: 3}
+      propertyPath: HasDoubleJump
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6882284773492678555, guid: 82c3d8fed886f3142a2dce660b97a385,
         type: 3}

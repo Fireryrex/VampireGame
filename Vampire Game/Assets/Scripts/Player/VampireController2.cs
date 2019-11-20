@@ -13,7 +13,6 @@ public class VampireController2 : MonoBehaviour
     [SerializeField] bool unlockedAttack2 = false;
     [SerializeField] bool unlockedAttack3 = false;
     [SerializeField] bool unlockedDash = false;
-    [SerializeField] bool unlockedDoubleJump = false;
 
     public float walkSpeed;
     public float gravityScale;
@@ -134,7 +133,7 @@ public class VampireController2 : MonoBehaviour
         unlockedDash = true;
     }
     public void unlockDoubleJump(){
-        unlockedDoubleJump = true;
+        HasDoubleJump = true;
     }
 
     void TakeDamage()
