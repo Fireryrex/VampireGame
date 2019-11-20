@@ -2932,7 +2932,7 @@ GameObject:
   - component: {fileID: 195378025}
   - component: {fileID: 195378024}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: Heart3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2978,10 +2978,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 02a96a9352369a545bce00f175bba233, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -4008,7 +4008,7 @@ GameObject:
   - component: {fileID: 744531669}
   - component: {fileID: 744531668}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Heart2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4054,10 +4054,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 02a96a9352369a545bce00f175bba233, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -5352,7 +5352,7 @@ GameObject:
   - component: {fileID: 1039555812}
   - component: {fileID: 1039555811}
   m_Layer: 5
-  m_Name: Image (3)
+  m_Name: Heart4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5398,10 +5398,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 02a96a9352369a545bce00f175bba233, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -5609,7 +5609,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1117649123}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.7, y: -12.37, z: -100}
+  m_LocalPosition: {x: 19.46, y: -12.76, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6326,6 +6326,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8874433681815104526, guid: 236fd8a1167c43446b166ecee33d6076,
+        type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
     - target: {fileID: 8874433681815104522, guid: 236fd8a1167c43446b166ecee33d6076,
         type: 3}
       propertyPath: pauseMenuUI
@@ -6336,11 +6341,6 @@ PrefabInstance:
       propertyPath: inventoryUI
       value: 
       objectReference: {fileID: 777092241}
-    - target: {fileID: 8874433681815104526, guid: 236fd8a1167c43446b166ecee33d6076,
-        type: 3}
-      propertyPath: m_Name
-      value: GameManager
-      objectReference: {fileID: 0}
     - target: {fileID: 8874433681815104523, guid: 236fd8a1167c43446b166ecee33d6076,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6396,6 +6396,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8874433681815104520, guid: 236fd8a1167c43446b166ecee33d6076,
+        type: 3}
+      propertyPath: healthUI
+      value: 
+      objectReference: {fileID: 779939945}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 236fd8a1167c43446b166ecee33d6076, type: 3}
 --- !u!1 &1550118831 stripped
@@ -6428,7 +6433,7 @@ GameObject:
   - component: {fileID: 1555522346}
   - component: {fileID: 1555522345}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Heart1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6474,10 +6479,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 02a96a9352369a545bce00f175bba233, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -6508,7 +6513,7 @@ GameObject:
   - component: {fileID: 1620184935}
   - component: {fileID: 1620184934}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Vial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6803,7 +6808,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1692181637}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.7, y: -12.37, z: -100}
+  m_LocalPosition: {x: 19.46, y: -12.76, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2093813301}
@@ -53700,12 +53705,12 @@ PrefabInstance:
     - target: {fileID: 6882284773492678556, guid: 82c3d8fed886f3142a2dce660b97a385,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.7
+      value: 19.46
       objectReference: {fileID: 0}
     - target: {fileID: 6882284773492678556, guid: 82c3d8fed886f3142a2dce660b97a385,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -12.37
+      value: -12.76
       objectReference: {fileID: 0}
     - target: {fileID: 6882284773492678556, guid: 82c3d8fed886f3142a2dce660b97a385,
         type: 3}
@@ -53757,6 +53762,31 @@ PrefabInstance:
       propertyPath: jumps
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6882284773492678558, guid: 82c3d8fed886f3142a2dce660b97a385,
+        type: 3}
+      propertyPath: unlockedAttack
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6882284773492678558, guid: 82c3d8fed886f3142a2dce660b97a385,
+        type: 3}
+      propertyPath: unlockedDash
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6882284773492678558, guid: 82c3d8fed886f3142a2dce660b97a385,
+        type: 3}
+      propertyPath: unlockedDoubleJump
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6882284773492678558, guid: 82c3d8fed886f3142a2dce660b97a385,
+        type: 3}
+      propertyPath: jumpHeight
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6882284773492678555, guid: 82c3d8fed886f3142a2dce660b97a385,
+        type: 3}
+      propertyPath: healthUI
+      value: 
+      objectReference: {fileID: 779939945}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82c3d8fed886f3142a2dce660b97a385, type: 3}
 --- !u!4 &1903577688 stripped
@@ -53879,7 +53909,7 @@ GameObject:
   - component: {fileID: 1929733902}
   - component: {fileID: 1929733901}
   m_Layer: 5
-  m_Name: Image (4)
+  m_Name: Heart5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53925,10 +53955,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 02a96a9352369a545bce00f175bba233, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -58689,12 +58719,12 @@ PrefabInstance:
     - target: {fileID: 1469592899092091797, guid: 4523405448fab334382ffcb9da8079eb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.598034
+      value: 20.09
       objectReference: {fileID: 0}
     - target: {fileID: 1469592899092091797, guid: 4523405448fab334382ffcb9da8079eb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.081626534
+      value: -0.47
       objectReference: {fileID: 0}
     - target: {fileID: 1469592899092091797, guid: 4523405448fab334382ffcb9da8079eb,
         type: 3}
@@ -58827,12 +58857,12 @@ PrefabInstance:
     - target: {fileID: 2533534441947701702, guid: 4436d9fe1a8207442bb144f79febf3e3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.14
+      value: 22.89
       objectReference: {fileID: 0}
     - target: {fileID: 2533534441947701702, guid: 4436d9fe1a8207442bb144f79febf3e3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.07
+      value: -12.91
       objectReference: {fileID: 0}
     - target: {fileID: 2533534441947701702, guid: 4436d9fe1a8207442bb144f79febf3e3,
         type: 3}
@@ -58965,12 +58995,12 @@ PrefabInstance:
     - target: {fileID: 4341785533510531505, guid: 4b2aaae8902b5b44dbfc2e06d05b2664,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.64
+      value: -2.37
       objectReference: {fileID: 0}
     - target: {fileID: 4341785533510531505, guid: 4b2aaae8902b5b44dbfc2e06d05b2664,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.68
+      value: -2.07
       objectReference: {fileID: 0}
     - target: {fileID: 4341785533510531505, guid: 4b2aaae8902b5b44dbfc2e06d05b2664,
         type: 3}
@@ -59016,6 +59046,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4341785533510531505, guid: 4b2aaae8902b5b44dbfc2e06d05b2664,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4341785533510531505, guid: 4b2aaae8902b5b44dbfc2e06d05b2664,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b2aaae8902b5b44dbfc2e06d05b2664, type: 3}
@@ -59086,6 +59126,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5511078740780254994, guid: 3c797a9c5b5b71242bff43cdc8e7f4d0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5511078740780254994, guid: 3c797a9c5b5b71242bff43cdc8e7f4d0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 5511078740676738586, guid: 3c797a9c5b5b71242bff43cdc8e7f4d0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 5511078740676738586, guid: 3c797a9c5b5b71242bff43cdc8e7f4d0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.37
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c797a9c5b5b71242bff43cdc8e7f4d0, type: 3}
 --- !u!1001 &5939098116179233473
@@ -59103,12 +59163,12 @@ PrefabInstance:
     - target: {fileID: 5939098116704779955, guid: 02f71b67025ee2949b470b522562c154,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.416962
+      value: 63.21
       objectReference: {fileID: 0}
     - target: {fileID: 5939098116704779955, guid: 02f71b67025ee2949b470b522562c154,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.15598297
+      value: -1.52
       objectReference: {fileID: 0}
     - target: {fileID: 5939098116704779955, guid: 02f71b67025ee2949b470b522562c154,
         type: 3}
