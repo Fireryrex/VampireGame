@@ -26,7 +26,7 @@ public class DialogueTrigger : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) {
 
-        iDontCareWhatYouNameIt();
+        TriggerDialogue();
     }
 
     public void iDontCareWhatYouNameIt()
