@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: New Item
   icon: {fileID: 21300000, guid: b5839672ea7d0ff4eb0325b5aea7949f, type: 3}
   itemDescription: double umo, and closed to open
-  type: define Type
+  ability: double jump

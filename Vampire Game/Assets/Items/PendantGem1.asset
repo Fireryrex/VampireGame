@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: New Item
   icon: {fileID: 21300000, guid: 44162e034b67eb540b7a4c2ef4168a0d, type: 3}
   itemDescription: Extra attack
-  type: define Type
+  ability: attack2

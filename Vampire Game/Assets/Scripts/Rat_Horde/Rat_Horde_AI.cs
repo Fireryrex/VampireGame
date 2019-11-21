@@ -89,7 +89,7 @@ public class Rat_Horde_AI : MonoBehaviour
     }
 
 /*
-At some point (probably after animations come in for the rat boss) I need to hook up an animator to the boss and make the different placeholder warnings into animations?
+ * DONE: At some point (probably after animations come in for the rat boss) I need to hook up an animator to the boss and make the different placeholder warnings into animations?
 or maybe I should keep the warnings in, ill see. Either way I need to implement the bite attack when the player gets/stays too close to the rat for too long.
  */
 
@@ -449,6 +449,7 @@ I need to implement a case in the attack switch so that it can choose to activat
             }
         }
     }
+
     private void ResetSpikes()
     {
         spikeNumberList.Clear();
