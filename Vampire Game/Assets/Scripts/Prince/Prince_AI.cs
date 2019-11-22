@@ -39,6 +39,10 @@ public class Prince_AI : MonoBehaviour
     private int chosenProjectile;
     private bool isSpawning = false;
 
+    //Attack Hitboxes
+    enum Attack {dashAttackBox, slamAttackBox, swordAttackBox1, swordAttackBox2, stabAttackBox1, stabAttackBox2, diagonalAttackBox }
+    [SerializeField] GameObject[] attackHitboxes;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +51,8 @@ public class Prince_AI : MonoBehaviour
         princeRigidBody = GetComponent<Rigidbody2D>();
         princeHealth = GetComponentInChildren<Health_Script>();
         princeTransform = GetComponent<Transform>();
+
+
     }
 
     // Update is called once per frame
@@ -74,6 +80,7 @@ public class Prince_AI : MonoBehaviour
             {
                 //Play death animation here
                 stateInt = State.Dead;
+                princeAnimator.SetInteger("stateInt", 0);
             }
         }
     }
@@ -92,7 +99,8 @@ public class Prince_AI : MonoBehaviour
             //Dash Attack
             case 0:
                 //go to the position that is opposite to the player
-                if(player.transform.position.x > center.transform.position.x)
+                int teleportChoice = Random.Range(0, 2);
+                if(teleportChoice == 0)
                 {
                     playerisRight = true;
                     transform.rotation = Quaternion.Euler(0, -180, 0);
@@ -122,8 +130,9 @@ public class Prince_AI : MonoBehaviour
 
             //Projectile Attack
             case 2:
-                if (player.transform.position.x > center.transform.position.x)
-                {
+                teleportChoice = Random.Range(0, 2);
+                if (teleportChoice == 0)
+                { 
                     playerisRight = true;
                     transform.rotation = Quaternion.Euler(0, -180, 0);
                     singleTeleportPosition = 0;
@@ -155,32 +164,36 @@ public class Prince_AI : MonoBehaviour
                     singleTeleportPosition = 1;
                     princeTransform.position = new Vector3(player.transform.position.x + playerTeleportOffset, teleportPositions[singleTeleportPosition].position.y);
                 }
+                princeAnimator.SetInteger("stateInt", 4);
 
                 break;
             
             //Diagonal Slam Attack
             case 4:
-                if (player.transform.position.x > center.transform.position.x)
+                princeRigidBody.bodyType = RigidbodyType2D.Static;
+                if (player.transform.position.x > center.position.x)
                 {
                     playerisRight = true;
-                    transform.rotation = Quaternion.Euler(0, -180, 0);
-                    singleTeleportPosition = 3;
+                    transform.rotation = Quaternion.Euler(0, -0, 0);
+                    singleTeleportPosition = 2;
                     princeTransform.position = new Vector3(player.transform.position.x, teleportPositions[singleTeleportPosition].position.y);
                 }
                 else
                 {
                     playerisRight = false;
-                    transform.rotation = Quaternion.Euler(0, 0, 0);
-                    singleTeleportPosition = 3;
+                    transform.rotation = Quaternion.Euler(0, -180, 0);
+                    singleTeleportPosition = 2;
                     princeTransform.position = new Vector3(player.transform.position.x, teleportPositions[singleTeleportPosition].position.y);
                 }
+                princeAnimator.SetInteger("stateInt", 5);
 
                 break;
 
             
             //Stab Attack
             case 5:
-                if (player.transform.position.x > center.transform.position.x)
+                teleportChoice = Random.Range(0, 2);
+                if (teleportChoice == 0)
                 {
                     playerisRight = true;
                     transform.rotation = Quaternion.Euler(0, -180, 0);
@@ -194,6 +207,7 @@ public class Prince_AI : MonoBehaviour
                     singleTeleportPosition = 1;
                     princeTransform.position = teleportPositions[singleTeleportPosition].position;
                 }
+                princeAnimator.SetInteger("stateInt", 6);
 
                 break;
 
@@ -202,24 +216,36 @@ public class Prince_AI : MonoBehaviour
         }
     }
 
+//Beginning of fight function
+    public void startFight(int firstAttack)
+    {
+        princeAnimator.SetInteger("stateInt", firstAttack);
+    }
+
 //Dash attack functions
     //causes the prince to move
     public void dash()
     {
         if(playerisRight)
         {
+            transform.rotation = Quaternion.Euler(0, -180, 0);
             princeRigidBody.AddForce(Vector2.right * 1000 * dashForce);
         }
         else
         {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
             princeRigidBody.AddForce(Vector2.left * 1000 * dashForce);
         }
+        activateHitbox(0);
     }
 
     //stops the prince from moving
     public void stopDash()
     {
         princeRigidBody.velocity = Vector2.zero;
+        deactivateHitbox(0);
+        deactivateHitbox(1);
+        deactivateHitbox(6);
     }
 
 //Slam attack functions
@@ -228,23 +254,27 @@ public class Prince_AI : MonoBehaviour
     {
         princeRigidBody.bodyType = RigidbodyType2D.Dynamic;
         princeRigidBody.AddForce(Vector2.down * 1000 * slamForce);
+        activateHitbox(1);
     }
 
 //Sword attack functions
     
 
 //Sideways slam attack functions
-
     public void sideSlam()
     {
+        princeRigidBody.bodyType = RigidbodyType2D.Dynamic;
         if (playerisRight)
         {
-            princeRigidBody.AddForce(Vector2.left * sideSlamForce + Vector2.down * 1000 * slamForce);
+            princeRigidBody.AddForce(Vector2.down * 1000 * slamForce);
+            princeRigidBody.AddForce(Vector2.left * 1000 * sideSlamForce);
         }
         else
         {
-            princeRigidBody.AddForce(Vector2.right * sideSlamForce + Vector2.down * 1000 * slamForce);
+            princeRigidBody.AddForce(Vector2.down * 1000 * slamForce);
+            princeRigidBody.AddForce(Vector2.right * 1000 * sideSlamForce);
         }
+        activateHitbox(6);
     }
 
 //Stab attack functions
@@ -260,6 +290,17 @@ public class Prince_AI : MonoBehaviour
     public void stopSpawn()
     {
         isSpawning = false;
+    }
+
+//Attack hitbox functions
+    public void activateHitbox(int attackNumber)
+    {
+        attackHitboxes[attackNumber].SetActive(true);
+    }
+
+    public void deactivateHitbox(int attackNumber)
+    {
+        attackHitboxes[attackNumber].SetActive(false);
     }
 
 //Attack end function

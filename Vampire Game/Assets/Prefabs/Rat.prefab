@@ -298,10 +298,10 @@ MonoBehaviour:
   coolDownTime: 0
   DeathAnimation: {fileID: 0}
   timeToDeath: 0
+  currentBlood: 0
   RespawnPoint: {fileID: 0}
   maxHealth: 10
   type: Enemy
-  currentBlood: 0
   ignoreDeathfield: 0
 --- !u!70 &4043825859993840572
 CapsuleCollider2D:
@@ -356,6 +356,7 @@ GameObject:
   - component: {fileID: 3555196633222373602}
   - component: {fileID: 1454807571488012515}
   - component: {fileID: 5080195178163857371}
+  - component: {fileID: 4715048745146979721}
   m_Layer: 12
   m_Name: BloodSplatter
   m_TagString: Blood
@@ -4135,7 +4136,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 2304
+      m_Bits: 6144
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -5155,3 +5156,15 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &4715048745146979721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6090456437983138091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93b1bcd217595b94aa88bc87020e06d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
