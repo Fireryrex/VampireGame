@@ -36,7 +36,6 @@ public class Health_Script : MonoBehaviour
             newHeart();
             updateVial();
         }
-        
     }
     public void OnParticleCollision(GameObject other){
          if(other.CompareTag("Player")){
@@ -66,7 +65,7 @@ public class Health_Script : MonoBehaviour
         //particleDamageTrigger();
         health -= damage;
         Instantiate(ParticleSystem, gameObject.transform);
-        
+                
         if (health <= 0)
         {
             if (this.tag == "Player")
@@ -105,17 +104,6 @@ public class Health_Script : MonoBehaviour
         teleportPlayer(RespawnPoint);
         health = maxHealth;
     }
-
-    /*protected void particleDamageTrigger() {
-        if (gameObject.GetComponent<Health_Script>().type == "BreakableObject"){
-            
-            gameObject.GetComponentInChildren<ParticleSystem>().Play();
-        }
-        else if (gameObject.GetComponent<Health_Script>().type == "Enemy"){
-            gameObject.GetComponentInChildren<ParticleSystem>().Play();
-        }
-    }*/
-
     public void teleportPlayer(Transform transformpoint)
     {
         transform.position = transformpoint.position;
