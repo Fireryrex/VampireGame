@@ -302,7 +302,8 @@ MonoBehaviour:
   maxHealth: 10
   type: Enemy
   ignoreDeathfield: 0
-  ParticleSystem: {fileID: 0}
+  ParticleSystem: {fileID: 1942259865337359207, guid: 8cc64b21b3554d64db6db58ff3982c5c,
+    type: 3}
 --- !u!70 &4043825859993840572
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
