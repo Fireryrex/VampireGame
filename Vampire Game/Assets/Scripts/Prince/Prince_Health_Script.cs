@@ -23,7 +23,6 @@ void Update()
         if (coolDown == 0)
         {
             coolDown = coolDownTime;
-            //particleDamageTrigger();
             health -= damage;
             if (health <= 0)
             {
