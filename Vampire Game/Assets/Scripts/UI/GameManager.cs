@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject healthUI;
     private GameObject[] hearts = new GameObject[10];
     public int currentPlayerHealth;
+    public GameObject FadeInQuad;
      private void Awake() {
         instance = this;    
     }
@@ -70,11 +72,37 @@ public class GameManager : MonoBehaviour
             }
     }
         public void FIllHeart(){
+
+            hearts[player.GetComponent<Health_Script>().health+1].GetComponent<Image>().fillAmount = 100;
             
         }
         public void FillHearts(){
             for (int i = 0; i < player.GetComponent<Health_Script>().maxHealth; i++){
                 hearts[i+1].GetComponent<Image>().fillAmount = 1;
+            }
+        }
+
+        public IEnumerator TransitionScene(string toScene, float transitionTime)
+        {
+            bool halftime = false;
+            float cutoff= 1;
+            for (float t = 0f ; t < transitionTime+.1f; t+=.02f) 
+            {
+                if(t < transitionTime/2)
+                {
+                    cutoff = Mathf.Lerp(1,0,t/(transitionTime/2));
+                }
+                else
+                {
+                    if(halftime != true)
+                    {
+                        halftime = true;
+                    //  SceneManager.LoadScene(TransitionTo);
+                    }
+                    cutoff = Mathf.Lerp(0,1, (t-transitionTime/2)/(transitionTime/2)  );
+                }
+                FadeInQuad.GetComponent<MeshRenderer>().material.SetFloat("_Cutoff" , cutoff);
+                yield return new WaitForSeconds(.02f);
             }
         }
 }

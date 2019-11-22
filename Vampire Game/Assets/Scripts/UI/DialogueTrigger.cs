@@ -23,10 +23,14 @@ public class DialogueTrigger : MonoBehaviour
         dm.dialogueSystem.SetActive(true);
         //dm.updateMusic(songToStopOnStart, songToTriggerOnStart, songToTriggerAfter);
         dm.StartDialogue(conversation);
+        
     }
     private void OnTriggerEnter2D(Collider2D other) {
 
-        TriggerDialogue();
+        if(other.CompareTag("Player"))
+        {
+            iDontCareWhatYouNameIt();
+        }
     }
 
     public void iDontCareWhatYouNameIt()

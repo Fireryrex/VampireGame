@@ -10,11 +10,12 @@ public class Health_Script : MonoBehaviour
     [SerializeField] protected float coolDownTime;
     public GameObject DeathAnimation;
     public float timeToDeath = 0;
-    public int currentBlood;
+    public float currentBlood;
     [SerializeField] Transform RespawnPoint;
     public int maxHealth;
     public string type;
     [SerializeField] protected bool ignoreDeathfield = false;
+    [SerializeField] private GameObject ParticleSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,29 @@ public class Health_Script : MonoBehaviour
         else if (coolDown < 0){
             coolDown = 0;
         }
+        if(tag == "Player"){
+            newHeart();
+            updateVial();
+        }
+    }
+    public void OnParticleCollision(GameObject other){
+         if(other.CompareTag("Player")){
+            Debug.Log("Player was touched");
+            other.GetComponent<Health_Script>().currentBlood += 1;
+            
+         }
+    }
+    public void newHeart(){
+        if (currentBlood > 100 && health < maxHealth){
+            GameManager.instance.FIllHeart();
+        }
+        else if(currentBlood > 100){
+            currentBlood = 100;
+        }
+    }
+    public void updateVial(){
+        Debug.Log(currentBlood/100);
+        GameObject.Find("VialBlood").GetComponent<Image>().fillAmount = currentBlood/100;
     }
 
     //Decreases the characters health by damage
@@ -38,8 +62,10 @@ public class Health_Script : MonoBehaviour
     {
         if(coolDown == 0){
             coolDown = coolDownTime;
-        particleDamageTrigger();
+        //particleDamageTrigger();
         health -= damage;
+        Instantiate(ParticleSystem, gameObject.transform);
+                
         if (health <= 0)
         {
             if (this.tag == "Player")
@@ -78,22 +104,10 @@ public class Health_Script : MonoBehaviour
         teleportPlayer(RespawnPoint);
         health = maxHealth;
     }
-
-    protected void particleDamageTrigger() {
-        if (gameObject.GetComponent<Health_Script>().type == "BreakableObject"){
-            
-            gameObject.GetComponentInChildren<ParticleSystem>().Play();
-        }
-        else if (gameObject.GetComponent<Health_Script>().type == "Enemy"){
-            gameObject.GetComponentInChildren<ParticleSystem>().Play();
-        }
-    }
-
     public void teleportPlayer(Transform transformpoint)
     {
         transform.position = transformpoint.position;
     }
-
     public bool getDeathFieldVariable()
     {
         return ignoreDeathfield;
