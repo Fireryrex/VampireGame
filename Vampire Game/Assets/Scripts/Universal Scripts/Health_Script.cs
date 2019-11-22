@@ -10,7 +10,7 @@ public class Health_Script : MonoBehaviour
     [SerializeField] protected float coolDownTime;
     public GameObject DeathAnimation;
     public float timeToDeath = 0;
-    public int currentBlood;
+    public float currentBlood;
     [SerializeField] Transform RespawnPoint;
     public int maxHealth;
     public string type;
@@ -31,6 +31,23 @@ public class Health_Script : MonoBehaviour
         else if (coolDown < 0){
             coolDown = 0;
         }
+        if(tag == "Player"){
+            newHeart();
+            updateVial();
+        }
+        
+    }
+    public void newHeart(){
+        if (currentBlood > 100 && health < maxHealth){
+            GameManager.instance.FIllHeart();
+        }
+        else if(currentBlood > 100){
+            currentBlood = 100;
+        }
+    }
+    public void updateVial(){
+        Debug.Log(currentBlood/100);
+        GameObject.Find("VialBlood").GetComponent<Image>().fillAmount = currentBlood/100;
     }
 
     //Decreases the characters health by damage
@@ -93,7 +110,6 @@ public class Health_Script : MonoBehaviour
     {
         transform.position = transformpoint.position;
     }
-
     public bool getDeathFieldVariable()
     {
         return ignoreDeathfield;

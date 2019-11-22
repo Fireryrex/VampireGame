@@ -134,6 +134,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 7480310682888368445, guid: fc2a342a42c304b4fa78e6061b8a8e37,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7480310682888368444, guid: fc2a342a42c304b4fa78e6061b8a8e37,
         type: 3}
       propertyPath: m_LocalPosition.x

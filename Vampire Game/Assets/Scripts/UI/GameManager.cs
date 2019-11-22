@@ -70,6 +70,8 @@ public class GameManager : MonoBehaviour
             }
     }
         public void FIllHeart(){
+
+            hearts[player.GetComponent<Health_Script>().health+1].GetComponent<Image>().fillAmount = 100;
             
         }
         public void FillHearts(){
