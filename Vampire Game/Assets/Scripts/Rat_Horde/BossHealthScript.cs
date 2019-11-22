@@ -6,6 +6,7 @@ public class BossHealthScript : Health_Script
 {
     private Rat_Horde_AI bossAI;
     [SerializeField] ParticleSystem bloodSpray;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class BossHealthScript : Health_Script
         if(coolDown == 0)
         {
             coolDown = coolDownTime;
+            Instantiate(bloodParticleSystem, gameObject.transform);
             //particleDamageTrigger();
             health -= damage;
             if (health <= 0)
