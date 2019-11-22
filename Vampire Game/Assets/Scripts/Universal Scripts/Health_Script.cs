@@ -15,6 +15,7 @@ public class Health_Script : MonoBehaviour
     public int maxHealth;
     public string type;
     [SerializeField] protected bool ignoreDeathfield = false;
+    [SerializeField] private GameObject ParticleSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,13 @@ public class Health_Script : MonoBehaviour
         }
         
     }
+    public void OnParticleCollision(GameObject other){
+         if(other.CompareTag("Player")){
+            Debug.Log("Player was touched");
+            other.GetComponent<Health_Script>().currentBlood += 1;
+            
+         }
+    }
     public void newHeart(){
         if (currentBlood > 100 && health < maxHealth){
             GameManager.instance.FIllHeart();
@@ -55,8 +63,10 @@ public class Health_Script : MonoBehaviour
     {
         if(coolDown == 0){
             coolDown = coolDownTime;
-        particleDamageTrigger();
+        //particleDamageTrigger();
         health -= damage;
+        Instantiate(ParticleSystem, gameObject.transform);
+        
         if (health <= 0)
         {
             if (this.tag == "Player")
@@ -96,7 +106,7 @@ public class Health_Script : MonoBehaviour
         health = maxHealth;
     }
 
-    protected void particleDamageTrigger() {
+    /*protected void particleDamageTrigger() {
         if (gameObject.GetComponent<Health_Script>().type == "BreakableObject"){
             
             gameObject.GetComponentInChildren<ParticleSystem>().Play();
@@ -104,7 +114,7 @@ public class Health_Script : MonoBehaviour
         else if (gameObject.GetComponent<Health_Script>().type == "Enemy"){
             gameObject.GetComponentInChildren<ParticleSystem>().Play();
         }
-    }
+    }*/
 
     public void teleportPlayer(Transform transformpoint)
     {
