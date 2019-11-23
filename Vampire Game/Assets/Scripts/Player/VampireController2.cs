@@ -178,6 +178,10 @@ public class VampireController2 : MonoBehaviour
         CheckRoofed();
         ApplyGravity();
         lastPlayerPosition = transform.position;
+        if (facingRight == true){
+
+        }
+        
 
         if(damaged)
         {

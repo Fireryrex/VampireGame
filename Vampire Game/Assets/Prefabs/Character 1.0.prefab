@@ -297,7 +297,7 @@ MonoBehaviour:
   maxHealth: 5
   type: Enemy
   ignoreDeathfield: 0
-  ParticleSystem: {fileID: 1942259865337359207, guid: 8cc64b21b3554d64db6db58ff3982c5c,
+  bloodParticleSystem: {fileID: 1942259865337359207, guid: 64417a7a6ac23b54c85db7b99658359b,
     type: 3}
 --- !u!114 &1158185538958693744
 MonoBehaviour:
