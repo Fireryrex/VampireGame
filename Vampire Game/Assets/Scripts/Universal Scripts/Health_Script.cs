@@ -32,7 +32,7 @@ public class Health_Script : MonoBehaviour
         else if (coolDown < 0){
             coolDown = 0;
         }
-        if(tag == "Player"){
+        if(gameObject.tag == "Player"){
             newHeart();
             updateVial();
         }
@@ -45,7 +45,7 @@ public class Health_Script : MonoBehaviour
          }
     }
     public void newHeart(){
-        if (currentBlood > 100 && health < maxHealth){
+        if (currentBlood >= 100 && health < maxHealth){
             GameManager.instance.FIllHeart();
             currentBlood = 0;
         }
@@ -85,7 +85,9 @@ public class Health_Script : MonoBehaviour
 
     public void heal(int healAmt)
     {
+        if(health < maxHealth){
         health += healAmt;
+        }
     }
 
     public float getHealthPercent()
