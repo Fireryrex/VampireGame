@@ -2133,7 +2133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1117945479}
   - component: {fileID: 1117945480}
-  - component: {fileID: 1117945481}
+  - component: {fileID: 1117945482}
   m_Layer: 0
   m_Name: Scene Transition
   m_TagString: Untagged
@@ -2181,7 +2181,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1749506, y: 6.51093}
   m_EdgeRadius: 0
---- !u!114 &1117945481
+--- !u!114 &1117945482
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2190,9 +2190,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1117945478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2bbe6d485f422047b0faae499320e01, type: 3}
+  m_Script: {fileID: 11500000, guid: a8f6a21212cb7f7478d3daf3f10be3f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TransitionTo: Sewer Scene 2
+  cooldown: 1
+  transitionTime: 1
 --- !u!1 &1177826378
 GameObject:
   m_ObjectHideFlags: 0

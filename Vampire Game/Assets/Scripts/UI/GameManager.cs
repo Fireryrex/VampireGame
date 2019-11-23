@@ -87,7 +87,6 @@ public class GameManager : MonoBehaviour
         }
         IEnumerator TransitionToScene(string toScene, float transitionTime)
         {
-            print("running transitionScene");
             bool halftime = false;
             float cutoff= 1;
             for (float t = 0f ; t < transitionTime+.1f; t+=.02f) 
