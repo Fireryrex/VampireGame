@@ -374,12 +374,14 @@ public class VampireController2 : MonoBehaviour
 
     void EnterDashingState()
     {
+        if(unlockedDash == true){
         dashStartTime = Time.time;
         state = "DashingState";
         SetMoveDir();
         dashX = moveVec.normalized; //get left or right
         //change colliders
         DashingState();
+        }
     }
 
     void DashingState()

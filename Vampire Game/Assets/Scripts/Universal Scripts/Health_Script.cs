@@ -47,6 +47,7 @@ public class Health_Script : MonoBehaviour
     public void newHeart(){
         if (currentBlood > 100 && health < maxHealth){
             GameManager.instance.FIllHeart();
+            currentBlood = 0;
         }
         else if(currentBlood > 100){
             currentBlood = 100;
