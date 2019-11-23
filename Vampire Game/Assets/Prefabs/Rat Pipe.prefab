@@ -5004,7 +5004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23d4eafb2262df14599595c8691480ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnedItem: {fileID: 592172813436708781, guid: cd99188f9efe16a408cf835161810d8c,
+  spawnedItem: {fileID: 592172813436708781, guid: 3265878ad3ec1e34e908736c91b101d7,
     type: 3}
   numItems: 3
   numSpawnedAtATime: 1
@@ -5022,11 +5022,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 12
   knockback: 0
+  coolDownTime: 0
   DeathAnimation: {fileID: 1569603400387437590, guid: 03d247714264ba6458eaecb50ecbaceb,
     type: 3}
   timeToDeath: 0
+  currentBlood: 0
   RespawnPoint: {fileID: 0}
+  maxHealth: 0
   type: BreakableObject
+  ignoreDeathfield: 0
+  bloodParticleSystem: {fileID: 0}
 --- !u!50 &1455235493377900880
 Rigidbody2D:
   serializedVersion: 4
