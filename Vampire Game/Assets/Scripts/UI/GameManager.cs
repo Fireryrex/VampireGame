@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
             print("running transitionScene");
             bool halftime = false;
             float cutoff= 1;
-            for (float t = 0f ; t < transitionTime+.1f; t+=.02f) 
+            for (float t = 0f ; t < transitionTime+.01f; t+=.02f) 
             {
                 if(t < transitionTime/2)
                 {
