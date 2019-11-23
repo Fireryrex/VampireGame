@@ -65,7 +65,7 @@ public class Attack : MonoBehaviour
     virtual public void OnEnable()
     {
         startTime= Time.time;
-        Debug.Log("Player attacking");
+        //Debug.Log("Player attacking");
         //if theres an animation play it.
         //other than enabling the game object the controller doesnt do anything. it all has to be done here.
         player_Animation.SetTrigger(animation_Trigger_Name);

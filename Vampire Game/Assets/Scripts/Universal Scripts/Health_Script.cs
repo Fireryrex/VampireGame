@@ -53,7 +53,6 @@ public class Health_Script : MonoBehaviour
         }
     }
     public void updateVial(){
-        Debug.Log(currentBlood/100);
         GameObject.Find("VialBlood").GetComponent<Image>().fillAmount = currentBlood/100;
     }
 

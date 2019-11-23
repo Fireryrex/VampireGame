@@ -17,7 +17,6 @@ public class InventoryUI : MonoBehaviour
     }
     private void Start() {
         
-        Debug.Log(inventory.Length);
         player = GameObject.FindGameObjectWithTag("Player");
     }
     public void Add(Item item){

@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class FunTransitions : MonoBehaviour
 {
     public string TransitionTo;
-    public GameObject FadeinQuad;
     public float cooldown = 1;
     float cutoff = 1;
     public float transitionTime;
@@ -20,8 +19,7 @@ public class FunTransitions : MonoBehaviour
     {
         if(cooldown <= 0 && other.gameObject.tag == "Player")
         {
-            GameManager.instance.TransitionScene(TransitionTo,transitionTime);
-            StartCoroutine("Transition");
+            GameManager.instance.TransitionScene(TransitionTo, transitionTime);
         }
     }
 

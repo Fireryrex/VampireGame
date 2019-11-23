@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8874433681815104520}
   - component: {fileID: 8874433681815104521}
   - component: {fileID: 8874433681815104522}
+  - component: {fileID: 1550118832}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -45,8 +46,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b299a19fe8d214941921ecae4ba2f952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
   test: 3
+  RespawnPoint: {x: 0, y: 0}
+  RespawnScene: 
+  currentBlood: 0
+  respawnLevel: 
+  healthUI: {fileID: 0}
+  currentPlayerHealth: 0
+  FadeInQuad: {fileID: 0}
 --- !u!114 &8874433681815104521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,6 +67,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items: []
+  inventory:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &8874433681815104522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,3 +88,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 0}
   inventoryUI: {fileID: 0}
+--- !u!114 &1550118832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8874433681815104526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eb919e11b5e97045b6c3300ea331e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
