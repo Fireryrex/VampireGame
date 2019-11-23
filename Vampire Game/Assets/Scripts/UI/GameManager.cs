@@ -85,8 +85,15 @@ public class GameManager : MonoBehaviour
 
         public void TransitionScene(string toScene,float TransitionTime)
         {
+        try
+        {
             StartCoroutine(TransitionToScene(toScene, TransitionTime));
         }
+        catch(MissingReferenceException e)
+        {
+            SceneManager.LoadScene(toScene);
+        }
+    }
         IEnumerator TransitionToScene(string toScene, float transitionTime)
         {
             
