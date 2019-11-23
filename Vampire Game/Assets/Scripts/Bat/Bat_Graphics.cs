@@ -6,7 +6,6 @@ public class Bat_Graphics : MonoBehaviour
 {
     private Pathfinding.AIPath ai_path;
     private Animator bat_Animation;
-    [SerializeField] GameObject bat_Blood;
 
     private void Start()
     {
@@ -20,13 +19,10 @@ public class Bat_Graphics : MonoBehaviour
         if (ai_path.desiredVelocity.x > 0)
         {
             transform.rotation = Quaternion.Euler(0, -180, 0);
-            bat_Blood.transform.rotation = Quaternion.Euler(0, -180, 0);
         }
         else if (ai_path.desiredVelocity.x < 0)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
-            bat_Blood.transform.rotation = Quaternion.Euler(0, 0, 0);
-
         }
     }
 }
