@@ -73,13 +73,13 @@ public class GameManager : MonoBehaviour
             }
     }
         public void FIllHeart(){
-
+            hearts = GameObject.FindGameObjectsWithTag("Hearts");
             hearts[player.GetComponent<Health_Script>().health+1].GetComponent<Image>().fillAmount = 100;
             
         }
         public void FillHearts(){
             for (int i = 0; i < player.GetComponent<Health_Script>().maxHealth; i++){
-                hearts[i+1].GetComponent<Image>().fillAmount = 1;
+                hearts[i].GetComponent<Image>().fillAmount = 1;
             }
         }
 
