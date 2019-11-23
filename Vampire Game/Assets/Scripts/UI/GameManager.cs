@@ -67,7 +67,6 @@ public class GameManager : MonoBehaviour
     }
         public void emptyHeart(){
             hearts = GameObject.FindGameObjectsWithTag("Hearts");
-            Debug.Log("Good Morning");
             for (int i = player.GetComponent<Health_Script>().health; i < player.GetComponent<Health_Script>().maxHealth; i++){
                 hearts[i].GetComponent<Image>().fillAmount = 0;
             }
