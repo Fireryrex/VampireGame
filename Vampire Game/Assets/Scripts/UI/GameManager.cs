@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
         }
     }
         public void emptyHeart(){
+            hearts = GameObject.FindGameObjectsWithTag("Hearts");
             Debug.Log("Good Morning");
             for (int i = player.GetComponent<Health_Script>().health; i < player.GetComponent<Health_Script>().maxHealth; i++){
                 hearts[i].GetComponent<Image>().fillAmount = 0;
@@ -87,6 +88,7 @@ public class GameManager : MonoBehaviour
         }
         IEnumerator TransitionToScene(string toScene, float transitionTime)
         {
+            
             bool halftime = false;
             float cutoff= 1;
             for (float t = 0f ; t < transitionTime+.1f; t+=.02f) 
@@ -107,5 +109,6 @@ public class GameManager : MonoBehaviour
                 FadeInQuad.GetComponent<MeshRenderer>().material.SetFloat("_Cutoff" , cutoff);
                 yield return new WaitForSeconds(.02f);
             }
+            
         }
 }
