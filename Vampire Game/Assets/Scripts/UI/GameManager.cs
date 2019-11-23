@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     private GameObject[] hearts = new GameObject[10];
     public int currentPlayerHealth;
     public GameObject FadeInQuad;
+    public string id;
      private void Awake() {
         instance = this;    
     }
@@ -84,8 +85,15 @@ public class GameManager : MonoBehaviour
 
         public void TransitionScene(string toScene,float TransitionTime)
         {
+        try
+        {
             StartCoroutine(TransitionToScene(toScene, TransitionTime));
         }
+        catch(MissingReferenceException e)
+        {
+            SceneManager.LoadScene(toScene);
+        }
+    }
         IEnumerator TransitionToScene(string toScene, float transitionTime)
         {
             
@@ -111,10 +119,6 @@ public class GameManager : MonoBehaviour
                 FadeInQuad.GetComponent<MeshRenderer>().material.SetFloat("_Cutoff" , cutoff);
                 yield return new WaitForSeconds(.02f *.01f);
             }
-<<<<<<< HEAD
         Time.timeScale = 1f;
-=======
-            
->>>>>>> 791b4b9d88d226a62e49a271270ca6abdf2c6554
         }
 }
