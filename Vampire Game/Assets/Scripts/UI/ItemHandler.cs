@@ -5,15 +5,25 @@ using UnityEngine;
 public class ItemHandler : MonoBehaviour
 {
     public Item item;
-    void Pickup()
+    void Pickup(string ability)
     {
+        if(ability == "increaseMaxHealth"){
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Health_Script>().maxHealth += 1;
+            GameObject.Find("Heart Holder").GetComponent<heartHolder>().createHeart();
+            
+            Destroy(gameObject);
+            GameManager.instance.FIllHeart();
+
+        }
+        else{
         InventoryUI.instance.Add(item);
         Destroy(gameObject);
+        }
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Player"))
         {
-            Pickup();
+            Pickup(gameObject.GetComponent<ItemHandler>().item.ability);
         }
     }
 }
