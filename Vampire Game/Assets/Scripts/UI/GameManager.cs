@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
         }
     }
         public void emptyHeart(){
+            hearts = GameObject.FindGameObjectsWithTag("Hearts");
             Debug.Log("Good Morning");
             for (int i = player.GetComponent<Health_Script>().health; i < player.GetComponent<Health_Script>().maxHealth; i++){
                 hearts[i].GetComponent<Image>().fillAmount = 0;
@@ -87,9 +88,12 @@ public class GameManager : MonoBehaviour
         }
         IEnumerator TransitionToScene(string toScene, float transitionTime)
         {
+            
             bool halftime = false;
             float cutoff= 1;
-            for (float t = 0f ; t < transitionTime+.1f; t+=.02f) 
+            Time.timeScale = .01f;
+        transitionTime *= .01f;
+            for (float t = 0f ; t < transitionTime+.01f*.01f; t+=.02f*.01f) 
             {
                 if(t < transitionTime/2)
                 {
@@ -105,7 +109,12 @@ public class GameManager : MonoBehaviour
                     cutoff = Mathf.Lerp(0,1, (t-transitionTime/2)/(transitionTime/2)  );
                 }
                 FadeInQuad.GetComponent<MeshRenderer>().material.SetFloat("_Cutoff" , cutoff);
-                yield return new WaitForSeconds(.02f);
+                yield return new WaitForSeconds(.02f *.01f);
             }
+<<<<<<< HEAD
+        Time.timeScale = 1f;
+=======
+            
+>>>>>>> 791b4b9d88d226a62e49a271270ca6abdf2c6554
         }
 }
