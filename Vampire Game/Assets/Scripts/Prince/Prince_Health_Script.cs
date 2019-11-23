@@ -22,7 +22,7 @@ void Update()
     {
         if (coolDown == 0)
         {
-            Instantiate(bloodParticleSystem, gameObject.transform);
+            Instantiate(bloodParticleSystem, gameObject.transform.position, Quaternion.identity);
             coolDown = coolDownTime;
             health -= damage;
             if (health <= 0)

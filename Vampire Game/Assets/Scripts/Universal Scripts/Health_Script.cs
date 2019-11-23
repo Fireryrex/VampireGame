@@ -64,7 +64,7 @@ public class Health_Script : MonoBehaviour
             coolDown = coolDownTime;
         //particleDamageTrigger();
         health -= damage;
-        Instantiate(bloodParticleSystem, gameObject.transform);
+        Instantiate(bloodParticleSystem, gameObject.transform.position, Quaternion.identity);
                 
         if (health <= 0)
         {
