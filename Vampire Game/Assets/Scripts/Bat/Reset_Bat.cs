@@ -22,7 +22,6 @@ public class Reset_Bat : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            Debug.Log("Player Left");
             bat_target_script.Reset_Movement();
         }
     }

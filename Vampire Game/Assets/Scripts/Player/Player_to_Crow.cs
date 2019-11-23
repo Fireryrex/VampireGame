@@ -25,7 +25,7 @@ public class Player_to_Crow : MonoBehaviour
     {
         //Debug.Log("lkajsdfkjasdhfaksjdhflkasjdhflkasdjjfhlksdjjfhksdjfhaslkjfjhaslkdjfhasdlkjfh");
         targetingScript.target = crowTarget2;
-        Debug.Log("crowScript.isTouchingPlayer() =" + crowScript.isTouchingPlayer());
+        //Debug.Log("crowScript.isTouchingPlayer() =" + crowScript.isTouchingPlayer());
         if (crowScript.isTouchingPlayer())
         {
             crowBody.AddForce(Vector2.up * 2000);

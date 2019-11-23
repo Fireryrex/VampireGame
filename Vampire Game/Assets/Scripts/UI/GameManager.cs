@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour
             DestroyImmediate(this);
         }
         hearts = GameObject.FindGameObjectsWithTag("Hearts");  
-        Debug.Log(hearts[0].tag);
     }
     private void Update() {
         checkForDead();

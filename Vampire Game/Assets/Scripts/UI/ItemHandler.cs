@@ -8,7 +8,6 @@ public class ItemHandler : MonoBehaviour
     void Pickup()
     {
         InventoryUI.instance.Add(item);
-        Debug.Log(item.name + " was pciked up.");
         Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D other) {

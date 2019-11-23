@@ -10,6 +10,7 @@ public class TransitionToSewer4 : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if (cooldown <= 0){
+            
             SceneManager.LoadScene("Sewer Scene 4");
             other.transform.position = new Vector2(17.12f, 4.0f);
         }
