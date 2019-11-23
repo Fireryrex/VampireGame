@@ -179,7 +179,10 @@ public class VampireController2 : MonoBehaviour
         ApplyGravity();
         lastPlayerPosition = transform.position;
         if (facingRight == true){
-
+            lastPlayerPosition = lastPlayerPosition + new Vector2(-3.0f, 0.0f);
+        }
+        else{
+            lastPlayerPosition = lastPlayerPosition + new Vector2(3.0f, 0.0f);
         }
         
 
@@ -282,7 +285,7 @@ public class VampireController2 : MonoBehaviour
         }
         if(airDash & Input.GetKey(dashButton) &&
             (Time.time - dashStartTime > dashCooldown) &&
-            (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))    )
+            (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) && unlockedDash)    )
         {
             airDash = false;
             ExitJumpState();
