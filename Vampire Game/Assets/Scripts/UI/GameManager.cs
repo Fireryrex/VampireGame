@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
     }
         public void FIllHeart(){
             hearts = GameObject.FindGameObjectsWithTag("Hearts");
-            hearts[player.GetComponent<Health_Script>().health+1].GetComponent<Image>().fillAmount = 100;
+            hearts[player.GetComponent<Health_Script>().health].GetComponent<Image>().fillAmount = 100;
             
         }
         public void FillHearts(){

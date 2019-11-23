@@ -7,5 +7,6 @@ public class heartHolder : MonoBehaviour
     [SerializeField] GameObject heart;
     public void createHeart(){
         Instantiate(heart, gameObject.transform);
+        GameManager.instance.FIllHeart();
     }
 }
