@@ -177,6 +177,7 @@ public class VampireController2 : MonoBehaviour
         CheckGrounded();
         CheckRoofed();
         ApplyGravity();
+        lastPlayerPosition = transform.position;
 
         if(damaged)
         {
@@ -192,6 +193,7 @@ public class VampireController2 : MonoBehaviour
         }
         if(!grounded)
         {
+            
             ExitDefaultState();
             EnterFallingState();
             return;
