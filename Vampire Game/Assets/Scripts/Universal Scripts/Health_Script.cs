@@ -15,7 +15,7 @@ public class Health_Script : MonoBehaviour
     public int maxHealth;
     public string type;
     [SerializeField] protected bool ignoreDeathfield = false;
-    [SerializeField] private GameObject ParticleSystem;
+    [SerializeField] protected GameObject bloodParticleSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -64,7 +64,7 @@ public class Health_Script : MonoBehaviour
             coolDown = coolDownTime;
         //particleDamageTrigger();
         health -= damage;
-        Instantiate(ParticleSystem, gameObject.transform);
+        Instantiate(bloodParticleSystem, gameObject.transform);
                 
         if (health <= 0)
         {
