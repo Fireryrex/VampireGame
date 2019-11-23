@@ -438,7 +438,7 @@ public class VampireController2 : MonoBehaviour
     {
         attack = attacks.transform.GetChild(attacknum);
         attack.gameObject.SetActive(true);
-        Debug.Log("Attack set to true");
+        //Debug.Log("Attack set to true");
         state = "AttackingState";
         currentAttack = attack.gameObject.GetComponent<Attack>();
         attackStartTime = Time.time;
