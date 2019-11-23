@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 
-  unlockedAttack: 0
+  unlockedAttack: 1
   unlockedAttack2: 0
   unlockedAttack3: 0
   unlockedDash: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   gravityScale: 1
   gravityOn: 1
   grounded: 0
-  GroundCheckOffset: -1.03
+  GroundCheckOffset: -1.05
   GroundCheckBounds: {x: 0.725, y: 0.1}
   ground:
     serializedVersion: 2
@@ -201,7 +201,7 @@ MonoBehaviour:
   knockbackDistance: 0
   damagedDuration: 0
   HasWeapon: 0
-  HasDoubleJump: 0
+  HasDoubleJump: 1
   HasDash: 0
   groundAttackIndex: 0
   airAttackIndex: 0
@@ -242,7 +242,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.2224707}
+  m_Offset: {x: 0, y: -0.24126297}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -253,7 +253,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.75, y: 1.4418269}
+  m_Size: {x: 0.75, y: 1.4794115}
   m_EdgeRadius: 0
 --- !u!95 &6882284773492678554
 Animator:
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 313bdf8921c53e14ca3317d0e1a14ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 5
   knockback: 0
   coolDownTime: 1
   DeathAnimation: {fileID: 1569603400387437590, guid: 03d247714264ba6458eaecb50ecbaceb,
@@ -294,7 +294,7 @@ MonoBehaviour:
   timeToDeath: 0
   currentBlood: 0
   RespawnPoint: {fileID: 0}
-  maxHealth: 3
+  maxHealth: 5
   type: Enemy
   ignoreDeathfield: 0
   bloodParticleSystem: {fileID: 1942259865337359207, guid: 64417a7a6ac23b54c85db7b99658359b,

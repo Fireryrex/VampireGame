@@ -10,9 +10,9 @@ public class ItemHandler : MonoBehaviour
         if(ability == "increaseMaxHealth"){
             GameObject.FindGameObjectWithTag("Player").GetComponent<Health_Script>().maxHealth += 1;
             GameObject.Find("Heart Holder").GetComponent<heartHolder>().createHeart();
-            GameManager.instance.FIllHeart();
-            Destroy(gameObject);
             
+            Destroy(gameObject);
+            GameManager.instance.FIllHeart();
 
         }
         else{

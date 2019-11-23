@@ -67,14 +67,14 @@ public class GameManager : MonoBehaviour
     }
         public void emptyHeart(){
             hearts = GameObject.FindGameObjectsWithTag("Hearts");
+            Debug.Log("Good Morning");
             for (int i = player.GetComponent<Health_Script>().health; i < player.GetComponent<Health_Script>().maxHealth; i++){
                 hearts[i].GetComponent<Image>().fillAmount = 0;
             }
     }
         public void FIllHeart(){
             hearts = GameObject.FindGameObjectsWithTag("Hearts");
-            player.GetComponent<Health_Script>().heal(1);
-            hearts[player.GetComponent<Health_Script>().health-1].GetComponent<Image>().fillAmount = 100;
+            hearts[player.GetComponent<Health_Script>().health+1].GetComponent<Image>().fillAmount = 100;
             
         }
         public void FillHearts(){
