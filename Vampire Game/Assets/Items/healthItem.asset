@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81e879a826eabf5489d4ade257a6d66f, type: 3}
   m_Name: healthItem
   m_EditorClassIdentifier: 
-  itemName: New Item
-  icon: {fileID: 0}
-  itemDescription: New description.
-  ability: define Ability
+  itemName: Vial of Blood
+  icon: {fileID: 21300000, guid: fd8cbaeef9815a94e9a19eca695725bc, type: 3}
+  itemDescription: Increases max health
+  ability: increaseMaxHealth
