@@ -82,8 +82,13 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        public IEnumerator TransitionScene(string toScene, float transitionTime)
+        public void TransitionScene(string toScene,float TransitionTime)
         {
+            StartCoroutine(TransitionToScene(toScene, TransitionTime));
+        }
+        IEnumerator TransitionToScene(string toScene, float transitionTime)
+        {
+            print("running transitionScene");
             bool halftime = false;
             float cutoff= 1;
             for (float t = 0f ; t < transitionTime+.1f; t+=.02f) 
@@ -97,7 +102,7 @@ public class GameManager : MonoBehaviour
                     if(halftime != true)
                     {
                         halftime = true;
-                    //  SceneManager.LoadScene(TransitionTo);
+                      SceneManager.LoadScene(toScene);
                     }
                     cutoff = Mathf.Lerp(0,1, (t-transitionTime/2)/(transitionTime/2)  );
                 }
