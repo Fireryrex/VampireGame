@@ -70,7 +70,7 @@ public class Health_Script : MonoBehaviour
         {
             if (this.tag == "Player")
             {
-                respawn();
+                GameManager.instance.Respawn();
             }
             else
             {
@@ -106,7 +106,7 @@ public class Health_Script : MonoBehaviour
     }
     public void teleportPlayer(Transform transformpoint)
     {
-        //transform.position = transformpoint.position;
+        transform.position = transformpoint.position;
     }
     public bool getDeathFieldVariable()
     {
