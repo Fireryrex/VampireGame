@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/WorkingProject/MainMenu.unity
     guid: 038c242a1bfceaa43a90640bb40011fc
@@ -22,5 +19,5 @@ EditorBuildSettings:
     guid: 26434bdccc447644ebc48edc6bddcb1c
   - enabled: 1
     path: Assets/Scenes/WorkingProject/SewerBossFight.unity
-    guid: 827723f6b961ca341b9ee1279b5b6c90
+    guid: 2e9a7eea6b2a36e40a022fe4106f019e
   m_configObjects: {}

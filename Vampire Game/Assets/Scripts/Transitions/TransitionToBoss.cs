@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class TransitionToBoss : MonoBehaviour
 {
-    private float cooldown = 2.0f;
+    private float cooldown = 1.0f;
     private void Update() {
         cooldown -= Time.deltaTime;
     }
-    private void onTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter2D(Collider2D other) {
         if(cooldown <= 0){
-        SceneManager.LoadScene("SewerBossFight");
+            other.transform.position = new Vector2(-8.68f, 0.5292202f);
+            SceneManager.LoadScene("SewerBossFight");
         }
     }
 }
