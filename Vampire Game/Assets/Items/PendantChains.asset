@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PendantChains
   m_EditorClassIdentifier: 
   itemName: Pendant
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: c63cc8809e4f23f43beca138cd08cce9, type: 3}
   itemDescription: Unlocks First Attack
   ability: attack
