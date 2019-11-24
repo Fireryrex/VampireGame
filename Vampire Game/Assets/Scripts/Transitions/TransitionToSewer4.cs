@@ -9,15 +9,17 @@ public class TransitionToSewer4 : MonoBehaviour
         cooldown -= Time.deltaTime;
     }
     private void OnTriggerEnter2D(Collider2D other) {
+        
         if (cooldown <= 0){
             if (other.transform.position.x > 90.0f){
-            other.transform.position = new Vector2(17.12f, 4.0f);
-            SceneManager.LoadScene("Sewer Scene 4");
+                other.transform.position = new Vector2(17.12f, 4.0f);
             }
             else{
                 other.transform.position = new Vector2(342.87f, -1.64f);
-                SceneManager.LoadScene("Sewer Scene 4");
+                
             }
+            SceneManager.LoadScene("Sewer Scene 4");
+            
             
         }
     }
