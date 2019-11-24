@@ -39,13 +39,14 @@ public class Health_Script : MonoBehaviour
     }
     public void OnParticleCollision(GameObject other){
          if(other.CompareTag("Player")){
+
             Debug.Log("Player was touched");
             other.GetComponent<Health_Script>().currentBlood += 1;
-            
+         
          }
     }
     public void newHeart(){
-        if (currentBlood > 100 && health < maxHealth){
+        if (currentBlood >= 100 && health < maxHealth){
             GameManager.instance.FIllHeart();
             currentBlood = 0;
         }
