@@ -179,10 +179,10 @@ public class VampireController2 : MonoBehaviour
         ApplyGravity();
         lastPlayerPosition = transform.position;
         if (facingRight == true){
-            lastPlayerPosition = lastPlayerPosition + new Vector2(-3.0f, 0.0f);
+            lastPlayerPosition = lastPlayerPosition + new Vector2(-1.0f, 0.0f);
         }
         else{
-            lastPlayerPosition = lastPlayerPosition + new Vector2(3.0f, 0.0f);
+            lastPlayerPosition = lastPlayerPosition + new Vector2(1.0f, 0.0f);
         }
         
 

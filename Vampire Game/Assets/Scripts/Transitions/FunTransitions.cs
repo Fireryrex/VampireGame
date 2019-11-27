@@ -6,10 +6,16 @@ using UnityEngine.SceneManagement;
 public class FunTransitions : MonoBehaviour
 {
     public string TransitionTo;
-    public float cooldown = 1;
+    public float cooldown = 0;
     float cutoff = 1;
     public float transitionTime;
+    [SerializeField] Vector2 moveTo;
     GameObject gamemanager;
+
+    private void Start()
+    {
+        cooldown = 0f;
+    }
 
     private void Update() 
     {
@@ -19,7 +25,7 @@ public class FunTransitions : MonoBehaviour
     {
         if(cooldown <= 0 && other.gameObject.tag == "Player")
         {
-            GameManager.instance.TransitionScene(TransitionTo, transitionTime);
+            GameManager.instance.TransitionScene(TransitionTo, transitionTime, moveTo);
         }
     }
 

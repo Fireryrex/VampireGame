@@ -11,6 +11,9 @@ public class DeathField : MonoBehaviour
         {
             Debug.Log(collision.tag);
             collision.transform.position = collision.GetComponent<VampireController2>().lastPlayerPosition;
+            collision.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            StartCoroutine(freezePlayerForABit(collision));
+
             collision.GetComponent<Health_Script>().dealDamage(damage);
             
         }
@@ -18,5 +21,11 @@ public class DeathField : MonoBehaviour
         {
             collision.GetComponent<Health_Script>().dealDamage(int.MaxValue);
         }
+    }
+
+    IEnumerator freezePlayerForABit(Collider2D player)
+    {
+        yield return new WaitForSeconds(1);
+        player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
     }
 }

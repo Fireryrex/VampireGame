@@ -7,12 +7,19 @@ public class CrowFlyScript : MonoBehaviour
     private Animator crow_Animation;
     private Pathfinding.AIPath ai_path;
     private bool touchingPlayer = false;
-
+    private Player_to_Crow playerCrowScript;
+    private Pathfinding.AIDestinationSetter targetingScript;
+    [SerializeField] GameObject crowParent;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        playerCrowScript = GameObject.FindWithTag("Player").GetComponent<Player_to_Crow>();
+        targetingScript = GetComponentInParent<Pathfinding.AIDestinationSetter>();
+        targetingScript.target = playerCrowScript.returnCrowTarget1();
+
+        crowParent.transform.position = playerCrowScript.returnCrowTarget1().position;
 
         crow_Animation = GetComponent<Animator>();
         AnimatorStateInfo state = crow_Animation.GetCurrentAnimatorStateInfo(0);

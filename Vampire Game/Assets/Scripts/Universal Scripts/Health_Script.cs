@@ -17,6 +17,9 @@ public class Health_Script : MonoBehaviour
     [SerializeField] protected bool ignoreDeathfield = false;
     [SerializeField] protected GameObject bloodParticleSystem;
 
+    public string respawnPoint;
+    public Vector2 respawnPosition; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,26 +64,30 @@ public class Health_Script : MonoBehaviour
     //Decreases the characters health by damage
     public virtual void dealDamage(int damage)
     {
-        if(coolDown == 0){
-            coolDown = coolDownTime;
-        //particleDamageTrigger();
-        health -= damage;
-        Instantiate(bloodParticleSystem, gameObject.transform.position, Quaternion.identity);
-                
-        if (health <= 0)
+        if(coolDown == 0)
         {
+            coolDown = coolDownTime;
+            //particleDamageTrigger();
+            health -= damage;
+            Instantiate(bloodParticleSystem, gameObject.transform.position, Quaternion.identity);
+                
+            if (health <= 0)
+            {
+                if (this.tag == "Player")
+                {
+                    gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                    GameManager.instance.Respawn(respawnPoint, respawnPosition);
+                    gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                }
+                else
+                {
+                    Object.Destroy(gameObject, timeToDeath);
+                }
+            }
             if (this.tag == "Player")
             {
-                GameManager.instance.Respawn();
+                GameManager.instance.emptyHeart();
             }
-            else
-            {
-                Object.Destroy(gameObject, timeToDeath);
-            }
-        }
-        if (this.tag == "Player"){
-            GameManager.instance.emptyHeart();
-        }
         }
     }
 
@@ -94,17 +101,6 @@ public class Health_Script : MonoBehaviour
         return (float)(health) / maxHealth;
     }
 
-    public void setRespawnPoint(Transform rp)
-    {
-        RespawnPoint = rp;
-    }
-
-    public void respawn()
-    {
-        
-        teleportPlayer(RespawnPoint);
-        health = maxHealth;
-    }
     public void teleportPlayer(Transform transformpoint)
     {
         transform.position = transformpoint.position;

@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     public int test = 100;
     public static GameObject player;
     public Vector2 RespawnPoint;
-    public string RespawnScene;
     public int currentBlood;
     public string respawnLevel;
     public GameObject healthUI;
@@ -19,51 +18,91 @@ public class GameManager : MonoBehaviour
     public int currentPlayerHealth;
     public GameObject FadeInQuad;
     public string id;
+
+    public AsyncOperation sceneLoadOp = null;
+    private AsyncOperation respawnSceneLoaded = null;
+    public int sceneLoaded = 0;
+    private bool respawning = false;
+
      private void Awake() {
-        instance = this;    
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(this);
     }
     //Checks to see if a GameManager already exists and if so deletes any new copies. All the copies... Heh heh heh.
     private void Start() {
         //currentPlayerHealth = player.GetComponent<Health_Script>().health;
         currentBlood = 0;
-        if(player == null){
+        if (player == null)
+        {
             player = GameObject.FindGameObjectWithTag("Player");
-        }
-        if(GameObject.FindGameObjectsWithTag("GameManager").Length > 1 ){
-            Debug.Log("Destroy");
-            DestroyImmediate(this);
         }
         hearts = GameObject.FindGameObjectsWithTag("Hearts");  
     }
     private void Update() {
+        /*Debug.Log(respawnSceneLoaded == null);
+        Debug.Log("(" + RespawnPoint.x + " , " + RespawnPoint.y);
+        if (respawnSceneLoaded != null) //&& respawnSceneLoaded.isDone == true)
+        {
+            Debug.Log("asdlkljfhhalksdjfhaklsjdfhalskdjfh");
+            player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            respawnSceneLoaded = null;
+            Debug.Log("(" + RespawnPoint.x + " , " + RespawnPoint.y);
+            player.transform.position = RespawnPoint;
+        }*/
         checkForDead();
-        if(player.GetComponent<Health_Script>().health < currentPlayerHealth ){
+        if(player.GetComponent<Health_Script>().health < currentPlayerHealth)
+        {
             emptyHeart();
         }
+        if (sceneLoaded == -1 && sceneLoadOp.isDone == true)
+        {
+            sceneLoaded = 1;
+        }
+        
     }
-    public void Respawn(){
-        if(SceneManager.GetActiveScene().name != respawnLevel){
-            SceneManager.LoadScene(respawnLevel);
-            player.transform.position = RespawnPoint;
+
+    IEnumerator moveToRespawn(string respawnScene)
+    {
+        respawnSceneLoaded = SceneManager.LoadSceneAsync(respawnScene);
+        yield return new WaitUntil(()=>respawnSceneLoaded.isDone);
+        player.transform.position = RespawnPoint;
+        player.GetComponent<Player_to_Crow>().findCrow();
+        player.GetComponent<Player_to_Crow>().crowUpdatePosition();
+        //player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+    }
+    public void Respawn(string respawnScene, Vector2 respawnPosition){
+        if(SceneManager.GetActiveScene().name != respawnScene){
+            //Debug.Log("player is now repsawning");
+            player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            //Debug.Log("Before respawning: " + (respawnSceneLoaded == null));
+            
+            StartCoroutine(moveToRespawn(respawnScene));
+            StartCoroutine(freezePlayerForABit());
+            //player.transform.position = respawnPosition;
             player.GetComponent<Health_Script>().health = player.GetComponent<Health_Script>().maxHealth;
             FillHearts();
 
         }
         else{
-            player.transform.position = RespawnPoint;
+            Debug.Log("respawnPoint Else");
+            player.transform.position = respawnPosition;
+            StartCoroutine(freezePlayerForABit());
+            player.GetComponent<Player_to_Crow>().crowUpdatePosition();
             player.GetComponent<Health_Script>().health = player.GetComponent<Health_Script>().maxHealth;
             FillHearts();
         }
     }
     public void checkForDead(){
         if (player.transform.position.y <= -51.0f){
-            Respawn();
+            Respawn(respawnLevel, RespawnPoint);
             FillHearts();
         }
-        else if(player.GetComponent<Health_Script>().health <= 0){
-            Respawn();
+        /*else if(player.GetComponent<Health_Script>().health <= 0){
+            Respawn(respawnLevel, RespawnPoint);
             FillHearts();
-        }
+        }*/
     }
         public void emptyHeart(){
             hearts = GameObject.FindGameObjectsWithTag("Hearts");
@@ -83,42 +122,55 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        public void TransitionScene(string toScene,float TransitionTime)
+        public void TransitionScene(string toScene,float TransitionTime, Vector2 moveTo)
         {
         try
         {
-            StartCoroutine(TransitionToScene(toScene, TransitionTime));
+            StartCoroutine(TransitionToScene(toScene, TransitionTime, moveTo));
         }
         catch(MissingReferenceException e)
         {
-            SceneManager.LoadScene(toScene);
+            sceneLoadOp = SceneManager.LoadSceneAsync(toScene);
+            sceneLoaded = -1;
         }
     }
-        IEnumerator TransitionToScene(string toScene, float transitionTime)
-        {
-            
-            bool halftime = false;
-            float cutoff= 1;
-            Time.timeScale = .01f;
+    IEnumerator TransitionToScene(string toScene, float transitionTime, Vector2 moveTo)
+    {
+
+        bool halftime = false;
+        float cutoff= 1;
+        Time.timeScale = .01f;
         transitionTime *= .01f;
-            for (float t = 0f ; t < transitionTime+.01f*.01f; t+=.02f*.01f) 
+        for (float t = 0f ; t < transitionTime+.01f*.01f; t+=.02f*.01f) 
+        {
+            healthUI.GetComponent<Canvas>().enabled = false;
+            if(t < transitionTime/2)
             {
-                if(t < transitionTime/2)
-                {
-                    cutoff = Mathf.Lerp(1,0,t/(transitionTime/2));
-                }
-                else
-                {
-                    if(halftime != true)
-                    {
-                        halftime = true;
-                      SceneManager.LoadScene(toScene);
-                    }
-                    cutoff = Mathf.Lerp(0,1, (t-transitionTime/2)/(transitionTime/2)  );
-                }
-                FadeInQuad.GetComponent<MeshRenderer>().material.SetFloat("_Cutoff" , cutoff);
-                yield return new WaitForSeconds(.02f *.01f);
+                cutoff = Mathf.Lerp(1,0,t/(transitionTime/2));
             }
-        Time.timeScale = 1f;
+            else
+            {
+                if(halftime != true)
+                {
+                    halftime = true;
+                    sceneLoadOp = SceneManager.LoadSceneAsync(toScene);
+                    yield return new WaitUntil(() => sceneLoadOp.isDone);
+                    player.transform.position = moveTo;
+                    player.GetComponent<Player_to_Crow>().findCrow();
+                    player.GetComponent<Player_to_Crow>().crowUpdatePosition();
+                }
+                cutoff = Mathf.Lerp(0,1, (t-transitionTime/2)/(transitionTime/2)  );
+            }
+            FadeInQuad.GetComponent<MeshRenderer>().material.SetFloat("_Cutoff" , cutoff);
+            yield return new WaitForSeconds(.02f *.01f);
         }
+        healthUI.GetComponent<Canvas>().enabled = true;
+        Time.timeScale = 1f;
+    }
+
+    IEnumerator freezePlayerForABit()
+    {
+        yield return new WaitForSeconds(1);
+        player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+    }
 }
