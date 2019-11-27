@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &463301243
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 463301244}
+  m_Layer: 12
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &463301244
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463301243}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.57, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6882284773492678556}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &859209324
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,6 +128,7 @@ Transform:
   - {fileID: 6882284774984132238}
   - {fileID: 5733216558114344314}
   - {fileID: 859209325}
+  - {fileID: 463301244}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -137,7 +168,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -7186429430430602472, guid: 6585e41b4be78224193544ce7124b7d8,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -163,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 
-  unlockedAttack: 1
+  unlockedAttack: 0
   unlockedAttack2: 0
   unlockedAttack3: 0
   unlockedDash: 0
@@ -171,7 +202,7 @@ MonoBehaviour:
   gravityScale: 1
   gravityOn: 1
   grounded: 0
-  GroundCheckOffset: -1.05
+  GroundCheckOffset: -1.03
   GroundCheckBounds: {x: 0.725, y: 0.1}
   ground:
     serializedVersion: 2
@@ -201,7 +232,7 @@ MonoBehaviour:
   knockbackDistance: 0
   damagedDuration: 0
   HasWeapon: 0
-  HasDoubleJump: 1
+  HasDoubleJump: 0
   HasDash: 0
   groundAttackIndex: 0
   airAttackIndex: 0
@@ -242,7 +273,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.24126297}
+  m_Offset: {x: 0, y: -0.22618097}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -253,7 +284,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.75, y: 1.4794115}
+  m_Size: {x: 0.75, y: 1.4492475}
   m_EdgeRadius: 0
 --- !u!95 &6882284773492678554
 Animator:
@@ -286,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 313bdf8921c53e14ca3317d0e1a14ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 3
   knockback: 0
   coolDownTime: 1
   DeathAnimation: {fileID: 1569603400387437590, guid: 03d247714264ba6458eaecb50ecbaceb,
@@ -294,11 +325,13 @@ MonoBehaviour:
   timeToDeath: 0
   currentBlood: 0
   RespawnPoint: {fileID: 0}
-  maxHealth: 5
+  maxHealth: 3
   type: Enemy
   ignoreDeathfield: 0
-  bloodParticleSystem: {fileID: 1942259865337359207, guid: 64417a7a6ac23b54c85db7b99658359b,
+  bloodParticleSystem: {fileID: 1942259865337359207, guid: de2cbfdfeed08404d924eff18ea0671c,
     type: 3}
+  respawnPoint: 
+  respawnPosition: {x: 0, y: -1.164196}
 --- !u!114 &1158185538958693744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,7 +345,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crow: {fileID: 0}
+  crowBody: {fileID: 0}
   crowScript: {fileID: 0}
+  crowParent: {fileID: 0}
   crowTarget1: {fileID: 5733216558114344314}
   crowTarget2: {fileID: 859209325}
 --- !u!114 &1903577690
