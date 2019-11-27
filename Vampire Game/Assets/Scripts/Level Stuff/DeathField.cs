@@ -9,12 +9,20 @@ public class DeathField : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<Health_Script>().dealDamage(damage);
-
-            Debug.Log(collision.tag);
-            collision.transform.position = collision.GetComponent<VampireController2>().lastPlayerPosition;
-            collision.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-            StartCoroutine(freezePlayerForABit(collision));
+            if (collision.GetComponent<Health_Script>().health > 1)
+            {
+                collision.GetComponent<Health_Script>().dealDamage(damage);
+                collision.transform.position = collision.GetComponent<VampireController2>().lastPlayerPosition;
+                collision.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                StartCoroutine(freezePlayerForABit(collision));
+            }
+            else
+            {
+                collision.transform.position = collision.GetComponent<VampireController2>().lastPlayerPosition;
+                collision.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+                StartCoroutine(freezePlayerForABit(collision));
+                collision.GetComponent<Health_Script>().dealDamage(damage);
+            }
         }
         else if(collision.GetComponent<Health_Script>() != null && !collision.GetComponent<Health_Script>().getDeathFieldVariable())
         {

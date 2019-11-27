@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
 
         }
         else{
-            Debug.Log("respawnPoint Else");
+            //Debug.Log("respawnPoint Else");
             player.transform.position = respawnPosition;
             StartCoroutine(freezePlayerForABit());
             player.GetComponent<Player_to_Crow>().crowUpdatePosition();
