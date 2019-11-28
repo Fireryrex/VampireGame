@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WorkingProject/SewerBossFight.unity
     guid: 2e9a7eea6b2a36e40a022fe4106f019e
+  - enabled: 1
+    path: Assets/Scenes/WorkingProject/Prince Boss Fight.unity
+    guid: 2d4b531a680c0954c8585f04b2647b98
   m_configObjects: {}

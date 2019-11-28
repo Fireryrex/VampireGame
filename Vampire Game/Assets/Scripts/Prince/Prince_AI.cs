@@ -43,6 +43,13 @@ public class Prince_AI : MonoBehaviour
     enum Attack {dashAttackBox, slamAttackBox, swordAttackBox1, swordAttackBox2, stabAttackBox1, stabAttackBox2, diagonalAttackBox }
     [SerializeField] GameObject[] attackHitboxes;
 
+    //Projectile Stuff
+    [SerializeField] Transform[] projectileSpawnPoints;
+    [SerializeField] float cooldown;
+    private float currentCooldown;
+    [SerializeField] GameObject[] spearProjectiles;
+    [SerializeField] GameObject[] chakramProjectiles;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +58,7 @@ public class Prince_AI : MonoBehaviour
         princeRigidBody = GetComponent<Rigidbody2D>();
         princeHealth = GetComponentInChildren<Health_Script>();
         princeTransform = GetComponent<Transform>();
-
+        currentCooldown = cooldown;
 
     }
 
@@ -85,6 +92,18 @@ public class Prince_AI : MonoBehaviour
                 GameManager.instance.returnCamera().m_Follow = player.GetComponentInChildren<CameraReturnPoint>().returnThisTransform();
                 Destroy(gameObject, 5f);
             }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (isSpawning && currentCooldown <= 0)
+        {
+            spawnProjectile();
+        }
+        else if (isSpawning)
+        {
+            currentCooldown -= Time.fixedDeltaTime;
         }
     }
 
@@ -174,7 +193,7 @@ public class Prince_AI : MonoBehaviour
             //Diagonal Slam Attack
             case 4:
                 princeRigidBody.bodyType = RigidbodyType2D.Static;
-                if (player.transform.position.x > center.position.x)
+                if (player.transform.position.x < center.position.x)
                 {
                     playerisRight = true;
                     transform.rotation = Quaternion.Euler(0, -0, 0);
@@ -286,13 +305,51 @@ public class Prince_AI : MonoBehaviour
 //Spawn attack functions
     public void startSpawn()
     {
-        chosenProjectile = Random.Range(0, numDiffProjectiles - 1);
+        chosenProjectile = Random.Range(0, numDiffProjectiles);
         isSpawning = true;
+        spawnProjectile();
     }
 
     public void stopSpawn()
     {
         isSpawning = false;
+    }
+
+    public void spawnProjectile()
+    {
+        if (chosenProjectile == 0)
+        {
+            currentCooldown = cooldown;
+
+            //Spawn Spears
+            if (playerisRight)
+            {
+                Instantiate(spearProjectiles[0], projectileSpawnPoints[Random.Range(0, projectileSpawnPoints.Length)].position, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(spearProjectiles[1], projectileSpawnPoints[Random.Range(0, projectileSpawnPoints.Length)].position, Quaternion.identity);
+            }
+        }
+        else
+        {
+            currentCooldown = cooldown * 10;
+            int x = Random.Range(0, projectileSpawnPoints.Length);
+            //Spawn 3 chackrams
+            if (playerisRight)
+            {
+                Instantiate(chakramProjectiles[0], projectileSpawnPoints[x].position, Quaternion.identity);
+                Instantiate(chakramProjectiles[1], projectileSpawnPoints[x].position, Quaternion.identity);
+                Instantiate(chakramProjectiles[2], projectileSpawnPoints[x].position, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(chakramProjectiles[3], projectileSpawnPoints[x].position, Quaternion.identity);
+                Instantiate(chakramProjectiles[4], projectileSpawnPoints[x].position, Quaternion.identity);
+                Instantiate(chakramProjectiles[5], projectileSpawnPoints[x].position, Quaternion.identity);
+            }
+
+        }
     }
 
 //Attack hitbox functions
