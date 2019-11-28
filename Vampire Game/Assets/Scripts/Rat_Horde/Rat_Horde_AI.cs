@@ -564,6 +564,12 @@ I need to implement a case in the attack switch so that it can choose to activat
         {
             walls[i].resetWalls();
         }
+        Destroy(gameObject, 3f);
+    }
+
+    public void resetCamera()
+    {
+        GameManager.instance.returnCamera().m_Follow = player.GetComponentInChildren<CameraReturnPoint>().returnThisTransform();
     }
 
 }

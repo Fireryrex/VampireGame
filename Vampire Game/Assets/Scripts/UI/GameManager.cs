@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public int currentPlayerHealth;
     public GameObject FadeInQuad;
     public string id;
+    [SerializeField] Cinemachine.CinemachineVirtualCamera gameCamera;
 
     public AsyncOperation sceneLoadOp = null;
     private AsyncOperation respawnSceneLoaded = null;
@@ -172,5 +173,10 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+    }
+
+    public Cinemachine.CinemachineVirtualCamera returnCamera()
+    {
+        return gameCamera;
     }
 }

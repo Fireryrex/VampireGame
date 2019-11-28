@@ -8,7 +8,9 @@ public class Prince_Start : MonoBehaviour
     [SerializeField] Transform gateActive;
     [SerializeField] Transform gateInactive;
     [SerializeField] GameObject gate;
+    [SerializeField] GameObject center;
     private bool gateIsActive = false;
+
 
     //Prince ai stuff
     [SerializeField] Prince_AI princeAI;
@@ -16,7 +18,7 @@ public class Prince_Start : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -48,6 +50,8 @@ public class Prince_Start : MonoBehaviour
         {
             gateIsActive = true;
             princeAI.startFight(3);
+            GameManager.instance.returnCamera().m_Lens.OrthographicSize = 12;
+            GameManager.instance.returnCamera().m_Follow = center.transform;
         }
     }
 }

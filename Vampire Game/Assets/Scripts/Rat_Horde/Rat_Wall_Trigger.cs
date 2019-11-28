@@ -7,6 +7,7 @@ public class Rat_Wall_Trigger : MonoBehaviour
     [SerializeField] Rat_Wall[] ratWall;
     [SerializeField] Rat_Horde_AI bossAI;
     [SerializeField] BossHealthScript bossHP;
+    [SerializeField] Transform center;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -19,6 +20,7 @@ public class Rat_Wall_Trigger : MonoBehaviour
                 ratWall[i].moveRatWall1();
             }
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            GameManager.instance.returnCamera().m_Follow = center;
         }
     }
 }

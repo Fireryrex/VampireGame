@@ -78,6 +78,8 @@ public class Health_Script : MonoBehaviour
                     gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
                     GameManager.instance.Respawn(respawnPoint, respawnPosition);
                     gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                    GameManager.instance.returnCamera().m_Follow = GetComponentInChildren<CameraReturnPoint>().returnThisTransform();
+                    GameManager.instance.returnCamera().m_Lens.OrthographicSize = 10;
                 }
                 else
                 {

@@ -81,6 +81,9 @@ public class Prince_AI : MonoBehaviour
                 //Play death animation here
                 stateInt = State.Dead;
                 princeAnimator.SetInteger("stateInt", 0);
+                GameManager.instance.returnCamera().m_Lens.OrthographicSize = 10;
+                GameManager.instance.returnCamera().m_Follow = player.GetComponentInChildren<CameraReturnPoint>().returnThisTransform();
+                Destroy(gameObject, 5f);
             }
         }
     }
@@ -96,8 +99,17 @@ public class Prince_AI : MonoBehaviour
     {
         switch (attack)
         {
-            //Dash Attack
+            //Slam Attack
             case 0:
+                singleTeleportPosition = 2;
+                princeTransform.position = new Vector3(player.transform.position.x, teleportPositions[singleTeleportPosition].position.y);
+                princeRigidBody.bodyType = RigidbodyType2D.Static;
+
+                princeAnimator.SetInteger("stateInt", 2);
+                break;
+
+            //Dash Attack
+            case 1:
                 //go to the position that is opposite to the player
                 int teleportChoice = Random.Range(0, 2);
                 if(teleportChoice == 0)
@@ -117,15 +129,6 @@ public class Prince_AI : MonoBehaviour
                 //Start dash attack animation here
                 princeAnimator.SetInteger("stateInt", 1);
 
-                break;
-            
-            //Slam Attack
-            case 1:
-                singleTeleportPosition = 2;
-                princeTransform.position = new Vector3(player.transform.position.x, teleportPositions[singleTeleportPosition].position.y);
-                princeRigidBody.bodyType = RigidbodyType2D.Static;
-
-                princeAnimator.SetInteger("stateInt", 2);
                 break;
 
             //Projectile Attack

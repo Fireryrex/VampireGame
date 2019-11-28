@@ -48,12 +48,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   test: 3
   RespawnPoint: {x: 0, y: 0}
-  RespawnScene: 
   currentBlood: 0
   respawnLevel: 
   healthUI: {fileID: 0}
   currentPlayerHealth: 0
   FadeInQuad: {fileID: 0}
+  id: 
+  gameCamera: {fileID: 0}
+  sceneLoaded: 0
 --- !u!114 &8874433681815104521
 MonoBehaviour:
   m_ObjectHideFlags: 0

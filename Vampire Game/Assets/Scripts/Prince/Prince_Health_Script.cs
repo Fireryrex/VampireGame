@@ -27,7 +27,7 @@ void Update()
             health -= damage;
             if (health <= 0)
             {
-                //Instantiate(bloodSpray, transform.position, Quaternion.identity, gameObject.transform);
+                Instantiate(bloodSpray, transform.position, Quaternion.identity, gameObject.transform);
                 //play the death cinematic        
             }
 
