@@ -2775,7 +2775,7 @@ MonoBehaviour:
   TransitionTo: Sewer Scene 4
   cooldown: 1
   transitionTime: 1
-  moveTo: {x: -40.64605, y: -2.18}
+  moveTo: {x: 242.89, y: 32.32}
 --- !u!114 &1857175855
 MonoBehaviour:
   m_ObjectHideFlags: 0
