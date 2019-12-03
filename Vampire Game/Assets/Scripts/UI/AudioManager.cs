@@ -57,24 +57,11 @@ public class AudioManager : MonoBehaviour
         s.source.Stop();
     }
 
-    public void StopAll(string name = "")
+    public void StopAll()
     {
-        try { 
-        Sound q = Array.Find(sounds, sound => sound.name == name);
-        string omit_clipname;
-        if (q != null)
-            omit_clipname = q.source.clip.name;
-        else
-            omit_clipname = "";
         foreach( Sound s in sounds)
         {
-            if(s.source.clip.name != omit_clipname)
-                s.source.Stop();
-        }
-        }
-        catch(Exception e)
-        {
-            print("Something Happened");
+            s.source.Stop();
         }
     }
 

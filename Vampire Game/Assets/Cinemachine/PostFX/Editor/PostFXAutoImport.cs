@@ -11,7 +11,7 @@ namespace Cinemachine.PostFX
         {
             static EditorInitialize() 
             {
-#if UNITY_POST_PROCESSING_STACK_V2h
+#if UNITY_POST_PROCESSING_STACK_V2
                 // We have PPv2
                 CinemachinePostProcessing.InitializeModule();
 #else
