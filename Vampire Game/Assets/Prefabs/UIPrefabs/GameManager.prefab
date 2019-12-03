@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8874433681815104521}
   - component: {fileID: 8874433681815104522}
   - component: {fileID: 1550118832}
+  - component: {fileID: 1691887482}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -46,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b299a19fe8d214941921ecae4ba2f952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioManagerInstance: {fileID: 0}
   test: 3
   RespawnPoint: {x: 0, y: 0}
   currentBlood: 0
@@ -102,3 +104,208 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eb919e11b5e97045b6c3300ea331e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1691887482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8874433681815104526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 287eb6ef4d5a75f4599f6471326e206c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: bat_atk
+    clip: {fileID: 8300000, guid: edb877a04133a1f438a8bbeafde1f256, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: bat_hit
+    clip: {fileID: 8300000, guid: f1823ec69e2f9234993ef5c1bb2c3b5f, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: placeholder
+    clip: {fileID: 8300000, guid: f05387824ff3dd34eb146eea5d3ba1c1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: player_atk
+    clip: {fileID: 8300000, guid: ca852b16969add844a77857fc5e69762, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: player_hit
+    clip: {fileID: 8300000, guid: 55ab2bbcace0b934aaff62d530e54da8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: player_jump
+    clip: {fileID: 8300000, guid: 7535143cc57d33a4fa87ce754e935d72, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: player_step
+    clip: {fileID: 8300000, guid: 0fc7ccbfef83b20499f7f05d8d28307a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: rat_hit
+    clip: {fileID: 8300000, guid: 98a212778bae0e74f95a377b671fd2ad, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: scene_change
+    clip: {fileID: 8300000, guid: 0ccbfd93ca3861d4bb920d21b0e4dea3, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: rat_boss
+    clip: {fileID: 8300000, guid: 85e77ba616ace6c409c84839ab4a9036, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Sewer Scene 1
+    clip: {fileID: 8300000, guid: 19e078b8479365d4db7c9f73eec590aa, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: vamp_fight
+    clip: {fileID: 8300000, guid: 185af9636ac137b469bf9ae8f20107fa, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: vampire_weekend
+    clip: {fileID: 8300000, guid: 67cd27bd48ce34b4c8f4a6bc017ff688, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: player_dash
+    clip: {fileID: 8300000, guid: ed13b37b148326442acc8eda4a37eb8a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Sewer Scene 2
+    clip: {fileID: 8300000, guid: 19e078b8479365d4db7c9f73eec590aa, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Sewer Scene 4
+    clip: {fileID: 8300000, guid: 19e078b8479365d4db7c9f73eec590aa, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: SewerBossFight
+    clip: {fileID: 8300000, guid: 85e77ba616ace6c409c84839ab4a9036, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Prince Boss Fight
+    clip: {fileID: 8300000, guid: 185af9636ac137b469bf9ae8f20107fa, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: ' '
+    clip: {fileID: 8300000, guid: edb877a04133a1f438a8bbeafde1f256, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
