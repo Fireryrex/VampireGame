@@ -13,12 +13,14 @@ public class DeathField : MonoBehaviour
             {
                 collision.GetComponent<Health_Script>().dealDamage(damage);
                 collision.transform.position = collision.GetComponent<VampireController2>().lastPlayerPosition;
+                collision.GetComponent<Health_Script>().respawnAnimPlay();
                 collision.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
                 StartCoroutine(freezePlayerForABit(collision));
             }
             else
             {
                 collision.transform.position = collision.GetComponent<VampireController2>().lastPlayerPosition;
+                collision.GetComponent<Health_Script>().respawnAnimPlay();
                 collision.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
                 StartCoroutine(freezePlayerForABit(collision));
                 collision.GetComponent<Health_Script>().dealDamage(damage);
@@ -33,6 +35,7 @@ public class DeathField : MonoBehaviour
     IEnumerator freezePlayerForABit(Collider2D player)
     {
         yield return new WaitForSeconds(1);
+        player.GetComponent<Health_Script>().respawnAnimEnd();
         player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
     }
 }
