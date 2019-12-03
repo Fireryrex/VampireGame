@@ -69,7 +69,6 @@ public class AudioManager : MonoBehaviour
                 omit_clipname = "";
             foreach (Sound s in sounds)
             {
-                s.source.Stop();
                 if (s.source.clip.name != omit_clipname)
                     s.source.Stop();
             }
