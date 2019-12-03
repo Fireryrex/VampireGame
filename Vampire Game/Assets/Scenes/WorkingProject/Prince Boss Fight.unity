@@ -1693,6 +1693,202 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &465071498
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4864773883084699591, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_Name
+      value: CutSceneTrigger (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699591, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16.33153
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: id
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[2].name
+      value: LILA
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[2].sentence
+      value: You took them...
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[0].name
+      value: LILA
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[0].sentence
+      value: "You- I remember you. And the chaos. The destruction- the bodies.\r\nMy
+        parents... my brothers..."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[1].name
+      value: PRINCE KYRAN
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[1].sentence
+      value: You are a resilient little one. I left your corpse in the sewers to rot
+        with the others, yet here you are.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[3].name
+      value: KYRAN
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[3].sentence
+      value: Join me. Let me teach you.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[4].name
+      value: GRIGORI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[4].sentence
+      value: Lila...
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[5].name
+      value: KYRAN
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[5].sentence
+      value: My blood now runs through your veins. Our connection brought you here.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[6].name
+      value: LILA
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[6].sentence
+      value: You drained their blood in front of me.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[7].name
+      value: LILA
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[7].sentence
+      value: You drained their blood in front of me.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[8].name
+      value: KYRAN
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[8].sentence
+      value: No longer must you be limited by your human bonds.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[9].name
+      value: LILA
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[9].sentence
+      value: You killed them. You killed me.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[10].name
+      value: KYRAN
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[10].sentence
+      value: You force my hand, Little One. And so I will again.
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0fd2fd9d33c7b3840890649b9f53e950, type: 3}
 --- !u!1 &472292465
 GameObject:
   m_ObjectHideFlags: 0
@@ -1729,6 +1925,272 @@ Transform:
   m_Father: {fileID: 857891566}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &545508382
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4437142700912920872, guid: e1fe182b45409b7489d4d6d6767a31d2,
+        type: 3}
+      propertyPath: m_Name
+      value: Dialogue PreFab
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437142700912920873, guid: e1fe182b45409b7489d4d6d6767a31d2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 47.243507
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437142700912920873, guid: e1fe182b45409b7489d4d6d6767a31d2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -9.538946
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437142700912920873, guid: e1fe182b45409b7489d4d6d6767a31d2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -117.92969
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437142700912920873, guid: e1fe182b45409b7489d4d6d6767a31d2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437142700912920873, guid: e1fe182b45409b7489d4d6d6767a31d2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437142700912920873, guid: e1fe182b45409b7489d4d6d6767a31d2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437142700912920873, guid: e1fe182b45409b7489d4d6d6767a31d2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437142700912920873, guid: e1fe182b45409b7489d4d6d6767a31d2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437142700912920873, guid: e1fe182b45409b7489d4d6d6767a31d2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437142700912920873, guid: e1fe182b45409b7489d4d6d6767a31d2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437142700912920873, guid: e1fe182b45409b7489d4d6d6767a31d2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e1fe182b45409b7489d4d6d6767a31d2, type: 3}
+--- !u!1001 &655959777
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4864773883084699591, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_Name
+      value: CutSceneTrigger (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699591, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 26.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16.33153
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: id
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[2].name
+      value: GRIGORI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[2].sentence
+      value: "I tried. Maybe you would've heard me if you were better at listening.\r\n...
+        I hoped I was wrong. There was a time I could have prevented this."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[0].name
+      value: GRIGORI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[0].sentence
+      value: '... I''m sorry, Kid.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[1].name
+      value: LILA
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[1].sentence
+      value: "You knew they were dead, didn't you?\r\nWhy didn't you tell me?\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[3].name
+      value: LILA
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[3].sentence
+      value: '...'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[4].name
+      value: GRIGORI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[4].sentence
+      value: "But you and I... we can prevent it from happening again.\r\nYou have
+        a lot to learn, but you're stronger than I realized.\r\n... You would've fit
+        right in with a family of hunters."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[5].name
+      value: LILA
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[5].sentence
+      value: Grigori, I have nothing...
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[6].name
+      value: GRIGORI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[6].sentence
+      value: You got me, Kid. How bout it - us against the underworld?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[7].name
+      value: LILA
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[7].sentence
+      value: '... Lead the way, Crow.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[8].name
+      value: KYRAN
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[8].sentence
+      value: No longer must you be limited by your human bonds.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[9].name
+      value: LILA
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[9].sentence
+      value: You killed them. You killed me.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[10].name
+      value: KYRAN
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[10].sentence
+      value: You force my hand, Little One. And so I will again.
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0fd2fd9d33c7b3840890649b9f53e950, type: 3}
 --- !u!1 &667164602
 GameObject:
   m_ObjectHideFlags: 0
@@ -57961,6 +58423,131 @@ Transform:
   m_Father: {fileID: 857891566}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1750103700
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4864773883084699591, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_Name
+      value: CutSceneTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699591, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -19.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16.33153
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699584, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: id
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[2].name
+      value: GRIGORI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[2].sentence
+      value: Kid... you're not strong enough. Not yet.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[0].name
+      value: GRIGORI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[0].sentence
+      value: Hang on, I recognize this shortcut. You're gonna get yourself killed.
+        Again.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[1].name
+      value: LILA
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[1].sentence
+      value: My family is in there.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[3].name
+      value: LILA
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864773883084699585, guid: 0fd2fd9d33c7b3840890649b9f53e950,
+        type: 3}
+      propertyPath: conversation.Array.data[3].sentence
+      value: I'll be fine. I need to do this for them.
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0fd2fd9d33c7b3840890649b9f53e950, type: 3}
 --- !u!1 &1750913922
 GameObject:
   m_ObjectHideFlags: 0
