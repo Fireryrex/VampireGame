@@ -40,6 +40,7 @@ public class DialogueTrigger : MonoBehaviour
         if (hasBeenTriggered == false){
             Time.timeScale = 0f;
             hasBeenTriggered = true;
+            GameManager.instance.setCutSceneStatus(id);
             TriggerDialogue();
             
         }

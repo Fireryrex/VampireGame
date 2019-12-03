@@ -189,4 +189,7 @@ public class GameManager : MonoBehaviour
     public bool getCutSceneStatus(int id){
         return cutScenes[id];
     }
+    public void setCutSceneStatus(){
+        cutScenes[id] = true;
+    }
 }
