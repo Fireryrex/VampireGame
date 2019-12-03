@@ -256,7 +256,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79cfd88a50677840a5d542c3b5b55bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bat_Blood: {fileID: 0}
 --- !u!70 &5468480892084629173
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -442,6 +441,9 @@ MonoBehaviour:
   ignoreDeathfield: 0
   bloodParticleSystem: {fileID: 1942259865337359207, guid: 64417a7a6ac23b54c85db7b99658359b,
     type: 3}
+  respawnPoint: 
+  respawnPosition: {x: 0, y: 0}
+  damagedSound: bat_hit
 --- !u!50 &8979959447657649586
 Rigidbody2D:
   serializedVersion: 4

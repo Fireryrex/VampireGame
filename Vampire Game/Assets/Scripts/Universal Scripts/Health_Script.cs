@@ -18,7 +18,9 @@ public class Health_Script : MonoBehaviour
     [SerializeField] protected GameObject bloodParticleSystem;
 
     public string respawnPoint;
-    public Vector2 respawnPosition; 
+    public Vector2 respawnPosition;
+
+    public string damagedSound = " ";
 
     // Start is called before the first frame update
     void Start()
@@ -66,6 +68,7 @@ public class Health_Script : MonoBehaviour
     {
         if(coolDown == 0)
         {
+            GameManager.instance.AudioManagerInstance.Play(damagedSound);
             coolDown = coolDownTime;
             //particleDamageTrigger();
             health -= damage;

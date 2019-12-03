@@ -304,6 +304,9 @@ MonoBehaviour:
   ignoreDeathfield: 0
   bloodParticleSystem: {fileID: 1942259865337359207, guid: 64417a7a6ac23b54c85db7b99658359b,
     type: 3}
+  respawnPoint: 
+  respawnPosition: {x: 0, y: 0}
+  damagedSound: rat_hit
 --- !u!70 &4043825859993840572
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
