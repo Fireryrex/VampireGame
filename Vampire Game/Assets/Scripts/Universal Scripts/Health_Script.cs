@@ -96,6 +96,11 @@ public class Health_Script : MonoBehaviour
             if (this.tag == "Player")
             {
                 playerAnim.SetBool("Hurt", true);
+                playerAnim.SetBool("Moving", false);
+                playerAnim.SetBool("Attack1", false);
+                playerAnim.SetBool("Attack2", false);
+                playerAnim.SetBool("Attack3", false);
+                playerAnim.SetBool("Jump", false);
                 GameManager.instance.emptyHeart();
             }
         }
