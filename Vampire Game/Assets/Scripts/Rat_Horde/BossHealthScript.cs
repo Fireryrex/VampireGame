@@ -30,7 +30,7 @@ public class BossHealthScript : Health_Script
             if (health <= 0)
             {
                 bossAI.stopAI();
-                Instantiate(bloodSpray, transform.position, Quaternion.identity, gameObject.transform);
+                Instantiate(bloodSpray, transform.position + new Vector3(0, 2, 0), Quaternion.identity, gameObject.transform);
                 bossAI.lowerWalls();
                 bossAI.resetCamera();
                 //play the death cinematic        

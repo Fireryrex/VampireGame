@@ -193,7 +193,7 @@ public class Prince_AI : MonoBehaviour
             //Diagonal Slam Attack
             case 4:
                 princeRigidBody.bodyType = RigidbodyType2D.Static;
-                if (player.transform.position.x < center.position.x)
+                if (player.transform.position.x > center.position.x)
                 {
                     playerisRight = true;
                     transform.rotation = Quaternion.Euler(0, -0, 0);
