@@ -345,6 +345,7 @@ MonoBehaviour:
     type: 3}
   respawnPoint: 
   respawnPosition: {x: 0, y: -1.164196}
+  damagedSound: player_hit
 --- !u!114 &1158185538958693744
 MonoBehaviour:
   m_ObjectHideFlags: 0
