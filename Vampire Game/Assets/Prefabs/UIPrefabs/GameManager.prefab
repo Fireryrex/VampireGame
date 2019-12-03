@@ -231,16 +231,16 @@ MonoBehaviour:
     pitch: 0
     loop: 0
     source: {fileID: 0}
-  - name: prince_hit
+  - name: 
     clip: {fileID: 0}
-    volume: 1
-    pitch: 1
+    volume: 0
+    pitch: 0
     loop: 0
     source: {fileID: 0}
-  - name: rat_boss_hit
+  - name: 
     clip: {fileID: 0}
-    volume: 1
-    pitch: 1
+    volume: 0
+    pitch: 0
     loop: 0
     source: {fileID: 0}
   - name: 
