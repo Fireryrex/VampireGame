@@ -157,7 +157,7 @@ public class GameManager : MonoBehaviour
                 {
                     halftime = true;
                     sceneLoadOp = SceneManager.LoadSceneAsync(toScene);
-                    GameManager.instance.AudioManagerInstance.StopAll();
+                    GameManager.instance.AudioManagerInstance.StopAll(toScene);
                     yield return new WaitUntil(() => sceneLoadOp.isDone);
                     GameManager.instance.AudioManagerInstance.Play(toScene);
                     player.transform.position = moveTo;

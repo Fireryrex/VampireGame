@@ -1,4 +1,4 @@
-﻿#if UNITY_POST_PROCESSING_STACK_V2
+﻿#if UNITY_POST_PROCESSING_STACK_V2h
 
 // NOTE: If you are getting errors of the sort that say something like:
 //     "The type or namespace name `PostProcessing' does not exist in the namespace"
