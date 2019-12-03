@@ -181,7 +181,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 19e078b8479365d4db7c9f73eec590aa, type: 3}
     volume: 1
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: vamp_fight
     clip: {fileID: 8300000, guid: 185af9636ac137b469bf9ae8f20107fa, type: 3}
