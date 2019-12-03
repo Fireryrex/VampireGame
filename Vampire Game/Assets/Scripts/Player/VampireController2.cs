@@ -140,6 +140,7 @@ public class VampireController2 : MonoBehaviour
     {
         damaged = true;
         damagedTime = Time.deltaTime;
+        GameManager.instance.AudioManagerInstance.Play("player_hit");
     }
 
     void EnterDamagedState()
@@ -247,6 +248,7 @@ public class VampireController2 : MonoBehaviour
         lastJumpTime = Time.time;
         moveVec.y = Mathf.Sqrt(2f * gravityScale * jumpHeight * Time.fixedDeltaTime);
         currentJumps --;
+        GameManager.instance.AudioManagerInstance.Play("player_jump");
         if(resetAirdashOnJump)
             airDash = true;
         JumpState();
@@ -379,6 +381,7 @@ public class VampireController2 : MonoBehaviour
         state = "DashingState";
         SetMoveDir();
         dashX = moveVec.normalized; //get left or right
+            GameManager.instance.AudioManagerInstance.Play("player_dash");
         //change colliders
         DashingState();
         }
@@ -446,7 +449,8 @@ public class VampireController2 : MonoBehaviour
         attackStartTime = Time.time;
         attacknum = -1;
         attackQueued = false;
-        moveVec *= currentAttack.attackDrag;  
+        moveVec *= currentAttack.attackDrag;
+        GameManager.instance.AudioManagerInstance.Play("player_atk");
     }
     //maybe i should implement a "cooldown" instead of immediately setting attacknum to -1 or whatever when it exits - like let it go a little longer.
     void AttackingState() // attacking state is pretty messy cuz it has to be able to accomodate so many different types of attacks.
@@ -582,6 +586,14 @@ public class VampireController2 : MonoBehaviour
     {
         moveVec = ((Input.GetKey(KeyCode.A) ? Vector2.left : Vector2.zero) +
          (Input.GetKey(KeyCode.D) ? Vector2.right : Vector2.zero)).normalized *walkSpeed*Time.fixedDeltaTime;
+        //if (GameManager.instance.AudioManagerInstance.IsPlaying("player_step") && moveVec == Vector2.zero)
+        //{
+        //    GameManager.instance.AudioManagerInstance.Stop("player_step");
+        //}
+        //if(!GameManager.instance.AudioManagerInstance.IsPlaying("player_step") && moveVec != Vector2.zero)
+        //{
+        //    GameManager.instance.AudioManagerInstance.Play("player_step");
+        //}
     }
 
     //applies input to moveVec without resetting Y. takes air control into account. 
