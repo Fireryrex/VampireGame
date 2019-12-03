@@ -20,11 +20,13 @@ public class Health_Script : MonoBehaviour
     public string respawnPoint;
     public Vector2 respawnPosition;
 
+    private Animator playerAnim;
     public string damagedSound = " ";
 
     // Start is called before the first frame update
     void Start()
     {
+        playerAnim = GetComponent<Animator>();
         ResetHealth();
     }
 
@@ -78,8 +80,10 @@ public class Health_Script : MonoBehaviour
             {
                 if (this.tag == "Player")
                 {
+                    playerAnim.SetBool("Respawn", true);
                     gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
                     GameManager.instance.Respawn(respawnPoint, respawnPosition);
+                    playerAnim.SetBool("Respawn", false);
                     gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                     GameManager.instance.returnCamera().m_Follow = GetComponentInChildren<CameraReturnPoint>().returnThisTransform();
                     GameManager.instance.returnCamera().m_Lens.OrthographicSize = 10;
@@ -91,6 +95,7 @@ public class Health_Script : MonoBehaviour
             }
             if (this.tag == "Player")
             {
+                playerAnim.SetBool("Hurt", true);
                 GameManager.instance.emptyHeart();
             }
         }
@@ -117,5 +122,20 @@ public class Health_Script : MonoBehaviour
     public virtual void ResetHealth()
     {
         health = maxHealth;
+    }
+
+    public void accessNotTakingDamage()
+    {
+        playerAnim.SetBool("Hurt", false);
+    }
+
+    public void respawnAnimPlay()
+    {
+        playerAnim.SetBool("Respawn", true);
+    }
+
+    public void respawnAnimEnd()
+    {
+        playerAnim.SetBool("Respawn", false);
     }
 }

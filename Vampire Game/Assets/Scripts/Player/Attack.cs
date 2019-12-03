@@ -36,7 +36,7 @@ public class Attack : MonoBehaviour
     [SerializeField] Animator player_Animation;
     [SerializeField] string animation_Trigger_Name;
     private PolygonCollider2D attack_Hitbox;
-
+    
 
     virtual public int GetNextAttackInCombo()
     {

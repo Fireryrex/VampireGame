@@ -83,6 +83,8 @@ public class VampireController2 : MonoBehaviour
 
     public Vector2 lastPlayerPosition;
 
+    private Animator playerAnim;
+
     void Awake()
     {
         States = new Dictionary<string,Action>();
@@ -98,6 +100,7 @@ public class VampireController2 : MonoBehaviour
         colliders = new Collider2D[8];
         currentJumps = jumps;
         facingRight = transform.localScale.x>0;
+        playerAnim = GetComponent<Animator>();
     }
 
     void Start()
@@ -119,6 +122,14 @@ public class VampireController2 : MonoBehaviour
     {
         States[state]();
         transform.localScale = new Vector3(facingRight? 1 : -1 , 1,1);
+        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        {
+            playerAnim.SetBool("Moving", true);
+        }
+        else
+        {
+            playerAnim.SetBool("Moving", false);
+        }
     }
     public void unlockAttack(){
         unlockedAttack = true;
@@ -241,7 +252,9 @@ public class VampireController2 : MonoBehaviour
     bool stillHoldingSpace;
     void EnterJumpState() //should I segregate between jumping and falling? I think so.
     {
-        if(currentJumps == 0){
+        playerAnim.SetBool("Jump", true);
+        if(currentJumps == 0)
+        {
         lastPlayerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
         }
         grounded = false;
@@ -373,7 +386,7 @@ public class VampireController2 : MonoBehaviour
 
     void ExitFallingState()
     {
-
+        playerAnim.SetBool("Jump", false);
     }
 
     void EnterDashingState()
@@ -632,6 +645,10 @@ public class VampireController2 : MonoBehaviour
     void CheckGrounded()
     {
         grounded = CheckBoxOverlap(transform.position + Vector3.up*GroundCheckOffset, GroundCheckBounds, 0f, ground);
+        if(grounded)
+        {
+            playerAnim.SetBool("Jump", false);
+        }
     }
 
     //roofed

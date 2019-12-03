@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerIdle
+  m_Name: PlayerWalk
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,16 +20,19 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -2574223550858662666, guid: 141b30551b14ea54db98e2ed5ee382ca,
+      value: {fileID: -2954306935556470743, guid: 141b30551b14ea54db98e2ed5ee382ca,
         type: 3}
-    - time: 0.6666667
-      value: {fileID: -2574223550858662666, guid: 141b30551b14ea54db98e2ed5ee382ca,
+    - time: 0.125
+      value: {fileID: 8418382548270584538, guid: 141b30551b14ea54db98e2ed5ee382ca,
+        type: 3}
+    - time: 0.25
+      value: {fileID: -2954306935556470743, guid: 141b30551b14ea54db98e2ed5ee382ca,
         type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 60
+  m_SampleRate: 24
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -44,19 +47,20 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -2574223550858662666, guid: 141b30551b14ea54db98e2ed5ee382ca, type: 3}
-    - {fileID: -2574223550858662666, guid: 141b30551b14ea54db98e2ed5ee382ca, type: 3}
+    - {fileID: -2954306935556470743, guid: 141b30551b14ea54db98e2ed5ee382ca, type: 3}
+    - {fileID: 8418382548270584538, guid: 141b30551b14ea54db98e2ed5ee382ca, type: 3}
+    - {fileID: -2954306935556470743, guid: 141b30551b14ea54db98e2ed5ee382ca, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.68333334
+    m_StopTime: 0.29166666
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 0
+    m_LoopTime: 1
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
@@ -70,11 +74,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0.41666666
-    functionName: crowStand
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []
