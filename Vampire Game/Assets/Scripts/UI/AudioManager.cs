@@ -57,12 +57,11 @@ public class AudioManager : MonoBehaviour
         s.source.Stop();
     }
 
-    public void StopAll(string something = "")
+    public void StopAll()
     {
         foreach( Sound s in sounds)
         {
-            if(s.name != something)
-                s.source.Stop();
+            s.source.Stop();
         }
     }
 
