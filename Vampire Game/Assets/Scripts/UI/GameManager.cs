@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     enum states {Level1, Level2, Level3}; 
     public static GameManager instance;
+    public AudioManager AudioManagerInstance;
     public int test = 100;
     public static GameObject player;
     public Vector2 RespawnPoint;
@@ -25,6 +26,8 @@ public class GameManager : MonoBehaviour
     public int sceneLoaded = 0;
     private bool respawning = false;
 
+    private bool[] cutScenes = new bool[20];
+
      private void Awake() {
         if (instance == null)
             instance = this;
@@ -35,11 +38,15 @@ public class GameManager : MonoBehaviour
     private void Start() {
         //currentPlayerHealth = player.GetComponent<Health_Script>().health;
         currentBlood = 0;
+        AudioManagerInstance = GetComponent<AudioManager>();
         if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player");
         }
         hearts = GameObject.FindGameObjectsWithTag("Hearts");  
+        for (int i = 0; i< 20; i++){
+            cutScenes[i] = false;
+        }
     }
     private void Update() {
         /*Debug.Log(respawnSceneLoaded == null);
@@ -155,7 +162,9 @@ public class GameManager : MonoBehaviour
                 {
                     halftime = true;
                     sceneLoadOp = SceneManager.LoadSceneAsync(toScene);
+                    GameManager.instance.AudioManagerInstance.StopAll(toScene);
                     yield return new WaitUntil(() => sceneLoadOp.isDone);
+                    GameManager.instance.AudioManagerInstance.Play(toScene);
                     player.transform.position = moveTo;
                     player.GetComponent<Player_to_Crow>().findCrow();
                     player.GetComponent<Player_to_Crow>().crowUpdatePosition();
@@ -167,6 +176,7 @@ public class GameManager : MonoBehaviour
         }
         healthUI.GetComponent<Canvas>().enabled = true;
         Time.timeScale = 1f;
+
     }
 
     IEnumerator freezePlayerForABit()
@@ -178,5 +188,11 @@ public class GameManager : MonoBehaviour
     public Cinemachine.CinemachineVirtualCamera returnCamera()
     {
         return gameCamera;
+    }
+    public bool checkCutSceneStatus(int id){
+        return cutScenes[id];
+    }
+    public void changeCutSceneStatus(int id){
+        cutScenes[id] = true;
     }
 }

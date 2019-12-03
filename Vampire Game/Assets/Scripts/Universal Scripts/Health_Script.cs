@@ -21,6 +21,7 @@ public class Health_Script : MonoBehaviour
     public Vector2 respawnPosition;
 
     private Animator playerAnim;
+    public string damagedSound = " ";
 
     // Start is called before the first frame update
     void Start()
@@ -69,6 +70,7 @@ public class Health_Script : MonoBehaviour
     {
         if(coolDown == 0)
         {
+            GameManager.instance.AudioManagerInstance.Play(damagedSound);
             coolDown = coolDownTime;
             //particleDamageTrigger();
             health -= damage;
