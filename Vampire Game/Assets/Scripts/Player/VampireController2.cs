@@ -241,7 +241,9 @@ public class VampireController2 : MonoBehaviour
     bool stillHoldingSpace;
     void EnterJumpState() //should I segregate between jumping and falling? I think so.
     {
+        if(currentJumps == 0){
         lastPlayerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+        }
         grounded = false;
         stillHoldingSpace = Input.GetKey(KeyCode.Space);
         state = "JumpState";
