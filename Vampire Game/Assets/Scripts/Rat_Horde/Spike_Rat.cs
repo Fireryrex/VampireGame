@@ -28,7 +28,7 @@ public class Spike_Rat : MonoBehaviour
                 transform.position = Vector3.MoveTowards
                     (
                         new Vector3(transform.position.x, transform.position.y, 0),
-                        new Vector3(moveLocation.transform.position.x, moveLocation.transform.position.y, 0),
+                        new Vector3(transform.position.x, moveLocation.transform.position.y - 1, 0),
                         30 * Time.deltaTime
                     );
             }

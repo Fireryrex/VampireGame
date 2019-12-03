@@ -417,6 +417,7 @@ I need to implement a case in the attack switch so that it can choose to activat
 
             if(!isDoingDivingAttack && movingLeft)
             {
+                bossAnimation.SetInteger("StateInt", 1);
                 transform.position = Vector3.MoveTowards
                         (
                             new Vector3(transform.position.x, transform.position.y, 0),
@@ -433,6 +434,7 @@ I need to implement a case in the attack switch so that it can choose to activat
             }
             else if(!isDoingDivingAttack && movingBack)
             {
+                bossAnimation.SetInteger("StateInt", 1);
                 transform.position = Vector3.MoveTowards
                         (
                             new Vector3(transform.position.x, transform.position.y, 0),
