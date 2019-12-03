@@ -11,11 +11,15 @@ public class DialogueTrigger : MonoBehaviour
     public string songToTriggerOnStart; //name of song to trigger on dialogue start
     public string songToTriggerAfter; //name of song to trigger on dialogue finish
 
+    [SerializeField] private int id;
     private DialogueManager dm;
 
     public void Start()
     {
         dm = FindObjectOfType<DialogueManager>();
+        hasBeenTriggered = GameManager.instance.checkCutSceneStatus(id);
+
+        
     }
 
     public void TriggerDialogue()
@@ -37,9 +41,11 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (hasBeenTriggered == false){
             Time.timeScale = 0f;
+            GameManager.instance.changeCutSceneStatus(id);
             hasBeenTriggered = true;
             TriggerDialogue();
             
         }
     }
+
 }

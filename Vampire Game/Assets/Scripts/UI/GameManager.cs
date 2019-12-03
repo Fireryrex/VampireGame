@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     public int sceneLoaded = 0;
     private bool respawning = false;
 
+    private bool[] cutScenes = new bool[20];
+
      private void Awake() {
         if (instance == null)
             instance = this;
@@ -42,6 +44,9 @@ public class GameManager : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player");
         }
         hearts = GameObject.FindGameObjectsWithTag("Hearts");  
+        for (int i = 0; i< 20; i++){
+            cutScenes[i] = false;
+        }
     }
     private void Update() {
         /*Debug.Log(respawnSceneLoaded == null);
@@ -183,5 +188,11 @@ public class GameManager : MonoBehaviour
     public Cinemachine.CinemachineVirtualCamera returnCamera()
     {
         return gameCamera;
+    }
+    public bool checkCutSceneStatus(int id){
+        return cutScenes[id];
+    }
+    public void changeCutSceneStatus(int id){
+        cutScenes[id] = true;
     }
 }
