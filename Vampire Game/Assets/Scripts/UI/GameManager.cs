@@ -47,6 +47,10 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i< 20; i++){
             cutScenes[i] = false;
         }
+        if(!AudioManagerInstance.IsPlaying("Sewer Scene 2"))
+        {
+            AudioManagerInstance.Play("Sewer Scene 2");
+        }
     }
     private void Update() {
         /*Debug.Log(respawnSceneLoaded == null);
