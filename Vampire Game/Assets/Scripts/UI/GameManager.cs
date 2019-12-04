@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
 
     private bool[] cutScenes = new bool[100];
 
+    [SerializeField] bool playBoss = false;
+    [SerializeField] float song1length;
+
      private void Awake() {
         if (instance == null)
             instance = this;
@@ -47,7 +50,11 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i< 20; i++){
             cutScenes[i] = false;
         }
-        if(!AudioManagerInstance.IsPlaying("Sewer Scene 2"))
+        if(playBoss)
+        {
+            StartCoroutine(PlayTwoSongs("PrinceBossIntro", "PrinceBossLoop", song1length));
+        }
+        else if(!AudioManagerInstance.IsPlaying("Sewer Scene 2"))
         {
             AudioManagerInstance.Play("Sewer Scene 2");
         }
@@ -85,7 +92,11 @@ public class GameManager : MonoBehaviour
         //player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
     }
     public void Respawn(string respawnScene, Vector2 respawnPosition){
-        if(SceneManager.GetActiveScene().name != respawnScene){
+        if (SceneManager.GetActiveScene().name != "Sewer Scene 2" || SceneManager.GetActiveScene().name != "Sewer Scene 4" || SceneManager.GetActiveScene().name != "s Scene 1")
+        {
+            playSewerScene2();
+        }
+        if (SceneManager.GetActiveScene().name != respawnScene){
             //Debug.Log("player is now repsawning");
             player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             //Debug.Log("Before respawning: " + (respawnSceneLoaded == null));
@@ -168,7 +179,24 @@ public class GameManager : MonoBehaviour
                     sceneLoadOp = SceneManager.LoadSceneAsync(toScene);
                     GameManager.instance.AudioManagerInstance.StopAll(toScene);
                     yield return new WaitUntil(() => sceneLoadOp.isDone);
-                    GameManager.instance.AudioManagerInstance.Play(toScene);
+                    if (toScene == "Prince Boss Fight")
+                    {
+                        GameManager.instance.AudioManagerInstance.Stop("Sewer Scene 2");
+                        StartCoroutine(PlayTwoSongs("PrinceBossIntro", "PrinceBossLoop", song1length));   
+                    }
+                    else if(toScene == "SewerBossFight")
+                    {
+                        GameManager.instance.AudioManagerInstance.Stop("Sewer Scene 2");
+                        GameManager.instance.AudioManagerInstance.StopAll("SewerBossFight");
+                        GameManager.instance.AudioManagerInstance.Play(toScene);
+                    }
+                    else
+                    {
+                        GameManager.instance.AudioManagerInstance.Stop("PrinceBossIntro");
+                        GameManager.instance.AudioManagerInstance.Stop("PrinceBossLoop");
+                        GameManager.instance.AudioManagerInstance.Stop("SewerBossFight");
+                        GameManager.instance.AudioManagerInstance.Play("Sewer Scene 2");
+                    }
                     player.transform.position = moveTo;
                     player.GetComponent<Player_to_Crow>().findCrow();
                     player.GetComponent<Player_to_Crow>().crowUpdatePosition();
@@ -202,5 +230,22 @@ public class GameManager : MonoBehaviour
     public void loadMainMenu(){
         SceneManager.LoadScene("MainMenu");
         GameObject.Find("GameManager").GetComponent<PauseMenu>().Resume();
+    }
+
+    public void playSewerScene2()
+    {
+        GameManager.instance.AudioManagerInstance.Stop("PrinceBossIntro");
+        GameManager.instance.AudioManagerInstance.Stop("PrinceBossLoop");
+        GameManager.instance.AudioManagerInstance.Stop("SewerBossFight");
+        GameManager.instance.AudioManagerInstance.Play("Sewer Scene 2");
+    }
+
+    public IEnumerator PlayTwoSongs(string first, string second, float firstDuration)
+    {
+        GameManager.instance.AudioManagerInstance.StopAll();
+        GameManager.instance.AudioManagerInstance.Play(first);
+        yield return new WaitForSeconds(firstDuration);
+        GameManager.instance.AudioManagerInstance.Stop(first);
+        GameManager.instance.AudioManagerInstance.Play(second);
     }
 }
