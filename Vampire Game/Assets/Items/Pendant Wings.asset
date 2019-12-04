@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81e879a826eabf5489d4ade257a6d66f, type: 3}
   m_Name: Pendant Wings
   m_EditorClassIdentifier: 
-  itemName: New Item
+  itemName: Bat Wings
   icon: {fileID: 21300000, guid: fe8b5e5f384b9d846994f2bd43fa290d, type: 3}
-  itemDescription: Dash
+  itemDescription: An ornate pair of bat wings that appear to be the perfect size
+    to snap around the vial you wear around your neck. (Press K to Dash.)
   ability: dash

@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81e879a826eabf5489d4ade257a6d66f, type: 3}
   m_Name: PendantChains
   m_EditorClassIdentifier: 
-  itemName: Pendant
+  itemName: Desmodus Amulet
   icon: {fileID: 21300000, guid: c63cc8809e4f23f43beca138cd08cce9, type: 3}
-  itemDescription: Unlocks First Attack
+  itemDescription: The Desmodus Amulet grants you the ability to draw a Blood Sword
+    from the palm of your hand, while collecting blood from creatures you kill to
+    restore Vitality. (Press L to Attack with your Blood Sword.)
   ability: attack

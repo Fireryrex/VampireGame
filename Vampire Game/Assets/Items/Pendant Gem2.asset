@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81e879a826eabf5489d4ade257a6d66f, type: 3}
   m_Name: Pendant Gem2
   m_EditorClassIdentifier: 
-  itemName: New Item
+  itemName: Red Gemstone
   icon: {fileID: 21300000, guid: 6ffcbfd4baa0f834f9a3c072d2d1242c, type: 3}
-  itemDescription: Extra attack
+  itemDescription: A red gemstone, cut to fit into an empty setting on your amulet.
+    (Increases your maximum Damage.)
   ability: attack3
