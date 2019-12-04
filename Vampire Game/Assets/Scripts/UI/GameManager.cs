@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     public int sceneLoaded = 0;
     private bool respawning = false;
 
-    private bool[] cutScenes = new bool[20];
+    private bool[] cutScenes = new bool[100];
 
      private void Awake() {
         if (instance == null)
