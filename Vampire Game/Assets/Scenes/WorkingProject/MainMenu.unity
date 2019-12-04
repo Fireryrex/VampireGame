@@ -283,7 +283,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &24925401
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5532,7 +5532,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 132, y: 124.2}
+  m_AnchoredPosition: {x: 126, y: 120}
   m_SizeDelta: {x: 250.20001, y: 70.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &812997870
@@ -5624,7 +5624,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 64.754555, z: 0, w: -202.68376}
+  m_margin: {x: 0, y: 64.754555, z: -52.484043, w: -202.68376}
   m_textInfo:
     textComponent: {fileID: 812997870}
     characterCount: 142
@@ -6291,7 +6291,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1860354302
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6446,7 +6446,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 262, y: -200}
+  m_AnchoredPosition: {x: 165, y: -200}
   m_SizeDelta: {x: 120, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2058291212
@@ -6587,7 +6587,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -9, y: -30.099998}
+  m_AnchoredPosition: {x: 9, y: -20}
   m_SizeDelta: {x: 250.20001, y: 70.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2095338483
@@ -6680,7 +6680,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -122.19793, y: -94.74565, z: 184.18237, w: -54.568684}
+  m_margin: {x: -191.25586, y: -94.74565, z: 184.18237, w: -54.568684}
   m_textInfo:
     textComponent: {fileID: 2095338483}
     characterCount: 191
@@ -6688,7 +6688,7 @@ MonoBehaviour:
     spaceCount: 32
     wordCount: 29
     linkCount: 0
-    lineCount: 12
+    lineCount: 11
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
