@@ -111,10 +111,10 @@ public class GameManager : MonoBehaviour
             Respawn(respawnLevel, RespawnPoint);
             FillHearts();
         }
-        /*else if(player.GetComponent<Health_Script>().health <= 0){
+        else if(player.GetComponent<Health_Script>().health <= 0){
             Respawn(respawnLevel, RespawnPoint);
             FillHearts();
-        }*/
+        }
     }
         public void emptyHeart(){
             hearts = GameObject.FindGameObjectsWithTag("Hearts");
@@ -198,5 +198,9 @@ public class GameManager : MonoBehaviour
     }
     public void changeCutSceneStatus(int id){
         cutScenes[id] = true;
+    }
+    public void loadMainMenu(){
+        SceneManager.LoadScene("MainMenu");
+        GameObject.Find("GameManager").GetComponent<PauseMenu>().Resume();
     }
 }
