@@ -16,7 +16,7 @@ public class DialogueTrigger : MonoBehaviour
 
     public void Start()
     {
-        dm = FindObjectOfType<DialogueManager>();
+        dm = GameObject.Find("Dialogue PreFab").transform.Find("DialogueManager").GetComponent<DialogueManager>();
         hasBeenTriggered = GameManager.instance.checkCutSceneStatus(id);
 
         
